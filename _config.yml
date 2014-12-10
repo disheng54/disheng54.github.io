@@ -14,31 +14,31 @@ author:
   github: https://github.com/disheng54
 
 # 站点信息
-title: 闫肃的博客 
-description: 闫肃的博客
-url: http://yansu.org
+title: 禹墨的博客 
+description: 禹墨的博客
+url: http://disheng54.github.io
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: http://yansu-uploads.stor.sinaapp.com/imgs/gavatar.png
-favicon: http://yansu-uploads.stor.sinaapp.com/imgs/favicon.ico
+gavatar: http://yumo.qiniudn.com/baby.png
+favicon: http://yumo.qiniudn.com/baby.png
 
 # google analytics 设置
 ga:
-  id: UA-54767140-1
-  url: yansu.org
+  id: 
+  url: http://disheng54.github.io
 
 # disqus 设置
 disqus:
-  shortname: suyan-zh
+  shortname: yumo-zh
 
 # 主题设置，自动激活某个标签
-active: 技术
+active: android
 
 # 首页除了最新文章外显示分类
 cates: 
-  - Python
-  - OpenStack
+  - andorid
+  - mac
 
 # 中文本地化
 locals:

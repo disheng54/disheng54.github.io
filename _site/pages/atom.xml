@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
-    <title>闫肃的博客</title>
-    <link>http://yansu.org</link>
-    <description>闫肃的博客</description>
+    <title>禹墨的博客</title>
+    <link>http://disheng54.github.io</link>
+    <description>禹墨的博客</description>
     
       <item>
         <title>mac 常用快捷键</title>
-        <link>http://yansu.org/2014/12/10/mac-shortcut.html</link>
-        <guid isPermaLink="true">http://yansu.org/2014/12/10/mac-shortcut.html</guid>
+        <link>http://disheng54.github.io/2014/12/10/mac-shortcut.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2014/12/10/mac-shortcut.html</guid>
         <pubDate>Wed, 10 Dec 2014 00:00:00 +0800</pubDate>
         <description>&lt;h1 id=&quot;mac-&quot;&gt;mac 常用快捷键&lt;/h1&gt;
 &lt;p&gt;###  系统通用：&lt;/p&gt;
@@ -79,8 +79,8 @@
     
       <item>
         <title>activity的常见问题</title>
-        <link>http://yansu.org/2014/12/10/android-activity.html</link>
-        <guid isPermaLink="true">http://yansu.org/2014/12/10/android-activity.html</guid>
+        <link>http://disheng54.github.io/2014/12/10/android-activity.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2014/12/10/android-activity.html</guid>
         <pubDate>Wed, 10 Dec 2014 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;##1 . 什么是activity？&lt;/p&gt;
 
