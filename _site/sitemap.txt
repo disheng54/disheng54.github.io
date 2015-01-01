@@ -11,6 +11,8 @@
 
 
 
+  /2014/12/24/mou-shortcut.html
+
   /2014/12/10/mac-shortcut.html
 
   /2014/12/10/android-activity.html
