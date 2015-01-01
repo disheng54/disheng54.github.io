@@ -6,6 +6,22 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>Java String1</title>
+        <link>http://disheng54.github.io/2015/01/02/java-string1.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2015/01/02/java-string1.html</guid>
+        <pubDate>Fri, 02 Jan 2015 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;–&lt;br /&gt;
+layout: post&lt;br /&gt;
+title: String源码阅读分析&lt;br /&gt;
+category: java&lt;br /&gt;
+tags: [java]&lt;br /&gt;
+keywords: java string&lt;br /&gt;
+description: &lt;br /&gt;
+—&lt;/p&gt;
+</description>
+      </item>
+    
+      <item>
         <title>Git常用操作</title>
         <link>http://disheng54.github.io/2015/01/01/git-git.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/git-git.html</guid>
@@ -15,20 +31,28 @@
 
 &lt;h3 id=&quot;section&quot;&gt;添加文件 并交服务器&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;git add  . ／git add 文件名
-git comment -m &quot;更新说明&quot;
+git commit -m &quot;更新说明&quot;
 git push
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;删除文件&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;git rm 文件
-git comment -m &quot;删除一个文件&quot;
+git commit -m &quot;删除一个文件&quot;
 git push
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;更新文件的名字&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; git mv 旧文件名字，新文件名字
- git comment －m &quot;更新文件名字&quot;
+&lt;pre&gt;&lt;code&gt; git mv 旧文件名字 新文件名字
+ git commit－m &quot;更新文件名字&quot;
  git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;在本地初始化一个版本库，然后提交到服务器版本&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+git commit -m &quot;first commit&quot;
+git remote add origin https://github.com/disheng54/yumoJava.git
+git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>

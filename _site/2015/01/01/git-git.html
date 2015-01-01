@@ -189,20 +189,28 @@
 
 <h3 id="section">添加文件 并交服务器</h3>
 <pre><code>git add  . ／git add 文件名
-git comment -m "更新说明"
+git commit -m "更新说明"
 git push
 </code></pre>
 
 <h3 id="section-1">删除文件</h3>
 <pre><code>git rm 文件
-git comment -m "删除一个文件"
+git commit -m "删除一个文件"
 git push
 </code></pre>
 
 <h3 id="section-2">更新文件的名字</h3>
-<pre><code> git mv 旧文件名字，新文件名字
- git comment －m "更新文件名字"
+<pre><code> git mv 旧文件名字 新文件名字
+ git commit－m "更新文件名字"
  git push
+</code></pre>
+
+<h3 id="section-3">在本地初始化一个版本库，然后提交到服务器版本</h3>
+<pre><code>git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/disheng54/yumoJava.git
+git push -u origin master
 </code></pre>
 
 
