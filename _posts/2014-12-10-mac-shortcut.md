@@ -7,7 +7,7 @@ keywords: mac
 description: 
 ---
 #                    mac 常用快捷键 
-###  系统通用：
+### 系统通用：
 
        Command＋A   全部选中文件
        Option＋Command＋A 取消全部选中的文件。

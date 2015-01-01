@@ -6,13 +6,11 @@
     <description>禹墨的博客</description>
     
       <item>
-        <title>Mou Shortcut</title>
-        <link>http://disheng54.github.io/2014/12/24/mou-shortcut.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2014/12/24/mou-shortcut.html</guid>
+        <title>mou 常用快捷键</title>
+        <link>http://disheng54.github.io/2014/12/24/mac-moushortcut.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2014/12/24/mac-moushortcut.html</guid>
         <pubDate>Wed, 24 Dec 2014 00:00:00 +0800</pubDate>
-        <description>&lt;p&gt;#Mou快捷键&lt;/p&gt;
-
-&lt;h4 id=&quot;view&quot;&gt;View&lt;/h4&gt;
+        <description>&lt;h4 id=&quot;view&quot;&gt;View&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;显示预览窗口 Toggle live preview: Shift + Cmd + I&lt;/li&gt;
@@ -97,7 +95,7 @@
         <guid isPermaLink="true">http://disheng54.github.io/2014/12/10/mac-shortcut.html</guid>
         <pubDate>Wed, 10 Dec 2014 00:00:00 +0800</pubDate>
         <description>&lt;h1 id=&quot;mac-&quot;&gt;mac 常用快捷键&lt;/h1&gt;
-&lt;p&gt;###  系统通用：&lt;/p&gt;
+&lt;p&gt;### 系统通用：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;   Command＋A   全部选中文件
    Option＋Command＋A 取消全部选中的文件。

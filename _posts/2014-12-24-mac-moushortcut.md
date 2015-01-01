@@ -1,4 +1,11 @@
-#Mou快捷键
+---
+layout: post
+title:  mou 常用快捷键
+category: mac
+tags: [mac]
+keywords: mac
+description: 
+---
 
 #### View
 
