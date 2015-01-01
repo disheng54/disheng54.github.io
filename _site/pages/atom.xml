@@ -6,6 +6,35 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>Git常用操作</title>
+        <link>http://disheng54.github.io/2015/01/01/git-git.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/git-git.html</guid>
+        <pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate>
+        <description>&lt;pre&gt;&lt;code&gt;以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;添加文件 并交服务器&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git add  . ／git add 文件名
+git comment -m &quot;更新说明&quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;删除文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git rm 文件
+git comment -m &quot;删除一个文件&quot;
+git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;更新文件的名字&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; git mv 旧文件名字，新文件名字
+ git comment －m &quot;更新文件名字&quot;
+ git push
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>Android http开发（－） 下载web页面</title>
         <link>http://disheng54.github.io/2015/01/01/android-http.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/android-http.html</guid>
