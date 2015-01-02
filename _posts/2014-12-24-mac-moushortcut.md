@@ -2,7 +2,7 @@
 layout: post
 title:  mou 常用快捷键
 category: mac
-tags: [mac]
+tags: [mou,快捷键]
 keywords: mac
 description: 
 ---

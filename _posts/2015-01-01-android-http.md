@@ -2,8 +2,8 @@
 layout: post
 title: Android http开发（－） 下载web页面
 category: android
-tags: [android]
-keywords: android http
+tags: [Http]
+keywords: android,http
 description: 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: activity的常见问题
 category: android
-tags: [android, activity]
+tags: [activity]
 keywords: android,actiity
 description: 
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: mac 常用快捷键
 category: mac
-tags: [mac]
+tags: [快捷键]
 keywords: mac
 description: 
 ---
