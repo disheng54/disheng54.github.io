@@ -9,7 +9,13 @@
 
   /sitemap.txt
 
+  /page2/index.html
 
+
+
+  /2015/01/05/java-reflect.html
+
+  /2015/01/05/java-random.html
 
   /2015/01/03/java-thread1.html
 
