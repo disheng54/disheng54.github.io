@@ -6,6 +6,26 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>android开发中的资源</title>
+        <link>http://disheng54.github.io/2015/01/27/android-resource.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2015/01/27/android-resource.html</guid>
+        <pubDate>Tue, 27 Jan 2015 00:00:00 +0800</pubDate>
+        <description>&lt;h1 align=&quot;center&quot;&gt;Android 开发资源&lt;/h1&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;开发网站&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;优秀博客&lt;/h3&gt;
+
+&lt;h3 id=&quot;ndk&quot;&gt;NDK&lt;/h3&gt;
+&lt;p&gt;    &lt;a href=&quot;http://blog.csdn.net/shulianghan/article/details/18964835&quot;&gt;NDK从入门到精通 介绍的非常详细&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;    &lt;a href=&quot;http://blog.csdn.net/column/details/blogjnindk.html&quot;&gt;JNI/NDK开发指南 专栏&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;    &lt;a href=&quot;http://www.cppblog.com/xkjy3000/category/20738.html&quot;&gt;NDK开发教程 不推荐入门看&lt;/a&gt;&lt;/p&gt;
+</description>
+      </item>
+    
+      <item>
         <title>反射－一个简单的实例应用</title>
         <link>http://disheng54.github.io/2015/01/05/java-reflect.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/05/java-reflect.html</guid>
@@ -348,11 +368,7 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	{
 		System.out.println(bt);
 	}
-	
-	执行上面的代码。我们可以等到如下的结果。
-	
-	随机生成5个int数字  next()
-	-1193959466
+		-1193959466
 	-1139614796
 	837415749
 	-1220615319
@@ -408,7 +424,11 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	-118
 	-39
 	104
-	-3
+	
+	执行上面的代码。我们可以等到如下的结果。
+	
+	随机生成5个int数字  next()
+-3
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>

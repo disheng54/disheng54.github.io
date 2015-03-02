@@ -13,6 +13,8 @@
 
 
 
+  /2015/01/27/android-resource.html
+
   /2015/01/05/java-reflect.html
 
   /2015/01/05/java-random.html
