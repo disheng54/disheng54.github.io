@@ -6,6 +6,55 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>MAC下eclipse的常用快捷键</title>
+        <link>http://disheng54.github.io/2015/04/08/mac-eclipseshortcut.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2015/04/08/mac-eclipseshortcut.html</guid>
+        <pubDate>Wed, 08 Apr 2015 00:00:00 +0800</pubDate>
+        <description>&lt;h2 id=&quot;maceclipse-br&quot;&gt;Mac下Eclipse快捷键大全 &lt;br /&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;查找帮助&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;     Shift + Command + L : 打开快捷键列表
+     Command ＋ F：打开查找
+     Command ＋ K ：在当前页面内搜索选中的关键字。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;页面操作类&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;    Command＋W：关闭当前编辑页面
+    Command＋Shift＋W：关闭当前所有的编辑页面
+    Command＋Option  + 右箭头:后一个编辑页面
+    Command + Option + 左箭头:前一个编辑页面
+    
+    Command + t : 快速显示当前类的结构图
+    Option + 回车：显示当前选中资源的属性。
+    Command + Option + c:显示函数结构。
+    Command＋ E：显示当前可选择页面的列表，仅在右上角显示，可以切换页面。
+    Command + Shift + E:显示当前编辑页面的列表窗口，进行管理。
+    
+    Command＋Shift + P：匹配定位，比如while循环的两个大括号之间的匹配。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;bug&quot;&gt;运行调试修改bug&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;    Command＋1：快速修复
+    Shift + Command + F11 运行
+    Command＋F11 调试
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;编辑相关&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;   Command ＋ Option + 上箭头:复制当前行到上一行。
+   Command ＋ Option + 下箭头:复制当前行到下一行。  
+   Option + 上箭头: 向上移动当前行。
+   Option + 下箭头: 向下移动当前行。      
+   Command＋D：删除当前行
+   
+   Option + Command + R:重命名。
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>android开发中的资源</title>
         <link>http://disheng54.github.io/2015/01/27/android-resource.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/27/android-resource.html</guid>
@@ -772,32 +821,107 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <link>http://disheng54.github.io/2015/01/01/git-git.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/git-git.html</guid>
         <pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。 ###     初始化一个版本
- git init
+        <description>&lt;pre&gt;&lt;code&gt;以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。 ###  基础配置
+ 查看配置： git config --list 
+ 设置用户名：git config --global user.name &quot;gitname&quot;
+ 设置邮箱：git config --global user.email &quot;git@com.cn&quot;
+ 查看用户名： git config user.name
+ 查看邮箱： git config user.email
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;克隆一个服务器版本&lt;/h3&gt;
+&lt;h3 id=&quot;section&quot;&gt;获取帮助&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;   查看帮助：git help config
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;添加文件 并交服务器&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git add  . ／git add 文件名
+&lt;h3 id=&quot;section-1&quot;&gt;初始化一个版本&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; git init：在一个文件目录下面，初始化一个版本库。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;克隆一个服务器版本&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;  git clone https://github.com/disheng54/disheng54.github.io.git  disheng54
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;查看本地状态&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;  git status ;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;把改动暂存起来。&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git add  .     // 将所有改动的文件加入在暂存区
+git add 文件名 //将单个改动的文件加入到暂存区
 git commit -m &quot;更新说明&quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;删除文件&lt;/h3&gt;
+&lt;h3 id=&quot;section-5&quot;&gt;删除文件&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;git rm 文件名称
-git commit -m &quot;删除一个文件&quot;
+git rm --cached 删除一个暂存区文件。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-3&quot;&gt;更新文件的名字&lt;/h3&gt;
+&lt;h3 id=&quot;section-6&quot;&gt;更新文件的名字&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt; git mv 旧文件名字 新文件名字
  git commit－m &quot;更新文件名字&quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;在本地初始化一个版本库，然后提交到服务器版本&lt;/h3&gt;
+&lt;h3 id=&quot;section-7&quot;&gt;提交文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git  commit -m &quot;提交说明&quot;
+git  commit －a -m &quot;不用先用add文件到缓存，直接提交文件&quot;
+git  commit  --amend 重新提交
+git  reset HEAD 文件名：  从暂存区中撤消文件。
+git  checkout  -- 文件名： 撤消修改
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;忽略一些文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cat .gitignore
+# Built application files
+*.apk 
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Proguard folder generated by Eclipse
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;查看提交日志&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; git log
+ git log -p 显示每次的内容差异。
+ git log  -2 显示最近的两次更新
+ git log --stat 近显示简要的增改行数。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-10&quot;&gt;在本地初始化一个版本库，然后提交到服务器版本&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;git init
 git add .
 git commit -m &quot;first commit&quot;
 git remote add origin https://github.com/disheng54/yumoJava.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-11&quot;&gt;远程库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; git remote -v ：显示远程库
+ git remote show origin :查看远程库信息
+ git push origin master :向远程服务器提交数据。
+ git remote rm origin :删除远程仓库。
+ git remote rename origin origin1 ：重命名远程仓库。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-12&quot;&gt;标签&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; git  tag： 显示标签
+ git tag -i &quot;tagone&quot;  :显示其中一个标签。
+ git  tag  -a v0.1  -m &quot;test tag&quot;:添加一个标签
+ git show v0.1:显示刚才天假的标签。
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>
