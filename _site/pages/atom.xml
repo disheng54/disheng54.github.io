@@ -14,7 +14,7 @@
 
 &lt;h3 id=&quot;section&quot;&gt;基本分支管理&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;     git branch :查看分支
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     git branch :查看分支
      git branch &amp;lt;分支名字&amp;gt; ：创建分支
      git checkout &amp;lt;另外一个分支名字&amp;gt;： 切换到另外一个分支
      git branch -d &amp;lt;分支名字&amp;gt;：删除一个本地分支
@@ -22,33 +22,38 @@
      git branch -a： 查看所有的分支
      git branch -r:查看所有的远程分支
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;基本的远程操作&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;     git remote :查看远程分支名字，默认为origin
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     git remote :查看远程分支名字，默认为origin
      git remote -v :查看远程主机版本信息
      git remote show &amp;lt;主机名&amp;gt;: 查看制定主机名的远程主机详细信息，如果没有制定名字会显示当前的远程主机。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;fetch&quot;&gt;fetch操作&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;      git fetch &amp;lt;远程主机名&amp;gt;:获取远程主机上所有的提交
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      git fetch &amp;lt;远程主机名&amp;gt;:获取远程主机上所有的提交
       git fetch &amp;lt;远程主机名&amp;gt; &amp;lt;分支名&amp;gt; :获取远程主机上一个分支的提交
       git checkout -b &amp;lt;新分支名字&amp;gt; &amp;lt;远程主机名字&amp;gt;/&amp;lt;远程分支名字&amp;gt;:
                    从远程分支更新到本地并在此基础上生成一个新的分支。
       git merge &amp;lt;远程主机名&amp;gt;/&amp;lt;分支名字&amp;gt; 在当前的本地分支上合并远程分支
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;pull&quot;&gt;pull操作&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;      git pull &amp;lt;远程主机名&amp;gt;&amp;lt;远程分支名字&amp;gt;:&amp;lt;本地分支&amp;gt; ：取回远程主机一个分支的更新，然后与本地的分支合并
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      git pull &amp;lt;远程主机名&amp;gt;&amp;lt;远程分支名字&amp;gt;:&amp;lt;本地分支&amp;gt; ：取回远程主机一个分支的更新，然后与本地的分支合并
       如果是与本地的当前分支合并可忽略:&amp;lt;本地分支&amp;gt; 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;push&quot;&gt;push操作&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;      git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名字&amp;gt;:&amp;lt;远程分支名字&amp;gt; :将本地分支的内容提交到远程分支上 。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名字&amp;gt;:&amp;lt;远程分支名字&amp;gt; :将本地分支的内容提交到远程分支上 。
       如果要提交到的远程分支和本地分支有跟踪关系就可省略 :&amp;lt;远程分支名字&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -61,14 +66,15 @@
         <description>&lt;h2 id=&quot;maceclipse-br&quot;&gt;Mac下Eclipse快捷键大全 &lt;br /&gt;&lt;/h2&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;查找帮助&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;     Shift + Command + L : 打开快捷键列表
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     Shift + Command + L : 打开快捷键列表
      Command ＋ F：打开查找
      Command ＋ K ：在当前页面内搜索选中的关键字。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;页面操作类&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;    Command＋W：关闭当前编辑页面
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    Command＋W：关闭当前编辑页面
     Command＋Shift＋W：关闭当前所有的编辑页面
     Command＋Option  + 右箭头:后一个编辑页面
     Command + Option + 左箭头:前一个编辑页面
@@ -81,16 +87,18 @@
     
     Command＋Shift + P：匹配定位，比如while循环的两个大括号之间的匹配。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;bug&quot;&gt;运行调试修改bug&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;    Command＋1：快速修复
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    Command＋1：快速修复
     Shift + Command + F11 运行
     Command＋F11 调试
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;编辑相关&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;   Command ＋ Option + 上箭头:复制当前行到上一行。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Command ＋ Option + 上箭头:复制当前行到上一行。
    Command ＋ Option + 下箭头:复制当前行到下一行。  
    Option + 上箭头: 向上移动当前行。
    Option + 下箭头: 向下移动当前行。      
@@ -98,6 +106,7 @@
    
    Option + Command + R:重命名。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -127,11 +136,12 @@
         <link>http://disheng54.github.io/2015/01/05/java-reflect.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/05/java-reflect.html</guid>
         <pubDate>Mon, 05 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;class&quot;&gt;什么是Class&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;我定义一个类的时候需要使用Class关机字。比如 Class A｛｝;我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;我定义一个类的时候需要使用Class关机字。比如 Class A｛｝;我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
 Class类有两个重要的方法。
 getName(); 获取这个对象的名字。
 forName();这个是静态方法。通过一个类的名字，获取到这个类的类型说明，我也不知道该怎么描述，只要不要理解成一个类对象的实例就行。
@@ -251,9 +261,10 @@ newInstance() ;通过这个成员方法可以获得一个类的心的实例。
 	public final native void notifyAll()
 	}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;通过反射操作一个类的字段。&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; 我们定义一个Book类。有两个属性，书名和价格。定义如下。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 我们定义一个Book类。有两个属性，书名和价格。定义如下。
        /**
 	 * yumo
 	 * 定义一个用于测试的Book类
@@ -333,10 +344,11 @@ newInstance() ;通过这个成员方法可以获得一个类的心的实例。
 	通过反射获取的将书名修改为：android 开发入门详解
 	通过反射修改后书名为：android 开发入门详解
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;通过反射操作一个类的方法&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;我们可以通过反射机制在运行当中动态的获取一个实例方法，来操纵这个方法。需要用到相关类的方法如下
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;我们可以通过反射机制在运行当中动态的获取一个实例方法，来操纵这个方法。需要用到相关类的方法如下
 Class类中的方法
 Method getMethod(String name, Class&amp;lt;?&amp;gt;... parameterTypes)   返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。
 Method 顾名思义表示的一个类型方法类型。它有两个常用的方法。
@@ -394,6 +406,7 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	getPrice 进入运行了
 	通过反射修改后，书的价格为:100.0
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
       </item>
     
@@ -402,7 +415,7 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <link>http://disheng54.github.io/2015/01/05/java-random.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/05/java-random.html</guid>
         <pubDate>Mon, 05 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;  随机数用的场合非常多，但是使用起来并不复杂，非常的简单。下面就是他的一些列方法的使用
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  随机数用的场合非常多，但是使用起来并不复杂，非常的简单。下面就是他的一些列方法的使用
   
     Random random = new Random(100);
 	
@@ -527,6 +540,7 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	随机生成5个int数字  next()
 -3
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -537,13 +551,14 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/03/java-thread1.html</guid>
         <pubDate>Sat, 03 Jan 2015 00:00:00 +0800</pubDate>
         <description>&lt;h3 id=&quot;section&quot;&gt;什么是线程&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;    先在的操作系统基本上都是基于多线程的了，在实际的开发中，多线程是无处不在的。一个java程序运行起来，就默认打开一个主线程。那什么是线程呢。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    先在的操作系统基本上都是基于多线程的了，在实际的开发中，多线程是无处不在的。一个java程序运行起来，就默认打开一个主线程。那什么是线程呢。
     线程依附于一个进程，是操作系统可以调度的最小单位。一个进程的中的线程之间共用改进程的内存和公共数据。
     使用多线程可以实现并发编程，提高程序的性能。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;如何创建并执行。一个线程&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;    创建一个线程可以通过两种方法，但是最后执行都是调用Thread类的start()方法来启动一个线程。 start()会自动调用run() 执行线程的操作。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    创建一个线程可以通过两种方法，但是最后执行都是调用Thread类的start()方法来启动一个线程。 start()会自动调用run() 执行线程的操作。
     
     1、通过扩展一个Thread对象，来创建一个线程。
         /**
@@ -590,6 +605,7 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
           
           runnable1
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
       </item>
     
@@ -598,18 +614,20 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <link>http://disheng54.github.io/2015/01/02/java-thread2.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/02/java-thread2.html</guid>
         <pubDate>Fri, 02 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;  线程启动后，run()方法运行结束后，就标志着线程结束并正常退出了。可是在一些情况下，比如软件关闭时，需要停止一些尚在运行的进程。手动停止线程有三种方式  
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  线程启动后，run()方法运行结束后，就标志着线程结束并正常退出了。可是在一些情况下，比如软件关闭时，需要停止一些尚在运行的进程。手动停止线程有三种方式  
   1、 Thread自带的stop()方法
   2、 建立标志位来停止线程。
   3、 Thread的Interrupts  方法。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;stop&quot;&gt;利用Stop()方法停止线程&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;  很不幸该方法已经被弃用了。但是该方法还是 的的确确可以让线程立刻停止的。可是问题就是处在立刻停止上面了。就是Stop()让该线程义无反顾的停止了运行，没有丝毫的犹豫，这就带了很多的问题，让线程里的其他成员和开启线程的类非常的不舒服，比如我希望在任何时候，在线程结束以前都打印一条日志，如果用Stop()方法，就不可能打印那条日志了。如果我们打开一个File，一个Socket，我们希望在线程结束的时候，能够调用一下close方法。这也做不到了。所以还是尽可能的少用Stop()方法吧。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  很不幸该方法已经被弃用了。但是该方法还是 的的确确可以让线程立刻停止的。可是问题就是处在立刻停止上面了。就是Stop()让该线程义无反顾的停止了运行，没有丝毫的犹豫，这就带了很多的问题，让线程里的其他成员和开启线程的类非常的不舒服，比如我希望在任何时候，在线程结束以前都打印一条日志，如果用Stop()方法，就不可能打印那条日志了。如果我们打开一个File，一个Socket，我们希望在线程结束的时候，能够调用一下close方法。这也做不到了。所以还是尽可能的少用Stop()方法吧。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;通过标志位来停止一个线程。&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;  在我以往的开发工作中，我一向是利用利用标志位来手动的停止一个线程的。它的原理就是在run() 方法里面进行一个条件判断，满足条件就接着运行该线程，否则话就进行一些收尾工作，来停止该线程的运行。下面我建立一个不停的打印自己名字的线程，然后 通过一个标志位来结束这个线程。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  在我以往的开发工作中，我一向是利用利用标志位来手动的停止一个线程的。它的原理就是在run() 方法里面进行一个条件判断，满足条件就接着运行该线程，否则话就进行一些收尾工作，来停止该线程的运行。下面我建立一个不停的打印自己名字的线程，然后 通过一个标志位来结束这个线程。
      
      class Runnable2 implements Runnable{
 	
@@ -688,11 +706,13 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	
 	最后我们看到线程成功的结束了。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;interrupt-&quot;&gt;利用interrupt() 来中断线程。&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;  单单利用标志位结束一个线程，在某些情况下是非常完美的解决方案，而是线程进行了长时间的睡眠，调用了wait，joint时，就麻烦了，非常有可能进行长时间的阻塞，然后就不能检查标志位来停止一个线程了。关于这点，javaAPI提供一个方法 interrupt(),当线程调用该方法时，如果改线程内部调用了wait,sleep,joint 等等，处于阻塞状态时，就会抛出一个InterruptedException 异常，然后我们就有会在捕获这个异常后进行处理，并判断是否要退出线程，等等。ingerrupt 本身并不能中断一个线程，它能中断的阻塞，修改中断标志位等等。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  单单利用标志位结束一个线程，在某些情况下是非常完美的解决方案，而是线程进行了长时间的睡眠，调用了wait，joint时，就麻烦了，非常有可能进行长时间的阻塞，然后就不能检查标志位来停止一个线程了。关于这点，javaAPI提供一个方法 interrupt(),当线程调用该方法时，如果改线程内部调用了wait,sleep,joint 等等，处于阻塞状态时，就会抛出一个InterruptedException 异常，然后我们就有会在捕获这个异常后进行处理，并判断是否要退出线程，等等。ingerrupt 本身并不能中断一个线程，它能中断的阻塞，修改中断标志位等等。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -703,8 +723,9 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/02/java-stringbuilder.html</guid>
         <pubDate>Fri, 02 Jan 2015 00:00:00 +0800</pubDate>
         <description>&lt;h3 id=&quot;string--stringbuilder-&quot;&gt;String 与 StringBuilder 异同&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;    我觉得String 和StringBuilder最大的异同点在于。String是final 类，初始化后就不能在发生改变了。而StringBuilder是可以改变的。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    我觉得String 和StringBuilder最大的异同点在于。String是final 类，初始化后就不能在发生改变了。而StringBuilder是可以改变的。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
       </item>
     
@@ -713,11 +734,12 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <link>http://disheng54.github.io/2015/01/02/java-string1.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/02/java-string1.html</guid>
         <pubDate>Fri, 02 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;java String类是一个使用频率非常高的类。借助分析String类的源码，有助于更好的了解java中字符串的操作，写出更加有效率的代码。
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java String类是一个使用频率非常高的类。借助分析String类的源码，有助于更好的了解java中字符串的操作，写出更加有效率的代码。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;string-&quot;&gt;String 定义&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;   public final class String implements Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence｛｝
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   public final class String implements Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence｛｝
    String首先是一个final类，它将不能被继承生成一个子类。String为什么要设置为final类型主要有2个方面的考虑。
    1、处于安全性的考虑.String类是java中一个非常底层的类，和操作系统进行的频繁的交互。如果可以String类可以被继承，用户就可能会重写String类的相关方法，这就提供破坏操作系统提供了机会，降低了java的宣称的安全性。
    2、效率的问题：String被定义为final类，那么它的所有方法都是final的，jvm编译器会内联所有的方法，此举可以让String类的效率使用50%，单凭这点就让人心动不已了。
@@ -726,9 +748,10 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
    String类继承了Comparable, 所以String可以在集合里面，直接用sort()排序。
    String类继承实现了CharSequence ,所以String类本质上是一个字符序列。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;string--1&quot;&gt;String 成员变量&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;   //定义一个字符数组来存放 String的字符序列。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   //定义一个字符数组来存放 String的字符序列。
   private final char[] value;
   // 字符偏移的位置。
   private final int offset;
@@ -737,9 +760,10 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
   //该字符串对应生产的一个哈希值。
   private int hashCode;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;string--2&quot;&gt;String 初始化&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;    String的类的初始化方法非常多，非常的丰富，所以初始化String对象还是很方便的。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    String的类的初始化方法非常多，非常的丰富，所以初始化String对象还是很方便的。
     
     //声明一个空字符串
      public String() {
@@ -860,6 +884,7 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         stringBuilder.getChars(0, this.count, this.value, 0);
     }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -869,59 +894,74 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
         <link>http://disheng54.github.io/2015/01/01/git-git.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/git-git.html</guid>
         <pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;基础配置&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; 查看配置： git config --list 
- 设置用户名：git config --global user.name &quot;gitname&quot;
- 设置邮箱：git config --global user.email &quot;git@com.cn&quot;
- 查看用户名： git config user.name
- 查看邮箱： git config user.email
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 查看配置:git config --list
+ 设置全局用户名:git config --global user.name &quot;gitname&quot;
+ 设置全局邮箱:git config --global user.email &quot;git@com.cn&quot;
+ 查看全局用户名:git config user.name
+ 查看全局邮箱:git config user.email
+ 设置当前仓库用户名:git config --global user.name &quot;gitname&quot;
+ 设置当前仓库邮箱:git config --global user.email &quot;git@com.cn&quot;
+ 查看当前仓库用户名:git config user.name
+ 查看当前仓库邮箱:git config user.email
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;获取帮助&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; 查看帮助：git help config
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 查看帮助：git help config
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;初始化一个版本&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; git init：在一个文件目录下面，初始化一个版本库。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git init:在一个目录下面，初始化一个Git版本库。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-3&quot;&gt;克隆一个服务器版本&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;  git clone https://github.com/disheng54/disheng54.github.io.git  disheng54
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git clone https://github.com/disheng54/disheng54.github.io.git
+  git clone https://github.com/disheng54/disheng54.github.io.git newdir
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-4&quot;&gt;查看本地状态&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;  git status ;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git status
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-5&quot;&gt;把改动暂存起来。&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git add  .     // 将所有改动的文件加入在暂存区
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add  .     // 将所有改动的文件加入在暂存区
 git add 文件名 //将单个改动的文件加入到暂存区
 git commit -m &quot;更新说明&quot;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-6&quot;&gt;删除文件&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git rm 文件名称
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git rm 文件名称
 git rm --cached 删除一个暂存区文件。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-7&quot;&gt;更新文件的名字&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; git mv 旧文件名字 新文件名字
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git mv 旧文件名字 新文件名字
  git commit－m &quot;更新文件名字&quot;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-8&quot;&gt;提交文件&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git  commit -m &quot;提交说明&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git  commit -m &quot;提交说明&quot;
 git  commit －a -m &quot;不用先用add文件到缓存，直接提交文件&quot;
 git  commit  --amend 重新提交
 git  reset HEAD 文件名：  从暂存区中撤消文件。
 git  checkout  -- 文件名： 撤消修改
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-9&quot;&gt;忽略一些文件&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;cat .gitignore
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat .gitignore
 # Built application files
 *.apk 
 *.ap_
@@ -945,35 +985,40 @@ local.properties
 
 # Proguard folder generated by Eclipse
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-10&quot;&gt;查看提交日志&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; git log
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git log
  git log -p 显示每次的内容差异。
  git log  -2 显示最近的两次更新
  git log --stat 近显示简要的增改行数。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-11&quot;&gt;在本地初始化一个版本库，然后提交到服务器版本&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git init
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
 git add .
 git commit -m &quot;first commit&quot;
 git remote add origin https://github.com/disheng54/yumoJava.git
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-12&quot;&gt;远程库&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; git remote -v ：显示远程库
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git remote -v ：显示远程库
  git remote show origin :查看远程库信息
  git push origin master :向远程服务器提交数据。
  git remote rm origin :删除远程仓库。
  git remote rename origin origin1 ：重命名远程仓库。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-13&quot;&gt;标签&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt; git  tag： 显示标签
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git  tag： 显示标签
  git tag -i &quot;tagone&quot;  :显示其中一个标签。
  git  tag  -a v0.1  -m &quot;test tag&quot;:添加一个标签
  git show v0.1:显示刚才天假的标签。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -983,12 +1028,13 @@ git remote add origin https://github.com/disheng54/yumoJava.git
         <link>http://disheng54.github.io/2015/01/01/android-http.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/android-http.html</guid>
         <pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;pre&gt;&lt;code&gt;Android中HTTP协议的开发还是比较重要的，熟练的掌握HTTP开发，有助于开发效率，给用户一个更加优秀的APP产品。Android 中使用HTTP协议开发可以使用java自带的API－HttpURLConnection，也可以使用Apache HttpClient。下面就以这两种方式分别实现对一个web页面的下载。
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Android中HTTP协议的开发还是比较重要的，熟练的掌握HTTP开发，有助于开发效率，给用户一个更加优秀的APP产品。Android 中使用HTTP协议开发可以使用java自带的API－HttpURLConnection，也可以使用Apache HttpClient。下面就以这两种方式分别实现对一个web页面的下载。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;httpurlconnection-&quot;&gt;(-)HttpURLConnection 实现一个页面的下载。&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;   	/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   	/**
  * TODO
  * yumo 利用java的HttpConnectionURL 访问一个网站，并获取它的网站数据。
  * @param url 要下载web页面的网址，比如Http://www.baidu.com
@@ -1026,10 +1072,11 @@ private int getByJavaHttp(String webSite)
 	return statusCode ;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;apachehttpclient-web&quot;&gt;（二） 通过ApacheHttpClient 实现一个web页面的下载&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * TODO
  * yumo 打印网站的数据 利用Apache httpClient
  * @param url 网站名称 比如http://www.baidu.com
@@ -1067,6 +1114,7 @@ private int getByApacheHttp(String url)
 	return statusCode;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1164,7 +1212,7 @@ private int getByApacheHttp(String url)
 
 &lt;h4 id=&quot;section&quot;&gt;文件操作&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;   Command＋A   全部选中文件
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Command＋A   全部选中文件
    Option＋Command＋A 取消全部选中的文件。
    Command＋c   拷贝选中的文件
    Command＋D   复制所选项
@@ -1176,10 +1224,11 @@ private int getByApacheHttp(String url)
    shift ＋Command ＋ delete 清到废纸篓
    Option ＋ shift ＋ Command ＋ delete： 不提示删除废纸篓。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;section-1&quot;&gt;应用操作&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;   Command + tab 向前切换到上一个窗口
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Command + tab 向前切换到上一个窗口
    Shift+Command+tab 向后切换应用
    Command + W   关闭当前窗口
    Option ＋ Command ＋ W 关闭所有的窗口
@@ -1194,10 +1243,11 @@ private int getByApacheHttp(String url)
    
    Command ＋ shift ＋ ？ 打开帮助
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;section-2&quot;&gt;文件编辑&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;   Control ＋ A：移动到段落和行的开始。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Control ＋ A：移动到段落和行的开始。
    Control ＋ E： 移动到段落和行的结束
    Control ＋ B；向后移动一个字符
    Control ＋ F；向前移动一个字符	   
@@ -1237,9 +1287,10 @@ private int getByApacheHttp(String url)
    Shift ＋ Option ＋ 上箭头：将选中文本扩充至当前段落的首部，再按一次，扩充至上一段路的首部。
    Shift ＋ Option ＋ 下箭头：将选中文本扩充至当前段落的尾部，再按一次，扩充至下一段落的尾部。
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;finder&quot;&gt;Finder&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;   shift + Command + A 打开应用程序
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   shift + Command + A 打开应用程序
    shift + command + D 打开桌面文件夹
    shift + Command + C 打开电脑窗口
    shift + Command + U 打开实用工具
@@ -1261,6 +1312,7 @@ private int getByApacheHttp(String url)
    Option ＋ Command ＋ Y ： 以浏览的方式打开
    shift ＋ Command ＋ N 新建文件夹
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>

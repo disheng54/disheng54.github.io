@@ -31,7 +31,7 @@
         
           <li><a href="#mac" data-toggle="tab">mac</a></li>
         
-          <li><a href="#git" data-toggle="tab">git</a></li>
+          <li><a href="#Git" data-toggle="tab">Git</a></li>
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
@@ -78,9 +78,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="git">
+            <div class="tab-pane" id="Git">
               <div class="list-group">
-                <h2 class="center">git</h2>
+                <h2 class="center">Git</h2>
                 
                   <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
                 
@@ -179,6 +179,22 @@
                     
                       <a  href='/2015/01/01/android-http.html' class="list-group-item pjaxlink">
                         Android http开发（－） 下载web页面
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#git">git</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="git" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/01/01/git-git.html' class="list-group-item pjaxlink">
+                        Git常用操作
                       </a>
                     
                   </div>
@@ -295,7 +311,7 @@
 
 <h3 id="section">基本分支管理</h3>
 
-<pre><code>     git branch :查看分支
+<div class="highlighter-rouge"><pre class="highlight"><code>     git branch :查看分支
      git branch &lt;分支名字&gt; ：创建分支
      git checkout &lt;另外一个分支名字&gt;： 切换到另外一个分支
      git branch -d &lt;分支名字&gt;：删除一个本地分支
@@ -303,33 +319,38 @@
      git branch -a： 查看所有的分支
      git branch -r:查看所有的远程分支
 </code></pre>
+</div>
 
 <h3 id="section-1">基本的远程操作</h3>
-<pre><code>     git remote :查看远程分支名字，默认为origin
+<div class="highlighter-rouge"><pre class="highlight"><code>     git remote :查看远程分支名字，默认为origin
      git remote -v :查看远程主机版本信息
      git remote show &lt;主机名&gt;: 查看制定主机名的远程主机详细信息，如果没有制定名字会显示当前的远程主机。
 </code></pre>
+</div>
 
 <h3 id="fetch">fetch操作</h3>
 
-<pre><code>      git fetch &lt;远程主机名&gt;:获取远程主机上所有的提交
+<div class="highlighter-rouge"><pre class="highlight"><code>      git fetch &lt;远程主机名&gt;:获取远程主机上所有的提交
       git fetch &lt;远程主机名&gt; &lt;分支名&gt; :获取远程主机上一个分支的提交
       git checkout -b &lt;新分支名字&gt; &lt;远程主机名字&gt;/&lt;远程分支名字&gt;:
                    从远程分支更新到本地并在此基础上生成一个新的分支。
       git merge &lt;远程主机名&gt;/&lt;分支名字&gt; 在当前的本地分支上合并远程分支
 </code></pre>
+</div>
 
 <h3 id="pull">pull操作</h3>
 
-<pre><code>      git pull &lt;远程主机名&gt;&lt;远程分支名字&gt;:&lt;本地分支&gt; ：取回远程主机一个分支的更新，然后与本地的分支合并
+<div class="highlighter-rouge"><pre class="highlight"><code>      git pull &lt;远程主机名&gt;&lt;远程分支名字&gt;:&lt;本地分支&gt; ：取回远程主机一个分支的更新，然后与本地的分支合并
       如果是与本地的当前分支合并可忽略:&lt;本地分支&gt; 
 </code></pre>
+</div>
 
 <h3 id="push">push操作</h3>
 
-<pre><code>      git push &lt;远程主机名&gt; &lt;本地分支名字&gt;:&lt;远程分支名字&gt; :将本地分支的内容提交到远程分支上 。
+<div class="highlighter-rouge"><pre class="highlight"><code>      git push &lt;远程主机名&gt; &lt;本地分支名字&gt;:&lt;远程分支名字&gt; :将本地分支的内容提交到远程分支上 。
       如果要提交到的远程分支和本地分支有跟踪关系就可省略 :&lt;远程分支名字&gt;
 </code></pre>
+</div>
 
 
     </div>
