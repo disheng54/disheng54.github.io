@@ -31,6 +31,8 @@
 
   /2015/01/01/git-git.html
 
+  /2015/01/01/git-git.html
+
   /2015/01/01/android-http.html
 
   /2014/12/24/mac-moushortcut.html
