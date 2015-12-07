@@ -6,7 +6,7 @@ tags: [java]
 keywords: java 反射
 description: 
 ---
-      随机数用的场合非常多，但是使用起来并不复杂，非常的简单。下面就是他的一些列方法的使用
+   随机数用的场合非常多，但是使用起来并不复杂，非常的简单。下面就是他的一些列方法的使用
       
         Random random = new Random(100);
 		
@@ -31,7 +31,7 @@ description:
 			System.out.println(random.nextBoolean());
 		}
 		
-		//随机生成5个longn值
+		//随机生成5个long值
 		System.out.println("随机生成5个long值 random nextLong()");
 		for(int n =0; n < 10; n++)
 		{
@@ -53,7 +53,7 @@ description:
 		}
 		
 		//随机生成10个Gaussian值
-		System.out.println("随机生成5个张太随机数  nextGaussian()");
+		System.out.println("随机生成5个太随机数  nextGaussian()");
 		for(int n =0; n < 5; n++)
 		{
 			System.out.println(random.nextGaussian()*100);
@@ -69,11 +69,10 @@ description:
 		{
 			System.out.println(bt);
 		}
-			-1193959466
-		-1139614796
-		837415749
-		-1220615319
-		-1429538713
+	
+		
+执行上面的代码。我们可以等到如下的结果。
+		
 		生成5个 0到100之间的数字。 nextInt(100)
 		66
 		36
@@ -126,9 +125,7 @@ description:
 		-39
 		104
 		
-		执行上面的代码。我们可以等到如下的结果。
-		
-		随机生成5个int数字  next()
-	-3
+	
 
 		
+

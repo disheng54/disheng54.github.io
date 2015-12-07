@@ -19,7 +19,7 @@ description:
        String类继承实现了CharSequence ,所以String类本质上是一个字符序列。
        
 ###     String 成员变量
-       //定义一个字符数组来存放 String的字符序列。
+      //定义一个字符数组来存放 String的字符序列。
       private final char[] value;
       // 字符偏移的位置。
       private final int offset;
@@ -152,3 +152,4 @@ description:
         
         
        
+

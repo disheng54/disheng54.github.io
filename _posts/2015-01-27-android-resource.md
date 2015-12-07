@@ -13,8 +13,9 @@ description: android资源
 ### 优秀博客
 
 ### NDK
-   &nbsp;&nbsp;&nbsp;&nbsp;[NDK从入门到精通 介绍的非常详细](http://blog.csdn.net/shulianghan/article/details/18964835)
+  - [NDK从入门到精通 介绍的非常详细](http://blog.csdn.net/shulianghan/article/details/18964835)
  
-   &nbsp;&nbsp;&nbsp;&nbsp;[JNI/NDK开发指南 专栏](http://blog.csdn.net/column/details/blogjnindk.html)
+  - [JNI/NDK开发指南 专栏](http://blog.csdn.net/column/details/blogjnindk.html)
  
-   &nbsp;&nbsp;&nbsp;&nbsp;[NDK开发教程 不推荐入门看](http://www.cppblog.com/xkjy3000/category/20738.html)
+ -  [NDK开发教程 不推荐入门看](http://www.cppblog.com/xkjy3000/category/20738.html)
+

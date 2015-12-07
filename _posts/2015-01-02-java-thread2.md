@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 线程基础－手动停止线程
+title: 线程基础-手动停止线程
 category: java
 tags: [java]
 keywords: java string
@@ -99,3 +99,4 @@ description:
 
       单单利用标志位结束一个线程，在某些情况下是非常完美的解决方案，而是线程进行了长时间的睡眠，调用了wait，joint时，就麻烦了，非常有可能进行长时间的阻塞，然后就不能检查标志位来停止一个线程了。关于这点，javaAPI提供一个方法 interrupt(),当线程调用该方法时，如果改线程内部调用了wait,sleep,joint 等等，处于阻塞状态时，就会抛出一个InterruptedException 异常，然后我们就有会在捕获这个异常后进行处理，并判断是否要退出线程，等等。ingerrupt 本身并不能中断一个线程，它能中断的阻塞，修改中断标志位等等。
       
+

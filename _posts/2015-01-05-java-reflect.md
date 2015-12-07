@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 反射－一个简单的实例应用
+title: 反射-一个简单的实例应用
 category: java
 tags: [java高级]
 keywords: java 反射
@@ -9,11 +9,11 @@ description:
     反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
         
 ###    什么是Class
-    我定义一个类的时候需要使用Class关机字。比如 Class A｛｝;我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
+    我定义一个类的时候需要使用Class关机字。比如 Class A{};我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
     Class类有两个重要的方法。
     getName(); 获取这个对象的名字。
-    forName();这个是静态方法。通过一个类的名字，获取到这个类的类型说明，我也不知道该怎么描述，只要不要理解成一个类对象的实例就行。
-    newInstance() ;通过这个成员方法可以获得一个类的心的实例。
+    forName(); 这个是静态方法。通过一个类的名字，获取到这个类的类型说明，我也不知道该怎么描述，只要不要理解成一个类对象的实例就行。
+    newInstance(); 通过这个成员方法可以获得一个类的心的实例。
         
     下面我我们看一个列子。给一个类的名字，来打印这个类的所有字段和方法。       
      
@@ -160,11 +160,11 @@ description:
 		}
 		
 		这里我们先看一个Class的一个方法。
-		Field getDeclaredField（String）//给定一个字段名称，获取到该字段的实例。
+		Field getDeclaredField（String; //给定一个字段名称，获取到该字段的实例。
 		Field类是表示一个Class中的一个字段。它主要有三个方法。
 		getName(); 获取字段的名称。
-		get(Object)；获取制定对象上该字段的值。
-		set(Object obj, Object value)  将指定对象变量上此 Field 对象表示的字段设置为指定的新值。
+		get(Object): 获取制定对象上该字段的值。
+		set(Object obj, Object value); 将指定对象变量上此 Field 对象表示的字段设置为指定的新值。
 		
 		下面就用一个列子来展现它的用法。
 		我们首先定义一个Book类的实例，然后通过实例获取到它的类对象clsBook.
@@ -269,3 +269,5 @@ description:
 		getPrice 进入运行了
 		getPrice 进入运行了
 		通过反射修改后，书的价格为:100.0
+
+
