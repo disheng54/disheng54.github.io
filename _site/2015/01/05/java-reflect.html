@@ -1,0 +1,612 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>反射-一个简单的实例应用 | 禹墨的博客</title>
+<meta name="author" content="禹墨">
+
+  <meta name="keywords" content="java 反射">
+
+
+<link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet" href="/public/css/font-awesome.css">
+<link rel="stylesheet" href="/public/js/prettify/prettify.css">
+<link rel="stylesheet" href="/public/css/base.css">
+<link href="/pages/atom.xml" rel="alternate" title="禹墨的博客" type="application/atom+xml">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 aside visible-md visible-lg">
+  <div class="row">
+    <div class="col-md-3 col-xs-3 aside1">
+      <br>
+      <a class="pjaxlink" href="/"><img src="http://yumo.qiniudn.com/baby.png" class="img-circle avatar"></a>
+      <br><br>
+      <ul class="nav nav-pills nav-stacked">
+        
+          <li><a href="#mac" data-toggle="tab">mac</a></li>
+        
+          <li><a href="#android" data-toggle="tab">android</a></li>
+        
+          <li><a href="#Git" data-toggle="tab">Git</a></li>
+        
+          <li><a href="#java" data-toggle="tab">java</a></li>
+        
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+        
+        <li><a href="#tags" data-toggle="tab">标签</a></li>
+        <li><a class="pjaxlink" href="/pages/archive.html">归档</a></li>
+        <li><a class="pjaxlink" href="/pages/about.html">关于</a></li>
+      </ul>
+      <div class="aside1_bottom">
+        <table class="table table-condensed">
+          <tr>
+            <td><a href="/pages/atom.xml" target="_blank"><i class="fa fa-rss fa-2x"></i></a></td>
+            <td><a href="mailto:disheng54@163.com"><i class="fa fa-envelope-o fa-2x"></i></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-9 col-xs-9 aside2">
+      <div class="row">
+        <div class="tab-content">
+           
+            <div class="tab-pane" id="mac">
+              <div class="list-group">
+                <h2 class="center">mac</h2>
+                
+                  <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
+                
+                  <a href="/2014/12/10/mac-shortcut.html" class="list-group-item pjaxlink">mac 常用快捷键</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="android">
+              <div class="list-group">
+                <h2 class="center">android</h2>
+                
+                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
+                
+                  <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="Git">
+              <div class="list-group">
+                <h2 class="center">Git</h2>
+                
+                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="java">
+              <div class="list-group">
+                <h2 class="center">java</h2>
+                
+                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
+                
+                  <a href="/2015/01/05/java-random.html" class="list-group-item pjaxlink">java 随机数－常用操作集合。</a>
+                
+                  <a href="/2015/01/03/java-thread1.html" class="list-group-item pjaxlink">线程基础 -线程的创建与执行</a>
+                
+                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-手动停止线程</a>
+                
+                  <a href="/2015/01/02/java-string1.html" class="list-group-item pjaxlink">String源码阅读分析</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="javaWeb">
+              <div class="list-group">
+                <h2 class="center">javaWeb</h2>
+                
+                  <a href="/2016/06/05/javaWeb-mac-install-tomcat.html" class="list-group-item pjaxlink">Mac下安装Tomcat</a>
+                
+              </div>
+            </div>
+          
+          <div class="tab-pane" id="tags">
+            <div class="panel-group" id="accordion">
+              <h2 class="center">标签</h2>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#快捷键">快捷键</a>
+                      <span class="badge pull-right">3</span>
+                    </h4>
+                  </div>
+                  <div id="快捷键" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/04/08/mac-eclipseshortcut.html' class="list-group-item pjaxlink">
+                        MAC下eclipse的常用快捷键
+                      </a>
+                    
+                      <a  href='/2014/12/24/mac-moushortcut.html' class="list-group-item pjaxlink">
+                        mou 常用快捷键
+                      </a>
+                    
+                      <a  href='/2014/12/10/mac-shortcut.html' class="list-group-item pjaxlink">
+                        mac 常用快捷键
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#mou">mou</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="mou" class="panel-collapse collapse">
+                    
+                      <a  href='/2014/12/24/mac-moushortcut.html' class="list-group-item pjaxlink">
+                        mou 常用快捷键
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#Http">Http</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="Http" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/01/01/android-http.html' class="list-group-item pjaxlink">
+                        Android http开发（－） 下载web页面
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#git">git</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="git" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/01/01/git-git.html' class="list-group-item pjaxlink">
+                        Git常用操作
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#java">java</a>
+                      <span class="badge pull-right">5</span>
+                    </h4>
+                  </div>
+                  <div id="java" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/06/05/javaWeb-mac-install-tomcat.html' class="list-group-item pjaxlink">
+                        Mac下安装Tomcat
+                      </a>
+                    
+                      <a  href='/2015/01/05/java-random.html' class="list-group-item pjaxlink">
+                        java 随机数－常用操作集合。
+                      </a>
+                    
+                      <a  href='/2015/01/03/java-thread1.html' class="list-group-item pjaxlink">
+                        线程基础 -线程的创建与执行
+                      </a>
+                    
+                      <a  href='/2015/01/02/java-thread2.html' class="list-group-item pjaxlink">
+                        线程基础-手动停止线程
+                      </a>
+                    
+                      <a  href='/2015/01/02/java-string1.html' class="list-group-item pjaxlink">
+                        String源码阅读分析
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#java高级">java高级</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="java高级" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/01/05/java-reflect.html' class="list-group-item pjaxlink">
+                        反射-一个简单的实例应用
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/01/27/android-resource.html' class="list-group-item pjaxlink">
+                        android开发中的资源
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#eclipse">eclipse</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="eclipse" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/04/08/mac-eclipseshortcut.html' class="list-group-item pjaxlink">
+                        MAC下eclipse的常用快捷键
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12 aside3">
+        <div id="container">
+          <div id="pjax">
+            <div class="row">
+  <div class="col-md-12 aside3-title">
+    <br>
+    <h2 id="#identifier">反射-一个简单的实例应用</h2>
+    2015年01月05日
+  </div>
+  <div class="col-md-12 aside3-content">
+    <!-- 目录 -->
+<div class="content">
+    <h3><a href="javascript:;" id="content_btn">[目录]</a></h3>
+    <div id="content_table" style="display:none;">
+        <div id="nav"></div>
+    </div>
+</div>
+
+    <hr>
+    <div id="content">
+      <div class="highlighter-rouge"><pre class="highlight"><code>反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
+</code></pre>
+</div>
+
+<h3 id="class">什么是Class</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>我定义一个类的时候需要使用Class关机字。比如 Class A{};我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
+Class类有两个重要的方法。
+getName(); 获取这个对象的名字。
+forName(); 这个是静态方法。通过一个类的名字，获取到这个类的类型说明，我也不知道该怎么描述，只要不要理解成一个类对象的实例就行。
+newInstance(); 通过这个成员方法可以获得一个类的心的实例。
+    
+下面我我们看一个列子。给一个类的名字，来打印这个类的所有字段和方法。       
+ 
+	/**
+	 * TODO 给定一个类名，打印它的属性，方法等等。
+	 * yumo
+	 * @param className
+	 * void
+	 * 2015-1-4
+	 */
+	public void printClass(String className)
+	{
+		if(className == null || className.length() &lt;=0) return ;
+		
+		try {
+			//返回与带有给定字符串名的类或接口相关联的 Class 对象。
+			Class cls = Class.forName(className);
+			//一个字符串的权限。
+			String modifiers = Modifier.toString(cls.getModifiers());
+			System.out.print(modifiers);
+			// 打印类的名字
+			System.out.print(cls.getName());
+			// 获取它的父类。
+			Class superCls = cls.getSuperclass();
+			if(superCls != null) System.out.print(" extends " + superCls.getName());
+			System.out.println("{");
+			
+			//打印field 成员变量
+			Field[] fields = cls.getFields();
+			for(Field field:fields)
+			{
+				//一个字符串的权限。
+				modifiers = Modifier.toString(field.getModifiers());
+				System.out.print(modifiers + " ");
+				//打印类型
+				System.out.print(field.getType() + " ");
+				//打印方法的名字
+				System.out.print(field.getName());
+				
+				System.out.println();
+			}
+			
+			//打印methods 
+			Method[] methods = cls.getMethods();
+			for(Method method : methods)
+			{
+				//一个字符串的权限。
+				modifiers = Modifier.toString(method.getModifiers() );
+				
+				System.out.print(modifiers + " ");
+				//打印返回类型
+				System.out.print(method.getReturnType().getName() + " ");
+				//打印方法的名字
+				System.out.print(method.getName()+"(");
+				//打印参数
+				Class[] parameters = method.getParameterTypes();
+				for(int i = 0; i &lt; parameters.length; i++)
+				{
+					if(i &gt; 0) System.out.print(",");
+					Class para = parameters[i];
+					System.out.print(para.getName());
+				}
+				
+				System.out.println(")");
+			}
+			
+			System.out.println("}");
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+	
+当我们用这个语句打印Date类的方法，printClass("java.util.Date");
+打印的结果如下，它完整的输出一个类的结构。
+
+	publicjava.util.Date extends java.lang.Object{
+	public boolean equals(java.lang.Object)
+	public java.lang.String toString()
+	public int hashCode()
+	public java.lang.Object clone()
+	public int compareTo(java.util.Date)
+	public volatile int compareTo(java.lang.Object)
+	public boolean after(java.util.Date)
+	public boolean before(java.util.Date)
+	public static long parse(java.lang.String)
+	public void setTime(long)
+	public long getTime()
+	public int getYear()
+	public int getMonth()
+	public int getDate()
+	public int getHours()
+	public int getMinutes()
+	public int getSeconds()
+	public static long UTC(int,int,int,int,int,int)
+	public void setDate(int)
+	public void setMonth(int)
+	public void setHours(int)
+	public void setMinutes(int)
+	public void setSeconds(int)
+	public void setYear(int)
+	public int getDay()
+	public java.lang.String toLocaleString()
+	public java.lang.String toGMTString()
+	public int getTimezoneOffset()
+	public final void wait()
+	public final native void wait(long)
+	public final void wait(long,int)
+	public final native java.lang.Class getClass()
+	public final native void notify()
+	public final native void notifyAll()
+	}
+</code></pre>
+</div>
+
+<h3 id="section">通过反射操作一个类的字段。</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code> 我们定义一个Book类。有两个属性，书名和价格。定义如下。
+       /**
+	 * yumo
+	 * 定义一个用于测试的Book类
+	 */
+	class Book
+	{
+		public String name = "";
+		
+		public double price = 0.0;
+		
+		public Book(String name, double price)
+		{
+			this.name = name;
+			this.price = price;
+		}
+		
+		public double getPrice(){
+			System.out.println("getPrice 进入运行了");
+			return price;
+		}
+		
+		public void setPrice(Double price)
+		{
+			System.out.println("setPrice 进入运行了");
+			this.price = price;
+		}
+	}
+	
+	这里我们先看一个Class的一个方法。
+	Field getDeclaredField（String; //给定一个字段名称，获取到该字段的实例。
+	Field类是表示一个Class中的一个字段。它主要有三个方法。
+	getName(); 获取字段的名称。
+	get(Object): 获取制定对象上该字段的值。
+	set(Object obj, Object value); 将指定对象变量上此 Field 对象表示的字段设置为指定的新值。
+	
+	下面就用一个列子来展现它的用法。
+	我们首先定义一个Book类的实例，然后通过实例获取到它的类对象clsBook.
+	然后通过clsBook的getField("name")方法获取到name字段的Field的说明。
+	然后调用Field对象的get和set方法对该字段惊醒操作。
+	
+	Book book = new Book("Android高级编程",74);
+	//获取book对象
+	Class clsBook = book.getClass();
+	try {
+		//获取book对象的，name字段
+		Field name = clsBook.getDeclaredField("name");
+		//获取并打印name的值
+		System.out.println("通过反射获取的书名为："+name.get(book));
+		//修改name的值
+		System.out.println("通过反射获取的将书名修改为：android 开发入门详解");
+		name.set(book, "android 开发入门详解");
+		//输出修改后的name的值
+		System.out.println("通过反射修改后书名为："+book.name);
+	} catch (SecurityException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (NoSuchFieldException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}catch (IllegalArgumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IllegalAccessException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}catch (NoSuchMethodException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}catch (InvocationTargetException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+打印结果如下：
+
+	通过反射获取的书名为：Android高级编程
+	通过反射获取的将书名修改为：android 开发入门详解
+	通过反射修改后书名为：android 开发入门详解
+</code></pre>
+</div>
+
+<h3 id="section-1">通过反射操作一个类的方法</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>我们可以通过反射机制在运行当中动态的获取一个实例方法，来操纵这个方法。需要用到相关类的方法如下
+Class类中的方法
+Method getMethod(String name, Class&lt;?&gt;... parameterTypes)   返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。
+Method 顾名思义表示的一个类型方法类型。它有两个常用的方法。
+getName(); 获取这个方法的名称。
+Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象调用由此 Method 对象表示的底层方法。
+下面我们通过一个列子，领略一下反射魅力。
+
+       Book book = new Book("Android高级编程",74);
+	//获取book对象
+	Class clsBook = book.getClass();
+	try {			
+		//通过反射调用方法
+		Method getPrice = clsBook.getMethod("getPrice",null);
+		getPrice.invoke(book);
+		System.out.println("现在书的价格为:"+book.getPrice());
+		
+		Double price = 100.0;
+		Class[] argsCls = new Class[1];
+		argsCls[0] = price.getClass();
+		
+		Method setPrice = clsBook.getMethod("setPrice", argsCls);
+		setPrice.invoke(book, price);
+		System.out.println("通过反射通过反射将书的价格修改:"+price);
+		
+		getPrice = clsBook.getMethod("getPrice",null);
+		getPrice.invoke(book);
+		System.out.println("通过反射修改后，书的价格为:"+book.getPrice());
+	} catch (SecurityException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (NoSuchFieldException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}catch (IllegalArgumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IllegalAccessException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}catch (NoSuchMethodException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}catch (InvocationTargetException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+打印结果如下：
+
+	现在书的价格为:74.0
+	setPrice 进入运行了
+	通过反射通过反射将书的价格修改:100.0
+	getPrice 进入运行了
+	getPrice 进入运行了
+	通过反射修改后，书的价格为:100.0
+</code></pre>
+</div>
+
+
+    </div>
+    <hr>
+    <div id="disqus_thread">
+  <button type="button" name="yumo-zh" class="btn btn-default show-commend">显示评论</button>
+</div>
+
+  </div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:fixed;right:20px;top:10px;">
+  <button id="nav_btn" class="btn btn-primary">
+    <i class="fa fa-2x fa-navicon"></i>
+  </button>
+</div>
+<script type="text/javascript" src="/public/js/jquery.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap.js"></script>
+<script src="/public/js/jquery.pjax.js"></script>
+<script src="/public/js/prettify/prettify.js"></script>
+<script src="/public/js/base.js"></script>
+<script>
+    $('a[href="#android"]').tab('show');
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'http://disheng54.github.io');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
