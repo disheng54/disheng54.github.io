@@ -569,6 +569,139 @@ public class AnalyzingStringsNoSame {
       </item>
     
       <item>
+        <title>1-Two Sum</title>
+        <link>http://disheng54.github.io/2016/07/31/leetcode-TowNum.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/leetcode-TowNum.html</guid>
+        <pubDate>Sun, 31 Jul 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;原链接:&lt;a href=&quot;https://leetcode.com/problems/two-sum/&quot;&gt;Two Sum&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+&lt;p&gt;Given an array of integers, return indices of the two numbers such that they add up to a specific target.&lt;br /&gt;
+You may assume that each input would have exactly one solution.&lt;br /&gt;
+Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given nums = [2, 7, 11, 15], target = 9,
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
+
+&lt;p&gt;给定一个整型数组，如果该数组中有两个数值的和等于一个特定值，就返回这两个数值在数组中的索引。&lt;br /&gt;
+假定有唯一的解决方案。&lt;br /&gt;
+示例:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given nums = [2, 7, 11, 15], target = 9,
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;假定有一个Map，遍历寻找&lt;code class=&quot;highlighter-rouge&quot;&gt;target-nums[n] &lt;/code&gt;为key对应的value，如果找不到就将nums[n]和索引n作为存放于Map中。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;先将数组排序，然后利用二分查找的方式，找到合适的索引。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例(Java)&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by yumo on 7/31/16.
+ * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+ You may assume that each input would have exactly one solution.
+
+ Example:
+ Given nums = [2, 7, 11, 15], target = 9,
+
+ Because nums[0] + nums[1] = 2 + 7 = 9,
+ return [0, 1].
+ */
+public class TwoSum_1 {
+
+    /**
+     * 通过将数组排序,然后查找来实现
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSumByArraySort(int[] nums, int target){
+        Arrays.sort(nums);
+        int begin = 0;
+        int end = nums.length -1;
+        int[] result = new int[2];
+
+        while (begin &amp;lt; end){
+            int num = nums[begin] + nums[end];
+            if (num == target){
+                result[0] = begin + 1;
+                result[1] = end + 1;
+                break;
+            } else if (num &amp;lt; target){
+               begin ++;
+            } else{
+                end --;
+            }
+        }
+
+        return result;
+    }
+
+
+    /**
+     * 通过hashMap实现
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSumByHashMap(int[] nums, int target){
+        int[] result = new int[2];
+        Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        for (int i = 0; i &amp;lt; nums.length; i++){
+            if(map.get(target - nums[i]) != null){
+                result[0] = map.get(target - nums[i]) + 1;
+                result[1] = i + 1;
+                break;
+            }
+
+            map.put(nums[i], i);
+        }
+        return result;
+    }
+
+    public static void main(String[] args){
+        int[] nums = {2,7,11,15};
+        int target = 9;
+        long startTime = System.nanoTime();
+        int[] result = twoSumByArraySort(nums, target);
+        long endTime = System.nanoTime();
+        System.out.println(String.format(&quot;time :&quot; + (endTime - startTime)+&quot; [%d, %d]&quot;, result[0], result[1]));
+
+        startTime = System.nanoTime();
+        result = twoSumByHashMap(nums, target);
+        endTime = System.nanoTime();
+        System.out.println(String.format(&quot;time :&quot; + (endTime - startTime)+&quot; [%d, %d]&quot;, result[0], result[1]));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>Mac下安装Tomcat</title>
         <link>http://disheng54.github.io/2016/06/05/javaWeb-mac-install-tomcat.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2016/06/05/javaWeb-mac-install-tomcat.html</guid>
