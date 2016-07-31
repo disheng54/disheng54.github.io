@@ -11,6 +11,8 @@
 
 
 
+  /2016/07/31/airthmetic-ReverseString.html
+
   /2016/07/31/airthmetic-AnalyzingStringsNoSame.html
 
   /2016/06/05/javaWeb-mac-install-tomcat.html
