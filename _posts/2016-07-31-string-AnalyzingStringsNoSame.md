@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 判断一个字符串里面的字符都是不相同的
-category: airthmetic
+category: 字符串
 tags: [java, String, airthmetic]
 keywords: java 字符串 算法
 description: 

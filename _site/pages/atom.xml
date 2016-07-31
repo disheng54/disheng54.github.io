@@ -6,9 +6,207 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>比较两个字符串排序后是否相等</title>
+        <link>http://disheng54.github.io/2016/07/31/string-StringIsSameAfterSort.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/string-StringIsSameAfterSort.html</guid>
+        <pubDate>Sun, 31 Jul 2016 00:00:00 +0800</pubDate>
+        <description>&lt;h3 id=&quot;section&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;比较两个字符串排序后是否相等&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;解决思路&lt;/h3&gt;
+&lt;p&gt;首先比较字符串的长度，长度不相等的字符串，即使排序后也是不相等。&lt;br /&gt;
+如果两个字符串长度相符，那么有下面两种方法进行比较&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;让两个字符串分别排序后进行比较&lt;/li&gt;
+  &lt;li&gt;比较两个字符串中的每个字符的数量是否相等
+    &lt;ol&gt;
+      &lt;li&gt;将字符和字符的数量当做Map的key和value，然后分别比较。&lt;/li&gt;
+      &lt;li&gt;如果字符串是Ascii编码，那么可以将字符的数量直接放到数组进行优化。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例(Java)&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.string.test;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Created by yumo on 7/31/16.
+ * 比较两个字符排序后是否相等
+ */
+public class StringIsSameAfterSort {
+
+
+    private static String sort(String str){
+        char[] chArr = str.toCharArray();
+        Arrays.sort(chArr);
+        return new String(chArr);
+    }
+
+    /**
+     * 通过Arrays.sort进行比较
+     * @param str1
+     * @param str2
+     * @return
+     */
+    public static boolean isStringEqualByArraysSort(String str1, String str2){
+        if (str1 == null || str2 == null){
+            return false;
+        }
+
+        if (str1.length() != str2.length()){
+            return false;
+        }
+
+        return sort(str1).equals(sort(str2));
+    }
+
+    private static Map convertMapNums(String str){
+        Map&amp;lt;Character, Integer&amp;gt; map= new HashMap&amp;lt;&amp;gt;();
+        for (int i = 0; i &amp;lt;  str.length(); i++){
+            char c = str.charAt(i);
+            if (map.get(c) == null){
+                map.put(c,  1);
+            }else{
+                map.put(c,  map.get(c)+1);
+            }
+        }
+
+        return map;
+    }
+
+    /**
+     * 将两个字符串的字符和数量放入Map中.然后比较Map中每个字符数量是否相等
+     * @param str1
+     * @param str2
+     * @return
+     */
+    public static boolean isStringEqualByCharNums(String str1, String str2){
+        if (str1 == null || str2 == null){
+            return false;
+        }
+
+        if (str1.length() != str2.length()){
+            return false;
+        }
+
+        if (str1.length() == str2.length() &amp;amp;&amp;amp; str1.length() == 0){
+            return true;
+        }
+
+        Map&amp;lt;Character, Integer&amp;gt; map1 = convertMapNums(str1);
+        Map&amp;lt;Character, Integer&amp;gt; map2 = convertMapNums(str2);
+
+        if (map1.size() != map2.size()){
+            return false;
+        }
+
+        boolean isSame = true;
+        Set&amp;lt;Character&amp;gt; set1 = map1.keySet();
+        for (Character ch: set1) {
+            if (map1.get(ch) != map2.get(ch)){
+                isSame = false;
+                break;
+            }
+        }
+
+        return isSame;
+    }
+
+
+    /**
+     * 如果是Ascii编码,那么不同字符的数量最大为256个,所以可以声明一个长度256的数组,将字符的数量放到这个数组中,然后在一一比较
+     * @param str1
+     * @param str2
+     * @return
+     */
+    public static boolean isStringEqualByCharNumsAscii(String str1, String str2){
+        if (str1 == null || str2 == null){
+            return false;
+        }
+
+        if (str1.length() != str2.length()){
+            return false;
+        }
+
+        if (str1.length() == str2.length() &amp;amp;&amp;amp; str1.length() == 0){
+            return true;
+        }
+
+        int[] chArr1 = new int[256];
+        for (int i = 0; i &amp;lt; str1.length(); i++){
+            char ch = str1.charAt(i);
+            chArr1[ch] = chArr1[ch]+1;
+        }
+
+        int[] chArr2 = new int[256];
+        for (int i = 0; i &amp;lt;str2.length(); i++){
+            char ch = str2.charAt(i);
+            chArr2[ch] = chArr2[ch]+1;
+        }
+
+        boolean isSame = true;
+        for (int i = 0; i &amp;lt; 256; i++){
+            if (chArr1[i] != chArr2[i]){
+                isSame = false;
+                break;
+            }
+        }
+
+        return isSame;
+    }
+
+    public static void main(String[] args){
+        System.out.println(&quot;testList&quot;);
+        String str1=&quot;1234567333&quot;;
+        String str2=&quot;7654321333&quot;;
+
+        long startTime = System.nanoTime();
+        boolean isSame = isStringEqualByArraysSort(str1, str2);
+        long endTime = System.nanoTime();
+        System.out.println(&quot;isStringEqualByArraysSort: &quot;+isSame+&quot; time:&quot;+(endTime - startTime));
+
+        startTime = System.nanoTime();
+        isSame = isStringEqualByCharNums(str1, str2);
+        endTime = System.nanoTime();
+        System.out.println(&quot;isStringEqualByCharNums: &quot;+isSame+&quot; time:&quot;+(endTime - startTime));
+
+        startTime = System.nanoTime();
+        isSame = isStringEqualByCharNumsAscii(str1, str2);
+        endTime = System.nanoTime();
+        System.out.println(&quot;isStringEqualByCharNumsAscii: &quot;+isSame+&quot; time:&quot;+(endTime - startTime));
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;效率比较&lt;/h3&gt;
+
+&lt;p&gt;假定这两个字符串的长度为10，那么这三种方法所花费的时间如下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;isStringEqualByArraysSort: true time:167000
+isStringEqualByCharNums: true time:518000
+isStringEqualByCharNumsAscii: true time:29000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果能够确定字符串中的字符数量，不是太大的话，优先采用利用数组统计字符数量的方法才是效率最高的。&lt;br /&gt;
+不过在工作中直接使用数组排序的解决方式是优先考虑的选择&lt;/p&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>反转一个字符串</title>
-        <link>http://disheng54.github.io/2016/07/31/airthmetic-ReverseString.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/airthmetic-ReverseString.html</guid>
+        <link>http://disheng54.github.io/2016/07/31/string-ReverseString.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/string-ReverseString.html</guid>
         <pubDate>Sun, 31 Jul 2016 00:00:00 +0800</pubDate>
         <description>&lt;h3 id=&quot;section&quot;&gt;题目&lt;/h3&gt;
 
@@ -200,8 +398,8 @@
     
       <item>
         <title>判断一个字符串里面的字符都是不相同的</title>
-        <link>http://disheng54.github.io/2016/07/31/airthmetic-AnalyzingStringsNoSame.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/airthmetic-AnalyzingStringsNoSame.html</guid>
+        <link>http://disheng54.github.io/2016/07/31/string-AnalyzingStringsNoSame.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/string-AnalyzingStringsNoSame.html</guid>
         <pubDate>Sun, 31 Jul 2016 00:00:00 +0800</pubDate>
         <description>&lt;h3 id=&quot;section&quot;&gt;题目&lt;/h3&gt;
 

@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>MAC下eclipse的常用快捷键 | 禹墨的博客</title>
+<title>反转一个字符串 | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="mac,eclipse">
+  <meta name="keywords" content="java 字符串 算法">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -359,8 +359,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">MAC下eclipse的常用快捷键</h2>
-    2015年04月08日
+    <h2 id="#identifier">反转一个字符串</h2>
+    2016年07月31日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -373,50 +373,190 @@
 
     <hr>
     <div id="content">
-      <h2 id="maceclipse-br">Mac下Eclipse快捷键大全 <br /></h2>
+      <h3 id="section">题目</h3>
 
-<h3 id="section">查找帮助</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>     Shift + Command + L: 打开快捷键列表
-     Command + F: 打开查找
-     Command + K: 在当前页面内搜索选中的关键字。
+<p>将一个字符串反转</p>
+
+<h3 id="section-1">解决思路</h3>
+
+<p>这是一个常见的问题，在实际的开发中也经常用到，解决的方法有很多种。我使用下面四种方法进行，并且最后比较其中的效率。</p>
+
+<ul>
+  <li>利用系统自带的StringBuilder.reverse()  进行反转。</li>
+  <li>使用将字符串转换为字符数据，然后进行二分反转。</li>
+  <li>使用字符的异或进行转换。</li>
+  <li>使用Stack数据结构进行反转。</li>
+</ul>
+
+<h3 id="section-2">实例代码</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+     * 利用系统自带的StringBuilder.reverse() 进行反转
+     * @param str
+     * @return
+     */
+    public static String reverseByStringBuilder(String str){
+        if (str == null){
+            return "";
+        }
+        return new StringBuilder(str).reverse().toString();
+    }
+
+    /**
+     * 使用字符串进行二分反转
+     * @return
+     */
+    public static String reverseByCharArray(String str){
+        if (str == null){
+            return "";
+        }
+
+        char[] chArr = str.toCharArray();
+        int len = chArr.length;
+        for (int i = (len-1) / 2; i &gt;= 0; i--){
+            char c = chArr[i];
+            chArr[i] = chArr[len - i -1];
+            chArr[len - i -1] = c;
+        }
+
+        return new String(chArr);
+    }
+
+    /**
+     * 使用异或进行翻转
+     * 将二进制 a = 1101, b = 1000 进行反转.
+     * 1  a = 1101 ^ 1000 此时 a = 1010, b = 1000
+     * 2  b = 1000 ^ 1010 此时 a = 1010, b = 1101
+     * 3  a = 1101 ^ 1010 此时 a = 1000, b = 1101
+     * @return
+     */
+    public static String reverseByXor(String str){
+        if (str == null){
+            return "";
+        }
+
+        char[] chArr = str.toCharArray();
+        int len = chArr.length ;
+        for (int i = 0, j = len -1; i &lt; len/2; i++, j--){
+            chArr[i] = (char)(chArr[i]^chArr[j]);
+            chArr[j] = (char)(chArr[j]^chArr[i]);
+            chArr[i] = (char)(chArr[j]^chArr[i]);
+        }
+
+        return new String(chArr);
+    }
+
+    /**
+     * 使用栈进行翻转
+     * @param str
+     * @return
+     */
+    public static String reverseByStack(String str){
+        if (str == null){
+            return "";
+        }
+
+        Stack&lt;Character&gt; stack = new Stack&lt;&gt;();
+        int len = str.length();
+        for (int i = 0; i &lt; len; i++){
+            stack.push(str.charAt(i));
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i &lt; len; i++){
+            sb.append(stack.pop());
+        }
+        return sb.toString();
+    }
+
+
+
+    public static void main(String[] args){
+        System.out.println("testList");
+        String str="";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i&lt;= 10000; i++){
+            sb.append(i+"");
+        }
+        str = sb.toString();
+
+
+        long startTime = System.nanoTime();
+        String str1 = reverseByStringBuilder(str);
+        long endTime = System.nanoTime();
+        System.out.println(" time:"+(endTime - startTime)+"    StringBuilder.reverse(): "+str1);
+
+
+        startTime = System.nanoTime();
+        str1 = reverseByCharArray(str);
+        endTime = System.nanoTime();
+        System.out.println(" time:"+(endTime - startTime)+"    reverseByCharArray: "+str1);
+
+        startTime = System.nanoTime();
+        str1 = reverseByXor(str);
+        endTime = System.nanoTime();
+        System.out.println(" time:"+(endTime - startTime)+"    reverseByXor: "+str1);
+
+        startTime = System.nanoTime();
+        str1 = reverseByStack(str);
+        endTime = System.nanoTime();
+        System.out.println(" time:"+(endTime - startTime)+"    reverseByStack: "+str1);
+    }
+}
 </code></pre>
 </div>
 
-<h3 id="section-1">页面操作类</h3>
+<h3 id="section-3">效率比较 单位是纳秒</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    Command + W: 关闭当前编辑页面
-    Command + Shift＋W: 关闭当前所有的编辑页面
-    Command + Option + 右箭头: 后一个编辑页面
-    Command + Option + 左箭头: 前一个编辑页面
-    
-    Command + t: 快速显示当前类的结构图
-    Option + 回车: 显示当前选中资源的属性。
-    Command + Option + c: 显示函数结构。
-    Command + E: 显示当前可选择页面的列表，仅在右上角显示，可以切换页面。
-    Command + Shift + E: 显示当前编辑页面的列表窗口，进行管理。
-    
-    Command + Shift + P: 匹配定位，比如while循环的两个大括号之间的匹配。
+<ul>
+  <li>
+    <p>对长度为10的字符串进行反转</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:14000  
+  reverseByCharArray time:7000 
+  reverseByXor time:4000 
+  reverseBystack time:315000 
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>对长度为100的字符串进行反转</p>
 
-<h3 id="bug">运行调试修改bug</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    Command + 1: 快速修复
-    Shift + Command + F11: 运行
-    Command + F11: 调试
+    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:29000  
+  reverseByCharArray time:11000 
+  reverseByXor time:9000 
+  reverseBystack time:589000 
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>对长度为1000的字符串进行反转</p>
 
-<h3 id="section-2">编辑相关</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>   Command + Option + 上箭头: 复制当前行到上一行。
-   Command + Option + 下箭头: 复制当前行到下一行。  
-   Option + 上箭头: 向上移动当前行。
-   Option + 下箭头: 向下移动当前行。      
-   Command + D: 删除当前行
-   
-   Option + Command + R: 重命名。
+    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:295000 
+  reverseByCharArray time:72000 
+  reverseByXor time:76000
+  reverseBystack time:3949000
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>
+    <p>对长度为10000的字符串进行反转</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:3321000
+  reverseByCharArray time:966000 
+  reverseByXor time:1421000
+  reverseBystack time:18414000 
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>结果比较</p>
+
+    <p>在字符串较短的情况下通过异或反转所用的时间是最短的，二分数组仅次之。<br />
+ 在字符串较长的情况下使用二分数组的是花费时间最短的。<br />
+ 使用栈进行反转花费的时间时间最长是二分数组反转的两个数量级。</p>
+  </li>
+</ul>
 
 
     </div>
