@@ -601,15 +601,10 @@ return [0, 1].
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;假定有一个Map，遍历寻找&lt;code class=&quot;highlighter-rouge&quot;&gt;target-nums[n] &lt;/code&gt;为key对应的value，如果找不到就将nums[n]和索引n作为存放于Map中。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;先将数组排序，然后利用二分查找的方式，找到合适的索引。&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;假定有一个Map，遍历寻找&lt;code class=&quot;highlighter-rouge&quot;&gt;target-nums[n] &lt;/code&gt;为key对应的value，如果找不到就将nums[n]和索引n作为存放于Map中。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;java&quot;&gt;代码示例(Java)&lt;/h3&gt;
+&lt;h3 id=&quot;java&quot;&gt;示例代码-Java&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
@@ -630,36 +625,6 @@ import java.util.Map;
  return [0, 1].
  */
 public class TwoSum_1 {
-
-    /**
-     * 通过将数组排序,然后查找来实现
-     * @param nums
-     * @param target
-     * @return
-     */
-    public static int[] twoSumByArraySort(int[] nums, int target){
-        Arrays.sort(nums);
-        int begin = 0;
-        int end = nums.length -1;
-        int[] result = new int[2];
-
-        while (begin &amp;lt; end){
-            int num = nums[begin] + nums[end];
-            if (num == target){
-                result[0] = begin + 1;
-                result[1] = end + 1;
-                break;
-            } else if (num &amp;lt; target){
-               begin ++;
-            } else{
-                end --;
-            }
-        }
-
-        return result;
-    }
-
-
     /**
      * 通过hashMap实现
      * @param nums
@@ -684,17 +649,86 @@ public class TwoSum_1 {
     public static void main(String[] args){
         int[] nums = {2,7,11,15};
         int target = 9;
+        
         long startTime = System.nanoTime();
-        int[] result = twoSumByArraySort(nums, target);
+        int[] result = twoSumByHashMap(nums, target);
         long endTime = System.nanoTime();
-        System.out.println(String.format(&quot;time :&quot; + (endTime - startTime)+&quot; [%d, %d]&quot;, result[0], result[1]));
-
-        startTime = System.nanoTime();
-        result = twoSumByHashMap(nums, target);
-        endTime = System.nanoTime();
         System.out.println(String.format(&quot;time :&quot; + (endTime - startTime)+&quot; [%d, %d]&quot;, result[0], result[1]));
     }
 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;c&quot;&gt;示例代码-c++&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;map&amp;gt;
+
+
+using namespace std;
+
+vector&amp;lt;int&amp;gt; twoSumByArraySort(vector&amp;lt;int&amp;gt;&amp;amp; nums, int target)
+{
+    map&amp;lt;int, int&amp;gt; ht;
+    for (int i = 0; i &amp;lt; nums.size(); i++) {
+        ht.insert(map&amp;lt;int,int&amp;gt;::value_type(nums[i], i));
+    }
+    vector&amp;lt;int&amp;gt; res(2, -1);
+    sort(nums.begin(), nums.end());
+    int begin = 0;
+    int end = nums.size() -1;
+
+    while(begin &amp;lt; end){
+        if(nums[begin] + nums[end] == target){
+            res[0] = min(ht.find(nums[begin])-&amp;gt;second, ht.find(nums[end])-&amp;gt;second);
+            res[1] = max(ht.find(nums[begin])-&amp;gt;second, ht.find(nums[end])-&amp;gt;second);
+            break;
+        }else if (nums[begin] + nums[end] &amp;lt; target){
+            begin ++;
+        }else {
+            end --;
+        }
+    }
+    return res;
+}
+
+int main() {
+    vector&amp;lt;int&amp;gt; nums = {2,7,11,15};
+    int target = 9;
+
+    clock_t start, finish;
+
+    start = clock();
+    vector&amp;lt;int&amp;gt; result = twoSumByMap(nums, target);
+    finish = clock();
+    cout &amp;lt;&amp;lt; &quot;time:&quot;&amp;lt;&amp;lt;((double)(finish - start)/CLOCKS_PER_SEC)* 1000000 &amp;lt;&amp;lt;&quot; twoSumByMap:&quot; &amp;lt;&amp;lt;&quot;[&quot;&amp;lt;&amp;lt;result[0]&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;result[1]&amp;lt;&amp;lt;&quot;]&quot;&amp;lt;&amp;lt;endl;
+
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;示例代码-JavaScript&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var twoSumByMap = function(nums, target) {
+    var map = {};
+    for(var i in nums){
+      if(map[target-nums[i]] !== undefined){
+        return [parseInt(map[target-nums[i]]),parseInt(i)];
+      }else{
+      map[nums[i]] = i;
+      }
+    }
+};
+
+var nums = [0,4,3,0];
+var target = 0;
+var beginTime = new Date().getTime();
+var result = twoSumByMap(nums, target);
+var endTime = new Date().getTime();
+console.log(&quot;Time:&quot;+(endTime - beginTime)+&quot; result:&quot;+result);
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
