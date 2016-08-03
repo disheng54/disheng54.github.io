@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>1-Two Sum | 禹墨的博客</title>
+<title>Ubuntu 安装 Tomcat | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="java">
+  <meta name="keywords" content="java tomcat ubuntu linux">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -416,8 +416,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">1-Two Sum</h2>
-    2016年07月31日
+    <h2 id="#identifier">Ubuntu 安装 Tomcat</h2>
+    2016年08月03日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -430,164 +430,96 @@
 
     <hr>
     <div id="content">
-      <p>原链接:<a href="https://leetcode.com/problems/two-sum/">Two Sum</a></p>
-
-<h3 id="section">原题目</h3>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.<br />
-You may assume that each input would have exactly one solution.<br />
-Example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre>
-</div>
-
-<h3 id="section-1">翻译</h3>
-
-<p>给定一个整型数组，如果该数组中有两个数值的和等于一个特定值，就返回这两个数值在数组中的索引。<br />
-假定有唯一的解决方案。<br />
-示例:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre>
-</div>
-
-<h3 id="section-2">解决思路</h3>
+      <h3 id="jdk">安装JDK</h3>
 
 <ul>
-  <li>假定有一个Map，遍历寻找<code class="highlighter-rouge">target-nums[n] </code>为key对应的value，如果找不到就将nums[n]和索引n作为存放于Map中。</li>
+  <li>
+    <p>从官网下载JDK，下载路径 http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz</p>
+  </li>
+  <li>
+    <p>将 <code class="highlighter-rouge">jdk-8u101-linux-x64.tar.gz</code> 移动到 <code class="highlighter-rouge">/usr/lib</code> 中， 解压到 <code class="highlighter-rouge">/usr/lib/jvm </code>目录</p>
+  </li>
 </ul>
 
-<h3 id="java">示例代码-Java</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Created by yumo on 7/31/16.
- * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-
- You may assume that each input would have exactly one solution.
-
- Example:
- Given nums = [2, 7, 11, 15], target = 9,
-
- Because nums[0] + nums[1] = 2 + 7 = 9,
- return [0, 1].
- */
-public class TwoSum_1 {
-    /**
-     * 通过hashMap实现
-     * @param nums
-     * @param target
-     * @return
-     */
-    public static int[] twoSumByHashMap(int[] nums, int target){
-        int[] result = new int[2];
-        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
-        for (int i = 0; i &lt; nums.length; i++){
-            if(map.get(target - nums[i]) != null){
-                result[0] = map.get(target - nums[i]) + 1;
-                result[1] = i + 1;
-                break;
-            }
-
-            map.put(nums[i], i);
-        }
-        return result;
-    }
-
-    public static void main(String[] args){
-        int[] nums = {2,7,11,15};
-        int target = 9;
-        
-        long startTime = System.nanoTime();
-        int[] result = twoSumByHashMap(nums, target);
-        long endTime = System.nanoTime();
-        System.out.println(String.format("time :" + (endTime - startTime)+" [%d, %d]", result[0], result[1]));
-    }
-}
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir jvm
+sudo tar -zxvf jdk-8u101-linux-x64.tar.gz -C /usr/lib/jvm
 </code></pre>
 </div>
 
-<h3 id="c">示例代码-c++</h3>
+<h3 id="jre">配置JRE路径</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;map&gt;
+<ul>
+  <li>打开环境变量文件 <code class="highlighter-rouge">sudo vi ~/.bashrc</code></li>
+  <li>在文件的末尾添加下面内容</li>
+</ul>
 
-
-using namespace std;
-
-vector&lt;int&gt; twoSumByArraySort(vector&lt;int&gt;&amp; nums, int target)
-{
-    map&lt;int, int&gt; ht;
-    for (int i = 0; i &lt; nums.size(); i++) {
-        ht.insert(map&lt;int,int&gt;::value_type(nums[i], i));
-    }
-    vector&lt;int&gt; res(2, -1);
-    sort(nums.begin(), nums.end());
-    int begin = 0;
-    int end = nums.size() -1;
-
-    while(begin &lt; end){
-        if(nums[begin] + nums[end] == target){
-            res[0] = min(ht.find(nums[begin])-&gt;second, ht.find(nums[end])-&gt;second);
-            res[1] = max(ht.find(nums[begin])-&gt;second, ht.find(nums[end])-&gt;second);
-            break;
-        }else if (nums[begin] + nums[end] &lt; target){
-            begin ++;
-        }else {
-            end --;
-        }
-    }
-    return res;
-}
-
-int main() {
-    vector&lt;int&gt; nums = {2,7,11,15};
-    int target = 9;
-
-    clock_t start, finish;
-
-    start = clock();
-    vector&lt;int&gt; result = twoSumByMap(nums, target);
-    finish = clock();
-    cout &lt;&lt; "time:"&lt;&lt;((double)(finish - start)/CLOCKS_PER_SEC)* 1000000 &lt;&lt;" twoSumByMap:" &lt;&lt;"["&lt;&lt;result[0]&lt;&lt;","&lt;&lt;result[1]&lt;&lt;"]"&lt;&lt;endl;
-
-
-    return 0;
-}
+<div class="highlighter-rouge"><pre class="highlight"><code>export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
+export JRE_HOME=${JAVA_HOME}/jre  
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
+export PATH=${JAVA_HOME}/bin:$PATH  
 </code></pre>
 </div>
 
-<h3 id="javascript">示例代码-JavaScript</h3>
+<ul>
+  <li><code class="highlighter-rouge">source ~/.bashrc</code></li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var twoSumByMap = function(nums, target) {
-    var map = {};
-    for(var i in nums){
-      if(map[target-nums[i]] !== undefined){
-        return [parseInt(map[target-nums[i]]),parseInt(i)];
-      }else{
-      map[nums[i]] = i;
-      }
-    }
-};
+<h3 id="jre-1">测试JRE</h3>
 
-var nums = [0,4,3,0];
-var target = 0;
-var beginTime = new Date().getTime();
-var result = twoSumByMap(nums, target);
-var endTime = new Date().getTime();
-console.log("Time:"+(endTime - beginTime)+" result:"+result);
+<p>通过 <code class="highlighter-rouge">java -version</code>  查看当前的Java路径</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>java version "1.8.0_101"
+Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 </code></pre>
 </div>
+
+<h3 id="tomcat">安装tomcat</h3>
+
+<ul>
+  <li>
+    <p>下载tomcat 下载地址：http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.0.M9/bin/apache-tomcat-9.0.0.M9.zip</p>
+  </li>
+  <li>
+    <p>将文件移动到 /usr/local 目录下，解压命名为 tomcat9</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  cp apache-tomcat-9.0.0.M9.zip /usr/local
+  uzip apache-tomcat-9.0.0.M9.zip
+  mv apache-tomcat-9.0.0.M9 tomcat9
+</code></pre>
+</div>
+
+<h3 id="tomcat-1">启动tomcat</h3>
+
+<ul>
+  <li>开启tomcat9 权限</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo chomd 755 /usr/local/tomcat9/bin/*.sh
+</code></pre>
+</div>
+
+<ul>
+  <li>启动tomcat</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local/tomcat9/bin
+./startup.sh
+
+Using CATALINA_BASE:   /usr/local/tomcat9
+Using CATALINA_HOME:   /usr/local/tomcat9
+Using CATALINA_TMPDIR: /usr/local/tomcat9/temp
+Using JRE_HOME:        /usr/lib/jvm/jdk1.8.0_101/jre
+Using CLASSPATH:       /usr/local/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/bin/tomcat-juli.jar
+Tomcat started.
+</code></pre>
+</div>
+
+<h3 id="section">测试访问</h3>
+
+<p>在浏览器中输入 <code class="highlighter-rouge">http://localhost:8080</code> 访问</p>
 
 
     </div>

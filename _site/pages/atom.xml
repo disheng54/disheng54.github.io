@@ -6,6 +6,105 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>Ubuntu 安装 Tomcat</title>
+        <link>http://disheng54.github.io/2016/08/03/javaWeb-ubuntu-install-tomcat.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/03/javaWeb-ubuntu-install-tomcat.html</guid>
+        <pubDate>Wed, 03 Aug 2016 00:00:00 +0800</pubDate>
+        <description>&lt;h3 id=&quot;jdk&quot;&gt;安装JDK&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;从官网下载JDK，下载路径 http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将 &lt;code class=&quot;highlighter-rouge&quot;&gt;jdk-8u101-linux-x64.tar.gz&lt;/code&gt; 移动到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib&lt;/code&gt; 中， 解压到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib/jvm &lt;/code&gt;目录&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir jvm
+sudo tar -zxvf jdk-8u101-linux-x64.tar.gz -C /usr/lib/jvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;jre&quot;&gt;配置JRE路径&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;打开环境变量文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo vi ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在文件的末尾添加下面内容&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
+export JRE_HOME=${JAVA_HOME}/jre  
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
+export PATH=${JAVA_HOME}/bin:$PATH  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jre-1&quot;&gt;测试JRE&lt;/h3&gt;
+
+&lt;p&gt;通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;java -version&lt;/code&gt;  查看当前的Java路径&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java version &quot;1.8.0_101&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;tomcat&quot;&gt;安装tomcat&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;下载tomcat 下载地址：http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.0.M9/bin/apache-tomcat-9.0.0.M9.zip&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将文件移动到 /usr/local 目录下，解压命名为 tomcat9&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cp apache-tomcat-9.0.0.M9.zip /usr/local
+  uzip apache-tomcat-9.0.0.M9.zip
+  mv apache-tomcat-9.0.0.M9 tomcat9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;tomcat-1&quot;&gt;启动tomcat&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;开启tomcat9 权限&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chomd 755 /usr/local/tomcat9/bin/*.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;启动tomcat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/local/tomcat9/bin
+./startup.sh
+
+Using CATALINA_BASE:   /usr/local/tomcat9
+Using CATALINA_HOME:   /usr/local/tomcat9
+Using CATALINA_TMPDIR: /usr/local/tomcat9/temp
+Using JRE_HOME:        /usr/lib/jvm/jdk1.8.0_101/jre
+Using CLASSPATH:       /usr/local/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/bin/tomcat-juli.jar
+Tomcat started.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;测试访问&lt;/h3&gt;
+
+&lt;p&gt;在浏览器中输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8080&lt;/code&gt; 访问&lt;/p&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>比较两个字符串排序后是否相等</title>
         <link>http://disheng54.github.io/2016/07/31/string-StringIsSameAfterSort.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/string-StringIsSameAfterSort.html</guid>
