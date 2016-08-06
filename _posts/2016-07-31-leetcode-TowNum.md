@@ -70,8 +70,8 @@ public class TwoSum_1 {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++){
             if(map.get(target - nums[i]) != null){
-                result[0] = map.get(target - nums[i]) + 1;
-                result[1] = i + 1;
+                result[0] = map.get(target - nums[i]);
+                result[1] = i;
                 break;
             }
 

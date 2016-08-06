@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>判断一个字符串里面的字符都是不相同的 | 禹墨的博客</title>
+<title>2-Add Two Numbers | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="java 字符串 算法">
+  <meta name="keywords" content="java,c++,javascript">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -430,8 +430,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">判断一个字符串里面的字符都是不相同的</h2>
-    2016年07月31日
+    <h2 id="#identifier">2-Add Two Numbers</h2>
+    2016年08月06日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -444,167 +444,316 @@
 
     <hr>
     <div id="content">
-      <h3 id="section">题目</h3>
+      <p><a href="https://leetcode.com/problems/add-two-numbers/">题目原地址</a></p>
 
-<p>判断一个字符串里面的字符都是不相同的。</p>
+<h3 id="section">原题目</h3>
 
-<h3 id="section-1">解决思路</h3>
+<p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
 
-<p>这个问题有很多种解决方案，并且可以根据字符串字符集的不同，可以做不同的优化。有下面几种解决问题的思路</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
+Output: 7 -&gt; 0 -&gt; 8</p>
 
-<ul>
-  <li>遍历字符串中的字符与字符串中的其他的字符比较。</li>
-  <li>可以将字符串进行排序，然后比较相邻的字符是否相等。</li>
-  <li>可以利用String方法的lastIndexOf() 方法进行比较。这个方法原理同上。</li>
-  <li>可以借助第三方的数据结构进行，比如Set，List， Map等等。</li>
-  <li>如果是ASCII字符集，那么通过构建一个长度为256默认为false的布尔数组，存在的字符设置为true，将该索引位置第二次设置为true时，就标志着有相同的字符。</li>
-</ul>
+<h3 id="section-1">翻译</h3>
 
-<h3 id="section-2">实例代码</h3>
+<p>给出两个标识非负整数的链表，整数在链表中反向存储且链表中的每个节点只存储一个数字。<br />
+将两个整数链表相加，将结果用链表返回<br />
+输入: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
+输出: 7 -&gt; 0 -&gt; 8</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.string.test;
+<h3 id="section-2">解决思路</h3>
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+<p>这是一个简单的问题，只是稍微注意下两个链表长度不一致就可以了。</p>
 
-/**
- * Created by yumo on 7/31/16.
- * 实现一个算法,判断一个字符串中的所有字符是否全都不同.
+<h3 id="java">代码示例-Java</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ * Created by wks on 8/5/16.
+ * You are given two linked lists representing two non-negative numbers.
+ * The digits are stored in reverse order and each of their nodes contain a single digit.
+ * Add the two numbers and return it as a linked list.
+ * &lt;p&gt;
+ * Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+ * Output: 7 -&gt; 0 -&gt; 8
  */
-public class AnalyzingStringsNoSame {
-    private static final String LOG_TAG = "AnalyzingStringsNoSame";
+public class AddTwoNumbers_2 {
 
-    /**
-     * 将字符串里面的字符取出放入到set中, 如果add 返回false,即认为有相同的字符
-     * @param str
-     * @return
-     */
-    public static boolean isSameBySet(String str){
-        if (str == null){
-            return false;
-        }
+    public static class ListNode {
+        int val;
+        ListNode next;
 
-        boolean noSame = true;
-        Set&lt;Character&gt; set = new HashSet&lt;&gt;();
-        for (int i = 0; i &lt; str.length(); i++){
-            if(!set.add(str.charAt(i))){
-                noSame = false;
-                break;
-            }
+        ListNode(int x) {
+            val = x;
         }
-        return !noSame;
     }
 
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int lso = 0;
+        int sum = 0;
+        ListNode ls = null;
+        ListNode nextLn = null;
+        while (l1 != null || l2 != null || lso != 0) {
+            sum = lso;
+            if (l1 != null) sum += l1.val;
+            if (l2 != null) sum += l2.val;
 
-    /**
-     * 利用String 的 lastIndexOf(int) 来查找
-     * @param str
-     * @return
-     */
-    public static boolean isSameByIndex(String str){
-        if (str == null){
-            return false;
-        }
-
-        boolean noSame = true;
-
-        for (int i = 0; i &lt; str.length(); i++){
-            if(str.lastIndexOf(str.charAt(i)) != i){
-                noSame = false;
-                break;
+            lso = sum / 10;
+            ListNode temp = new ListNode(sum % 10);
+            if (ls == null) nextLn = ls = temp;
+            else{
+                nextLn.next = temp;
+                nextLn = nextLn.next;
             }
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
         }
-        return !noSame;
+        return ls;
     }
 
-    /**
-     * 将字符串里面的字符和其他的字符串进行比较
-     * @param str
-     * @return
-     */
-    public static boolean isSameByTraverse(String str){
-        if (str == null){
-            return false;
-        }
-
-        boolean noSame = true;
-
-        for (int i = 0; i &lt; str.length(); i++){
-            int ca = str.charAt(i);
-            for (int j = i+1; j &lt; str.length(); j++){
-                if (ca == str.charAt(j)){
-                    noSame = false;
-                    break;
-                }
+    public static ListNode initListNode(int num) {
+        int mod = 0;
+        int temp = num;
+        ListNode ln = null;
+        ListNode nextLn = null;
+        while (temp &gt; 0) {
+            mod = temp % 10;
+            temp = temp / 10;
+            if (ln == null){
+                nextLn = ln = new ListNode(mod);
+            }else{
+                nextLn.next = new ListNode(mod);
+                nextLn = nextLn.next;
             }
         }
-        return !noSame;
+
+        return ln;
     }
 
-
-    /**
-     * 将字符串排序,然后比较相邻的字符是否相等.
-     * @param str
-     * @return
-     */
-    public static boolean isSameBySort(String str){
-        if (str == null){
-            return false;
+    public static String ListNodeToString(final ListNode listNode) {
+        StringBuilder sb = new StringBuilder();
+        ListNode ln = listNode;
+        while (ln != null) {
+            sb.append(ln.val + " ");
+            ln = ln.next;
         }
 
-        char[] caArr = str.toCharArray();
-        Arrays.sort(caArr);
-
-        boolean noSame = true;
-        for (int i = 0; i &lt; caArr.length-1;){
-            if (caArr[i] == caArr[++i]){
-                noSame = false;
-                break;
-            }
-        }
-        return !noSame;
+        return sb.toString();
     }
 
-    /**
-     * 如果字符串的为ASCII编码,如果字符串的长度大于256,就肯定存在相同的字符.
-     * @param str
-     * @return
-     */
-    public static boolean isAsciiSame(String str){
-        if (str == null){
-            return false;
-        }
+    public static void main(String[] args) {
+        ListNode l1 = initListNode(1027633061);
+        ListNode l2 = initListNode(1696698036);
+//
+//        ListNode l1 = initListNode(342);
+//        ListNode l2 = initListNode(465);
 
-        if (str.length() &gt; 256){
-            return true;
-        }
+//        ListNode l1 = initListNode(5);
+//        ListNode l2 = initListNode(5);
+        System.out.println("listNode1 " + ListNodeToString(l1));
 
-        boolean[] caArr = new boolean[256];
+        System.out.println("listNode2 " + ListNodeToString(l2));
 
-        boolean noSame = true;
-        for (int i = 0; i &lt; str.length(); i++){
-            int ch = str.charAt(i);
-            if (caArr[ch]){
-                noSame = false;
-                break;
-            }
-            caArr[ch] = true;
-        }
-        return !noSame;
-    }
-
-    public static void main(String[] args){
-        System.out.println("testList");
-        String str = "15234d";
-        System.out.println("字符串:"+str);
-        System.out.println("isSameBySet: "+AnalyzingStringsNoSame.isSameBySet(str));
-        System.out.println("isSameByIndex: "+AnalyzingStringsNoSame.isSameByIndex(str));
-        System.out.println("isSameByTraverse: "+AnalyzingStringsNoSame.isSameByTraverse(str));
-        System.out.println("isSameBySort: "+AnalyzingStringsNoSame.isSameBySort(str));
-        System.out.println("isAsciiSame: "+AnalyzingStringsNoSame.isAsciiSame(str));
+        ListNode ls = addTwoNumbers(l1, l2);
+        System.out.println("listNodes " + ListNodeToString(ls));
     }
 }
+</code></pre>
+</div>
+
+<h3 id="c">代码示例-c++</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//
+// Created by yumo on 8/5/16.
+//
+#include &lt;iostream&gt;
+using namespace std;
+
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) { }
+};
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int lso = 0;
+        ListNode* ln = NULL;
+        ListNode* nextLn = NULL;
+        while (true){
+            int sum = lso;
+            if(l1 != NULL){
+                sum += l1-&gt;val;
+                l1 = l1-&gt;next;
+            }
+            if(l2 != NULL){
+                sum += l2-&gt;val;
+                l2 = l2-&gt;next;
+            }
+            lso = sum /10;
+            ListNode* node = new ListNode(sum %10);
+            if(ln == NULL){
+                nextLn = ln = node;
+            }else{
+                nextLn-&gt;next = node;
+                nextLn = node;
+            }
+
+            if(l1 == NULL &amp;&amp; l2 == NULL &amp;&amp; lso == 0){
+                break;
+            }
+        }
+
+        return ln;
+    }
+
+    ListNode* initListNode(int num){
+        int mod = 0;
+        int temp = num;
+        ListNode* ln = NULL;
+        ListNode* nextLn = NULL;
+        while(num  &gt; 0){
+            mod = num % 10;
+            num = num / 10;
+            ListNode* node = new ListNode(mod);
+            if(ln == NULL){
+                nextLn = ln = node;
+            }else{
+                nextLn-&gt;next = node;
+                nextLn = node;
+            }
+        }
+        return ln;
+    }
+
+    string listNodeToString(ListNode *ln){
+        ListNode* next = ln;
+        string sb;
+        while(next != NULL){
+            int val = next-&gt;val;
+            next = next-&gt;next;
+            sb += to_string(val)+" ";
+        }
+        return sb;
+    }
+};
+
+int main()
+{
+//     int num1 = 342;
+//     int num2 = 465;
+
+//    int num1 = 5;
+//    int num2 = 5;
+
+      int num1 = 1027633061;
+      int num2 = 1696698036;
+     Solution solution;
+
+     ListNode* l1 = solution.initListNode(num1);
+     ListNode* l2 = solution.initListNode(num2);
+
+     cout&lt;&lt;"l1 "&lt;&lt;solution.listNodeToString(l1)&lt;&lt;endl;
+     cout&lt;&lt;"l2 "&lt;&lt;solution.listNodeToString(l2)&lt;&lt;endl;
+
+
+    clock_t start, finish;
+
+    start = clock();
+    ListNode* ln = solution.addTwoNumbers(l1, l2);
+    finish = clock();
+    cout &lt;&lt; "time:" &lt;&lt; ((double) (finish - start) / CLOCKS_PER_SEC) * 1000000 &lt;&lt;"result: "&lt;&lt;solution.listNodeToString(ln) &lt;&lt; endl;
+
+
+    return 0;
+}
+</code></pre>
+</div>
+
+<h3 id="javascript">代码示例-JavaScript</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function ListNode(val) {
+     this.val = val;
+     this.next = null;
+}
+
+function initListNode(num){
+   var mod = 0;
+   var ln = null;
+   var nextLn = null;
+   while(num &gt; 0){
+      mod = num % 10;
+      num = parseInt(num / 10);
+      if(ln == null){
+        ln = new ListNode(mod);
+        nextLn = ln;
+      }else{
+        nextLn.next = new ListNode(mod);
+        nextLn = nextLn.next;
+      }
+   }
+
+   return ln;
+}
+
+function listNodeToString(ln){
+  var str ="";
+  var next = ln;
+  while(next != null){
+    str += next.val+" ";
+    next = next.next;
+  }
+  return str;
+}
+
+var addTwoNumbers = function(l1, l2) {
+    var los = 0;
+    var ln = null;
+    var nextLn = null;
+    while(true){
+      var sum = los;
+      if(l1 != null){
+        sum += l1.val;
+        l1 = l1.next;
+      }
+
+      if(l2 != null){
+        sum += l2.val;
+        l2 = l2.next;
+      }
+      if(ln == null){
+        nextLn = ln = new ListNode(sum % 10);
+      }else{
+        nextLn.next = new ListNode(sum % 10);
+        nextLn = nextLn.next;
+      }
+
+      los = parseInt(sum / 10);
+      if(l1 == null &amp;&amp; l2 == null &amp;&amp; los == 0){
+         break;
+      }
+    }
+
+    return ln;
+};
+
+// var num1 = 342;
+// var num2 = 465;
+
+var num1 = 5;
+var num2 = 5;
+
+// var num1 = 342;
+// var num2 = 465;
+
+var l1 = initListNode(num1);
+var l2 = initListNode(num2);
+console.log("l1:"+listNodeToString(l1));
+console.log("l2:"+listNodeToString(l2));
+var ln = addTwoNumbers(l1, l2);
+console.log("result:"+listNodeToString(ln));
+
 </code></pre>
 </div>
 
