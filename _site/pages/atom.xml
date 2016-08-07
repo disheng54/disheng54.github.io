@@ -6,6 +6,198 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>4-Median of Two Sorted Arrays</title>
+        <link>http://disheng54.github.io/2016/08/07/leetcode-4-MedianSortedArrays.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/07/leetcode-4-MedianSortedArrays.html</guid>
+        <pubDate>Sun, 07 Aug 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/median-of-two-sorted-arrays/&quot;&gt;Median of Two Sorted Arrays&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;题目&lt;/h3&gt;
+&lt;p&gt;There are two sorted arrays nums1 and nums2 of size m and n respectively.&lt;br /&gt;
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).&lt;/p&gt;
+
+&lt;p&gt;Example 1:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 3]
+nums2 = [2]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The median is 2.0&lt;br /&gt;
+Example 2:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 2]
+nums2 = [3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The median is (2 + 3)/2 = 2.5&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
+
+&lt;p&gt;有两个排序且长度分别为m和n的数组nums1 和 nums2。找出这两个排序的中间值。&lt;br /&gt;
+要求运行时间为O(log(m+n))&lt;/p&gt;
+
+&lt;p&gt;示例1:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 3]
+nums2 = [2]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;中位值为： 2.0&lt;br /&gt;
+示例2：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 2]
+nums2 = [3, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;中位值： (2 + 3)/2 = 2.5&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;p&gt;题目的意思是将两个数组合并后，如果是奇数个，就返回中间的那个值，如果是偶数个，就返回中间两个数的平均值&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;合并的解决的方式&lt;/p&gt;
+
+    &lt;p&gt;首先想到的时候合并的方式解决，其原理就是合并两个数组，算出中位值，其运行时间为O((m+n)/2) .&lt;br /&gt;
+ 但是不能满足题目运行时间要求。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;递归方式解决&lt;/p&gt;
+
+    &lt;p&gt;这种方式是在讨论区发现的。具体实现的原理：寻找数组中第 k(k=（m+n）/ 2+1)个最小的数字.&lt;br /&gt;
+ 将nums1[k] 和 nums2[k] 进行比较，会有三种情况：&lt;br /&gt;
+ 如果nums1[k] == nums2[k] 那么这个值就是要找的值。&lt;br /&gt;
+ 如果nums1[k] &amp;lt; nums2[k],那么第k个数值，必定出现在nums1[ (k+1) ~ m ] 和 nums2[ 0 ~ (k - 1)] 区间中&lt;br /&gt;
+ 如果nums1[k] &amp;gt; nums2[k],那么第k个数值，必定出现在nums1[ 0 ~ (k - 1)] 和 nums2[ (k+1) ~ n ] 区间中&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例-java&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/7/16.
+ */
+public class MedianTwoSortedArrays_4 {
+
+    /**
+     * 通过合并的方式进行字符串处理.
+     */
+    public static double findMedianSortedArraysByMerge(int[] nums1, int[] nums2) {
+        if (nums1.length == 0 &amp;amp;&amp;amp; nums2.length == 0) return 0;
+        int leftMedian = (nums1.length+nums2.length+1)/2;
+        int rightMedian = (nums1.length+nums2.length+2)/2;
+        if (nums1.length == 0){
+            return (nums2[leftMedian - 1]+ nums2[rightMedian - 1]) / 2.0;
+        }else if(nums2.length == 0){
+            return (nums1[leftMedian - 1]+ nums1[rightMedian - 1]) / 2.0;
+        }
+
+        int num = 0, firstNum = 0;
+        int n1 = 0, n2 = 0, index = 1;
+        while (true){
+            if (n1 &amp;lt; nums1.length){
+                if (n2 &amp;lt; nums2.length){
+                    if(nums1[n1] &amp;gt; nums2[n2]){
+                        num = nums2[n2++];
+                    }else{
+                        num = nums1[n1++];
+                    }
+                }else{
+                    num = nums1[n1++];
+                }
+            }else{
+                num = nums2[n2++];
+            }
+
+            if (index == leftMedian &amp;amp;&amp;amp; rightMedian == leftMedian){
+                return num;
+            }else if (index == leftMedian &amp;amp;&amp;amp; rightMedian != leftMedian){
+                firstNum = num;
+            }else if (index == rightMedian){
+                return (firstNum + num)/2.0;
+            }
+
+            index++;
+        }
+    }
+
+    /**
+     * 通过递归的方式实现.
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static double findMedianSortedArraysByRecursive(int[] nums1, int[] nums2) {
+        if (nums1.length == 0 &amp;amp;&amp;amp; nums2.length == 0) return 0;
+        int leftMedian = (nums1.length+nums2.length+1)/2;
+        int rightMedian = (nums1.length+nums2.length+2)/2;
+
+        if (nums1.length == 0){
+            return (nums2[leftMedian - 1]+ nums2[rightMedian - 1]) / 2.0;
+        }else if(nums2.length == 0){
+            return (nums1[leftMedian - 1]+ nums1[rightMedian - 1]) / 2.0;
+        }
+
+        if (rightMedian != leftMedian){
+            return (getMedianNum(nums1,0,nums2,0,leftMedian)+ getMedianNum(nums1,0,nums2,0,rightMedian))/2.0;
+        }else{
+            return getMedianNum(nums1,0,nums2,0,leftMedian);
+        }
+    }
+
+    public static double getMedianNum(int[] nums1, int start1, int[]nums2, int start2, int index){
+        if(start1 &amp;gt; nums1.length-1) return nums2[start2+index-1];
+        if(start2 &amp;gt; nums2.length-1) return nums1[start1+index-1];
+        if(index == 1) return Math.min(nums1[start1],nums2[start2]);
+
+        if(start2+index/2-1 &amp;gt; nums2.length-1){
+            return getMedianNum(nums1,start1+index/2,nums2,start2,index-index/2);
+        } 
+        if(start1+index/2-1 &amp;gt; nums1.length-1){
+            return getMedianNum(nums1,start1,nums2,start2+index/2,index-index/2);
+        } 
+
+        if(nums1[start1+index/2-1] &amp;lt; nums2[start2+index/2-1]){
+            return getMedianNum(nums1,start1+index/2,nums2,start2,index-index/2);
+        }else{
+            return getMedianNum(nums1,start1,nums2,start2+index/2,index-index/2);
+        }
+    }
+
+    public static void main(String[] args){
+        int[] nums1 = {1,3};
+        int[] nums2 = {2};
+
+//        int[] nums1 = {1,3};
+//        int[] nums2 = {2};
+        long startTime = System.nanoTime();
+        double median = findMedianSortedArraysByMerge(nums1, nums2);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+        System.out.println(&quot; median:&quot;+median +&quot; time:&quot;+ time);
+        
+        startTime = System.nanoTime();
+        median = findMedianSortedArraysByRecursive(nums1, nums2);
+        endTime = System.nanoTime();
+        time = endTime - startTime;
+        System.out.println(&quot; median:&quot;+median +&quot; time:&quot;+ time);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>3-Longest Substring Without Repeating Characters</title>
         <link>http://disheng54.github.io/2016/08/07/leetcode-3-engthOfLongestSubstringByMap.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2016/08/07/leetcode-3-engthOfLongestSubstringByMap.html</guid>
@@ -2614,120 +2806,6 @@ private int getByApacheHttp(String url)
   &lt;li&gt;导出为HTML格式文件 Export HTML: Option + Cmd + E&lt;/li&gt;
   &lt;li&gt;导出为PDF格式文件 Export PDF:  Option + Cmd + P&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-      </item>
-    
-      <item>
-        <title>mac 常用快捷键</title>
-        <link>http://disheng54.github.io/2014/12/10/mac-shortcut.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2014/12/10/mac-shortcut.html</guid>
-        <pubDate>Wed, 10 Dec 2014 00:00:00 +0800</pubDate>
-        <description>&lt;h1 id=&quot;mac--br&quot;&gt;mac 常用快捷键 &lt;br /&gt;&lt;/h1&gt;
-
-&lt;h4 id=&quot;section&quot;&gt;文件操作&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Command + A: 全部选中文件
-   Option + Command＋A: 取消全部选中的文件。
-   Command + C:   拷贝选中的文件
-   Command + D:   复制所选项
-   Command + V:   粘贴选中的文件
-   Command + X:   剪切选中的文件
-   Command + Z:   撤销上一步操作
-   Shift + Command + Z: 撤销刚才的撤销       
-   Command + delete: 移到废纸篓
-   shift + Command + delete: 清到废纸篓
-   Option + shift + Command + delete: 不提示删除废纸篓。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;应用操作&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Command + tab: 向前切换到上一个窗口
-   Shift + Command + tab: 向后切换应用
-   Command + W: 关闭当前窗口
-   Option + Command + W: 关闭所有的窗口
-   Shift + Option + Command +ESC: 强制退出当前的应用程序 按住3秒钟
-   
-   Command + N: 复制当前的应用，新生成一个窗口
-   Command + M: 最小化窗口
-   Shift + Command + M:  最小化所有窗口
-   
-   Command + ]: 向后
-   Command + [: 向前
-   
-   Command + shift +?: 打开帮助
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;文件编辑&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   Control + A: 移动到段落和行的开始。
-   Control + E: 移动到段落和行的结束
-   Control + B: 向后移动一个字符
-   Control + F: 向前移动一个字符	   
-   Control + D: 删除光标前的字符
-   Control + H: 删除光标后的字符
-   Control + K: 删除光标到行或者到断尾的内容
-   Control + L: 显示在区域位置中间
-   Control + N: 下移一行
-   Control + P: 上移一行
-   Control + O: 在光标后插入一行
-   Control + T: 将光标前后的字好准备。
-   Control + V: 进入下页。
-   
-   Control + 方向键: 聚焦视图内的另外一个值或单元格。
-   
-   Command + {: 使所选内容左对齐
-   Command + }:  使所选内容右对齐
-   Command + I: 使所选内容剧中对齐。
-   
-   Command + 右箭头: 将插入点移到行尾
-   Command + 左箭头: 将插入点移到行首
-   Command + 上箭头: 将插入移到文稿开头
-   Command + 下箭头: 将插入点移到文稿结尾
-   
-   Shift + 右箭头: 将选中文本范围向右扩充一个字符。
-   Shift + 左箭头: 将选中文本范围向左扩充一个字符。
-   Shift + 上箭头: 将文件扩充到上一行相同位置。
-   Shift +下箭头: 将选中文件扩充至下一行相同位置。
-   
-   Shift + Command + 右箭头: 选中当前点到行尾之间的内容。
-   Shift + Command + 左箭头: 选中当前点到行首之间的内容。
-   Shift + Command + 上箭头: 选中当前点到文稿首部的之间的内容。
-   Shift + Command + 下箭头: 选中当前点到文稿尾部之间的内容。
-   
-   Shift + Option + 右箭头: 将选中文本扩充单当前词的尾部，再按一次，扩充至下一词的尾部。
-   Shift + Option + 左箭头: 将选中文件扩充至当前词的首部，在按一次，扩充至上一词的首部。
-   Shift + Option + 上箭头: 将选中文本扩充至当前段落的首部，再按一次，扩充至上一段路的首部。
-   Shift + Option + 下箭头: 将选中文本扩充至当前段落的尾部，再按一次，扩充至下一段落的尾部。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;finder&quot;&gt;Finder&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   shift + Command + A: 打开应用程序
-   shift + command + D: 打开桌面文件夹
-   shift + Command + C: 打开电脑窗口
-   shift + Command + U: 打开实用工具
-   shift + Command + G: 打开前往
-   shift + Command + F: 打开所有的我的所有文件
-   shift + Command + O: 打开文稿
-   shift + Command + L: 下载
-   shift + Command + H: 个人
-   shift + Command + J: iCloud Drive
-   shift + Command + R: AirDrop          
-   Command + K: 连接服务器
-   
-   Command + 上箭头: 打开所含的文件夹
-   Control + Command + 上箭头: 新窗口中打开上级文件夹
-   
-   Command + J: 调出显示选项       
-   Command + i: 查看简介
-   空格键 快速查看
-   Option + Command + Y: 以浏览的方式打开
-   shift + Command + N: 新建文件夹
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
 </description>
       </item>
     
