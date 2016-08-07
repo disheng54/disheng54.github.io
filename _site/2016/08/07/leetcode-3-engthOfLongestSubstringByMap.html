@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>2-Add Two Numbers | 禹墨的博客</title>
+<title>3-Longest Substring Without Repeating Characters | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java,c++,javascript">
@@ -444,8 +444,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">2-Add Two Numbers</h2>
-    2016年08月06日
+    <h2 id="#identifier">3-Longest Substring Without Repeating Characters</h2>
+    2016年08月07日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -458,226 +458,172 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/add-two-numbers/">题目原地址</a></p>
+      <p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a></p>
 
 <h3 id="section">原题目</h3>
 
-<p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>Given a string, find the length of the longest substring without repeating characters.</p>
 
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
-Output: 7 -&gt; 0 -&gt; 8</p>
+<p>Examples:</p>
 
-<h3 id="section-1">翻译</h3>
+<p>Given <code class="highlighter-rouge">"abcabcbb"</code>, the answer is <code class="highlighter-rouge">"abc"</code>, which the length is 3.</p>
 
-<p>给出两个标识非负整数的链表，整数在链表中反向存储且链表中的每个节点只存储一个数字。<br />
-将两个整数链表相加，将结果用链表返回<br />
-输入: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
-输出: 7 -&gt; 0 -&gt; 8</p>
+<p>Given <code class="highlighter-rouge">"bbbbb",</code> the answer is <code class="highlighter-rouge">"b"</code>, with the length of 1.</p>
+
+<p>Given <code class="highlighter-rouge">"pwwkew"</code>, the answer is <code class="highlighter-rouge">"wke"</code>, with the length of 3. Note that the answer must be a substring, <code class="highlighter-rouge">"pwke"</code> is a subsequence and not a substring.</p>
+
+<h3 id="section-1">题目翻译</h3>
+
+<p>获取一个字符串的各个字符都不相同的子串的最大长度。<br />
+举例：</p>
+
+<p>字符串 <code class="highlighter-rouge">"abcabcbb"</code>, 符合结果的字串为 <code class="highlighter-rouge">"abc"</code>, 其长度为 <code class="highlighter-rouge">3</code>.<br />
+字符串 <code class="highlighter-rouge">"bbbbb"</code>, 符合结果的字串为 <code class="highlighter-rouge">"b"</code>, 其长度为 <code class="highlighter-rouge">1</code>.<br />
+字符串 <code class="highlighter-rouge">"pwwkew"</code>, 符合结果的字串为 <code class="highlighter-rouge">"wke"</code>, 其长度为 <code class="highlighter-rouge">3</code>. <br />
+注意结果必须为连续的子串， 其中<code class="highlighter-rouge">"pwke"</code>是不同的字符组合，但不是连续的子串</p>
 
 <h3 id="section-2">解决思路</h3>
 
-<p>这是一个简单的问题，只是稍微注意下两个链表长度不一致就可以了。</p>
+<p>首先要明白这道题目是要获取字符串中不同字符字符组成的子串的最大长度，而不是不同字符的个数。<br />
+声明一个变量start,记录不同字符串的初始索引，一个变量mxlen 记录最大程度，然后遍历字串中字符，记录该字符的索引index，并且查询该字符上次出现的索引位置，如果该字符存在上次索引LastIndex，并且该索引值不小于 start，那么将index 减去 start当做该不同字符子串的长度与maxlen，比较取其大着。通过将LastIndex赋值与start。</p>
 
-<h3 id="java">代码示例-Java</h3>
+<h3 id="java">代码示例-java</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
- * Created by wks on 8/5/16.
- * You are given two linked lists representing two non-negative numbers.
- * The digits are stored in reverse order and each of their nodes contain a single digit.
- * Add the two numbers and return it as a linked list.
- * &lt;p&gt;
- * Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
- * Output: 7 -&gt; 0 -&gt; 8
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by yumo on 8/6/16.
+ * 获取字符串中不重复的字字符串的最大长度.
  */
-public class AddTwoNumbers_2 {
+public class LongSubNoRepeatCHar_3 {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
+    public static int lengthOfLongestSubstringByMap(String s) {
+        if (s == null || s.isEmpty()){
+            return 0;
         }
-    }
 
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int lso = 0;
-        int sum = 0;
-        ListNode ls = null;
-        ListNode nextLn = null;
-        while (l1 != null || l2 != null || lso != 0) {
-            sum = lso;
-            if (l1 != null) sum += l1.val;
-            if (l2 != null) sum += l2.val;
+        Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
+        int maxLen = 1;
+        int start = 0;
 
-            lso = sum / 10;
-            ListNode temp = new ListNode(sum % 10);
-            if (ls == null) nextLn = ls = temp;
-            else{
-                nextLn.next = temp;
-                nextLn = nextLn.next;
+        for (int i = 0; i &lt; s.length(); i++){
+            if (map.get(s.charAt(i)) != null){
+                int j = map.get(s.charAt(i));
+                if (j &gt;= start){
+                    maxLen = (i - start &gt; maxLen) ? i - start : maxLen;
+                    start = j + 1;
+                    map.remove(s.charAt(i));
+                }
             }
 
-            if (l1 != null) l1 = l1.next;
-            if (l2 != null) l2 = l2.next;
+            map.put(s.charAt(i), i);
         }
-        return ls;
+
+        return (s.length() - start &gt; maxLen) ? s.length() - start : maxLen;
     }
 
-    public static ListNode initListNode(int num) {
-        int mod = 0;
-        int temp = num;
-        ListNode ln = null;
-        ListNode nextLn = null;
-        while (temp &gt; 0) {
-            mod = temp % 10;
-            temp = temp / 10;
-            if (ln == null){
-                nextLn = ln = new ListNode(mod);
-            }else{
-                nextLn.next = new ListNode(mod);
-                nextLn = nextLn.next;
+    public static int lengthOfLongestSubstringByArray(String s) {
+        if (s == null || s.isEmpty()){
+            return 0;
+        }
+
+        int[] chars = new int[256];
+        int maxLen = 1;
+        int start = 0;
+
+        for (int i = 0; i &lt; s.length(); i++){
+            int ch = s.charAt(i);
+            if (chars[ch] != 0){
+                if (chars[ch] &gt; start){
+                    maxLen = (i - start &gt; maxLen) ? i - start : maxLen;
+                    start = chars[ch];
+                }
             }
+
+            chars[ch] = i + 1;
         }
 
-        return ln;
+        return (s.length() - start &gt; maxLen) ? s.length() - start : maxLen;
     }
 
-    public static String ListNodeToString(final ListNode listNode) {
-        StringBuilder sb = new StringBuilder();
-        ListNode ln = listNode;
-        while (ln != null) {
-            sb.append(ln.val + " ");
-            ln = ln.next;
-        }
+    public static void main(String[] args){
+        //String str = "abcabcbb";
+        //String str = "aaa";
+        //String str = "pwwkew";
+        // String str = "au";
+        String str = "aab";
+        long startTime = System.nanoTime();
+        int length = lengthOfLongestSubstringByMap(str);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+        System.out.println(str+" len:"+length +" time:"+ time);
 
-        return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        ListNode l1 = initListNode(1027633061);
-        ListNode l2 = initListNode(1696698036);
-//
-//        ListNode l1 = initListNode(342);
-//        ListNode l2 = initListNode(465);
-
-//        ListNode l1 = initListNode(5);
-//        ListNode l2 = initListNode(5);
-        System.out.println("listNode1 " + ListNodeToString(l1));
-
-        System.out.println("listNode2 " + ListNodeToString(l2));
-
-        ListNode ls = addTwoNumbers(l1, l2);
-        System.out.println("listNodes " + ListNodeToString(ls));
+        startTime = System.nanoTime();
+        length = lengthOfLongestSubstringByArray(str);
+        endTime = System.nanoTime();
+        time = endTime - startTime;
+        System.out.println(str+" len:"+length +" time:"+ time);
     }
 }
+
 </code></pre>
 </div>
 
 <h3 id="c">代码示例-c++</h3>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>//
-// Created by yumo on 8/5/16.
+// Created by yumodev on 8/6/16.
 //
 #include &lt;iostream&gt;
 using namespace std;
-
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) { }
-};
-
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        int lso = 0;
-        ListNode* ln = NULL;
-        ListNode* nextLn = NULL;
-        while (true){
-            int sum = lso;
-            if(l1 != NULL){
-                sum += l1-&gt;val;
-                l1 = l1-&gt;next;
-            }
-            if(l2 != NULL){
-                sum += l2-&gt;val;
-                l2 = l2-&gt;next;
-            }
-            lso = sum /10;
-            ListNode* node = new ListNode(sum %10);
-            if(ln == NULL){
-                nextLn = ln = node;
-            }else{
-                nextLn-&gt;next = node;
-                nextLn = node;
-            }
-
-            if(l1 == NULL &amp;&amp; l2 == NULL &amp;&amp; lso == 0){
-                break;
-            }
+    int lengthOfLongestSubstring(string s) {
+        if (s.size() == 0) {
+            return 0;
         }
 
-        return ln;
-    }
+        int chars[128];
+        memset(chars, 0xff, 128 * sizeof(int));
+        int maxLen = 1;
+        int start = 0;
+        for (int i = 0; i &lt; s.size(); ++i) {
+            if (chars[s[i]] != 0 &amp;&amp; chars[s[i]] &gt; start) {
+//                if(i - start &gt; maxLen){
+//                    maxLen = i - start;
+//                }
 
-    ListNode* initListNode(int num){
-        int mod = 0;
-        int temp = num;
-        ListNode* ln = NULL;
-        ListNode* nextLn = NULL;
-        while(num  &gt; 0){
-            mod = num % 10;
-            num = num / 10;
-            ListNode* node = new ListNode(mod);
-            if(ln == NULL){
-                nextLn = ln = node;
-            }else{
-                nextLn-&gt;next = node;
-                nextLn = node;
+                maxLen = i - start &gt; maxLen ? i - start : maxLen;
+                start = chars[s[i]];
             }
-        }
-        return ln;
-    }
 
-    string listNodeToString(ListNode *ln){
-        ListNode* next = ln;
-        string sb;
-        while(next != NULL){
-            int val = next-&gt;val;
-            next = next-&gt;next;
-            sb += to_string(val)+" ";
+            chars[s[i]] = i + 1;
         }
-        return sb;
+
+        if (s.length() - start &gt; maxLen) {
+            maxLen = s.length() - start;
+        }
+
+        return maxLen;
     }
 };
 
-int main()
-{
-//     int num1 = 342;
-//     int num2 = 465;
-
-//    int num1 = 5;
-//    int num2 = 5;
-
-      int num1 = 1027633061;
-      int num2 = 1696698036;
-     Solution solution;
-
-     ListNode* l1 = solution.initListNode(num1);
-     ListNode* l2 = solution.initListNode(num2);
-
-     cout&lt;&lt;"l1 "&lt;&lt;solution.listNodeToString(l1)&lt;&lt;endl;
-     cout&lt;&lt;"l2 "&lt;&lt;solution.listNodeToString(l2)&lt;&lt;endl;
-
-
+int main() {
+   // string str = "auu";
+    string str = "dvdf";
+    //string str = "aaa";
+    //string str = "pwwkew";
+    // string str = "au";
+    //string str = "aab";
     clock_t start, finish;
-
+    Solution su;
     start = clock();
-    ListNode* ln = solution.addTwoNumbers(l1, l2);
+    int len = su.lengthOfLongestSubstring(str);
     finish = clock();
-    cout &lt;&lt; "time:" &lt;&lt; ((double) (finish - start) / CLOCKS_PER_SEC) * 1000000 &lt;&lt;"result: "&lt;&lt;solution.listNodeToString(ln) &lt;&lt; endl;
+    cout &lt;&lt; "time:"&lt;&lt;((double)(finish - start)/CLOCKS_PER_SEC)* 1000000 &lt;&lt;"  len " &lt;&lt;len&lt;&lt;endl;
 
 
     return 0;
@@ -685,89 +631,42 @@ int main()
 </code></pre>
 </div>
 
-<h3 id="javascript">代码示例-JavaScript</h3>
+<h3 id="javascript">代码示例-javascript</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>function ListNode(val) {
-     this.val = val;
-     this.next = null;
-}
-
-function initListNode(num){
-   var mod = 0;
-   var ln = null;
-   var nextLn = null;
-   while(num &gt; 0){
-      mod = num % 10;
-      num = parseInt(num / 10);
-      if(ln == null){
-        ln = new ListNode(mod);
-        nextLn = ln;
-      }else{
-        nextLn.next = new ListNode(mod);
-        nextLn = nextLn.next;
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+  if (s === undefined || s.length === 0) {
+   return 0;
+ }
+ var chars = {};
+ var maxLen = 1;
+ var start = 0;
+ for(i = 0; i &lt; s.length; i++){
+   if (chars[s[i]] !== undefined) {
+      if (chars[s[i]] &gt;= start) {
+        if(i - start &gt; maxLen){
+          maxLen = i - start;
+        }
+        start = chars[s[i]];
       }
    }
 
-   return ln;
-}
+   chars[s[i]] = i + 1;
+ }
 
-function listNodeToString(ln){
-  var str ="";
-  var next = ln;
-  while(next != null){
-    str += next.val+" ";
-    next = next.next;
-  }
-  return str;
-}
+ if(s.length - start &gt; maxLen){
+   maxLen = s.length - start;
+ }
 
-var addTwoNumbers = function(l1, l2) {
-    var los = 0;
-    var ln = null;
-    var nextLn = null;
-    while(true){
-      var sum = los;
-      if(l1 != null){
-        sum += l1.val;
-        l1 = l1.next;
-      }
-
-      if(l2 != null){
-        sum += l2.val;
-        l2 = l2.next;
-      }
-      if(ln == null){
-        nextLn = ln = new ListNode(sum % 10);
-      }else{
-        nextLn.next = new ListNode(sum % 10);
-        nextLn = nextLn.next;
-      }
-
-      los = parseInt(sum / 10);
-      if(l1 == null &amp;&amp; l2 == null &amp;&amp; los == 0){
-         break;
-      }
-    }
-
-    return ln;
+ return maxLen;
 };
-
-// var num1 = 342;
-// var num2 = 465;
-
-var num1 = 5;
-var num2 = 5;
-
-// var num1 = 342;
-// var num2 = 465;
-
-var l1 = initListNode(num1);
-var l2 = initListNode(num2);
-console.log("l1:"+listNodeToString(l1));
-console.log("l2:"+listNodeToString(l2));
-var ln = addTwoNumbers(l1, l2);
-console.log("result:"+listNodeToString(ln));
-
+//var str = "auu";
+var str = "dvdf"
+var len = lengthOfLongestSubstring(str);
+console.log(num+" "+len);
 </code></pre>
 </div>
 

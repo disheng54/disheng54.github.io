@@ -6,6 +6,226 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>3-Longest Substring Without Repeating Characters</title>
+        <link>http://disheng54.github.io/2016/08/07/leetcode-3-engthOfLongestSubstringByMap.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/07/leetcode-3-engthOfLongestSubstringByMap.html</guid>
+        <pubDate>Sun, 07 Aug 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/longest-substring-without-repeating-characters/&quot;&gt;Longest Substring Without Repeating Characters&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+
+&lt;p&gt;Given a string, find the length of the longest substring without repeating characters.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abcabcbb&quot;&lt;/code&gt;, the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abc&quot;&lt;/code&gt;, which the length is 3.&lt;/p&gt;
+
+&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;bbbbb&quot;,&lt;/code&gt; the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;b&quot;&lt;/code&gt;, with the length of 1.&lt;/p&gt;
+
+&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwwkew&quot;&lt;/code&gt;, the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wke&quot;&lt;/code&gt;, with the length of 3. Note that the answer must be a substring, &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwke&quot;&lt;/code&gt; is a subsequence and not a substring.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;题目翻译&lt;/h3&gt;
+
+&lt;p&gt;获取一个字符串的各个字符都不相同的子串的最大长度。&lt;br /&gt;
+举例：&lt;/p&gt;
+
+&lt;p&gt;字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abcabcbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abc&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;.&lt;br /&gt;
+字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;bbbbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;b&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;.&lt;br /&gt;
+字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwwkew&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wke&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;. &lt;br /&gt;
+注意结果必须为连续的子串， 其中&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwke&quot;&lt;/code&gt;是不同的字符组合，但不是连续的子串&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;p&gt;首先要明白这道题目是要获取字符串中不同字符字符组成的子串的最大长度，而不是不同字符的个数。&lt;br /&gt;
+声明一个变量start,记录不同字符串的初始索引，一个变量mxlen 记录最大程度，然后遍历字串中字符，记录该字符的索引index，并且查询该字符上次出现的索引位置，如果该字符存在上次索引LastIndex，并且该索引值不小于 start，那么将index 减去 start当做该不同字符子串的长度与maxlen，比较取其大着。通过将LastIndex赋值与start。&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例-java&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by yumo on 8/6/16.
+ * 获取字符串中不重复的字字符串的最大长度.
+ */
+public class LongSubNoRepeatCHar_3 {
+
+    public static int lengthOfLongestSubstringByMap(String s) {
+        if (s == null || s.isEmpty()){
+            return 0;
+        }
+
+        Map&amp;lt;Character, Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        int maxLen = 1;
+        int start = 0;
+
+        for (int i = 0; i &amp;lt; s.length(); i++){
+            if (map.get(s.charAt(i)) != null){
+                int j = map.get(s.charAt(i));
+                if (j &amp;gt;= start){
+                    maxLen = (i - start &amp;gt; maxLen) ? i - start : maxLen;
+                    start = j + 1;
+                    map.remove(s.charAt(i));
+                }
+            }
+
+            map.put(s.charAt(i), i);
+        }
+
+        return (s.length() - start &amp;gt; maxLen) ? s.length() - start : maxLen;
+    }
+
+    public static int lengthOfLongestSubstringByArray(String s) {
+        if (s == null || s.isEmpty()){
+            return 0;
+        }
+
+        int[] chars = new int[256];
+        int maxLen = 1;
+        int start = 0;
+
+        for (int i = 0; i &amp;lt; s.length(); i++){
+            int ch = s.charAt(i);
+            if (chars[ch] != 0){
+                if (chars[ch] &amp;gt; start){
+                    maxLen = (i - start &amp;gt; maxLen) ? i - start : maxLen;
+                    start = chars[ch];
+                }
+            }
+
+            chars[ch] = i + 1;
+        }
+
+        return (s.length() - start &amp;gt; maxLen) ? s.length() - start : maxLen;
+    }
+
+    public static void main(String[] args){
+        //String str = &quot;abcabcbb&quot;;
+        //String str = &quot;aaa&quot;;
+        //String str = &quot;pwwkew&quot;;
+        // String str = &quot;au&quot;;
+        String str = &quot;aab&quot;;
+        long startTime = System.nanoTime();
+        int length = lengthOfLongestSubstringByMap(str);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+        System.out.println(str+&quot; len:&quot;+length +&quot; time:&quot;+ time);
+
+        startTime = System.nanoTime();
+        length = lengthOfLongestSubstringByArray(str);
+        endTime = System.nanoTime();
+        time = endTime - startTime;
+        System.out.println(str+&quot; len:&quot;+length +&quot; time:&quot;+ time);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;c&quot;&gt;代码示例-c++&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+// Created by yumodev on 8/6/16.
+//
+#include &amp;lt;iostream&amp;gt;
+using namespace std;
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if (s.size() == 0) {
+            return 0;
+        }
+
+        int chars[128];
+        memset(chars, 0xff, 128 * sizeof(int));
+        int maxLen = 1;
+        int start = 0;
+        for (int i = 0; i &amp;lt; s.size(); ++i) {
+            if (chars[s[i]] != 0 &amp;amp;&amp;amp; chars[s[i]] &amp;gt; start) {
+//                if(i - start &amp;gt; maxLen){
+//                    maxLen = i - start;
+//                }
+
+                maxLen = i - start &amp;gt; maxLen ? i - start : maxLen;
+                start = chars[s[i]];
+            }
+
+            chars[s[i]] = i + 1;
+        }
+
+        if (s.length() - start &amp;gt; maxLen) {
+            maxLen = s.length() - start;
+        }
+
+        return maxLen;
+    }
+};
+
+int main() {
+   // string str = &quot;auu&quot;;
+    string str = &quot;dvdf&quot;;
+    //string str = &quot;aaa&quot;;
+    //string str = &quot;pwwkew&quot;;
+    // string str = &quot;au&quot;;
+    //string str = &quot;aab&quot;;
+    clock_t start, finish;
+    Solution su;
+    start = clock();
+    int len = su.lengthOfLongestSubstring(str);
+    finish = clock();
+    cout &amp;lt;&amp;lt; &quot;time:&quot;&amp;lt;&amp;lt;((double)(finish - start)/CLOCKS_PER_SEC)* 1000000 &amp;lt;&amp;lt;&quot;  len &quot; &amp;lt;&amp;lt;len&amp;lt;&amp;lt;endl;
+
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;javascript&quot;&gt;代码示例-javascript&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+  if (s === undefined || s.length === 0) {
+   return 0;
+ }
+ var chars = {};
+ var maxLen = 1;
+ var start = 0;
+ for(i = 0; i &amp;lt; s.length; i++){
+   if (chars[s[i]] !== undefined) {
+      if (chars[s[i]] &amp;gt;= start) {
+        if(i - start &amp;gt; maxLen){
+          maxLen = i - start;
+        }
+        start = chars[s[i]];
+      }
+   }
+
+   chars[s[i]] = i + 1;
+ }
+
+ if(s.length - start &amp;gt; maxLen){
+   maxLen = s.length - start;
+ }
+
+ return maxLen;
+};
+//var str = &quot;auu&quot;;
+var str = &quot;dvdf&quot;
+var len = lengthOfLongestSubstring(str);
+console.log(num+&quot; &quot;+len);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>2-Add Two Numbers</title>
         <link>http://disheng54.github.io/2016/08/06/leetcode-2-AddTowNumbers.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2016/08/06/leetcode-2-AddTowNumbers.html</guid>
