@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>Git常用操作 | 禹墨的博客</title>
+<title>6-ZigZag Conversion | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="git">
+  <meta name="keywords" content="java,c++,javascript">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -486,8 +486,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">Git常用操作</h2>
-    2015年01月01日
+    <h2 id="#identifier">6-ZigZag Conversion</h2>
+    2016年08月16日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -500,129 +500,115 @@
 
     <hr>
     <div id="content">
-      <div class="highlighter-rouge"><pre class="highlight"><code> 以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。
+      <p><a href="https://leetcode.com/problems/zigzag-conversion/">6. ZigZag Conversion</a></p>
+
+<h3 id="section">原题目</h3>
+
+<p>The string <code class="highlighter-rouge">"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
+A 	P 	L	S	I	I	G
+Y		I		R	
 </code></pre>
 </div>
 
-<h3 id="section">基础配置</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> 查看配置:git config --list
- 设置全局用户名:git config --global user.name "gitname"
- 设置全局邮箱:git config --global user.email "git@com.cn"
- 查看全局用户名:git config user.name
- 查看全局邮箱:git config user.email
- 设置当前仓库用户名:git config --global user.name "gitname"
- 设置当前仓库邮箱:git config --global user.email "git@com.cn"
- 查看当前仓库用户名:git config user.name
- 查看当前仓库邮箱:git config user.email
+<p>And then read line by line: <code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code><br />
+Write the code that will take a string and make this conversion given a number of rows:</p>
+
+<p><code class="highlighter-rouge">string convert(string text, int nRows);</code><br />
+<code class="highlighter-rouge">convert("PAYPALISHIRING", 3)</code> should return <code class="highlighter-rouge">"PAHNAPLSIIGYIR".</code></p>
+
+<h3 id="section-1">翻译</h3>
+
+<p>将字符串<code class="highlighter-rouge">"PAYPALISHIRING"</code>按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成<code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
+A 	P 	L	S	I	I	G
+Y		I		R	
 </code></pre>
 </div>
 
-<h3 id="section-1">获取帮助</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> 查看帮助:git help config
+<p>编写代码将给定的字符串和行数，将字符串进行锯齿转换。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>string convert(string text, int nRows);
 </code></pre>
 </div>
 
-<h3 id="section-2">初始化一个版本</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>  git init:在一个目录下面，初始化一个Git版本库。
+<p><code class="highlighter-rouge">convert("PAYPALISHIRING", 3)</code> 返回 <code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code>.</p>
+
+<h3 id="section-2">解题思路</h3>
+
+<p>如果nRows = 1， 那么直接返回。<br />
+如果nRows = 2, 转换字符串为：<code class="highlighter-rouge">PYAIHRNAPLSIIG</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P	 Y	 A	 I	 H	 R	 N
+A	 P	 L	 S	 I	 I	 G
 </code></pre>
 </div>
 
-<h3 id="section-3">克隆一个服务器版本</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>  git clone https://github.com/disheng54/disheng54.github.io.git
-  git clone https://github.com/disheng54/disheng54.github.io.git newdir
+<p>如果 nRows = 3  转换字符串为：<code class="highlighter-rouge">PAHNAPLSIIGYIR</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
+A 	P 	L	S	I	I	G
+Y		I		R	
 </code></pre>
 </div>
 
-<h3 id="section-4">查看本地状态</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>  git status
+<p>如果 nRows = 4 转换字符串为：<code class="highlighter-rouge">PINALSIGYAHRPI</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>P 			I			N
+A		L	S		I	G
+Y	A		H	R
+P			I
 </code></pre>
 </div>
 
-<h3 id="section-5">把改动暂存起来。</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>  git add  .     
-  git add 文件名
-  git commit -m "更新说明"
-</code></pre>
-</div>
+<p>通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: <code class="highlighter-rouge">2 * nRows -2 </code><br />
+中间第 i 行，第1列和它临近字符的间距为: <code class="highlighter-rouge">2*nRows -2 - 2 * i</code></p>
 
-<h3 id="section-6">删除文件</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>  删除文件：git rm 文件名称
-  删除暂存或已提交的文件：git rm --cached  文件名。
-  删除一个目录： git rm -r  --cached  目录名。
-</code></pre>
-</div>
+<h3 id="java">代码示例-Java</h3>
 
-<h3 id="section-7">更新文件的名字</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> git mv 旧文件名字 新文件名字
- git commit－m "更新文件名字"
-</code></pre>
-</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
 
-<h3 id="section-8">提交文件</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>提交:git  commit -m "提交说明"
-重新提交:git  commit  --amend 重新提交
-重置文件:git  reset HEAD 文件名
-撤销修改:git  checkout  -- 文件名
-</code></pre>
-</div>
+/**
+ * Created by yumodev on 8/16/16.
+ */
+public class ZigZag_6 {
 
-<h3 id="section-9">忽略一些文件</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>cat .gitignore
-# Built application files
-*.apk 
-*.ap_
+    public static String convert(String s, int numRows){
+        if (numRows &lt;= 1 || s == null || s.length() == 0){
+            return s;
+        }
 
-# Files for the Dalvik VM
-*.dex
+        StringBuilder sb = new StringBuilder();
+        int size = 2 * numRows -2;
+        for (int i = 0; i &lt; numRows; i++){
+            for (int j = i; j &lt; s.length();j+= size){
+                sb.append(s.charAt(j));
+                if (i != 0 &amp;&amp; i != numRows -1){
+                    int temp = j + size - 2 * i;
+                    if (temp &lt; s.length()){
+                        sb.append(s.charAt(temp));
+                    }
+                }
+            }
+        }
 
-# Java class files
-*.class
+        return sb.toString();
+    }
 
-# Generated files
-bin/
-gen/
+    public static void main(String[] args) {
+       // String str = "PAYPALISHIRING";
+        String str = "A";
+        int nRows = 1;
+        long startTime = System.nanoTime();
+        String zigZag = convert(str, nRows);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
 
-# Gradle files
-.gradle/
-build/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Proguard folder generated by Eclipse
-</code></pre>
-</div>
-
-<h3 id="section-10">查看提交日志</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>查看日志: git log
-显示每次的内容差异: git log -p 。
-显示最近的两次更新: git log  -2 
-近显示简要的增改行数: git log --stat 。
-</code></pre>
-</div>
-
-<h3 id="section-11">在本地初始化一个版本库，然后提交到服务器版本</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>git init
-git add .
-git commit -m "first commit"
-git remote add origin https://github.com/disheng54/yumoJava.git
-</code></pre>
-</div>
-
-<h3 id="section-12">远程库</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> 显示远程库: git remote -v
- 查看远程库信息: git remote show origin
- 向远程服务器提交数据: git push origin 分支名字
- 删除远程仓库: git remote rm origin
- 重命名远程仓库: git remote rename origin origin1
-</code></pre>
-</div>
-
-<h3 id="section-13">标签</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> 显示标签: git  tag
- 显示其中一个标签: git tag -i "tagone" 
- 添加一个标签: git  tag  -a v0.1  -m "test tag"
- 显示标签: git show v0.1
+        System.out.println("ZigZag:" + zigZag + " time:" + time);
+    }
+}
 </code></pre>
 </div>
 

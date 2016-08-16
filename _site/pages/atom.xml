@@ -6,6 +6,126 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>6-ZigZag Conversion</title>
+        <link>http://disheng54.github.io/2016/08/16/leetcode-6-ZigZag.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/16/leetcode-6-ZigZag.html</guid>
+        <pubDate>Tue, 16 Aug 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/zigzag-conversion/&quot;&gt;6. ZigZag Conversion&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+
+&lt;p&gt;The string &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
+A 	P 	L	S	I	I	G
+Y		I		R	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And then read line by line: &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;br /&gt;
+Write the code that will take a string and make this conversion given a number of rows:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;string convert(string text, int nRows);&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; should return &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;.&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
+
+&lt;p&gt;将字符串&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt;按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
+A 	P 	L	S	I	I	G
+Y		I		R	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;编写代码将给定的字符串和行数，将字符串进行锯齿转换。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;string convert(string text, int nRows);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; 返回 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
+
+&lt;p&gt;如果nRows = 1， 那么直接返回。&lt;br /&gt;
+如果nRows = 2, 转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PYAIHRNAPLSIIG&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P	 Y	 A	 I	 H	 R	 N
+A	 P	 L	 S	 I	 I	 G
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果 nRows = 3  转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PAHNAPLSIIGYIR&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
+A 	P 	L	S	I	I	G
+Y		I		R	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果 nRows = 4 转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PINALSIGYAHRPI&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 			I			N
+A		L	S		I	G
+Y	A		H	R
+P			I
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: &lt;code class=&quot;highlighter-rouge&quot;&gt;2 * nRows -2 &lt;/code&gt;&lt;br /&gt;
+中间第 i 行，第1列和它临近字符的间距为: &lt;code class=&quot;highlighter-rouge&quot;&gt;2*nRows -2 - 2 * i&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/16/16.
+ */
+public class ZigZag_6 {
+
+    public static String convert(String s, int numRows){
+        if (numRows &amp;lt;= 1 || s == null || s.length() == 0){
+            return s;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        int size = 2 * numRows -2;
+        for (int i = 0; i &amp;lt; numRows; i++){
+            for (int j = i; j &amp;lt; s.length();j+= size){
+                sb.append(s.charAt(j));
+                if (i != 0 &amp;amp;&amp;amp; i != numRows -1){
+                    int temp = j + size - 2 * i;
+                    if (temp &amp;lt; s.length()){
+                        sb.append(s.charAt(temp));
+                    }
+                }
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+       // String str = &quot;PAYPALISHIRING&quot;;
+        String str = &quot;A&quot;;
+        int nRows = 1;
+        long startTime = System.nanoTime();
+        String zigZag = convert(str, nRows);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println(&quot;ZigZag:&quot; + zigZag + &quot; time:&quot; + time);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>5-Longest Palindromic Substring</title>
         <link>http://disheng54.github.io/2016/08/16/leetcode-5-LongestPalindrome.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2016/08/16/leetcode-5-LongestPalindrome.html</guid>
@@ -2702,102 +2822,6 @@ git remote add origin https://github.com/disheng54/yumoJava.git
  显示其中一个标签: git tag -i &quot;tagone&quot; 
  添加一个标签: git  tag  -a v0.1  -m &quot;test tag&quot;
  显示标签: git show v0.1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      </item>
-    
-      <item>
-        <title>Android http开发（－） 下载web页面</title>
-        <link>http://disheng54.github.io/2015/01/01/android-http.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/android-http.html</guid>
-        <pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Android中HTTP协议的开发还是比较重要的，熟练的掌握HTTP开发，有助于开发效率，给用户一个更加优秀的APP产品。Android 中使用HTTP协议开发可以使用java自带的API－HttpURLConnection，也可以使用Apache HttpClient。下面就以这两种方式分别实现对一个web页面的下载。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;httpurlconnection-&quot;&gt;(-)HttpURLConnection 实现一个页面的下载。&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * TODO
- * yumo 利用java的HttpConnectionURL 访问一个网站，并获取它的网站数据。
- * @param url 要下载web页面的网址，比如Http://www.baidu.com
- * @return
- * int
- * 2015-1-1
- */
-private int getByJavaHttp(String webSite)
-{
-	int statusCode = -1;
-	try {
-		//见一个一个URL
-		URL url = new URL(webSite);
-		//访问web页面
-		HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
-		//获取返回的状态吗。
-		statusCode = httpConnection.getResponseCode();
-		//获取下砸的web页面数据。
-		InputStream inputStream = new BufferedInputStream(httpConnection.getInputStream());
-		Reader reader = new InputStreamReader(inputStream);
-		String strResult = &quot;&quot;;
-		int c;
-		while( (c = reader.read()) != -1)
-		{
-			strResult += String.valueOf((char)c);
-		}
-		Log.d(TAG,&quot;getByJavaHttp: &quot; + strResult);
-	} catch (MalformedURLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	return statusCode ;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;apachehttpclient-web&quot;&gt;（二） 通过ApacheHttpClient 实现一个web页面的下载&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * TODO
- * yumo 打印网站的数据 利用Apache httpClient
- * @param url 网站名称 比如http://www.baidu.com
- * @return
- * int 返回请求结果
- * 2015-1-1
- */
-private int getByApacheHttp(String url) 
-{
-	int statusCode = -1;
-	//建立一个网络请求
-	HttpGet httpRequest = new HttpGet(url);
-	HttpClient httpClient = new DefaultHttpClient();
-	try {
-		//执行请求网络。
-		HttpResponse httpResponse = httpClient.execute(httpRequest);
-		//获取网络状态吗
-		statusCode = httpResponse.getStatusLine().getStatusCode(); 
-		if( statusCode == HttpStatus.SC_OK)
-		{
-			//如果成功获取数据则打印日志。
-			String strResult = EntityUtils.toString(httpResponse.getEntity());
-			Log.d(TAG, &quot;getByAndroidHttp:&quot;+strResult);
-		}else
-		{
-			Log.d(TAG,&quot;getByAndroidHttp errorCode :&quot;+ statusCode);
-		}
-	} catch (ClientProtocolException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	return statusCode;
-}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
