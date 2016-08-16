@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>Mac下安装Tomcat | 禹墨的博客</title>
+<title>5-Longest Palindromic Substring | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="java tomcat mac">
+  <meta name="keywords" content="java,c++,javascript">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -472,8 +472,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">Mac下安装Tomcat</h2>
-    2016年06月05日
+    <h2 id="#identifier">5-Longest Palindromic Substring</h2>
+    2016年08月16日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -486,41 +486,76 @@
 
     <hr>
     <div id="content">
-      <h3 id="tomcat">一、下载tomcat</h3>
+      <p><a href="https://leetcode.com/problems/longest-palindromic-substring/">Longest Palindromic Substring</a></p>
 
-<p>打开 tomcat官网 <a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a> 选择合适的版本下载<br />
-mac下下载zip和targz都行.这次我选择的是最新的9.0版本下载的。</p>
+<h3 id="section">原题目</h3>
 
-<h3 id="section">二、安装</h3>
+<p>Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring</p>
 
-<ol>
-  <li>解压刚才下载的文件，命名为tomcat9</li>
-  <li>
-    <p>将tomcat9 移动到 <code class="highlighter-rouge">/Library</code>目录下</p>
+<h3 id="section-1">题目翻译</h3>
 
-    <p><code class="highlighter-rouge">sudo mv tomcat9 /Library</code></p>
-  </li>
-  <li>为tomcat9 添加权限 <code class="highlighter-rouge">sudo chmod 755 /Library/tomcat9/bin/*.sh</code></li>
-</ol>
+<p>给定一个字符串 S，找出其中最长的回文子串。假定 S的最长长度为1000，且存在唯一的最长回文子串</p>
 
-<h3 id="tomcat-1">三、开启和关闭tomcat</h3>
+<h3 id="section-2">解决思路</h3>
 
-<ol>
-  <li>启动tomcat <code class="highlighter-rouge">/Library/tomcat9/bin/startup.sh</code></li>
-  <li><a href="http://localhost:8080/">http://localhost:8080</a> 打开tomcat 首页</li>
-  <li>关闭 tomcat <code class="highlighter-rouge">/Library/tomcat9/bin/shutdown.sh</code></li>
-</ol>
+<p>这个题目可以利用动态规划的方法进行处理。<br />
+假定字符串的长度为len, 声明一个二维数组：dp = new boolean[len][len]<br />
+dp[i][j] 标识字符串S 中S[i~j]的子串是不是回文字符串。<br />
+判断S[i~j]如果是回文串，必须满足两个条件：<br />
+1. S[i] = S[j] <br />
+2. dp[i+1][j-1] = true。</p>
 
-<h3 id="section-1">四、配置环境变量</h3>
+<h3 id="java">代码示例-Java</h3>
 
-<ol>
-  <li>打开.bash_profile <code class="highlighter-rouge">vi ~/.bash_profile</code></li>
-  <li>输入路径：<code class="highlighter-rouge">export PATH=$PATH:/Library/tomcat9/bin</code></li>
-  <li>输入 $PATH 查看刚才输入的路径</li>
-  <li>输入<code class="highlighter-rouge"> source ~/.bash_profile</code> 使配置生效</li>
-  <li>测试 配置是否成功<br />
- 在终端输入 <code class="highlighter-rouge">startup.sh</code> 和 <code class="highlighter-rouge">shutdown.sh</code> 是否启动和关闭tomcat服务器</li>
-</ol>
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ * Created by wks on 8/8/16.
+ */
+public class LongestPalindrome_5 {
+    /**
+     * 利用动态规划的方法.
+     * @param s
+     * @return
+     */
+    public static String longestPalindrome(String s){
+        if (s == null || s.length() == 1) {
+            return s;
+        }
+
+        int len = s.length();
+        boolean[][] dp = new boolean[len][len];
+        int begin = 0, end = 0, max = 1;
+
+        for (int i = len - 1; i &gt;= 0; i--){
+            for (int j = i; j &lt; len; j++){
+                if (s.charAt(i) == s.charAt(j)){
+                    if (j - i &lt;= 2 ||  (dp[i+1][j-1] &amp;&amp; j-1 &gt; 0)){
+                        dp[i][j] = true;
+                        if (max &lt; j - i + 1){
+                            max = j - i + 1;
+                            begin = i;
+                            end = j;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        return s.substring(begin, end+1);
+    }
+
+    public static void main(String[] args) {
+        String str = "1aba12";
+        long startTime = System.nanoTime();
+        String palindrome = longestPalindrome(str);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println("palindrome:" + palindrome + " time:" + time);
+    }
+}
+</code></pre>
+</div>
 
 
     </div>
