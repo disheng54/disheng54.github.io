@@ -6,6 +6,96 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>7-Reverse Integer</title>
+        <link>http://disheng54.github.io/2016/08/17/leetcode-7-ReserseInteger.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/17/leetcode-7-ReserseInteger.html</guid>
+        <pubDate>Wed, 17 Aug 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/reverse-integer/&quot;&gt;7. Reverse Integer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+
+&lt;p&gt;Reverse digits of an integer.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example1: x = 123, return 321
+Example2: x = -123, return -321
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Have you thought about this?&lt;br /&gt;
+Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!&lt;/p&gt;
+
+&lt;p&gt;If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.&lt;/p&gt;
+
+&lt;p&gt;Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?&lt;/p&gt;
+
+&lt;p&gt;For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
+
+&lt;p&gt;反转一个整数数据&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example1: x = 123, return 321
+Example2: x = -123, return -321
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意：在编码之前有一些问题需要考虑，如果你已经考虑了这些问题，这将是你的加分点。&lt;br /&gt;
+如果该整数的最后一位是0，那么僵该输出什么呢？比如 10， 100&lt;br /&gt;
+反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转&lt;code class=&quot;highlighter-rouge&quot;&gt;1000000003&lt;/code&gt;将产生溢出，那这种情况该如何处理呢？&lt;br /&gt;
+如果发生了溢出，就直接返回为0.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;p&gt;需要考虑三个方面的问题。&lt;br /&gt;
+1. 需要考虑负数的反转。&lt;br /&gt;
+2. 如果整数的末尾是0，比如10， 100， 那么反转后为1， 1&lt;br /&gt;
+3. 如果反转后产生了溢出，那么就直接返回 0&lt;/p&gt;
+
+&lt;p&gt;解决思路为：&lt;br /&gt;
+定义一个long 类型的变量result，来存储反转后的整数&lt;br /&gt;
+然后循环反转,注意负数的问题，同时检测到发生了溢出，就返回0&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/17/16.
+ * 反正整形字符串
+ */
+public class ReverseInteger_7 {
+    public static int reverse(int x) {
+        long result = 0;
+        while (x != 0){
+            result = result * 10 + x % 10;
+            x = x / 10;
+
+            if (result &amp;gt; Integer.MAX_VALUE || result &amp;lt; Integer.MIN_VALUE){
+                result = 0;
+                break;
+            }
+        }
+
+        return (int)result;
+    }
+
+    public static void main(String[] args) {
+        int x  = 1000000003;
+        long startTime = System.nanoTime();
+        int result = reverse(x);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println(&quot;reverse:&quot; + result + &quot; time:&quot; + time);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>6-ZigZag Conversion</title>
         <link>http://disheng54.github.io/2016/08/16/leetcode-6-ZigZag.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2016/08/16/leetcode-6-ZigZag.html</guid>
@@ -2688,140 +2778,6 @@ thread1
         this.value = new char[this.count];
         stringBuilder.getChars(0, this.count, this.value, 0);
     }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      </item>
-    
-      <item>
-        <title>Git常用操作</title>
-        <link>http://disheng54.github.io/2015/01/01/git-git.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2015/01/01/git-git.html</guid>
-        <pubDate>Thu, 01 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 以前一直使用GitHub的图像客户的来操作自己版本库的提交和更新。现在感觉效率不高，虽下定决心要在命令行下面操作Git。所以我有必要把平时要使用Git命令整理一份文档出来，从而可以更熟练的使用Git。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;基础配置&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 查看配置:git config --list
- 设置全局用户名:git config --global user.name &quot;gitname&quot;
- 设置全局邮箱:git config --global user.email &quot;git@com.cn&quot;
- 查看全局用户名:git config user.name
- 查看全局邮箱:git config user.email
- 设置当前仓库用户名:git config --global user.name &quot;gitname&quot;
- 设置当前仓库邮箱:git config --global user.email &quot;git@com.cn&quot;
- 查看当前仓库用户名:git config user.name
- 查看当前仓库邮箱:git config user.email
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;获取帮助&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 查看帮助:git help config
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;初始化一个版本&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git init:在一个目录下面，初始化一个Git版本库。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-3&quot;&gt;克隆一个服务器版本&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git clone https://github.com/disheng54/disheng54.github.io.git
-  git clone https://github.com/disheng54/disheng54.github.io.git newdir
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-4&quot;&gt;查看本地状态&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git status
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-5&quot;&gt;把改动暂存起来。&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  git add  .     
-  git add 文件名
-  git commit -m &quot;更新说明&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;删除文件&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  删除文件：git rm 文件名称
-  删除暂存或已提交的文件：git rm --cached  文件名。
-  删除一个目录： git rm -r  --cached  目录名。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-7&quot;&gt;更新文件的名字&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git mv 旧文件名字 新文件名字
- git commit－m &quot;更新文件名字&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-8&quot;&gt;提交文件&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;提交:git  commit -m &quot;提交说明&quot;
-重新提交:git  commit  --amend 重新提交
-重置文件:git  reset HEAD 文件名
-撤销修改:git  checkout  -- 文件名
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-9&quot;&gt;忽略一些文件&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat .gitignore
-# Built application files
-*.apk 
-*.ap_
-
-# Files for the Dalvik VM
-*.dex
-
-# Java class files
-*.class
-
-# Generated files
-bin/
-gen/
-
-# Gradle files
-.gradle/
-build/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Proguard folder generated by Eclipse
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-10&quot;&gt;查看提交日志&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;查看日志: git log
-显示每次的内容差异: git log -p 。
-显示最近的两次更新: git log  -2 
-近显示简要的增改行数: git log --stat 。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-11&quot;&gt;在本地初始化一个版本库，然后提交到服务器版本&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
-git add .
-git commit -m &quot;first commit&quot;
-git remote add origin https://github.com/disheng54/yumoJava.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-12&quot;&gt;远程库&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 显示远程库: git remote -v
- 查看远程库信息: git remote show origin
- 向远程服务器提交数据: git push origin 分支名字
- 删除远程仓库: git remote rm origin
- 重命名远程仓库: git remote rename origin origin1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-13&quot;&gt;标签&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 显示标签: git  tag
- 显示其中一个标签: git tag -i &quot;tagone&quot; 
- 添加一个标签: git  tag  -a v0.1  -m &quot;test tag&quot;
- 显示标签: git show v0.1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 

@@ -2,13 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>android开发中的资源 | 禹墨的博客</title>
+<title>7-Reverse Integer | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="android,开源">
+  <meta name="keywords" content="java,c++,javascript">
 
-
-  <meta name="description " content="android资源">
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -502,8 +500,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">android开发中的资源</h2>
-    2015年01月27日
+    <h2 id="#identifier">7-Reverse Integer</h2>
+    2016年08月17日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -516,24 +514,87 @@
 
     <hr>
     <div id="content">
-      <h1 align="center">Android 开发资源</h1>
+      <p><a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer</a></p>
 
-<h3 id="section">开发网站</h3>
+<h3 id="section">原题目</h3>
 
-<h3 id="section-1">优秀博客</h3>
+<p>Reverse digits of an integer.</p>
 
-<h3 id="ndk">NDK</h3>
-<ul>
-  <li>
-    <p><a href="http://blog.csdn.net/shulianghan/article/details/18964835">NDK从入门到精通 介绍的非常详细</a></p>
-  </li>
-  <li>
-    <p><a href="http://blog.csdn.net/column/details/blogjnindk.html">JNI/NDK开发指南 专栏</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.cppblog.com/xkjy3000/category/20738.html">NDK开发教程 不推荐入门看</a></p>
-  </li>
-</ul>
+<div class="highlighter-rouge"><pre class="highlight"><code>Example1: x = 123, return 321
+Example2: x = -123, return -321
+</code></pre>
+</div>
+
+<p>Have you thought about this?<br />
+Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
+
+<p>If the integer’s last digit is 0, what should the output be? ie, cases such as 10, 100.</p>
+
+<p>Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, then the reverse of 1000000003 overflows. How should you handle such cases?</p>
+
+<p>For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+
+<h3 id="section-1">翻译</h3>
+
+<p>反转一个整数数据</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example1: x = 123, return 321
+Example2: x = -123, return -321
+</code></pre>
+</div>
+
+<p>注意：在编码之前有一些问题需要考虑，如果你已经考虑了这些问题，这将是你的加分点。<br />
+如果该整数的最后一位是0，那么僵该输出什么呢？比如 10， 100<br />
+反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转<code class="highlighter-rouge">1000000003</code>将产生溢出，那这种情况该如何处理呢？<br />
+如果发生了溢出，就直接返回为0.</p>
+
+<h3 id="section-2">解决思路</h3>
+
+<p>需要考虑三个方面的问题。<br />
+1. 需要考虑负数的反转。<br />
+2. 如果整数的末尾是0，比如10， 100， 那么反转后为1， 1<br />
+3. 如果反转后产生了溢出，那么就直接返回 0</p>
+
+<p>解决思路为：<br />
+定义一个long 类型的变量result，来存储反转后的整数<br />
+然后循环反转,注意负数的问题，同时检测到发生了溢出，就返回0</p>
+
+<h3 id="java">代码示例-Java</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/17/16.
+ * 反正整形字符串
+ */
+public class ReverseInteger_7 {
+    public static int reverse(int x) {
+        long result = 0;
+        while (x != 0){
+            result = result * 10 + x % 10;
+            x = x / 10;
+
+            if (result &gt; Integer.MAX_VALUE || result &lt; Integer.MIN_VALUE){
+                result = 0;
+                break;
+            }
+        }
+
+        return (int)result;
+    }
+
+    public static void main(String[] args) {
+        int x  = 1000000003;
+        long startTime = System.nanoTime();
+        int result = reverse(x);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println("reverse:" + result + " time:" + time);
+    }
+}
+</code></pre>
+</div>
 
 
     </div>

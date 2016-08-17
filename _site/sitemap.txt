@@ -11,6 +11,8 @@
 
 
 
+  /2016/08/17/leetcode-7-ReserseInteger.html
+
   /2016/08/16/leetcode-6-ZigZag.html
 
   /2016/08/16/leetcode-5-LongestPalindrome.html
