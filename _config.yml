@@ -4,9 +4,10 @@ markdown: kramdown
 
 kramdown:
   input: GFM
+  highlighter: rouge
 
 # 作者信息
-author: 
+author:
   name: 禹墨
   email: disheng54@163.com
   link: http://disheng54.github.io
@@ -14,7 +15,7 @@ author:
   github: https://github.com/disheng54
 
 # 站点信息
-title: 禹墨的博客 
+title: 禹墨的博客
 description: 禹墨的博客
 url: http://disheng54.github.io
 rss_url: /pages/atom.xml
@@ -25,7 +26,7 @@ favicon: http://yumo.qiniudn.com/baby.png
 
 # google analytics 设置
 ga:
-  id: 
+  id:
   url: http://disheng54.github.io
 
 # disqus 设置
@@ -36,7 +37,7 @@ disqus:
 active: android
 
 # 首页除了最新文章外显示分类
-cates: 
+cates:
   - andorid
 
 # 中文本地化

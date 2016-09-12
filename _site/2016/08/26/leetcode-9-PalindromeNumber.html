@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>关于 | 禹墨的博客</title>
+<title>9-Palindrome Number | 禹墨的博客</title>
 <meta name="author" content="禹墨">
+
+  <meta name="keywords" content="java">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -554,28 +556,86 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">关于</h2>
+    <h2 id="#identifier">9-Palindrome Number</h2>
+    2016年08月26日
   </div>
   <div class="col-md-12 aside3-content">
-    <div id="page-content">
-      <h2>关于这个博客</h2>
+    <!-- 目录 -->
+<div class="content">
+    <h3><a href="javascript:;" id="content_btn">[目录]</a></h3>
+    <div id="content_table" style="display:none;">
+        <div id="nav"></div>
+    </div>
+</div>
 
-<p>一个快乐的程序员，一个顾家的丈夫，一个充满童心的父亲。</p>
-<p>这里将留下我的青春，我的快乐，我的奋斗，我的成长。</p>
+    <hr>
+    <div id="content">
+      <p><a href="https://leetcode.com/problems/palindrome-number/">9. Palindrome Number</a></p>
 
-<hr>
-<a href="http://weibo.com" target="_blank">
-  <i class="fa fa-weibo fa-2x"></i>
-</a>
-<a href="https://github.com/disheng54" target="_blank">
-  <i class="fa fa-github fa-2x"></i>
-</a>
-<a href="/pages/atom.xml" target="_blank">
-  <i class="fa fa-rss fa-2x"></i>
-</a>
-<a href="mailto:disheng54@163.com">
-  <i class="fa fa-envelope-o fa-2x"></i>
-</a>
+<h3 id="section">原题目</h3>
+
+<p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+
+<p>Some hints:<br />
+Could negative integers be palindromes? (ie, -1)</p>
+
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+
+<p>There is a more generic way of solving this problem.</p>
+
+<h3 id="section-1">翻译</h3>
+
+<p>在不需要额外空间的情况下，判定一个整数是否是回文字符串。<br />
+一些提示：<br />
+一个负整数是回文字符串吗?(比如 <code class="highlighter-rouge">-1</code>)<br />
+如果你想把一个整数转换为字符串，需要注意不需要额外的空间的限制。<br />
+也许你会反转整数，如果你已经解决了这道题目”Reverse Integer”, 你就会知道反转字符串也许会发生溢出，然后你该如何处理这种情况呢。<br />
+有一个更加通用的方式来解决这个问题。</p>
+
+<h3 id="section-2">解题思路</h3>
+
+<p>这道题目需要考虑一些特殊的情况，比如负数不认为是一个负数<br />
+判断一个整数 x 是不是回文字符串，那么就把这个整数反转后，判断和 x 是不是相等就可以了。<br />
+题目中整数溢出问题，是不需要考虑的，凡是反转后发生溢出的，那么肯定不是回文串。</p>
+
+<h3 id="java">代码示例-Java</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/25/16.
+ */
+public class PalindromeNumber_9 {
+    public static  boolean isPalindrome(int x) {
+        if (x &lt; 0){
+            return false;
+        }
+
+        int los = 0;
+        int temp = x;
+
+        while (temp &gt; 0){
+            los = los * 10 + temp % 10;
+            temp = temp / 10;
+        }
+
+        return los == x;
+    }
+
+    public static void main(String[] args) {
+        int number = 121;
+        long startTime = System.nanoTime();
+        boolean result = isPalindrome(number);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println("reverse:" + result + " time:" + time);
+    }
+}
+</code></pre>
+</div>
 
 
     </div>
@@ -586,6 +646,7 @@
 
   </div>
 </div>
+
 
           </div>
         </div>

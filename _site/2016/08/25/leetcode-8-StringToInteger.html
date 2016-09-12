@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>关于 | 禹墨的博客</title>
+<title>8-String to Integer | 禹墨的博客</title>
 <meta name="author" content="禹墨">
+
+  <meta name="keywords" content="java,c++,javascript">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -554,28 +556,125 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">关于</h2>
+    <h2 id="#identifier">8-String to Integer</h2>
+    2016年08月25日
   </div>
   <div class="col-md-12 aside3-content">
-    <div id="page-content">
-      <h2>关于这个博客</h2>
+    <!-- 目录 -->
+<div class="content">
+    <h3><a href="javascript:;" id="content_btn">[目录]</a></h3>
+    <div id="content_table" style="display:none;">
+        <div id="nav"></div>
+    </div>
+</div>
 
-<p>一个快乐的程序员，一个顾家的丈夫，一个充满童心的父亲。</p>
-<p>这里将留下我的青春，我的快乐，我的奋斗，我的成长。</p>
+    <hr>
+    <div id="content">
+      <p><a href="https://leetcode.com/problems/string-to-integer-atoi/">8. String to Integer (atoi)</a></p>
 
-<hr>
-<a href="http://weibo.com" target="_blank">
-  <i class="fa fa-weibo fa-2x"></i>
-</a>
-<a href="https://github.com/disheng54" target="_blank">
-  <i class="fa fa-github fa-2x"></i>
-</a>
-<a href="/pages/atom.xml" target="_blank">
-  <i class="fa fa-rss fa-2x"></i>
-</a>
-<a href="mailto:disheng54@163.com">
-  <i class="fa fa-envelope-o fa-2x"></i>
-</a>
+<h3 id="section">原题目</h3>
+
+<p>Implement atoi to convert a string to an integer.</p>
+
+<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
+
+<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+
+<p>Requirements for atoi:<br />
+The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+
+<p>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
+
+<h3 id="section-1">翻译</h3>
+
+<p>实现方法 <code class="highlighter-rouge">atoi</code> 将一个字符串转换为整数<br />
+提示：请考虑到所有输入的情况。如果你想要挑战一下自己，就可以不用开下面的注意事项然后问题自己，都有哪些输入情况。<br />
+注意：这道题目的定义是模糊的(没有给输入的限定条件)，你需要自己考虑所有的输入情况。</p>
+
+<p><code class="highlighter-rouge">atoi </code> 方法的要求：<br />
+该方法要求忽略字符串开始的空白字符，一直到第一个非空白字符为止。然后从这个字符开始，先判断初始的正负字符，然后选取尽可能多的数字字符，并将它们转换为一个数值。<br />
+也许该字符串的有效数字后面还有一些额外的非数字字符，那么将忽略这些字符。<br />
+如果第一个非空白字符不是数字字符，或者改字符串是个空串，或者只包含空白字符，则不执行转换。<br />
+如果未执行有效的转换，就返回 <code class="highlighter-rouge">0</code> .如果转换后的数字超出了 <code class="highlighter-rouge">int</code> 类型标识数字的的范围，那么返回<code class="highlighter-rouge">INT_MAX (2147483647) 或者 INT_MIN (-2147483648)</code></p>
+
+<h3 id="section-2">解决思路</h3>
+
+<p>这道题目比较简单，正如题目的里面的讲的那样，难点是要考虑到各种的情况。<br />
+1、空字符串、空白字符串、没有有效数字的字符串，返回0<br />
+2、需要去除前面的无效空白字符。<br />
+3、考虑第一个非空字符，如果是 <code class="highlighter-rouge">+</code> 标识正值，如果是<code class="highlighter-rouge"> -</code> 标识负值。<br />
+4、忽略有效数字字符后面的所有无效字符，比如：<code class="highlighter-rouge">'   -123&amp;456' </code>转换为 <code class="highlighter-rouge">-123</code><br />
+5、如果转换后的整数值，超过了返回就返回返回<code class="highlighter-rouge">INT_MAX (2147483647) 或者 INT_MIN (-2147483648)</code></p>
+
+<h3 id="java">代码示例-Java</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/22/16.
+ */
+public class Atoi_8 {
+    public static int myAtoi(String str) {
+        if (str == null ||str.trim().length() == 0){
+            return  0;
+        }
+
+        int index = 0;
+        while ((index &lt; str.length()) &amp;&amp; (str.charAt(index) == ' ')){
+            index ++;
+
+        }
+
+        int sign = 1;
+        if (str.charAt(index) == '+'){
+            sign = 1;
+            index ++;
+        }else if (str.charAt(index) == '-'){
+            sign = -1;
+            index ++;
+        }
+
+        long result = 0L;
+        for (int i = index; i &lt; str.length(); i++){
+           if( str.charAt(i) &gt;=  '0' &amp;&amp; str.charAt(i) &lt;= '9'){
+                result = result * 10 + (str.charAt(i) - '0');
+               if (sign == 1){
+                   if(result &gt; Integer.MAX_VALUE){
+                       result = Integer.MAX_VALUE;
+                       break;
+                   }
+               }else{
+                   if (result*sign &lt; Integer.MIN_VALUE){
+                       result = Integer.MIN_VALUE;
+                       break;
+                   }
+               }
+           }else{
+               break;
+           }
+        }
+
+        return (int)result * sign;
+    }
+
+    public static void main(String[] args) {
+        //String str = "  -214748364734dd";
+        String str = "  -00134";
+        long startTime = System.nanoTime();
+        int result = myAtoi(str);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println("reverse:" + result + " time:" + time);
+    }
+}
+
+</code></pre>
+</div>
 
 
     </div>
@@ -586,6 +685,7 @@
 
   </div>
 </div>
+
 
           </div>
         </div>

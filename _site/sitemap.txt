@@ -11,7 +11,13 @@
 
 
 
-  /2016/08/25/leetcode-6-StringToInteger.html
+  /2016/09/12/leetcode-14-LongestCommonPrefix.html
+
+  /2016/09/12/leetcode-13-RomanToInteger.html
+
+  /2016/08/26/leetcode-9-PalindromeNumber.html
+
+  /2016/08/25/leetcode-8-StringToInteger.html
 
   /2016/08/17/leetcode-7-ReserseInteger.html
 

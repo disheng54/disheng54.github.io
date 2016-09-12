@@ -6,9 +6,394 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>14-Longest Common Prefix</title>
+        <link>http://disheng54.github.io/2016/09/12/leetcode-14-LongestCommonPrefix.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/09/12/leetcode-14-LongestCommonPrefix.html</guid>
+        <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/longest-common-prefix/&quot;&gt;14. Longest Common Prefix&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+
+&lt;p&gt;Write a function to find the longest common prefix string amongst an array of strings.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
+
+&lt;p&gt;编写一个方法来查找一个字符串数组中最长的公共前缀字符串。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;p&gt;这道题目的意思是求取所有字符串的最长前缀公共字符串。采用暴力比较的方法是最简单。&lt;br /&gt;
+就是循环获取第一个字符串的前缀子串，将这个子串分别和其他字符串的相同索引的子串进行比较，&lt;br /&gt;
+如果任意一个其他字符串的前缀子串和第一字符串的前缀子串不相符，那么除去这个前缀子串的最后一个字符，就是最大的公共前缀子串&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+ * Created by yumodev on 9/12/16.
+ */
+public class LongestCommonPrefix_14 {
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0){
+            return &quot;&quot;;
+        }
+
+
+        for (int i = 0; i &amp;lt; strs[0].length(); i++){
+            for (int j = 1; j &amp;lt; strs.length; j++){
+                if (strs[j].length() &amp;lt;= i || strs[j].charAt(i) != strs[0].charAt(i)){
+                    return strs[0].substring(0, i);
+                }
+            }
+        }
+
+        return strs[0];
+    }
+
+    public static void main(String[] args) {
+        String[] str = {&quot;121&quot;, &quot;12&quot;, &quot;21&quot;};
+        long startTime = System.nanoTime();
+        String result = longestCommonPrefix(str);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println(&quot;longestCommonPrefix:&quot; + result + &quot; time:&quot; + time);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
+        <title>13-Roman to Integer</title>
+        <link>http://disheng54.github.io/2016/09/12/leetcode-13-RomanToInteger.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/09/12/leetcode-13-RomanToInteger.html</guid>
+        <pubDate>Mon, 12 Sep 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/roman-to-integer/&quot;&gt;13. Roman to Integer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+
+&lt;p&gt;Given a roman numeral, convert it to an integer.&lt;br /&gt;
+Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;题目翻译&lt;/h3&gt;
+
+&lt;p&gt;将给定的一个罗马数字字符串转换为整数&lt;br /&gt;
+假定的输入范围是1到3999.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;p&gt;这道里面本身很简单，其实难点在于必须要明白罗马数字的标识方法。&lt;br /&gt;
+罗马数字一共有七个大写字符，分别是：&lt;code class=&quot;highlighter-rouge&quot;&gt;I、V、X、L、C、D、M&lt;/code&gt;。&lt;br /&gt;
+下面是罗马字符和整数的对应关系。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;罗马字符&lt;/th&gt;
+      &lt;th&gt;整数&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;L&lt;/td&gt;
+      &lt;td&gt;50&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C&lt;/td&gt;
+      &lt;td&gt;100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;D&lt;/td&gt;
+      &lt;td&gt;500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;M&lt;/td&gt;
+      &lt;td&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;罗马字符串的计算规则就是&lt;br /&gt;
+1、从左向右一次计算。&lt;br /&gt;
+2、如果一个罗马字符对应的整数比它后面的字符对应的整数小，那么就讲后面的字符对应的整数减去它对应的整数。&lt;br /&gt;
+如果一个罗马字符对应的整数不小于它后面的字符对应的整数，那么就讲后面的字符对应的整数加上它对应的整数。&lt;br /&gt;
+下面是一个罗马字符串和整数的对应计算实例&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;罗马字符串&lt;/th&gt;
+      &lt;th&gt;整数&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;III&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IV&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;VI&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IX&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;XI&lt;/td&gt;
+      &lt;td&gt;11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IL&lt;/td&gt;
+      &lt;td&gt;49&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LX&lt;/td&gt;
+      &lt;td&gt;60&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IM&lt;/td&gt;
+      &lt;td&gt;999&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;VM&lt;/td&gt;
+      &lt;td&gt;995&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;XM&lt;/td&gt;
+      &lt;td&gt;990&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LM&lt;/td&gt;
+      &lt;td&gt;950&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CM&lt;/td&gt;
+      &lt;td&gt;900&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DM&lt;/td&gt;
+      &lt;td&gt;500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MI&lt;/td&gt;
+      &lt;td&gt;1001&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MV&lt;/td&gt;
+      &lt;td&gt;1005&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MX&lt;/td&gt;
+      &lt;td&gt;1010&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ML&lt;/td&gt;
+      &lt;td&gt;1050&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MC&lt;/td&gt;
+      &lt;td&gt;1100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MD&lt;/td&gt;
+      &lt;td&gt;1500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MDCCCLXXXIV&lt;/td&gt;
+      &lt;td&gt;1884&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;代码示例&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+ * Created by yumodev on 9/12/16.
+ */
+public class RomanToInteger_13 {
+    public static int romanToInt(String s) {
+        if (s == null || s.length() == 0){
+            return 0;
+        }
+
+        int result = 0;
+        for (int i = 0; i &amp;lt; s.length();i++){
+            char ch = s.charAt(i);
+            switch (ch){
+                case &#39;I&#39;:{
+                    if (i &amp;lt; s.length() -1  &amp;amp;&amp;amp; s.charAt(i + 1) != &#39;I&#39;){
+                        result -= 1;
+                    }else{
+                        result += 1;
+                    }
+                    break;
+                }
+                case &#39;V&#39;:{
+                    if (i &amp;lt; s.length() -1  &amp;amp;&amp;amp; (s.charAt(i + 1) != &#39;I&#39; &amp;amp;&amp;amp; s.charAt(i + 1) != &#39;V&#39;)){
+                        result -= 5;
+                    }else{
+                        result += 5;
+                    }
+                    break;
+                }
+                case &#39;X&#39;:{
+                    if (i &amp;lt; s.length() -1  &amp;amp;&amp;amp; ( s.charAt(i + 1) == &#39;C&#39; || s.charAt(i + 1) == &#39;L&#39; || s.charAt(i + 1) == &#39;M&#39; || s.charAt(i + 1) == &#39;D&#39;)){
+                        result -= 10;
+                    }else{
+                        result += 10;
+                    }
+                    break;
+                }
+                case &#39;L&#39;:{
+                    if (i &amp;lt; s.length() -1  &amp;amp;&amp;amp; ( s.charAt(i + 1) == &#39;C&#39; || s.charAt(i + 1) == &#39;M&#39; || s.charAt(i + 1) == &#39;D&#39;)){
+                        result -= 50;
+                    }else{
+                        result += 50;
+                    }
+                    break;
+                }
+                case &#39;C&#39;:{
+                    if (i &amp;lt; s.length() -1  &amp;amp;&amp;amp; (s.charAt(i + 1) == &#39;M&#39; || s.charAt(i + 1) == &#39;D&#39;)){
+                        result -= 100;
+                    }else{
+                        result += 100;
+                    }
+                    break;
+                }
+                case &#39;D&#39;:{
+                    if (i &amp;lt; s.length() -1  &amp;amp;&amp;amp; s.charAt(i + 1) == &#39;M&#39;){
+                        result -= 500;
+                    }else{
+                        result += 500;
+                    }
+                    break;
+                }
+                case &#39;M&#39;:{
+                    result += 1000;
+                    break;
+                }
+
+            }
+
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String str = &quot;MDCCCLXXXIV&quot;;
+        long startTime = System.nanoTime();
+        int result = romanToInt(str);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println(&quot;romanToInt:&quot; + result + &quot; time:&quot; + time);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
+        <title>9-Palindrome Number</title>
+        <link>http://disheng54.github.io/2016/08/26/leetcode-9-PalindromeNumber.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/26/leetcode-9-PalindromeNumber.html</guid>
+        <pubDate>Fri, 26 Aug 2016 00:00:00 +0800</pubDate>
+        <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/palindrome-number/&quot;&gt;9. Palindrome Number&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
+
+&lt;p&gt;Determine whether an integer is a palindrome. Do this without extra space.&lt;/p&gt;
+
+&lt;p&gt;Some hints:&lt;br /&gt;
+Could negative integers be palindromes? (ie, -1)&lt;/p&gt;
+
+&lt;p&gt;If you are thinking of converting the integer to string, note the restriction of using extra space.&lt;/p&gt;
+
+&lt;p&gt;You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?&lt;/p&gt;
+
+&lt;p&gt;There is a more generic way of solving this problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
+
+&lt;p&gt;在不需要额外空间的情况下，判定一个整数是否是回文字符串。&lt;br /&gt;
+一些提示：&lt;br /&gt;
+一个负整数是回文字符串吗?(比如 &lt;code class=&quot;highlighter-rouge&quot;&gt;-1&lt;/code&gt;)&lt;br /&gt;
+如果你想把一个整数转换为字符串，需要注意不需要额外的空间的限制。&lt;br /&gt;
+也许你会反转整数，如果你已经解决了这道题目”Reverse Integer”, 你就会知道反转字符串也许会发生溢出，然后你该如何处理这种情况呢。&lt;br /&gt;
+有一个更加通用的方式来解决这个问题。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
+
+&lt;p&gt;这道题目需要考虑一些特殊的情况，比如负数不认为是一个负数&lt;br /&gt;
+判断一个整数 x 是不是回文字符串，那么就把这个整数反转后，判断和 x 是不是相等就可以了。&lt;br /&gt;
+题目中整数溢出问题，是不需要考虑的，凡是反转后发生溢出的，那么肯定不是回文串。&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+
+/**
+ * Created by yumodev on 8/25/16.
+ */
+public class PalindromeNumber_9 {
+    public static  boolean isPalindrome(int x) {
+        if (x &amp;lt; 0){
+            return false;
+        }
+
+        int los = 0;
+        int temp = x;
+
+        while (temp &amp;gt; 0){
+            los = los * 10 + temp % 10;
+            temp = temp / 10;
+        }
+
+        return los == x;
+    }
+
+    public static void main(String[] args) {
+        int number = 121;
+        long startTime = System.nanoTime();
+        boolean result = isPalindrome(number);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+
+        System.out.println(&quot;reverse:&quot; + result + &quot; time:&quot; + time);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>8-String to Integer</title>
-        <link>http://disheng54.github.io/2016/08/25/leetcode-6-StringToInteger.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2016/08/25/leetcode-6-StringToInteger.html</guid>
+        <link>http://disheng54.github.io/2016/08/25/leetcode-8-StringToInteger.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2016/08/25/leetcode-8-StringToInteger.html</guid>
         <pubDate>Thu, 25 Aug 2016 00:00:00 +0800</pubDate>
         <description>&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/string-to-integer-atoi/&quot;&gt;8. String to Integer (atoi)&lt;/a&gt;&lt;/p&gt;
 
@@ -2421,317 +2806,6 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	getPrice 进入运行了
 	getPrice 进入运行了
 	通过反射修改后，书的价格为:100.0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      </item>
-    
-      <item>
-        <title>java 随机数－常用操作集合。</title>
-        <link>http://disheng54.github.io/2015/01/05/java-random.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2015/01/05/java-random.html</guid>
-        <pubDate>Mon, 05 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;p&gt;随机数用的场合非常多，但是使用起来并不复杂，非常的简单。下面就是他的一些列方法的使用&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    Random random = new Random(100);
-	
-	//随机生成10个int数字  next()
-	System.out.println(&quot;随机生成5个int数字  next()&quot;);
-	for(int n =0; n &amp;lt; 5; n++)
-	{
-		System.out.println(random.nextInt());
-	}
-	
-	//生成5个 0到100之间的数字。
-	System.out.println(&quot;生成5个 0到100之间的数字。 nextInt(100)&quot;);
-	for(int n =0; n &amp;lt; 5; n++)
-	{
-		System.out.println(random.nextInt(100));
-	}
-	
-	//随机生成5个boolean值
-	System.out.println(&quot;随机生成5个boolean值 netBoolean&quot;);
-	for(int n =0; n &amp;lt; 5; n++)
-	{
-		System.out.println(random.nextBoolean());
-	}
-	
-	//随机生成5个long值
-	System.out.println(&quot;随机生成5个long值 random nextLong()&quot;);
-	for(int n =0; n &amp;lt; 10; n++)
-	{
-		System.out.println(random.nextLong());
-	}
-	
-	//随机生成5个fload值
-	System.out.println(&quot;随机生成5个fload值 netFloat&quot;);
-	for(int n =0; n &amp;lt;5; n++)
-	{
-		System.out.println(random.nextFloat()*100);
-	}
-	
-	//随机生成5个double值
-	System.out.println(&quot;随机生成5个double值 netDouble&quot;);
-	for(int n =0; n &amp;lt; 5; n++)
-	{
-		System.out.println(random.nextDouble()*100);
-	}
-	
-	//随机生成10个Gaussian值
-	System.out.println(&quot;随机生成5个太随机数  nextGaussian()&quot;);
-	for(int n =0; n &amp;lt; 5; n++)
-	{
-		System.out.println(random.nextGaussian()*100);
-	}
-		
-	
-	//
-	System.out.println(&quot;建立一个字节数组，来接收随机生成的字节。 nextBytes(byte[])&quot;);
-	
-	byte[] bytes= new byte[10];
-	random.nextBytes(bytes);
-	for(byte bt : bytes)
-	{
-		System.out.println(bt);
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;执行上面的代码。我们可以等到如下的结果。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	生成5个 0到100之间的数字。 nextInt(100)
-	66
-	36
-	88
-	23
-	13
-	随机生成5个boolean值 netBoolean
-	true
-	false
-	false
-	false
-	false
-	随机生成5个long值 random nextLong()
-	1994076515850003689
-	-3505880182545671094
-	5294845296780165755
-	7666949800837858506
-	-9143039415690246354
-	1622479998420556049
-	5700377594808985065
-	234374027031053629
-	-7316603517567067640
-	3586133391558490009
-	随机生成5个fload值 netFloat
-	86.28953
-	15.13797
-	91.9473
-	12.135201
-	23.321033
-	随机生成5个double值 netDouble
-	41.3242845037923
-	28.672630466619474
-	62.46190087763299
-	73.14622835577995
-	48.603697468545924
-	随机生成5个张太随机数  nextGaussian()
-	-218.73465232186376
-	-139.0458132709607
-	-170.60989533724836
-	-31.26162845667001
-	80.45245617401423
-	建立一个字节数组，来接收随机生成的字节。 nextBytes(byte[])
-	-48
-	-50
-	-114
-	12
-	-58
-	123
-	-118
-	-39
-	104
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-      </item>
-    
-      <item>
-        <title>线程基础 -线程的创建与执行</title>
-        <link>http://disheng54.github.io/2015/01/03/java-thread1.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2015/01/03/java-thread1.html</guid>
-        <pubDate>Sat, 03 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;h3 id=&quot;section&quot;&gt;什么是线程&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    先在的操作系统基本上都是基于多线程的了，在实际的开发中，多线程是无处不在的。一个java程序运行起来，就会默认打开一个主线程。那什么是线程呢。
-    线程依附于一个进程，是操作系统可以调度的最小单位。一个进程中的线程之间共用进程的内存和公共数据。
-    使用多线程可以实现并发编程，提高程序的性能。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;如何创建并执行。一个线程&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    创建一个线程可以通过两种方法，但是最后执行都是调用Thread类的start()方法来启动一个线程。 start()会自动调用run() 执行线程的操作。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;通过扩展一个Thread对象，来创建一个线程。&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
-* yumo
-* 通过继承Thread  创建一个子线程类。
-*/    class Thread1 extends Thread{
-   //线程启动后自动调用run方法运行
-   public void run(){
-       System.out.println(&quot;thread1&quot;);
-   }    }
-	
-我们可以调用Thread的start()启动一个线程。
-	
-Thread1 thread = new Thread1();
-thread.start();
-	 
-最后的运行结果为：
-	 
-thread1
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;通过继承Runnable接口创建一个线程。&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  /**
-  * yumo
-  * 通过继承Runnable接口实现Runnable对象，重写其中的run()方法
-  */
- class Runnable1 implements Runnable {
-	
-     @Override
-     public void run() {
-         // TODO Auto-generated method stub
-         System.out.println(&quot;runnable1&quot;);
-     }
- }
-	
-   建立并执行该线程。
-          
-   Thread thread1 = new Thread(new Runnable1());
-   thread1.start();
-          
-   输出结果为：	
-          
-   runnable1
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-      </item>
-    
-      <item>
-        <title>线程基础-手动停止线程</title>
-        <link>http://disheng54.github.io/2015/01/02/java-thread2.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2015/01/02/java-thread2.html</guid>
-        <pubDate>Fri, 02 Jan 2015 00:00:00 +0800</pubDate>
-        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  线程启动后，run()方法运行结束后，就标志着线程结束并正常退出了。可是在一些情况下，比如软件关闭时，需要停止一些尚在运行的进程。手动停止线程有三种方式  
-  1、 Thread自带的stop()方法
-  2、 建立标志位来停止线程。
-  3、 Thread的Interrupts  方法。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;stop&quot;&gt;利用Stop()方法停止线程&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  很不幸该方法已经被弃用了。但是该方法还是 的的确确可以让线程立刻停止的。可是问题就是处在立刻停止上面了。就是Stop()让该线程义无反顾的停止了运行，没有丝毫的犹豫，这就带了很多的问题，让线程里的其他成员和开启线程的类非常的不舒服，比如我希望在任何时候，在线程结束以前都打印一条日志，如果用Stop()方法，就不可能打印那条日志了。如果我们打开一个File，一个Socket，我们希望在线程结束的时候，能够调用一下close方法。这也做不到了。所以还是尽可能的少用Stop()方法吧。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;通过标志位来停止一个线程。&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  在我以往的开发工作中，我一向是利用利用标志位来手动的停止一个线程的。它的原理就是在run() 方法里面进行一个条件判断，满足条件就接着运行该线程，否则话就进行一些收尾工作，来停止该线程的运行。下面我建立一个不停的打印自己名字的线程，然后 通过一个标志位来结束这个线程。
-     
-     class Runnable2 implements Runnable{
-	
-		//初始设置标志位为false
-		private boolean mStop = false;
-		
-		
-		/**
-		 *  设置停止标志位为true。在run()方法里检测到这个值以后，就会停止线程的运行了。
-		 * yumo
-		 * void
-		 * 2015-1-3
-		 */
-		public void Stop(){
-			mStop = true;
-		}
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			while(true)
-			{
-				if(mStop) 
-				{
-					System.out.println(&quot;检测到标志位改变，要我停止运行。好吧，现在就跳出循环，准备谢幕&quot;);
-					break;
-				}
-				
-				System.out.println( Thread.currentThread().getName());
-				
-				try {
-					//让该线程，睡眠50毫秒
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			System.out.println(&quot;线程终于结束了&quot;);
-		}
-		
-	}
-		
-	在上面我们建立了Runnable2 类继承了Runnable接口。现在我们建立一个线程运行起来。
-	
-	Runnable2 runnable =  new Runnable2();
-	Thread thread2 = new Thread(runnable, &quot;Runnable2&quot;);
-	thread2.start();
-	
-	经过打印结果我们发现这是一个死循环，如果不手动停止该线程，它将会一直运行下去。
-	
-	下面就是利用标志位停止线程发生威力的时候了。
-        Runnable2 runnable =  new Runnable2();
-	Thread thread2 = new Thread(runnable, &quot;Runnable2&quot;);
-	thread2.start();
-	
-	try {
-		Thread.sleep(2000);
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	runnable.Stop();
-	
-	最后的输出结果如下：
-		............
-		Runnable2
-		Runnable2
-		Runnable2
-		Runnable2
-		Runnable2
-		检测到标志位改变，要我停止运行。好吧，现在就跳出循环，准备谢幕
-		线程终于结束了
-	
-	最后我们看到线程成功的结束了。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;interrupt-&quot;&gt;利用interrupt() 来中断线程。&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  单单利用标志位结束一个线程，在某些情况下是非常完美的解决方案，而是线程进行了长时间的睡眠，调用了wait，joint时，就麻烦了，非常有可能进行长时间的阻塞，然后就不能检查标志位来停止一个线程了。关于这点，javaAPI提供一个方法 interrupt(),当线程调用该方法时，如果改线程内部调用了wait,sleep,joint 等等，处于阻塞状态时，就会抛出一个InterruptedException 异常，然后我们就有会在捕获这个异常后进行处理，并判断是否要退出线程，等等。ingerrupt 本身并不能中断一个线程，它能中断的阻塞，修改中断标志位等等。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
