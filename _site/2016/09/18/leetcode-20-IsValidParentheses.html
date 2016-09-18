@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>14-Longest Common Prefix | 禹墨的博客</title>
+<title>20-Valid Parentheses | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java">
@@ -626,8 +626,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">14-Longest Common Prefix</h2>
-    2016年09月12日
+    <h2 id="#identifier">20-Valid Parentheses</h2>
+    2016年09月18日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -640,55 +640,62 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/longest-common-prefix/">14. Longest Common Prefix</a></p>
+      <p><a href="https://leetcode.com/problems/valid-parentheses/">20. Valid Parentheses</a></p>
 
 <h3 id="section">原题目</h3>
 
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[’ and ‘]’, determine if the input string is valid.<br />
+The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>编写一个方法来查找一个字符串数组中最长的公共前缀字符串。</p>
+<p>给一个仅包含’(‘, ‘)’, ‘{‘, ‘}’, ‘[’ 和 ‘]’的字符串，然后判断这个字符串是否是有效的。<br />
+括号必须按照顺序进行闭合，比如”()” 和 “()[]{}” 都是有效的，但是 “(]” 和 “([)]” 不是有效的.</p>
 
-<h3 id="section-2">解决思路</h3>
+<h3 id="section-2">解题思路</h3>
 
-<p>这道题目的意思是求取所有字符串的最长前缀公共字符串。采用暴力比较的方法是最简单。<br />
-就是循环获取第一个字符串的前缀子串，将这个子串分别和其他字符串的相同索引的子串进行比较，<br />
-如果任意一个其他字符串的前缀子串和第一字符串的前缀子串不相符，那么除去这个前缀子串的最后一个字符，就是最大的公共前缀子串</p>
+<p>这是一个典型的栈应用的例子。如果是字符’(‘，’[’, ‘{‘, 将其压入栈，如果是’)’,’]’,’}’<br />
+就从栈中取顶部字符，如果栈为空或者不相匹配，那么就可以认定是无效的。<br />
+如果和栈顶元素匹配，就继续遍历字符串判定。<br />
+时间复杂度：O(n)<br />
+空间复杂度：O(2)</p>
 
-<h3 id="java">代码示例-Java</h3>
+<h3 id="section-3">代码示例</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
- * Created by yumodev on 9/12/16.
- */
-public class LongestCommonPrefix_14 {
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0){
-            return "";
+<div class="highlighter-rouge"><pre class="highlight"><code> public static boolean isValid(String s) {
+        if (s == null ||s.length() &lt;= 1){
+            return false;
         }
 
+        Stack&lt;Character&gt; stack = new Stack&lt;&gt;();
+        for (int i = 0; i &lt;= s.length()-1;i++){
+            Character ch = s.charAt(i);
+            if (ch == '(' || ch == '[' || ch == '{'){
+                stack.push(ch);
+            }else{
+                if (stack.size() == 0){
+                    return false;
+                }
 
-        for (int i = 0; i &lt; strs[0].length(); i++){
-            for (int j = 1; j &lt; strs.length; j++){
-                if (strs[j].length() &lt;= i || strs[j].charAt(i) != strs[0].charAt(i)){
-                    return strs[0].substring(0, i);
+                Character sch = stack.pop();
+
+                if (ch == ')'){
+                    if (sch != '('){
+                        return false;
+                    }
+                }else if (ch == ']'){
+                    if (sch != '['){
+                        return false;
+                    }
+                }else if (ch == '}'){
+                    if (sch != '{'){
+                        return false;
+                    }
                 }
             }
         }
-
-        return strs[0];
+        return stack.size() == 0;
     }
-
-    public static void main(String[] args) {
-        String[] str = {"121", "12", "21"};
-        long startTime = System.nanoTime();
-        String result = longestCommonPrefix(str);
-        long endTime = System.nanoTime();
-        long time = endTime - startTime;
-
-        System.out.println("longestCommonPrefix:" + result + " time:" + time);
-    }
-}
 </code></pre>
 </div>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>14-Longest Common Prefix | 禹墨的博客</title>
+<title>23-Swap Nodes in Pairs | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java">
@@ -626,8 +626,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">14-Longest Common Prefix</h2>
-    2016年09月12日
+    <h2 id="#identifier">23-Swap Nodes in Pairs</h2>
+    2016年09月18日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -640,54 +640,128 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/longest-common-prefix/">14. Longest Common Prefix</a></p>
+      <p><a href="https://leetcode.com/problems/swap-nodes-in-pairs/">24. Swap Nodes in Pairs</a></p>
 
 <h3 id="section">原题目</h3>
 
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+
+<p>For example,<br />
+Given <code class="highlighter-rouge">1-&gt;2-&gt;3-&gt;4,</code> you should return the list as <code class="highlighter-rouge">2-&gt;1-&gt;4-&gt;3</code>.</p>
+
+<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>编写一个方法来查找一个字符串数组中最长的公共前缀字符串。</p>
+<p>给定一个链表，交互相邻的两个节点，并返回链表的头部。<br />
+比如：给定链表<code class="highlighter-rouge">1-&gt;2-&gt;3-&gt;4,</code> 应该返回<code class="highlighter-rouge">2-&gt;1-&gt;4-&gt;3</code><br />
+应当使用常量空间时间，不能修改节点的值，但是可以修改节点本身。</p>
 
-<h3 id="section-2">解决思路</h3>
+<h3 id="section-2">解题思路</h3>
 
-<p>这道题目的意思是求取所有字符串的最长前缀公共字符串。采用暴力比较的方法是最简单。<br />
-就是循环获取第一个字符串的前缀子串，将这个子串分别和其他字符串的相同索引的子串进行比较，<br />
-如果任意一个其他字符串的前缀子串和第一字符串的前缀子串不相符，那么除去这个前缀子串的最后一个字符，就是最大的公共前缀子串</p>
+<p>这道题目有两个限定条件：<br />
+1、使用常量空间实现；2、不能修改节点的值。<br />
+所以声明一个节点为ln(0),其next指向head, temp节点为临时节点。<br />
+ln.next表示第一个节点，ln.next.next 标识第二个节点。<br />
+现在需要的工作就是讲ln.next, ln.next.next 交互位置。<br />
+通过下面方法来实现ln.next 和 ln.next.next 位置的呼唤。</p>
 
-<h3 id="java">代码示例-Java</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>      temp = ln.next;
+      ln.next = ln.next.next;
+      temp.next = ln.next.next;
+      ln.next.next = temp;     
+</code></pre>
+</div>
+
+<p>时间复杂度为O(n),<br />
+  空间夫再度为O(2);<br />
+### 代码示例-Java</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>/**
- * Created by yumodev on 9/12/16.
+ * Created by yumodev on 9/13/16.
  */
-public class LongestCommonPrefix_14 {
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0){
-            return "";
+public class SwapPairs_24 {
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    public static ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
         }
 
+        int n = 1;
 
-        for (int i = 0; i &lt; strs[0].length(); i++){
-            for (int j = 1; j &lt; strs.length; j++){
-                if (strs[j].length() &lt;= i || strs[j].charAt(i) != strs[0].charAt(i)){
-                    return strs[0].substring(0, i);
-                }
+        ListNode ln = new ListNode(0);
+        ln.next = head;
+        head = head.next;
+        ListNode temp;
+        while (true){
+            if (n % 2 == 0){
+                temp = ln.next;
+                ln.next = ln.next.next;
+                temp.next = ln.next.next;
+                ln.next.next = temp;
+                ln = ln.next.next;
+            }
+
+            if (ln.next == null || ln.next.next == null){
+                break;
+            }
+
+            n++;
+        }
+
+        return head;
+    }
+
+    public static ListNode initListNode(int num) {
+        int mod = 0;
+        int temp = num;
+        ListNode ln = null;
+        ListNode nextLn = null;
+        while (temp &gt; 0) {
+            mod = temp % 10;
+            temp = temp / 10;
+            if (ln == null){
+                nextLn = ln = new ListNode(mod);
+            }else{
+                nextLn.next = new ListNode(mod);
+                nextLn = nextLn.next;
             }
         }
 
-        return strs[0];
+        return ln;
+    }
+
+    public static String ListNodeToString(final ListNode listNode) {
+        StringBuilder sb = new StringBuilder();
+        ListNode ln = listNode;
+        while (ln != null) {
+            sb.append(ln.val + " ");
+            ln = ln.next;
+        }
+
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        String[] str = {"121", "12", "21"};
+        ListNode l1 = initListNode(4321);
+        //ListNode l1 = initListNode(321);
         long startTime = System.nanoTime();
-        String result = longestCommonPrefix(str);
+        ListNode l2 = swapPairs(l1);
         long endTime = System.nanoTime();
         long time = endTime - startTime;
 
-        System.out.println("longestCommonPrefix:" + result + " time:" + time);
+        System.out.println("removeNthFromEnd:" + ListNodeToString(l2) + " time:" + time);
     }
+
 }
 </code></pre>
 </div>

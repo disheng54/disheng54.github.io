@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>14-Longest Common Prefix | 禹墨的博客</title>
+<title>19-Remove Nth Node From End of List | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java">
@@ -626,8 +626,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">14-Longest Common Prefix</h2>
-    2016年09月12日
+    <h2 id="#identifier">19-Remove Nth Node From End of List</h2>
+    2016年09月18日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -640,55 +640,71 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/longest-common-prefix/">14. Longest Common Prefix</a></p>
+      <p><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a></p>
 
 <h3 id="section">原题目</h3>
 
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>Given a linked list, remove the nth node from the end of list and return its head.<br />
+For example,</p>
+
+<p><code class="highlighter-rouge">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.
+   After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</code><br />
+Note:<br />
+Given n will always be valid.<br />
+Try to do this in one pass.</p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>编写一个方法来查找一个字符串数组中最长的公共前缀字符串。</p>
+<p>给定一个链表，删除倒数第n个节点，然后返回这链表的头部。<br />
+比如：<br />
+ <code class="highlighter-rouge">给定链表： 1-&gt;2-&gt;3-&gt;4-&gt;5,  n = 2.
+  从尾部移除第2个节点, 然后链表变为： 1-&gt;2-&gt;3-&gt;5.</code></p>
 
-<h3 id="section-2">解决思路</h3>
+<p>注意：给定的n总是有效的，尝试一次通过。</p>
 
-<p>这道题目的意思是求取所有字符串的最长前缀公共字符串。采用暴力比较的方法是最简单。<br />
-就是循环获取第一个字符串的前缀子串，将这个子串分别和其他字符串的相同索引的子串进行比较，<br />
-如果任意一个其他字符串的前缀子串和第一字符串的前缀子串不相符，那么除去这个前缀子串的最后一个字符，就是最大的公共前缀子串</p>
+<h3 id="section-2">解题思路</h3>
+
+<p>建立一前一后两个节点:firstLn, secondLn.<br />
+初始化firstLn的next 指向链表头部，secondLn指向链表头部<br />
+先将firstLn移动n个位置，然后开始移动SecondLn节点。<br />
+当FirstLn移动到链表结尾后，此时需要将SecondLn的下一个节点移除即可。<br />
+时间复杂度为：O(n);<br />
+空间复杂度为：O(1);</p>
 
 <h3 id="java">代码示例-Java</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
- * Created by yumodev on 9/12/16.
- */
-public class LongestCommonPrefix_14 {
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0){
-            return "";
+<div class="highlighter-rouge"><pre class="highlight"><code>public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (n == 0 || head == null){
+            return head;
         }
 
+        ListNode firstLn = head;
+        ListNode secondLn = new ListNode(0);
+        int pos = 1;
 
-        for (int i = 0; i &lt; strs[0].length(); i++){
-            for (int j = 1; j &lt; strs.length; j++){
-                if (strs[j].length() &lt;= i || strs[j].charAt(i) != strs[0].charAt(i)){
-                    return strs[0].substring(0, i);
-                }
+        while (firstNextLn != null){
+            if (pos == n){
+                secondNextLn.next = head;
+            }else if (pos &gt; n){
+                secondNextLn = secondNextLn.next;
             }
+
+            firstNextLn = firstNextLn.next;
+            pos++;
         }
 
-        return strs[0];
-    }
+        if (secondNextLn != null){
+            if (secondNextLn.next.equals(head)){
+                return head.next;
+            }else{
+                secondNextLn.next = secondNextLn.next.next;
+            }
 
-    public static void main(String[] args) {
-        String[] str = {"121", "12", "21"};
-        long startTime = System.nanoTime();
-        String result = longestCommonPrefix(str);
-        long endTime = System.nanoTime();
-        long time = endTime - startTime;
+        }
 
-        System.out.println("longestCommonPrefix:" + result + " time:" + time);
+
+        return head;
     }
-}
 </code></pre>
 </div>
 

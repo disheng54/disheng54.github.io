@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>14-Longest Common Prefix | 禹墨的博客</title>
+<title>26-Remove Duplicates from Sorted Array | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java">
@@ -626,8 +626,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">14-Longest Common Prefix</h2>
-    2016年09月12日
+    <h2 id="#identifier">26-Remove Duplicates from Sorted Array</h2>
+    2016年09月18日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -640,53 +640,70 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/longest-common-prefix/">14. Longest Common Prefix</a></p>
+      <p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">26. Remove Duplicates from Sorted Array</a></p>
 
 <h3 id="section">原题目</h3>
+<p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
 
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+
+<p>For example,<br />
+Given input array nums =<code class="highlighter-rouge"> [1,1,2]</code>,</p>
+
+<p>Your function should return length = <code class="highlighter-rouge">2</code>, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>编写一个方法来查找一个字符串数组中最长的公共前缀字符串。</p>
+<p>给定一个排好序的数组，移除重复的元素，然后返回新的数组长度。<br />
+要求不能额外一个数组大小的空间来实现，要求使用空间实现，<br />
+比如：输入数组=<code class="highlighter-rouge"> [1,1,2]</code>,<br />
+你的方法将返回长度为=<code class="highlighter-rouge">2</code>，两个元素分别是1和2。这个方法并不关心新长度。</p>
 
-<h3 id="section-2">解决思路</h3>
+<h3 id="section-2">解题思路</h3>
 
-<p>这道题目的意思是求取所有字符串的最长前缀公共字符串。采用暴力比较的方法是最简单。<br />
-就是循环获取第一个字符串的前缀子串，将这个子串分别和其他字符串的相同索引的子串进行比较，<br />
-如果任意一个其他字符串的前缀子串和第一字符串的前缀子串不相符，那么除去这个前缀子串的最后一个字符，就是最大的公共前缀子串</p>
+<p>首先这是一个已经排好序的数组，又要求不能额外的分配一个数组空间来实现。<br />
+所以我们可以利用遍历一遍数组来实现。利用前后两个索引值i,j分别向后移动来<br />
+实现去重有序数组的大小。<br />
+时间复杂度为O(n)<br />
+空间复杂度为O(2)</p>
 
 <h3 id="java">代码示例-Java</h3>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>/**
- * Created by yumodev on 9/12/16.
+ * Created by yumodev on 9/18/16.
  */
-public class LongestCommonPrefix_14 {
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0){
-            return "";
+public class RemoveDuplicates_26 {
+
+    public static int removeDuplicates(int[] nums){
+        if (nums == null){
+            return 0;
         }
 
+        if (nums.length &lt;= 1){
+            return 1;
+        }
 
-        for (int i = 0; i &lt; strs[0].length(); i++){
-            for (int j = 1; j &lt; strs.length; j++){
-                if (strs[j].length() &lt;= i || strs[j].charAt(i) != strs[0].charAt(i)){
-                    return strs[0].substring(0, i);
-                }
+        int i = 0, j = 1;
+        while (i &lt;nums.length &amp;&amp; j &lt; nums.length){
+            if (nums[i] == nums[j]){
+                j++;
+            }else{
+                nums[++i] = nums[j];
+                j++;
             }
         }
 
-        return strs[0];
+        return i+1;
     }
 
-    public static void main(String[] args) {
-        String[] str = {"121", "12", "21"};
+    public static void main(String[] args){
+        int[] nums = {2,7,11,15};
         long startTime = System.nanoTime();
-        String result = longestCommonPrefix(str);
+        int result = removeDuplicates(nums);
         long endTime = System.nanoTime();
         long time = endTime - startTime;
 
-        System.out.println("longestCommonPrefix:" + result + " time:" + time);
+        System.out.println(" removeDuplicates:" + result + " time:" + time);
     }
 }
 </code></pre>

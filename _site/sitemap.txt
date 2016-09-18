@@ -11,6 +11,16 @@
 
 
 
+  /2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html
+
+  /2016/09/18/leetcode-24-SwapNodesInPairs.html
+
+  /2016/09/18/leetcode-21-MergeTwoSortedLists.html
+
+  /2016/09/18/leetcode-20-IsValidParentheses.html
+
+  /2016/09/18/leetcode-19-RemoveNthFromEnd.html
+
   /2016/09/12/leetcode-14-LongestCommonPrefix.html
 
   /2016/09/12/leetcode-13-RomanToInteger.html

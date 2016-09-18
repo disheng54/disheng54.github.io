@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>14-Longest Common Prefix | 禹墨的博客</title>
+<title>21-Merge Two Sorted Lists | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java">
@@ -626,8 +626,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">14-Longest Common Prefix</h2>
-    2016年09月12日
+    <h2 id="#identifier">21-Merge Two Sorted Lists</h2>
+    2016年09月18日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -640,55 +640,66 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/longest-common-prefix/">14. Longest Common Prefix</a></p>
+      <p><a href="https://leetcode.com/problems/merge-two-sorted-lists/">21. Merge Two Sorted Lists</a></p>
 
 <h3 id="section">原题目</h3>
 
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>编写一个方法来查找一个字符串数组中最长的公共前缀字符串。</p>
+<p>将两个有序链表合并成一个新的链表。新的链表应该有由这两个链表的头部拼接而成。</p>
 
-<h3 id="section-2">解决思路</h3>
+<h3 id="section-2">解题思路</h3>
 
-<p>这道题目的意思是求取所有字符串的最长前缀公共字符串。采用暴力比较的方法是最简单。<br />
-就是循环获取第一个字符串的前缀子串，将这个子串分别和其他字符串的相同索引的子串进行比较，<br />
-如果任意一个其他字符串的前缀子串和第一字符串的前缀子串不相符，那么除去这个前缀子串的最后一个字符，就是最大的公共前缀子串</p>
+<p>按照题意新链表有这两个有序链表的头部拼接而成，所以需要先找到比较两个链表的头部，<br />
+将较小的那个当做新链表的头部，然后同时遍历两个链表进行拼接就行了。<br />
+时间复杂度为:O(m+n)<br />
+空间复杂度为:O(0)</p>
 
 <h3 id="java">代码示例-Java</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
- * Created by yumodev on 9/12/16.
- */
-public class LongestCommonPrefix_14 {
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0){
-            return "";
+<div class="highlighter-rouge"><pre class="highlight"><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null ){
+            return l2;
         }
 
+        if (l2 == null){
+            return l1;
+        }
 
-        for (int i = 0; i &lt; strs[0].length(); i++){
-            for (int j = 1; j &lt; strs.length; j++){
-                if (strs[j].length() &lt;= i || strs[j].charAt(i) != strs[0].charAt(i)){
-                    return strs[0].substring(0, i);
-                }
+        ListNode ln;
+        ListNode head;
+        if (l1.val &lt; l2.val){
+            head = ln = l1;
+            l1 = l1.next;
+        }else{
+            head = ln = l2;
+            l2 = l2.next;
+        }
+
+        while (l1 != null || l2 != null){
+            if (l1 == null){
+                ln.next = l2;
+                break;
+            }else if (l2 == null){
+                ln.next = l1;
+                break;
+            }
+
+            if (l1.val &lt; l2.val){
+                ln.next = l1;
+                ln = ln.next;
+                l1 = l1.next;
+            }else{
+                ln.next = l2;
+                ln = ln.next;
+                l2 = l2.next;
             }
         }
 
-        return strs[0];
+        return head;
     }
-
-    public static void main(String[] args) {
-        String[] str = {"121", "12", "21"};
-        long startTime = System.nanoTime();
-        String result = longestCommonPrefix(str);
-        long endTime = System.nanoTime();
-        long time = endTime - startTime;
-
-        System.out.println("longestCommonPrefix:" + result + " time:" + time);
-    }
-}
 </code></pre>
 </div>
 
