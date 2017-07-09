@@ -27,15 +27,13 @@
       <br><br>
       <ul class="nav nav-pills nav-stacked">
         
-          <li><a href="#mac" data-toggle="tab">mac</a></li>
+          <li><a href="#开发技术" data-toggle="tab">开发技术</a></li>
         
           <li><a href="#android" data-toggle="tab">android</a></li>
         
-          <li><a href="#Git" data-toggle="tab">Git</a></li>
-        
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -58,11 +56,13 @@
       <div class="row">
         <div class="tab-content">
            
-            <div class="tab-pane" id="mac">
+            <div class="tab-pane" id="开发技术">
               <div class="list-group">
-                <h2 class="center">mac</h2>
+                <h2 class="center">开发技术</h2>
                 
                   <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
                   <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
                 
@@ -78,17 +78,6 @@
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="Git">
-              <div class="list-group">
-                <h2 class="center">Git</h2>
-                
-                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
-                
-                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
               </div>
             </div>
@@ -110,9 +99,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -659,7 +648,7 @@
 
 <h3 id="java">代码示例(Java)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.string.test;
+<pre><code>package com.yumo.java.string.test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -815,17 +804,15 @@ public class StringIsSameAfterSort {
     }
 }
 </code></pre>
-</div>
 
 <h3 id="section-2">效率比较</h3>
 
 <p>假定这两个字符串的长度为10，那么这三种方法所花费的时间如下</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>isStringEqualByArraysSort: true time:167000
+<pre><code>isStringEqualByArraysSort: true time:167000
 isStringEqualByCharNums: true time:518000
 isStringEqualByCharNumsAscii: true time:29000
 </code></pre>
-</div>
 
 <p>如果能够确定字符串中的字符数量，不是太大的话，优先采用利用数组统计字符数量的方法才是效率最高的。<br />
 不过在工作中直接使用数组排序的解决方式是优先考虑的选择</p>

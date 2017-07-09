@@ -1,7 +1,7 @@
 ---
 layout: post
 title: mac 常用快捷键
-category: mac
+category: 开发技术
 tags: [快捷键]
 keywords: mac
 description: 

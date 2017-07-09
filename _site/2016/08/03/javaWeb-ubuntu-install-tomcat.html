@@ -27,15 +27,13 @@
       <br><br>
       <ul class="nav nav-pills nav-stacked">
         
-          <li><a href="#mac" data-toggle="tab">mac</a></li>
+          <li><a href="#开发技术" data-toggle="tab">开发技术</a></li>
         
           <li><a href="#android" data-toggle="tab">android</a></li>
         
-          <li><a href="#Git" data-toggle="tab">Git</a></li>
-        
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -58,11 +56,13 @@
       <div class="row">
         <div class="tab-content">
            
-            <div class="tab-pane" id="mac">
+            <div class="tab-pane" id="开发技术">
               <div class="list-group">
-                <h2 class="center">mac</h2>
+                <h2 class="center">开发技术</h2>
                 
                   <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
                   <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
                 
@@ -78,17 +78,6 @@
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="Git">
-              <div class="list-group">
-                <h2 class="center">Git</h2>
-                
-                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
-                
-                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
               </div>
             </div>
@@ -110,9 +99,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -647,42 +636,39 @@
     <p>从官网下载JDK，下载路径 http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz</p>
   </li>
   <li>
-    <p>将 <code class="highlighter-rouge">jdk-8u101-linux-x64.tar.gz</code> 移动到 <code class="highlighter-rouge">/usr/lib</code> 中， 解压到 <code class="highlighter-rouge">/usr/lib/jvm </code>目录</p>
+    <p>将 <code>jdk-8u101-linux-x64.tar.gz</code> 移动到 <code>/usr/lib</code> 中， 解压到 <code>/usr/lib/jvm </code>目录</p>
   </li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir jvm
+<pre><code>mkdir jvm
 sudo tar -zxvf jdk-8u101-linux-x64.tar.gz -C /usr/lib/jvm
 </code></pre>
-</div>
 
 <h3 id="jre">配置JRE路径</h3>
 
 <ul>
-  <li>打开环境变量文件 <code class="highlighter-rouge">sudo vi ~/.bashrc</code></li>
+  <li>打开环境变量文件 <code>sudo vi ~/.bashrc</code></li>
   <li>在文件的末尾添加下面内容</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
+<pre><code>export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
 export JRE_HOME=${JAVA_HOME}/jre  
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
 export PATH=${JAVA_HOME}/bin:$PATH  
 </code></pre>
-</div>
 
 <ul>
-  <li><code class="highlighter-rouge">source ~/.bashrc</code></li>
+  <li><code>source ~/.bashrc</code></li>
 </ul>
 
 <h3 id="jre-1">测试JRE</h3>
 
-<p>通过 <code class="highlighter-rouge">java -version</code>  查看当前的Java路径</p>
+<p>通过 <code>java -version</code>  查看当前的Java路径</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>java version "1.8.0_101"
+<pre><code>java version "1.8.0_101"
 Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 </code></pre>
-</div>
 
 <h3 id="tomcat">安装tomcat</h3>
 
@@ -695,11 +681,10 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   </li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  cp apache-tomcat-9.0.0.M9.zip /usr/local
+<pre><code>  cp apache-tomcat-9.0.0.M9.zip /usr/local
   uzip apache-tomcat-9.0.0.M9.zip
   mv apache-tomcat-9.0.0.M9 tomcat9
 </code></pre>
-</div>
 
 <h3 id="tomcat-1">启动tomcat</h3>
 
@@ -707,15 +692,14 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   <li>开启tomcat9 权限</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo chomd 755 /usr/local/tomcat9/bin/*.sh
+<pre><code>sudo chomd 755 /usr/local/tomcat9/bin/*.sh
 </code></pre>
-</div>
 
 <ul>
   <li>启动tomcat</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local/tomcat9/bin
+<pre><code>cd /usr/local/tomcat9/bin
 ./startup.sh
 
 Using CATALINA_BASE:   /usr/local/tomcat9
@@ -725,11 +709,10 @@ Using JRE_HOME:        /usr/lib/jvm/jdk1.8.0_101/jre
 Using CLASSPATH:       /usr/local/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/bin/tomcat-juli.jar
 Tomcat started.
 </code></pre>
-</div>
 
 <h3 id="section">测试访问</h3>
 
-<p>在浏览器中输入 <code class="highlighter-rouge">http://localhost:8080</code> 访问</p>
+<p>在浏览器中输入 <code>http://localhost:8080</code> 访问</p>
 
 
     </div>

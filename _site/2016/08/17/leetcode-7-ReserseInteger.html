@@ -27,15 +27,13 @@
       <br><br>
       <ul class="nav nav-pills nav-stacked">
         
-          <li><a href="#mac" data-toggle="tab">mac</a></li>
+          <li><a href="#开发技术" data-toggle="tab">开发技术</a></li>
         
           <li><a href="#android" data-toggle="tab">android</a></li>
         
-          <li><a href="#Git" data-toggle="tab">Git</a></li>
-        
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -58,11 +56,13 @@
       <div class="row">
         <div class="tab-content">
            
-            <div class="tab-pane" id="mac">
+            <div class="tab-pane" id="开发技术">
               <div class="list-group">
-                <h2 class="center">mac</h2>
+                <h2 class="center">开发技术</h2>
                 
                   <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
                   <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
                 
@@ -78,17 +78,6 @@
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="Git">
-              <div class="list-group">
-                <h2 class="center">Git</h2>
-                
-                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
-                
-                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
               </div>
             </div>
@@ -110,9 +99,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -646,10 +635,9 @@
 
 <p>Reverse digits of an integer.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example1: x = 123, return 321
+<pre><code>Example1: x = 123, return 321
 Example2: x = -123, return -321
 </code></pre>
-</div>
 
 <p>Have you thought about this?<br />
 Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
@@ -664,14 +652,13 @@ Here are some good questions to ask before coding. Bonus points for you if you h
 
 <p>反转一个整数数据</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example1: x = 123, return 321
+<pre><code>Example1: x = 123, return 321
 Example2: x = -123, return -321
 </code></pre>
-</div>
 
 <p>注意：在编码之前有一些问题需要考虑，如果你已经考虑了这些问题，这将是你的加分点。<br />
 如果该整数的最后一位是0，那么僵该输出什么呢？比如 10， 100<br />
-反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转<code class="highlighter-rouge">1000000003</code>将产生溢出，那这种情况该如何处理呢？<br />
+反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转<code>1000000003</code>将产生溢出，那这种情况该如何处理呢？<br />
 如果发生了溢出，就直接返回为0.</p>
 
 <h3 id="section-2">解决思路</h3>
@@ -687,7 +674,7 @@ Example2: x = -123, return -321
 
 <h3 id="java">代码示例-Java</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
+<pre><code>package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/17/16.
@@ -720,7 +707,6 @@ public class ReverseInteger_7 {
     }
 }
 </code></pre>
-</div>
 
 
     </div>

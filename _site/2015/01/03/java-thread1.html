@@ -27,15 +27,13 @@
       <br><br>
       <ul class="nav nav-pills nav-stacked">
         
-          <li><a href="#mac" data-toggle="tab">mac</a></li>
+          <li><a href="#开发技术" data-toggle="tab">开发技术</a></li>
         
           <li><a href="#android" data-toggle="tab">android</a></li>
         
-          <li><a href="#Git" data-toggle="tab">Git</a></li>
-        
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -58,11 +56,13 @@
       <div class="row">
         <div class="tab-content">
            
-            <div class="tab-pane" id="mac">
+            <div class="tab-pane" id="开发技术">
               <div class="list-group">
-                <h2 class="center">mac</h2>
+                <h2 class="center">开发技术</h2>
                 
                   <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
                   <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
                 
@@ -78,17 +78,6 @@
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="Git">
-              <div class="list-group">
-                <h2 class="center">Git</h2>
-                
-                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
-                
-                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
               </div>
             </div>
@@ -110,9 +99,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -641,22 +630,20 @@
     <hr>
     <div id="content">
       <h3 id="section">什么是线程</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>    先在的操作系统基本上都是基于多线程的了，在实际的开发中，多线程是无处不在的。一个java程序运行起来，就会默认打开一个主线程。那什么是线程呢。
+<pre><code>    先在的操作系统基本上都是基于多线程的了，在实际的开发中，多线程是无处不在的。一个java程序运行起来，就会默认打开一个主线程。那什么是线程呢。
     线程依附于一个进程，是操作系统可以调度的最小单位。一个进程中的线程之间共用进程的内存和公共数据。
     使用多线程可以实现并发编程，提高程序的性能。
 </code></pre>
-</div>
 
 <h3 id="section-1">如何创建并执行。一个线程</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>    创建一个线程可以通过两种方法，但是最后执行都是调用Thread类的start()方法来启动一个线程。 start()会自动调用run() 执行线程的操作。
+<pre><code>    创建一个线程可以通过两种方法，但是最后执行都是调用Thread类的start()方法来启动一个线程。 start()会自动调用run() 执行线程的操作。
 </code></pre>
-</div>
 
 <ol>
   <li>
     <p>通过扩展一个Thread对象，来创建一个线程。</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>/**
+    <pre><code>/**
 * yumo
 * 通过继承Thread  创建一个子线程类。
 */    class Thread1 extends Thread{
@@ -674,12 +661,11 @@ thread.start();
 	 
 thread1
 </code></pre>
-    </div>
   </li>
   <li>
     <p>通过继承Runnable接口创建一个线程。</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  /**
+    <pre><code>  /**
   * yumo
   * 通过继承Runnable接口实现Runnable对象，重写其中的run()方法
   */
@@ -701,7 +687,6 @@ thread1
           
    runnable1
 </code></pre>
-    </div>
   </li>
 </ol>
 

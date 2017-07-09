@@ -27,15 +27,13 @@
       <br><br>
       <ul class="nav nav-pills nav-stacked">
         
-          <li><a href="#mac" data-toggle="tab">mac</a></li>
+          <li><a href="#开发技术" data-toggle="tab">开发技术</a></li>
         
           <li><a href="#android" data-toggle="tab">android</a></li>
         
-          <li><a href="#Git" data-toggle="tab">Git</a></li>
-        
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -58,11 +56,13 @@
       <div class="row">
         <div class="tab-content">
            
-            <div class="tab-pane" id="mac">
+            <div class="tab-pane" id="开发技术">
               <div class="list-group">
-                <h2 class="center">mac</h2>
+                <h2 class="center">开发技术</h2>
                 
                   <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
                   <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
                 
@@ -78,17 +78,6 @@
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="Git">
-              <div class="list-group">
-                <h2 class="center">Git</h2>
-                
-                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
-                
-                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
               </div>
             </div>
@@ -110,9 +99,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -640,12 +629,11 @@
 
     <hr>
     <div id="content">
-      <div class="highlighter-rouge"><pre class="highlight"><code>java String类是一个使用频率非常高的类。借助分析String类的源码，有助于更好的了解java中字符串的操作，写出更加有效率的代码。
+      <pre><code>java String类是一个使用频率非常高的类。借助分析String类的源码，有助于更好的了解java中字符串的操作，写出更加有效率的代码。
 </code></pre>
-</div>
 
 <h3 id="string-">String 定义</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>   public final class String implements Serializable, Comparable&lt;String&gt;, CharSequence｛｝
+<pre><code>   public final class String implements Serializable, Comparable&lt;String&gt;, CharSequence｛｝
    String首先是一个final类，它将不能被继承生成一个子类。String为什么要设置为final类型主要有2个方面的考虑。
    1、处于安全性的考虑.String类是java中一个非常底层的类，和操作系统进行的频繁的交互。如果可以String类可以被继承，用户就可能会重写String类的相关方法，这就提供破坏操作系统提供了机会，降低了java的宣称的安全性。
    2、效率的问题：String被定义为final类，那么它的所有方法都是final的，jvm编译器会内联所有的方法，此举可以让String类的效率使用50%，单凭这点就让人心动不已了。
@@ -654,10 +642,9 @@
    String类继承了Comparable, 所以String可以在集合里面，直接用sort()排序。
    String类继承实现了CharSequence ,所以String类本质上是一个字符序列。
 </code></pre>
-</div>
 
 <h3 id="string--1">String 成员变量</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>  //定义一个字符数组来存放 String的字符序列。
+<pre><code>  //定义一个字符数组来存放 String的字符序列。
   private final char[] value;
   // 字符偏移的位置。
   private final int offset;
@@ -666,10 +653,9 @@
   //该字符串对应生产的一个哈希值。
   private int hashCode;
 </code></pre>
-</div>
 
 <h3 id="string--2">String 初始化</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>    String的类的初始化方法非常多，非常的丰富，所以初始化String对象还是很方便的。
+<pre><code>    String的类的初始化方法非常多，非常的丰富，所以初始化String对象还是很方便的。
     
     //声明一个空字符串
      public String() {
@@ -790,7 +776,6 @@
         stringBuilder.getChars(0, this.count, this.value, 0);
     }
 </code></pre>
-</div>
 
 
     </div>

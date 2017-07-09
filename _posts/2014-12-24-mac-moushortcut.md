@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  mou 常用快捷键
-category: mac
+category: 开发技术
 tags: [mou,快捷键]
 keywords: mac
 description: 
@@ -73,3 +73,4 @@ description:
 
 * 导出为HTML格式文件 Export HTML: Option + Cmd + E
 * 导出为PDF格式文件 Export PDF:  Option + Cmd + P
+

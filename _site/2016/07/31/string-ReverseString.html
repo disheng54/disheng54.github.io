@@ -27,15 +27,13 @@
       <br><br>
       <ul class="nav nav-pills nav-stacked">
         
-          <li><a href="#mac" data-toggle="tab">mac</a></li>
+          <li><a href="#开发技术" data-toggle="tab">开发技术</a></li>
         
           <li><a href="#android" data-toggle="tab">android</a></li>
         
-          <li><a href="#Git" data-toggle="tab">Git</a></li>
-        
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -58,11 +56,13 @@
       <div class="row">
         <div class="tab-content">
            
-            <div class="tab-pane" id="mac">
+            <div class="tab-pane" id="开发技术">
               <div class="list-group">
-                <h2 class="center">mac</h2>
+                <h2 class="center">开发技术</h2>
                 
                   <a href="/2015/04/08/mac-eclipseshortcut.html" class="list-group-item pjaxlink">MAC下eclipse的常用快捷键</a>
+                
+                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
                   <a href="/2014/12/24/mac-moushortcut.html" class="list-group-item pjaxlink">mou 常用快捷键</a>
                 
@@ -78,17 +78,6 @@
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="Git">
-              <div class="list-group">
-                <h2 class="center">Git</h2>
-                
-                  <a href="/2015/05/08/git-git2.html" class="list-group-item pjaxlink">Git-分支常用命令</a>
-                
-                  <a href="/2015/01/01/git-git.html" class="list-group-item pjaxlink">Git常用操作</a>
                 
               </div>
             </div>
@@ -110,9 +99,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -657,7 +646,7 @@
 
 <h3 id="section-2">实例代码</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<pre><code>/**
      * 利用系统自带的StringBuilder.reverse() 进行反转
      * @param str
      * @return
@@ -771,7 +760,6 @@
     }
 }
 </code></pre>
-</div>
 
 <h3 id="section-3">效率比较 单位是纳秒</h3>
 
@@ -779,42 +767,38 @@
   <li>
     <p>对长度为10的字符串进行反转</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:14000  
+    <pre><code>  StringBuilder.reverse() time:14000  
   reverseByCharArray time:7000 
   reverseByXor time:4000 
   reverseBystack time:315000 
 </code></pre>
-    </div>
   </li>
   <li>
     <p>对长度为100的字符串进行反转</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:29000  
+    <pre><code>  StringBuilder.reverse() time:29000  
   reverseByCharArray time:11000 
   reverseByXor time:9000 
   reverseBystack time:589000 
 </code></pre>
-    </div>
   </li>
   <li>
     <p>对长度为1000的字符串进行反转</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:295000 
+    <pre><code>  StringBuilder.reverse() time:295000 
   reverseByCharArray time:72000 
   reverseByXor time:76000
   reverseBystack time:3949000
 </code></pre>
-    </div>
   </li>
   <li>
     <p>对长度为10000的字符串进行反转</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  StringBuilder.reverse() time:3321000
+    <pre><code>  StringBuilder.reverse() time:3321000
   reverseByCharArray time:966000 
   reverseByXor time:1421000
   reverseBystack time:18414000 
 </code></pre>
-    </div>
   </li>
   <li>
     <p>结果比较</p>

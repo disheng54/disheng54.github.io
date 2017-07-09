@@ -18,16 +18,16 @@
 &lt;p&gt;Do not allocate extra space for another array, you must do this in place with constant memory.&lt;/p&gt;
 
 &lt;p&gt;For example,&lt;br /&gt;
-Given input array nums =&lt;code class=&quot;highlighter-rouge&quot;&gt; [1,1,2]&lt;/code&gt;,&lt;/p&gt;
+Given input array nums =&lt;code&gt; [1,1,2]&lt;/code&gt;,&lt;/p&gt;
 
-&lt;p&gt;Your function should return length = &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.&lt;/p&gt;
+&lt;p&gt;Your function should return length = &lt;code&gt;2&lt;/code&gt;, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
 &lt;p&gt;给定一个排好序的数组，移除重复的元素，然后返回新的数组长度。&lt;br /&gt;
 要求不能额外一个数组大小的空间来实现，要求使用空间实现，&lt;br /&gt;
-比如：输入数组=&lt;code class=&quot;highlighter-rouge&quot;&gt; [1,1,2]&lt;/code&gt;,&lt;br /&gt;
-你的方法将返回长度为=&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;，两个元素分别是1和2。这个方法并不关心新长度。&lt;/p&gt;
+比如：输入数组=&lt;code&gt; [1,1,2]&lt;/code&gt;,&lt;br /&gt;
+你的方法将返回长度为=&lt;code&gt;2&lt;/code&gt;，两个元素分别是1和2。这个方法并不关心新长度。&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
 
@@ -39,7 +39,7 @@ Given input array nums =&lt;code class=&quot;highlighter-rouge&quot;&gt; [1,1,2]
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * Created by yumodev on 9/18/16.
  */
 public class RemoveDuplicates_26 {
@@ -77,7 +77,6 @@ public class RemoveDuplicates_26 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -94,14 +93,14 @@ public class RemoveDuplicates_26 {
 &lt;p&gt;Given a linked list, swap every two adjacent nodes and return its head.&lt;/p&gt;
 
 &lt;p&gt;For example,&lt;br /&gt;
-Given &lt;code class=&quot;highlighter-rouge&quot;&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; you should return the list as &lt;code class=&quot;highlighter-rouge&quot;&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;.&lt;/p&gt;
+Given &lt;code&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; you should return the list as &lt;code&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
 &lt;p&gt;给定一个链表，交互相邻的两个节点，并返回链表的头部。&lt;br /&gt;
-比如：给定链表&lt;code class=&quot;highlighter-rouge&quot;&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; 应该返回&lt;code class=&quot;highlighter-rouge&quot;&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;&lt;br /&gt;
+比如：给定链表&lt;code&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; 应该返回&lt;code&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;&lt;br /&gt;
 应当使用常量空间时间，不能修改节点的值，但是可以修改节点本身。&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
@@ -113,18 +112,17 @@ ln.next表示第一个节点，ln.next.next 标识第二个节点。&lt;br /&gt;
 现在需要的工作就是讲ln.next, ln.next.next 交互位置。&lt;br /&gt;
 通过下面方法来实现ln.next 和 ln.next.next 位置的呼唤。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      temp = ln.next;
+&lt;pre&gt;&lt;code&gt;      temp = ln.next;
       ln.next = ln.next.next;
       temp.next = ln.next.next;
       ln.next.next = temp;     
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;时间复杂度为O(n),&lt;br /&gt;
   空间夫再度为O(2);&lt;br /&gt;
 ### 代码示例-Java&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * Created by yumodev on 9/13/16.
  */
 public class SwapPairs_24 {
@@ -211,7 +209,6 @@ public class SwapPairs_24 {
 
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -240,7 +237,7 @@ public class SwapPairs_24 {
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+&lt;pre&gt;&lt;code&gt;public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null ){
             return l2;
         }
@@ -282,7 +279,6 @@ public class SwapPairs_24 {
         return head;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -314,7 +310,7 @@ The brackets must close in the correct order, “()” and “()[]{}” are all 
 
 &lt;h3 id=&quot;section-3&quot;&gt;代码示例&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; public static boolean isValid(String s) {
+&lt;pre&gt;&lt;code&gt; public static boolean isValid(String s) {
         if (s == null ||s.length() &amp;lt;= 1){
             return false;
         }
@@ -349,7 +345,6 @@ The brackets must close in the correct order, “()” and “()[]{}” are all 
         return stack.size() == 0;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -366,7 +361,7 @@ The brackets must close in the correct order, “()” and “()[]{}” are all 
 &lt;p&gt;Given a linked list, remove the nth node from the end of list and return its head.&lt;br /&gt;
 For example,&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
+&lt;p&gt;&lt;code&gt;Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
    After removing the second node from the end, the linked list becomes 1-&amp;gt;2-&amp;gt;3-&amp;gt;5.&lt;/code&gt;&lt;br /&gt;
 Note:&lt;br /&gt;
 Given n will always be valid.&lt;br /&gt;
@@ -376,7 +371,7 @@ Try to do this in one pass.&lt;/p&gt;
 
 &lt;p&gt;给定一个链表，删除倒数第n个节点，然后返回这链表的头部。&lt;br /&gt;
 比如：&lt;br /&gt;
- &lt;code class=&quot;highlighter-rouge&quot;&gt;给定链表： 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5,  n = 2.
+ &lt;code&gt;给定链表： 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5,  n = 2.
   从尾部移除第2个节点, 然后链表变为： 1-&amp;gt;2-&amp;gt;3-&amp;gt;5.&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;注意：给定的n总是有效的，尝试一次通过。&lt;/p&gt;
@@ -392,7 +387,7 @@ Try to do this in one pass.&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public ListNode removeNthFromEnd(ListNode head, int n) {
+&lt;pre&gt;&lt;code&gt;public ListNode removeNthFromEnd(ListNode head, int n) {
         if (n == 0 || head == null){
             return head;
         }
@@ -425,7 +420,6 @@ Try to do this in one pass.&lt;/p&gt;
         return head;
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -453,7 +447,7 @@ Try to do this in one pass.&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * Created by yumodev on 9/12/16.
  */
 public class LongestCommonPrefix_14 {
@@ -485,7 +479,6 @@ public class LongestCommonPrefix_14 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -510,7 +503,7 @@ Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
 &lt;p&gt;这道里面本身很简单，其实难点在于必须要明白罗马数字的标识方法。&lt;br /&gt;
-罗马数字一共有七个大写字符，分别是：&lt;code class=&quot;highlighter-rouge&quot;&gt;I、V、X、L、C、D、M&lt;/code&gt;。&lt;br /&gt;
+罗马数字一共有七个大写字符，分别是：&lt;code&gt;I、V、X、L、C、D、M&lt;/code&gt;。&lt;br /&gt;
 下面是罗马字符和整数的对应关系。&lt;/p&gt;
 
 &lt;table&gt;
@@ -651,7 +644,7 @@ Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-3&quot;&gt;代码示例&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * Created by yumodev on 9/12/16.
  */
 public class RomanToInteger_13 {
@@ -735,7 +728,6 @@ public class RomanToInteger_13 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -764,7 +756,7 @@ Could negative integers be palindromes? (ie, -1)&lt;/p&gt;
 
 &lt;p&gt;在不需要额外空间的情况下，判定一个整数是否是回文字符串。&lt;br /&gt;
 一些提示：&lt;br /&gt;
-一个负整数是回文字符串吗?(比如 &lt;code class=&quot;highlighter-rouge&quot;&gt;-1&lt;/code&gt;)&lt;br /&gt;
+一个负整数是回文字符串吗?(比如 &lt;code&gt;-1&lt;/code&gt;)&lt;br /&gt;
 如果你想把一个整数转换为字符串，需要注意不需要额外的空间的限制。&lt;br /&gt;
 也许你会反转整数，如果你已经解决了这道题目”Reverse Integer”, 你就会知道反转字符串也许会发生溢出，然后你该如何处理这种情况呢。&lt;br /&gt;
 有一个更加通用的方式来解决这个问题。&lt;/p&gt;
@@ -777,7 +769,7 @@ Could negative integers be palindromes? (ie, -1)&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/25/16.
@@ -810,7 +802,6 @@ public class PalindromeNumber_9 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -841,28 +832,28 @@ The function first discards as many whitespace characters as necessary until the
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
-&lt;p&gt;实现方法 &lt;code class=&quot;highlighter-rouge&quot;&gt;atoi&lt;/code&gt; 将一个字符串转换为整数&lt;br /&gt;
+&lt;p&gt;实现方法 &lt;code&gt;atoi&lt;/code&gt; 将一个字符串转换为整数&lt;br /&gt;
 提示：请考虑到所有输入的情况。如果你想要挑战一下自己，就可以不用开下面的注意事项然后问题自己，都有哪些输入情况。&lt;br /&gt;
 注意：这道题目的定义是模糊的(没有给输入的限定条件)，你需要自己考虑所有的输入情况。&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;atoi &lt;/code&gt; 方法的要求：&lt;br /&gt;
+&lt;p&gt;&lt;code&gt;atoi &lt;/code&gt; 方法的要求：&lt;br /&gt;
 该方法要求忽略字符串开始的空白字符，一直到第一个非空白字符为止。然后从这个字符开始，先判断初始的正负字符，然后选取尽可能多的数字字符，并将它们转换为一个数值。&lt;br /&gt;
 也许该字符串的有效数字后面还有一些额外的非数字字符，那么将忽略这些字符。&lt;br /&gt;
 如果第一个非空白字符不是数字字符，或者改字符串是个空串，或者只包含空白字符，则不执行转换。&lt;br /&gt;
-如果未执行有效的转换，就返回 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; .如果转换后的数字超出了 &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; 类型标识数字的的范围，那么返回&lt;code class=&quot;highlighter-rouge&quot;&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
+如果未执行有效的转换，就返回 &lt;code&gt;0&lt;/code&gt; .如果转换后的数字超出了 &lt;code&gt;int&lt;/code&gt; 类型标识数字的的范围，那么返回&lt;code&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
 &lt;p&gt;这道题目比较简单，正如题目的里面的讲的那样，难点是要考虑到各种的情况。&lt;br /&gt;
 1、空字符串、空白字符串、没有有效数字的字符串，返回0&lt;br /&gt;
 2、需要去除前面的无效空白字符。&lt;br /&gt;
-3、考虑第一个非空字符，如果是 &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; 标识正值，如果是&lt;code class=&quot;highlighter-rouge&quot;&gt; -&lt;/code&gt; 标识负值。&lt;br /&gt;
-4、忽略有效数字字符后面的所有无效字符，比如：&lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;   -123&amp;amp;456&#39; &lt;/code&gt;转换为 &lt;code class=&quot;highlighter-rouge&quot;&gt;-123&lt;/code&gt;&lt;br /&gt;
-5、如果转换后的整数值，超过了返回就返回返回&lt;code class=&quot;highlighter-rouge&quot;&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
+3、考虑第一个非空字符，如果是 &lt;code&gt;+&lt;/code&gt; 标识正值，如果是&lt;code&gt; -&lt;/code&gt; 标识负值。&lt;br /&gt;
+4、忽略有效数字字符后面的所有无效字符，比如：&lt;code&gt;&#39;   -123&amp;amp;456&#39; &lt;/code&gt;转换为 &lt;code&gt;-123&lt;/code&gt;&lt;br /&gt;
+5、如果转换后的整数值，超过了返回就返回返回&lt;code&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/22/16.
@@ -924,7 +915,6 @@ public class Atoi_8 {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -940,10 +930,9 @@ public class Atoi_8 {
 
 &lt;p&gt;Reverse digits of an integer.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example1: x = 123, return 321
+&lt;pre&gt;&lt;code&gt;Example1: x = 123, return 321
 Example2: x = -123, return -321
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Have you thought about this?&lt;br /&gt;
 Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!&lt;/p&gt;
@@ -958,14 +947,13 @@ Here are some good questions to ask before coding. Bonus points for you if you h
 
 &lt;p&gt;反转一个整数数据&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example1: x = 123, return 321
+&lt;pre&gt;&lt;code&gt;Example1: x = 123, return 321
 Example2: x = -123, return -321
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;注意：在编码之前有一些问题需要考虑，如果你已经考虑了这些问题，这将是你的加分点。&lt;br /&gt;
 如果该整数的最后一位是0，那么僵该输出什么呢？比如 10， 100&lt;br /&gt;
-反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转&lt;code class=&quot;highlighter-rouge&quot;&gt;1000000003&lt;/code&gt;将产生溢出，那这种情况该如何处理呢？&lt;br /&gt;
+反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转&lt;code&gt;1000000003&lt;/code&gt;将产生溢出，那这种情况该如何处理呢？&lt;br /&gt;
 如果发生了溢出，就直接返回为0.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
@@ -981,7 +969,7 @@ Example2: x = -123, return -321
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/17/16.
@@ -1014,7 +1002,6 @@ public class ReverseInteger_7 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -1028,71 +1015,65 @@ public class ReverseInteger_7 {
 
 &lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
 
-&lt;p&gt;The string &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;/p&gt;
+&lt;p&gt;The string &lt;code&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
+&lt;pre&gt;&lt;code&gt;P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;And then read line by line: &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;br /&gt;
+&lt;p&gt;And then read line by line: &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;br /&gt;
 Write the code that will take a string and make this conversion given a number of rows:&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;string convert(string text, int nRows);&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; should return &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;string convert(string text, int nRows);&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; should return &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;.&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
-&lt;p&gt;将字符串&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt;按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将字符串&lt;code&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt;按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成&lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
+&lt;pre&gt;&lt;code&gt;P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;编写代码将给定的字符串和行数，将字符串进行锯齿转换。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;string convert(string text, int nRows);
+&lt;pre&gt;&lt;code&gt;string convert(string text, int nRows);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; 返回 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; 返回 &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
 
 &lt;p&gt;如果nRows = 1， 那么直接返回。&lt;br /&gt;
-如果nRows = 2, 转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PYAIHRNAPLSIIG&lt;/code&gt;&lt;/p&gt;
+如果nRows = 2, 转换字符串为：&lt;code&gt;PYAIHRNAPLSIIG&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P	 Y	 A	 I	 H	 R	 N
+&lt;pre&gt;&lt;code&gt;P	 Y	 A	 I	 H	 R	 N
 A	 P	 L	 S	 I	 I	 G
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;如果 nRows = 3  转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PAHNAPLSIIGYIR&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果 nRows = 3  转换字符串为：&lt;code&gt;PAHNAPLSIIGYIR&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
+&lt;pre&gt;&lt;code&gt;P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;如果 nRows = 4 转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PINALSIGYAHRPI&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果 nRows = 4 转换字符串为：&lt;code&gt;PINALSIGYAHRPI&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 			I			N
+&lt;pre&gt;&lt;code&gt;P 			I			N
 A		L	S		I	G
 Y	A		H	R
 P			I
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: &lt;code class=&quot;highlighter-rouge&quot;&gt;2 * nRows -2 &lt;/code&gt;&lt;br /&gt;
-中间第 i 行，第1列和它临近字符的间距为: &lt;code class=&quot;highlighter-rouge&quot;&gt;2*nRows -2 - 2 * i&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: &lt;code&gt;2 * nRows -2 &lt;/code&gt;&lt;br /&gt;
+中间第 i 行，第1列和它临近字符的间距为: &lt;code&gt;2*nRows -2 - 2 * i&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/16/16.
@@ -1134,7 +1115,6 @@ public class ZigZag_6 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -1165,7 +1145,7 @@ dp[i][j] 标识字符串S 中S[i~j]的子串是不是回文字符串。&lt;br /&
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * Created by wks on 8/8/16.
  */
 public class LongestPalindrome_5 {
@@ -1213,7 +1193,6 @@ public class LongestPalindrome_5 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -1231,18 +1210,16 @@ Find the median of the two sorted arrays. The overall run time complexity should
 
 &lt;p&gt;Example 1:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 3]
+&lt;pre&gt;&lt;code&gt;nums1 = [1, 3]
 nums2 = [2]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The median is 2.0&lt;br /&gt;
 Example 2:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 2]
+&lt;pre&gt;&lt;code&gt;nums1 = [1, 2]
 nums2 = [3, 4]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The median is (2 + 3)/2 = 2.5&lt;/p&gt;
 
@@ -1253,18 +1230,16 @@ nums2 = [3, 4]
 
 &lt;p&gt;示例1:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 3]
+&lt;pre&gt;&lt;code&gt;nums1 = [1, 3]
 nums2 = [2]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;中位值为： 2.0&lt;br /&gt;
 示例2：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 2]
+&lt;pre&gt;&lt;code&gt;nums1 = [1, 2]
 nums2 = [3, 4]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;中位值： (2 + 3)/2 = 2.5&lt;/p&gt;
 
@@ -1292,7 +1267,7 @@ nums2 = [3, 4]
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/7/16.
@@ -1405,7 +1380,6 @@ public class MedianTwoSortedArrays_4 {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -1423,21 +1397,21 @@ public class MedianTwoSortedArrays_4 {
 
 &lt;p&gt;Examples:&lt;/p&gt;
 
-&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abcabcbb&quot;&lt;/code&gt;, the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abc&quot;&lt;/code&gt;, which the length is 3.&lt;/p&gt;
+&lt;p&gt;Given &lt;code&gt;&quot;abcabcbb&quot;&lt;/code&gt;, the answer is &lt;code&gt;&quot;abc&quot;&lt;/code&gt;, which the length is 3.&lt;/p&gt;
 
-&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;bbbbb&quot;,&lt;/code&gt; the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;b&quot;&lt;/code&gt;, with the length of 1.&lt;/p&gt;
+&lt;p&gt;Given &lt;code&gt;&quot;bbbbb&quot;,&lt;/code&gt; the answer is &lt;code&gt;&quot;b&quot;&lt;/code&gt;, with the length of 1.&lt;/p&gt;
 
-&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwwkew&quot;&lt;/code&gt;, the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wke&quot;&lt;/code&gt;, with the length of 3. Note that the answer must be a substring, &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwke&quot;&lt;/code&gt; is a subsequence and not a substring.&lt;/p&gt;
+&lt;p&gt;Given &lt;code&gt;&quot;pwwkew&quot;&lt;/code&gt;, the answer is &lt;code&gt;&quot;wke&quot;&lt;/code&gt;, with the length of 3. Note that the answer must be a substring, &lt;code&gt;&quot;pwke&quot;&lt;/code&gt; is a subsequence and not a substring.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;题目翻译&lt;/h3&gt;
 
 &lt;p&gt;获取一个字符串的各个字符都不相同的子串的最大长度。&lt;br /&gt;
 举例：&lt;/p&gt;
 
-&lt;p&gt;字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abcabcbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abc&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;.&lt;br /&gt;
-字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;bbbbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;b&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;.&lt;br /&gt;
-字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwwkew&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wke&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;. &lt;br /&gt;
-注意结果必须为连续的子串， 其中&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwke&quot;&lt;/code&gt;是不同的字符组合，但不是连续的子串&lt;/p&gt;
+&lt;p&gt;字符串 &lt;code&gt;&quot;abcabcbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code&gt;&quot;abc&quot;&lt;/code&gt;, 其长度为 &lt;code&gt;3&lt;/code&gt;.&lt;br /&gt;
+字符串 &lt;code&gt;&quot;bbbbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code&gt;&quot;b&quot;&lt;/code&gt;, 其长度为 &lt;code&gt;1&lt;/code&gt;.&lt;br /&gt;
+字符串 &lt;code&gt;&quot;pwwkew&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code&gt;&quot;wke&quot;&lt;/code&gt;, 其长度为 &lt;code&gt;3&lt;/code&gt;. &lt;br /&gt;
+注意结果必须为连续的子串， 其中&lt;code&gt;&quot;pwke&quot;&lt;/code&gt;是不同的字符组合，但不是连续的子串&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
@@ -1446,7 +1420,7 @@ public class MedianTwoSortedArrays_4 {
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -1527,11 +1501,10 @@ public class LongSubNoRepeatCHar_3 {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;c&quot;&gt;代码示例-c++&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+&lt;pre&gt;&lt;code&gt;//
 // Created by yumodev on 8/6/16.
 //
 #include &amp;lt;iostream&amp;gt;
@@ -1586,11 +1559,10 @@ int main() {
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;javascript&quot;&gt;代码示例-javascript&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * @param {string} s
  * @return {number}
  */
@@ -1625,7 +1597,6 @@ var str = &quot;dvdf&quot;
 var len = lengthOfLongestSubstring(str);
 console.log(num+&quot; &quot;+len);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -1657,7 +1628,7 @@ Output: 7 -&amp;gt; 0 -&amp;gt; 8&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
  * Created by wks on 8/5/16.
  * You are given two linked lists representing two non-negative numbers.
  * The digits are stored in reverse order and each of their nodes contain a single digit.
@@ -1749,11 +1720,10 @@ public class AddTwoNumbers_2 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;c&quot;&gt;代码示例-c++&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
+&lt;pre&gt;&lt;code&gt;//
 // Created by yumo on 8/5/16.
 //
 #include &amp;lt;iostream&amp;gt;
@@ -1860,11 +1830,10 @@ int main()
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;javascript&quot;&gt;代码示例-JavaScript&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function ListNode(val) {
+&lt;pre&gt;&lt;code&gt;function ListNode(val) {
      this.val = val;
      this.next = null;
 }
@@ -1946,7 +1915,6 @@ var ln = addTwoNumbers(l1, l2);
 console.log(&quot;result:&quot;+listNodeToString(ln));
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -1963,42 +1931,39 @@ console.log(&quot;result:&quot;+listNodeToString(ln));
     &lt;p&gt;从官网下载JDK，下载路径 http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;将 &lt;code class=&quot;highlighter-rouge&quot;&gt;jdk-8u101-linux-x64.tar.gz&lt;/code&gt; 移动到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib&lt;/code&gt; 中， 解压到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib/jvm &lt;/code&gt;目录&lt;/p&gt;
+    &lt;p&gt;将 &lt;code&gt;jdk-8u101-linux-x64.tar.gz&lt;/code&gt; 移动到 &lt;code&gt;/usr/lib&lt;/code&gt; 中， 解压到 &lt;code&gt;/usr/lib/jvm &lt;/code&gt;目录&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir jvm
+&lt;pre&gt;&lt;code&gt;mkdir jvm
 sudo tar -zxvf jdk-8u101-linux-x64.tar.gz -C /usr/lib/jvm
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;jre&quot;&gt;配置JRE路径&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;打开环境变量文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo vi ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;打开环境变量文件 &lt;code&gt;sudo vi ~/.bashrc&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;在文件的末尾添加下面内容&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
 export JRE_HOME=${JAVA_HOME}/jre  
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
 export PATH=${JAVA_HOME}/bin:$PATH  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;source ~/.bashrc&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;jre-1&quot;&gt;测试JRE&lt;/h3&gt;
 
-&lt;p&gt;通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;java -version&lt;/code&gt;  查看当前的Java路径&lt;/p&gt;
+&lt;p&gt;通过 &lt;code&gt;java -version&lt;/code&gt;  查看当前的Java路径&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java version &quot;1.8.0_101&quot;
+&lt;pre&gt;&lt;code&gt;java version &quot;1.8.0_101&quot;
 Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;tomcat&quot;&gt;安装tomcat&lt;/h3&gt;
 
@@ -2011,11 +1976,10 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cp apache-tomcat-9.0.0.M9.zip /usr/local
+&lt;pre&gt;&lt;code&gt;  cp apache-tomcat-9.0.0.M9.zip /usr/local
   uzip apache-tomcat-9.0.0.M9.zip
   mv apache-tomcat-9.0.0.M9 tomcat9
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;tomcat-1&quot;&gt;启动tomcat&lt;/h3&gt;
 
@@ -2023,15 +1987,14 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   &lt;li&gt;开启tomcat9 权限&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chomd 755 /usr/local/tomcat9/bin/*.sh
+&lt;pre&gt;&lt;code&gt;sudo chomd 755 /usr/local/tomcat9/bin/*.sh
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;启动tomcat&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/local/tomcat9/bin
+&lt;pre&gt;&lt;code&gt;cd /usr/local/tomcat9/bin
 ./startup.sh
 
 Using CATALINA_BASE:   /usr/local/tomcat9
@@ -2041,11 +2004,10 @@ Using JRE_HOME:        /usr/lib/jvm/jdk1.8.0_101/jre
 Using CLASSPATH:       /usr/local/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/bin/tomcat-juli.jar
 Tomcat started.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;测试访问&lt;/h3&gt;
 
-&lt;p&gt;在浏览器中输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8080&lt;/code&gt; 访问&lt;/p&gt;
+&lt;p&gt;在浏览器中输入 &lt;code&gt;http://localhost:8080&lt;/code&gt; 访问&lt;/p&gt;
 
 </description>
       </item>
@@ -2074,7 +2036,7 @@ Tomcat started.
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例(Java)&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.string.test;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.string.test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -2230,17 +2192,15 @@ public class StringIsSameAfterSort {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;效率比较&lt;/h3&gt;
 
 &lt;p&gt;假定这两个字符串的长度为10，那么这三种方法所花费的时间如下&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;isStringEqualByArraysSort: true time:167000
+&lt;pre&gt;&lt;code&gt;isStringEqualByArraysSort: true time:167000
 isStringEqualByCharNums: true time:518000
 isStringEqualByCharNumsAscii: true time:29000
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;如果能够确定字符串中的字符数量，不是太大的话，优先采用利用数组统计字符数量的方法才是效率最高的。&lt;br /&gt;
 不过在工作中直接使用数组排序的解决方式是优先考虑的选择&lt;/p&gt;
@@ -2270,7 +2230,7 @@ isStringEqualByCharNumsAscii: true time:29000
 
 &lt;h3 id=&quot;section-2&quot;&gt;实例代码&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+&lt;pre&gt;&lt;code&gt;/**
      * 利用系统自带的StringBuilder.reverse() 进行反转
      * @param str
      * @return
@@ -2384,7 +2344,6 @@ isStringEqualByCharNumsAscii: true time:29000
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section-3&quot;&gt;效率比较 单位是纳秒&lt;/h3&gt;
 
@@ -2392,42 +2351,38 @@ isStringEqualByCharNumsAscii: true time:29000
   &lt;li&gt;
     &lt;p&gt;对长度为10的字符串进行反转&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  StringBuilder.reverse() time:14000  
+    &lt;pre&gt;&lt;code&gt;  StringBuilder.reverse() time:14000  
   reverseByCharArray time:7000 
   reverseByXor time:4000 
   reverseBystack time:315000 
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;对长度为100的字符串进行反转&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  StringBuilder.reverse() time:29000  
+    &lt;pre&gt;&lt;code&gt;  StringBuilder.reverse() time:29000  
   reverseByCharArray time:11000 
   reverseByXor time:9000 
   reverseBystack time:589000 
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;对长度为1000的字符串进行反转&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  StringBuilder.reverse() time:295000 
+    &lt;pre&gt;&lt;code&gt;  StringBuilder.reverse() time:295000 
   reverseByCharArray time:72000 
   reverseByXor time:76000
   reverseBystack time:3949000
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;对长度为10000的字符串进行反转&lt;/p&gt;
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  StringBuilder.reverse() time:3321000
+    &lt;pre&gt;&lt;code&gt;  StringBuilder.reverse() time:3321000
   reverseByCharArray time:966000 
   reverseByXor time:1421000
   reverseBystack time:18414000 
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;结果比较&lt;/p&gt;
@@ -2464,7 +2419,7 @@ isStringEqualByCharNumsAscii: true time:29000
 
 &lt;h3 id=&quot;section-2&quot;&gt;实例代码&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.string.test;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.string.test;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -2608,7 +2563,6 @@ public class AnalyzingStringsNoSame {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>
@@ -2625,11 +2579,10 @@ public class AnalyzingStringsNoSame {
 You may assume that each input would have exactly one solution.&lt;br /&gt;
 Example:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given nums = [2, 7, 11, 15], target = 9,
+&lt;pre&gt;&lt;code&gt;Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
@@ -2637,21 +2590,20 @@ return [0, 1].
 假定有唯一的解决方案。&lt;br /&gt;
 示例:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given nums = [2, 7, 11, 15], target = 9,
+&lt;pre&gt;&lt;code&gt;Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;假定有一个Map，遍历寻找&lt;code class=&quot;highlighter-rouge&quot;&gt;target-nums[n] &lt;/code&gt;为key对应的value，如果找不到就将nums[n]和索引n作为存放于Map中。&lt;/li&gt;
+  &lt;li&gt;假定有一个Map，遍历寻找&lt;code&gt;target-nums[n] &lt;/code&gt;为key对应的value，如果找不到就将nums[n]和索引n作为存放于Map中。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;示例代码-Java&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -2702,11 +2654,10 @@ public class TwoSum_1 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;c&quot;&gt;示例代码-c++&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
 #include &amp;lt;vector&amp;gt;
 #include &amp;lt;map&amp;gt;
 
@@ -2753,11 +2704,10 @@ int main() {
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;javascript&quot;&gt;示例代码-JavaScript&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var twoSumByMap = function(nums, target) {
+&lt;pre&gt;&lt;code&gt;var twoSumByMap = function(nums, target) {
     var map = {};
     for(var i in nums){
       if(map[target-nums[i]] !== undefined){
@@ -2775,7 +2725,6 @@ var result = twoSumByMap(nums, target);
 var endTime = new Date().getTime();
 console.log(&quot;Time:&quot;+(endTime - beginTime)+&quot; result:&quot;+result);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 </description>
       </item>

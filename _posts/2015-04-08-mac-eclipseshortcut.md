@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  MAC下eclipse的常用快捷键
-category: mac
+category: 开发技术
 tags: [eclipse,快捷键]
 keywords: mac,eclipse
 description: 
