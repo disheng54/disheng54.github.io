@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,7 +75,9 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
-                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
+                  <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
+                
+                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
                 
@@ -85,6 +87,8 @@
             <div class="tab-pane" id="java">
               <div class="list-group">
                 <h2 class="center">java</h2>
+                
+                  <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
                   <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
                 
@@ -99,9 +103,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -242,10 +246,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#java">java</a>
-                      <span class="badge pull-right">25</span>
+                      <span class="badge pull-right">26</span>
                     </h4>
                   </div>
                   <div id="java" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/10/java-linkedhashmap-lru.html' class="list-group-item pjaxlink">
+                        LinkedHashMap的使用以及LRU算法的实现
+                      </a>
                     
                       <a  href='/2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html' class="list-group-item pjaxlink">
                         26-Remove Duplicates from Sorted Array
@@ -370,13 +378,17 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">1</span>
+                      <span class="badge pull-right">2</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
                     
+                      <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
+                        分屏模式
+                      </a>
+                    
                       <a  href='/2015/01/27/android-resource.html' class="list-group-item pjaxlink">
-                        android开发中的资源
+                        Android开发中的资源
                       </a>
                     
                   </div>
@@ -478,10 +490,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#airthmetic">airthmetic</a>
-                      <span class="badge pull-right">19</span>
+                      <span class="badge pull-right">20</span>
                     </h4>
                   </div>
                   <div id="airthmetic" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/10/java-linkedhashmap-lru.html' class="list-group-item pjaxlink">
+                        LinkedHashMap的使用以及LRU算法的实现
+                      </a>
                     
                       <a  href='/2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html' class="list-group-item pjaxlink">
                         26-Remove Duplicates from Sorted Array
@@ -639,30 +655,30 @@ mac下下载zip和targz都行.这次我选择的是最新的9.0版本下载的�
 <ol>
   <li>解压刚才下载的文件，命名为tomcat9</li>
   <li>
-    <p>将tomcat9 移动到 <code>/Library</code>目录下</p>
+    <p>将tomcat9 移动到 <code class="highlighter-rouge">/Library</code>目录下</p>
 
-    <p><code>sudo mv tomcat9 /Library</code></p>
+    <p><code class="highlighter-rouge">sudo mv tomcat9 /Library</code></p>
   </li>
-  <li>为tomcat9 添加权限 <code>sudo chmod 755 /Library/tomcat9/bin/*.sh</code></li>
+  <li>为tomcat9 添加权限 <code class="highlighter-rouge">sudo chmod 755 /Library/tomcat9/bin/*.sh</code></li>
 </ol>
 
 <h3 id="tomcat-1">三、开启和关闭tomcat</h3>
 
 <ol>
-  <li>启动tomcat <code>/Library/tomcat9/bin/startup.sh</code></li>
+  <li>启动tomcat <code class="highlighter-rouge">/Library/tomcat9/bin/startup.sh</code></li>
   <li><a href="http://localhost:8080/">http://localhost:8080</a> 打开tomcat 首页</li>
-  <li>关闭 tomcat <code>/Library/tomcat9/bin/shutdown.sh</code></li>
+  <li>关闭 tomcat <code class="highlighter-rouge">/Library/tomcat9/bin/shutdown.sh</code></li>
 </ol>
 
 <h3 id="section-1">四、配置环境变量</h3>
 
 <ol>
-  <li>打开.bash_profile <code>vi ~/.bash_profile</code></li>
-  <li>输入路径：<code>export PATH=$PATH:/Library/tomcat9/bin</code></li>
+  <li>打开.bash_profile <code class="highlighter-rouge">vi ~/.bash_profile</code></li>
+  <li>输入路径：<code class="highlighter-rouge">export PATH=$PATH:/Library/tomcat9/bin</code></li>
   <li>输入 $PATH 查看刚才输入的路径</li>
-  <li>输入<code> source ~/.bash_profile</code> 使配置生效</li>
+  <li>输入<code class="highlighter-rouge"> source ~/.bash_profile</code> 使配置生效</li>
   <li>测试 配置是否成功<br />
- 在终端输入 <code>startup.sh</code> 和 <code>shutdown.sh</code> 是否启动和关闭tomcat服务器</li>
+ 在终端输入 <code class="highlighter-rouge">startup.sh</code> 和 <code class="highlighter-rouge">shutdown.sh</code> 是否启动和关闭tomcat服务器</li>
 </ol>
 
 

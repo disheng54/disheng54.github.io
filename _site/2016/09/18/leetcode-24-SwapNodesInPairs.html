@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,7 +75,9 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
-                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
+                  <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
+                
+                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
                 
@@ -85,6 +87,8 @@
             <div class="tab-pane" id="java">
               <div class="list-group">
                 <h2 class="center">java</h2>
+                
+                  <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
                   <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
                 
@@ -99,9 +103,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -242,10 +246,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#java">java</a>
-                      <span class="badge pull-right">25</span>
+                      <span class="badge pull-right">26</span>
                     </h4>
                   </div>
                   <div id="java" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/10/java-linkedhashmap-lru.html' class="list-group-item pjaxlink">
+                        LinkedHashMap的使用以及LRU算法的实现
+                      </a>
                     
                       <a  href='/2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html' class="list-group-item pjaxlink">
                         26-Remove Duplicates from Sorted Array
@@ -370,13 +378,17 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">1</span>
+                      <span class="badge pull-right">2</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
                     
+                      <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
+                        分屏模式
+                      </a>
+                    
                       <a  href='/2015/01/27/android-resource.html' class="list-group-item pjaxlink">
-                        android开发中的资源
+                        Android开发中的资源
                       </a>
                     
                   </div>
@@ -478,10 +490,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#airthmetic">airthmetic</a>
-                      <span class="badge pull-right">19</span>
+                      <span class="badge pull-right">20</span>
                     </h4>
                   </div>
                   <div id="airthmetic" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/10/java-linkedhashmap-lru.html' class="list-group-item pjaxlink">
+                        LinkedHashMap的使用以及LRU算法的实现
+                      </a>
                     
                       <a  href='/2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html' class="list-group-item pjaxlink">
                         26-Remove Duplicates from Sorted Array
@@ -636,14 +652,14 @@
 <p>Given a linked list, swap every two adjacent nodes and return its head.</p>
 
 <p>For example,<br />
-Given <code>1-&gt;2-&gt;3-&gt;4,</code> you should return the list as <code>2-&gt;1-&gt;4-&gt;3</code>.</p>
+Given <code class="highlighter-rouge">1-&gt;2-&gt;3-&gt;4,</code> you should return the list as <code class="highlighter-rouge">2-&gt;1-&gt;4-&gt;3</code>.</p>
 
 <p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.</p>
 
 <h3 id="section-1">翻译</h3>
 
 <p>给定一个链表，交互相邻的两个节点，并返回链表的头部。<br />
-比如：给定链表<code>1-&gt;2-&gt;3-&gt;4,</code> 应该返回<code>2-&gt;1-&gt;4-&gt;3</code><br />
+比如：给定链表<code class="highlighter-rouge">1-&gt;2-&gt;3-&gt;4,</code> 应该返回<code class="highlighter-rouge">2-&gt;1-&gt;4-&gt;3</code><br />
 应当使用常量空间时间，不能修改节点的值，但是可以修改节点本身。</p>
 
 <h3 id="section-2">解题思路</h3>
@@ -655,17 +671,18 @@ ln.next表示第一个节点，ln.next.next 标识第二个节点。<br />
 现在需要的工作就是讲ln.next, ln.next.next 交互位置。<br />
 通过下面方法来实现ln.next 和 ln.next.next 位置的呼唤。</p>
 
-<pre><code>      temp = ln.next;
+<div class="highlighter-rouge"><pre class="highlight"><code>      temp = ln.next;
       ln.next = ln.next.next;
       temp.next = ln.next.next;
       ln.next.next = temp;     
 </code></pre>
+</div>
 
 <p>时间复杂度为O(n),<br />
   空间夫再度为O(2);<br />
 ### 代码示例-Java</p>
 
-<pre><code>/**
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
  * Created by yumodev on 9/13/16.
  */
 public class SwapPairs_24 {
@@ -752,6 +769,7 @@ public class SwapPairs_24 {
 
 }
 </code></pre>
+</div>
 
 
     </div>

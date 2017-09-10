@@ -1,21 +1,19 @@
 
-  /pages/about.html
+  /pages/about
 
-  /pages/archive.html
+  /pages/archive
 
   /pages/atom.xml
 
-  /index.html
+  /
 
   /sitemap.txt
 
-  /page2/index.html
-
-  /page3/index.html
-
-  /page4/index.html
 
 
+  /2017/09/10/java-linkedhashmap-lru.html
+
+  /2017/09/10/android-multiscreen.html
 
   /2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html
 

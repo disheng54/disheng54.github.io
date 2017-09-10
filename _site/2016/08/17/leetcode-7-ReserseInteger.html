@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,7 +75,9 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
-                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">android开发中的资源</a>
+                  <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
+                
+                  <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
                 
                   <a href="/2015/01/01/android-http.html" class="list-group-item pjaxlink">Android http开发（－） 下载web页面</a>
                 
@@ -85,6 +87,8 @@
             <div class="tab-pane" id="java">
               <div class="list-group">
                 <h2 class="center">java</h2>
+                
+                  <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
                   <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
                 
@@ -99,9 +103,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -242,10 +246,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#java">java</a>
-                      <span class="badge pull-right">25</span>
+                      <span class="badge pull-right">26</span>
                     </h4>
                   </div>
                   <div id="java" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/10/java-linkedhashmap-lru.html' class="list-group-item pjaxlink">
+                        LinkedHashMap的使用以及LRU算法的实现
+                      </a>
                     
                       <a  href='/2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html' class="list-group-item pjaxlink">
                         26-Remove Duplicates from Sorted Array
@@ -370,13 +378,17 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">1</span>
+                      <span class="badge pull-right">2</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
                     
+                      <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
+                        分屏模式
+                      </a>
+                    
                       <a  href='/2015/01/27/android-resource.html' class="list-group-item pjaxlink">
-                        android开发中的资源
+                        Android开发中的资源
                       </a>
                     
                   </div>
@@ -478,10 +490,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#airthmetic">airthmetic</a>
-                      <span class="badge pull-right">19</span>
+                      <span class="badge pull-right">20</span>
                     </h4>
                   </div>
                   <div id="airthmetic" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/10/java-linkedhashmap-lru.html' class="list-group-item pjaxlink">
+                        LinkedHashMap的使用以及LRU算法的实现
+                      </a>
                     
                       <a  href='/2016/09/18/leetcode-26-RemoveDuplicatesFromSortedArray.html' class="list-group-item pjaxlink">
                         26-Remove Duplicates from Sorted Array
@@ -635,9 +651,10 @@
 
 <p>Reverse digits of an integer.</p>
 
-<pre><code>Example1: x = 123, return 321
+<div class="highlighter-rouge"><pre class="highlight"><code>Example1: x = 123, return 321
 Example2: x = -123, return -321
 </code></pre>
+</div>
 
 <p>Have you thought about this?<br />
 Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!</p>
@@ -652,13 +669,14 @@ Here are some good questions to ask before coding. Bonus points for you if you h
 
 <p>反转一个整数数据</p>
 
-<pre><code>Example1: x = 123, return 321
+<div class="highlighter-rouge"><pre class="highlight"><code>Example1: x = 123, return 321
 Example2: x = -123, return -321
 </code></pre>
+</div>
 
 <p>注意：在编码之前有一些问题需要考虑，如果你已经考虑了这些问题，这将是你的加分点。<br />
 如果该整数的最后一位是0，那么僵该输出什么呢？比如 10， 100<br />
-反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转<code>1000000003</code>将产生溢出，那这种情况该如何处理呢？<br />
+反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转<code class="highlighter-rouge">1000000003</code>将产生溢出，那这种情况该如何处理呢？<br />
 如果发生了溢出，就直接返回为0.</p>
 
 <h3 id="section-2">解决思路</h3>
@@ -674,7 +692,7 @@ Example2: x = -123, return -321
 
 <h3 id="java">代码示例-Java</h3>
 
-<pre><code>package com.yumo.java.airthmetic.leetcode;
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/17/16.
@@ -707,6 +725,7 @@ public class ReverseInteger_7 {
     }
 }
 </code></pre>
+</div>
 
 
     </div>
