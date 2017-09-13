@@ -181,11 +181,11 @@ adb shell pm clear com.taobao.taobao
 
   `adb shell ps`
   
-* 查看制定id进程信息
+* 查看指定id进程信息
 
 	`adb shell ps <pid>`
 	
-* 过滤进程信息，或者查看一个包下的进程。
+* 筛选进程信息，或者查看一个包下的进程。
 
 	`adb shell ps | grep <字符串>`
 	
