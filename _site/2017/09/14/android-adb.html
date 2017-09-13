@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>13-Roman to Integer | 禹墨的博客</title>
+<title>Adb常用命令 | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
-  <meta name="keywords" content="java">
+  <meta name="keywords" content="android,adb">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -637,8 +637,8 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">13-Roman to Integer</h2>
-    2016年09月12日
+    <h2 id="#identifier">Adb常用命令</h2>
+    2017年09月14日
   </div>
   <div class="col-md-12 aside3-content">
     <!-- 目录 -->
@@ -651,246 +651,285 @@
 
     <hr>
     <div id="content">
-      <p><a href="https://leetcode.com/problems/roman-to-integer/">13. Roman to Integer</a></p>
+      <h1 align="center">Adb 常用命令 </h1>
 
-<h3 id="section">原题目</h3>
+<h2 id="section">基础命令</h2>
 
-<p>Given a roman numeral, convert it to an integer.<br />
-Input is guaranteed to be within the range from 1 to 3999.</p>
+<ul>
+  <li>查看版本信息:<code>adb version</code></li>
+  <li>查看帮助:<code> adb -h</code></li>
+  <li>进入shell: <code>adb shell</code></li>
+  <li>退出shell: <code>exit</code></li>
+  <li>重启设备:<code>adb reboot</code></li>
+  <li>终止adb服务:<code>adb kill-server</code></li>
+  <li>启动adb服务:<code>adb start-server</code></li>
+</ul>
 
-<h3 id="section-1">题目翻译</h3>
+<h2 id="section-1">文件操作</h2>
 
-<p>将给定的一个罗马数字字符串转换为整数<br />
-假定的输入范围是1到3999.</p>
+<ul>
+  <li>adb pull <remote> <local> 命令从真机拷贝文件到pc上。</local></remote></li>
+  <li>adb push <local> <remote> 命令从pc上复制一份文件到真机上。</remote></local></li>
+</ul>
 
-<h3 id="section-2">解决思路</h3>
+<h2 id="section-2">截屏</h2>
 
-<p>这道里面本身很简单，其实难点在于必须要明白罗马数字的标识方法。<br />
-罗马数字一共有七个大写字符，分别是：<code>I、V、X、L、C、D、M</code>。<br />
-下面是罗马字符和整数的对应关系。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>罗马字符</th>
-      <th>整数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>I</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>V</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>X</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td>L</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>C</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>D</td>
-      <td>500</td>
-    </tr>
-    <tr>
-      <td>M</td>
-      <td>1000</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>罗马字符串的计算规则就是<br />
-1、从左向右一次计算。<br />
-2、如果一个罗马字符对应的整数比它后面的字符对应的整数小，那么就讲后面的字符对应的整数减去它对应的整数。<br />
-如果一个罗马字符对应的整数不小于它后面的字符对应的整数，那么就讲后面的字符对应的整数加上它对应的整数。<br />
-下面是一个罗马字符串和整数的对应计算实例</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>罗马字符串</th>
-      <th>整数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>III</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>IV</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>VI</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>IX</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <td>XI</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>IL</td>
-      <td>49</td>
-    </tr>
-    <tr>
-      <td>LX</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <td>IM</td>
-      <td>999</td>
-    </tr>
-    <tr>
-      <td>VM</td>
-      <td>995</td>
-    </tr>
-    <tr>
-      <td>XM</td>
-      <td>990</td>
-    </tr>
-    <tr>
-      <td>LM</td>
-      <td>950</td>
-    </tr>
-    <tr>
-      <td>CM</td>
-      <td>900</td>
-    </tr>
-    <tr>
-      <td>DM</td>
-      <td>500</td>
-    </tr>
-    <tr>
-      <td>MI</td>
-      <td>1001</td>
-    </tr>
-    <tr>
-      <td>MV</td>
-      <td>1005</td>
-    </tr>
-    <tr>
-      <td>MX</td>
-      <td>1010</td>
-    </tr>
-    <tr>
-      <td>ML</td>
-      <td>1050</td>
-    </tr>
-    <tr>
-      <td>MC</td>
-      <td>1100</td>
-    </tr>
-    <tr>
-      <td>MD</td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <td>MDCCCLXXXIV</td>
-      <td>1884</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="section-3">代码示例</h3>
-
-<pre><code>/**
- * Created by yumodev on 9/12/16.
- */
-public class RomanToInteger_13 {
-    public static int romanToInt(String s) {
-        if (s == null || s.length() == 0){
-            return 0;
-        }
-
-        int result = 0;
-        for (int i = 0; i &lt; s.length();i++){
-            char ch = s.charAt(i);
-            switch (ch){
-                case 'I':{
-                    if (i &lt; s.length() -1  &amp;&amp; s.charAt(i + 1) != 'I'){
-                        result -= 1;
-                    }else{
-                        result += 1;
-                    }
-                    break;
-                }
-                case 'V':{
-                    if (i &lt; s.length() -1  &amp;&amp; (s.charAt(i + 1) != 'I' &amp;&amp; s.charAt(i + 1) != 'V')){
-                        result -= 5;
-                    }else{
-                        result += 5;
-                    }
-                    break;
-                }
-                case 'X':{
-                    if (i &lt; s.length() -1  &amp;&amp; ( s.charAt(i + 1) == 'C' || s.charAt(i + 1) == 'L' || s.charAt(i + 1) == 'M' || s.charAt(i + 1) == 'D')){
-                        result -= 10;
-                    }else{
-                        result += 10;
-                    }
-                    break;
-                }
-                case 'L':{
-                    if (i &lt; s.length() -1  &amp;&amp; ( s.charAt(i + 1) == 'C' || s.charAt(i + 1) == 'M' || s.charAt(i + 1) == 'D')){
-                        result -= 50;
-                    }else{
-                        result += 50;
-                    }
-                    break;
-                }
-                case 'C':{
-                    if (i &lt; s.length() -1  &amp;&amp; (s.charAt(i + 1) == 'M' || s.charAt(i + 1) == 'D')){
-                        result -= 100;
-                    }else{
-                        result += 100;
-                    }
-                    break;
-                }
-                case 'D':{
-                    if (i &lt; s.length() -1  &amp;&amp; s.charAt(i + 1) == 'M'){
-                        result -= 500;
-                    }else{
-                        result += 500;
-                    }
-                    break;
-                }
-                case 'M':{
-                    result += 1000;
-                    break;
-                }
-
-            }
-
-        }
-
-        return result;
-    }
-
-    public static void main(String[] args) {
-        String str = "MDCCCLXXXIV";
-        long startTime = System.nanoTime();
-        int result = romanToInt(str);
-        long endTime = System.nanoTime();
-        long time = endTime - startTime;
-
-        System.out.println("romanToInt:" + result + " time:" + time);
-    }
-}
+<pre><code>adb shell screencap -p /sdcard/screen.png
+adb pull /sdcard/screen.png
+adb shell rm /sdcard/screen.png
 </code></pre>
+
+<h2 id="section-3">设备相关</h2>
+
+<ul>
+  <li>
+    <p>查看设备序列号</p>
+
+    <p><code>adb get-serialno</code></p>
+  </li>
+  <li>
+    <p>获取CPU信息</p>
+
+    <p><code>adb shell cat /proc/cpuinfo</code></p>
+  </li>
+  <li>
+    <p>查看设备的内存信息</p>
+
+    <p><code>adb shell cat /proc/meminfo</code></p>
+  </li>
+  <li>
+    <p>获取设备名称</p>
+
+    <p><code>adb shell cat /system/build.prop</code></p>
+  </li>
+  <li>
+    <p>获取设备分辨率</p>
+
+    <p><code>adb shell wm size</code></p>
+  </li>
+</ul>
+
+<h2 id="apk">安装APK</h2>
+
+<h3 id="apk-1">安装APK</h3>
+
+<ul>
+  <li>安装apk:<code>adb install &lt;apkfile&gt;</code></li>
+  <li>强制安装apk: <code>adb install -r &lt;apkfile&gt;</code></li>
+  <li>安装apk到Sd卡: <code>adb install -s &lt;apkfile&gt;</code></li>
+</ul>
+
+<h3 id="app">卸载APP</h3>
+
+<ul>
+  <li>卸载APP:<code>adb uninstall &lt;packagename&gt;</code></li>
+  <li>卸载APP但是保留文件: <code>adb uninstall -k &lt;package&gt;</code></li>
+</ul>
+
+<h2 id="pm-">pm 命令</h2>
+
+<ul>
+  <li>查看pm命令帮助： <code>adb shell cmd package</code></li>
+</ul>
+
+<h3 id="section-4">打印应用列表</h3>
+
+<p>查看应用列表的格式：<br />
+<code>list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-f</td>
+      <td>see their associated file<br />显示关联的APK文件</td>
+    </tr>
+    <tr>
+      <td>-d</td>
+      <td>filter to only show disabled packages<br />只显示禁用的包</td>
+    </tr>
+    <tr>
+      <td>-e</td>
+      <td>filter to only show enabled packages<br />只显示启用的包</td>
+    </tr>
+    <tr>
+      <td>-s</td>
+      <td>filter to only show system packages<br />只显示系统的包名</td>
+    </tr>
+    <tr>
+      <td>-3</td>
+      <td>filter to only show third party packages<br />只显示第三方安装的包</td>
+    </tr>
+    <tr>
+      <td>-i</td>
+      <td>see the installer for the packages</td>
+    </tr>
+    <tr>
+      <td>-u</td>
+      <td>also include uninstalled packages<br />显示已卸载的应用</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>打印所有的包名:<code>adb shell pm list packages </code></li>
+  <li>查看包名某一个字符串的包名</li>
+</ul>
+
+<pre><code>adb shell pm list packages com.taobao.taobao
+adb shell pm list packages | grep com.taobao.taobao
+</code></pre>
+
+<h3 id="section-5">清除应用数据和缓存</h3>
+
+<pre><code>adb shell pm clear &lt;包名&gt;
+adb shell pm clear com.taobao.taobao
+</code></pre>
+
+<h2 id="am-">am 命令</h2>
+
+<ul>
+  <li>
+    <p>启动Activity</p>
+
+    <p><code>adb shell am start -n &lt;package_name&gt;/.&lt;activity_class_name&gt;</code></p>
+  </li>
+</ul>
+
+<h2 id="dumpsys-">dumpsys 打印服务信息</h2>
+
+<ul>
+  <li>
+    <p>输出系统正在运行的所有服务:<code>adb shell dumpsys -l</code> 。</p>
+  </li>
+  <li>
+    <p>打印系统中的服务某个服务的信息:<code>adb shell dumpsys &lt;服务名&gt;</code> 命令</p>
+  </li>
+</ul>
+
+<h3 id="activity">activity相关的信息</h3>
+
+<ul>
+  <li>
+    <p>查看前台Activty</p>
+
+    <p><code>adb shell dumpsys activity activities | grep mFocusedActivity</code></p>
+  </li>
+  <li>
+    <p>查看顶部的Activity</p>
+
+    <p><code>adb shell dumpsys activity top</code></p>
+  </li>
+  <li>
+    <p>查看所有正在运行的服务</p>
+
+    <p><code>adb shell dumpsys activity services </code></p>
+  </li>
+  <li>
+    <p>通过字符串过滤正则运行的服务</p>
+
+    <p><code>adb shell dumpsys activity services  &lt;过滤字符串&gt;</code></p>
+  </li>
+  <li>
+    <p>显示待处理的Intent</p>
+
+    <p><code>adb shell dumpsys activity intents</code></p>
+  </li>
+  <li>
+    <p>查看provider信息</p>
+  </li>
+</ul>
+
+<pre><code> adb shell dumpsys activity providers
+ adb shell dumpsys activity prov
+</code></pre>
+
+<h2 id="cpu">进程、CPU、内存信息</h2>
+
+<ul>
+  <li>
+    <p>cpu信息</p>
+
+    <p><code>adb shell dumpsys cupinfo</code></p>
+  </li>
+  <li>
+    <p>打印内存信息</p>
+
+    <p><code>adb shell dumpsys meminfo</code></p>
+  </li>
+</ul>
+
+<h3 id="cpu-top">打印进程、CPU、内存信息-top命令</h3>
+
+<p>-t 显示进程名称，-s 按指定行排序，-n 在退出前刷新几次，-d 刷新间隔，-m 显示最大数量</p>
+
+<ul>
+  <li>
+    <p>查看内存和cpu信息</p>
+
+    <p><code>adb shell top</code></p>
+  </li>
+  <li>
+    <p>制定进程数量</p>
+
+    <p><code>adb shell top -m 1</code></p>
+  </li>
+  <li>
+    <p>刷新进程数据次数</p>
+
+    <p><code>adb shell top -n 5</code></p>
+  </li>
+</ul>
+
+<h3 id="ps">ps命令</h3>
+
+<ul>
+  <li>
+    <p>查看进程状态</p>
+
+    <p><code>adb shell ps</code></p>
+  </li>
+  <li>
+    <p>查看制定id进程信息</p>
+
+    <p><code>adb shell ps &lt;pid&gt;</code></p>
+  </li>
+  <li>
+    <p>过滤进程信息，或者查看一个包下的进程。</p>
+
+    <p><code>adb shell ps | grep &lt;字符串&gt;</code></p>
+  </li>
+  <li>
+    <p>杀死一个进程</p>
+
+    <p><code>adb shell kill &lt;pid&gt;</code></p>
+  </li>
+</ul>
+
+<h2 id="section-6">其他</h2>
+
+<ul>
+  <li>
+    <p>生成bug报告</p>
+
+    <p><code>adb bugreport</code></p>
+  </li>
+</ul>
+
+<h2 id="section-7">参考</h2>
+
+<ul>
+  <li><a href="https://developer.android.com/studio/command-line/adb.html">Android 调试桥</a></li>
+  <li><a href="http://www.jianshu.com/p/0693b841c83b">开发必备—你应该知道的一些 ADB 命令</a></li>
+  <li><a href="http://blog.csdn.net/zhangjg_blog/article/details/39852309">android中dumpsys命令用法详解</a></li>
+  <li><a href="http://gityuan.com/2016/05/14/dumpsys-command/">dumpsys命令用法</a></li>
+  <li><a href="http://gityuan.com/2017/07/04/ams_dumpsys/">AMS之dumpsys篇</a></li>
+</ul>
 
 
     </div>

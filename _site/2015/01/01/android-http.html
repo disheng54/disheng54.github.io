@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,6 +75,8 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
+                  <a href="/2017/09/14/android-adb.html" class="list-group-item pjaxlink">Adb常用命令</a>
+                
                   <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
                 
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
@@ -103,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -378,10 +380,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">2</span>
+                      <span class="badge pull-right">3</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/14/android-adb.html' class="list-group-item pjaxlink">
+                        Adb常用命令
+                      </a>
                     
                       <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
                         分屏模式
@@ -645,13 +651,12 @@
 
     <hr>
     <div id="content">
-      <div class="highlighter-rouge"><pre class="highlight"><code>Android中HTTP协议的开发还是比较重要的，熟练的掌握HTTP开发，有助于开发效率，给用户一个更加优秀的APP产品。Android 中使用HTTP协议开发可以使用java自带的API－HttpURLConnection，也可以使用Apache HttpClient。下面就以这两种方式分别实现对一个web页面的下载。
+      <pre><code>Android中HTTP协议的开发还是比较重要的，熟练的掌握HTTP开发，有助于开发效率，给用户一个更加优秀的APP产品。Android 中使用HTTP协议开发可以使用java自带的API－HttpURLConnection，也可以使用Apache HttpClient。下面就以这两种方式分别实现对一个web页面的下载。
 </code></pre>
-</div>
 
 <h3 id="httpurlconnection-">(-)HttpURLConnection 实现一个页面的下载。</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<pre><code>/**
  * TODO
  * yumo 利用java的HttpConnectionURL 访问一个网站，并获取它的网站数据。
  * @param url 要下载web页面的网址，比如Http://www.baidu.com
@@ -689,11 +694,10 @@ private int getByJavaHttp(String webSite)
 	return statusCode ;
 }
 </code></pre>
-</div>
 
 <h3 id="apachehttpclient-web">（二） 通过ApacheHttpClient 实现一个web页面的下载</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<pre><code>/**
  * TODO
  * yumo 打印网站的数据 利用Apache httpClient
  * @param url 网站名称 比如http://www.baidu.com
@@ -731,7 +735,6 @@ private int getByApacheHttp(String url)
 	return statusCode;
 }
 </code></pre>
-</div>
 
 
     </div>

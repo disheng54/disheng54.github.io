@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,6 +75,8 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
+                  <a href="/2017/09/14/android-adb.html" class="list-group-item pjaxlink">Adb常用命令</a>
+                
                   <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
                 
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
@@ -103,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -378,10 +380,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">2</span>
+                      <span class="badge pull-right">3</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/14/android-adb.html' class="list-group-item pjaxlink">
+                        Adb常用命令
+                      </a>
                     
                       <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
                         分屏模式
@@ -659,22 +665,21 @@
 <h2 id="section-2">开启分屏模式</h2>
 
 <p>App默认是支持分屏模式的。<br />
-如果App是基于Android N版本编译的，那么通过可以在manifest文件中设置Application或者Activity的属性 <code class="highlighter-rouge">android:resizeableActivity=["true" | "false"]</code>。如果设置<code class="highlighter-rouge">resizeableActivity</code>属性为<code class="highlighter-rouge">true</code>则支持分屏模式，如果设置<code class="highlighter-rouge">resizeableActivity</code>属性为<code class="highlighter-rouge">false</code>则不支持分屏模式。</p>
+如果App是基于Android N版本编译的，那么通过可以在manifest文件中设置Application或者Activity的属性 <code>android:resizeableActivity=["true" | "false"]</code>。如果设置<code>resizeableActivity</code>属性为<code>true</code>则支持分屏模式，如果设置<code>resizeableActivity</code>属性为<code>false</code>则不支持分屏模式。</p>
 
-<p>如果App的编译版本低于Android N, 那么当用户尝试进入分屏模式时候，系统会强制将App进入分屏模式。那么在这种情况下，在清单文件中的主Activity中设置<code class="highlighter-rouge">android:screenOrientation="portrait"</code>属性，就可以禁止进入分屏模式。</p>
+<p>如果App的编译版本低于Android N, 那么当用户尝试进入分屏模式时候，系统会强制将App进入分屏模式。那么在这种情况下，在清单文件中的主Activity中设置<code>android:screenOrientation="portrait"</code>属性，就可以禁止进入分屏模式。</p>
 
 <h2 id="section-3">监听是否进入分屏模式</h2>
 
 <p>Activity 进入或退出分屏模式时系统将调用此方法。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@Override
+<pre><code>@Override
 public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
    super.onMultiWindowModeChanged(isInMultiWindowMode);
    Log.i(LOG_TAG,"onMultiWindowModeChanged isInMultiWindowsMode:"+isInMultiWindowMode);
 }
 
 </code></pre>
-</div>
 
 <h2 id="activity">进入分屏模式后的Activity的生命周期</h2>
 
@@ -682,7 +687,7 @@ public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
   <li>进入分屏模式后Activity的生命周期的明白，可以看出当前Activity进行了销毁重建。</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>MainActivity: onMultiWindowModeChanged isInMultiWindowsMode:true
+<pre><code>MainActivity: onMultiWindowModeChanged isInMultiWindowsMode:true
 MainActivity: onPause
 MainActivity: onStop
 MainActivity: onDestroy
@@ -691,13 +696,12 @@ MainActivity: onStart
 MainActivity: onResume
 MainActivity: onPause
 </code></pre>
-</div>
 
 <ul>
   <li>退出分屏模式的生命周期</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>MainActivity: onPause
+<pre><code>MainActivity: onPause
 MainActivity: onStop
 MainActivity: onDestroy
 MainActivity: onCreate
@@ -706,18 +710,16 @@ MainActivity: onResume
 MainActivity: onPause
 MainActivity: onMultiWindowModeChanged isInMultiWindowsMode:true
 </code></pre>
-</div>
 
 <h2 id="activity-1">在分屏模式中打开新的Activity</h2>
 
 <p>在启动Activity的时候添加标志Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT,<br />
 如果此时App处于分屏模式，那么新Activity将会在当前Activity的旁边。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Intent intent = new Intent(MainActivity.this, TestActivity.class);
+<pre><code>Intent intent = new Intent(MainActivity.this, TestActivity.class);
 intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT | Intent.FLAG_ACTIVITY_NEW_TASK);
 startActivity(intent);
 </code></pre>
-</div>
 
 <h2 id="section-4">参考</h2>
 

@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,6 +75,8 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
+                  <a href="/2017/09/14/android-adb.html" class="list-group-item pjaxlink">Adb常用命令</a>
+                
                   <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
                 
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
@@ -103,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -378,10 +380,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">2</span>
+                      <span class="badge pull-right">3</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/14/android-adb.html' class="list-group-item pjaxlink">
+                        Adb常用命令
+                      </a>
                     
                       <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
                         分屏模式
@@ -652,7 +658,7 @@
 <p>Given a linked list, remove the nth node from the end of list and return its head.<br />
 For example,</p>
 
-<p><code class="highlighter-rouge">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.
+<p><code>Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.
    After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</code><br />
 Note:<br />
 Given n will always be valid.<br />
@@ -662,7 +668,7 @@ Try to do this in one pass.</p>
 
 <p>给定一个链表，删除倒数第n个节点，然后返回这链表的头部。<br />
 比如：<br />
- <code class="highlighter-rouge">给定链表： 1-&gt;2-&gt;3-&gt;4-&gt;5,  n = 2.
+ <code>给定链表： 1-&gt;2-&gt;3-&gt;4-&gt;5,  n = 2.
   从尾部移除第2个节点, 然后链表变为： 1-&gt;2-&gt;3-&gt;5.</code></p>
 
 <p>注意：给定的n总是有效的，尝试一次通过。</p>
@@ -678,7 +684,7 @@ Try to do this in one pass.</p>
 
 <h3 id="java">代码示例-Java</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public ListNode removeNthFromEnd(ListNode head, int n) {
+<pre><code>public ListNode removeNthFromEnd(ListNode head, int n) {
         if (n == 0 || head == null){
             return head;
         }
@@ -711,7 +717,6 @@ Try to do this in one pass.</p>
         return head;
     }
 </code></pre>
-</div>
 
 
     </div>

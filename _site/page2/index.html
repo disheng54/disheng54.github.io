@@ -2,10 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>13-Roman to Integer | 禹墨的博客</title>
+<title>首页 | 禹墨的博客</title>
 <meta name="author" content="禹墨">
-
-  <meta name="keywords" content="java">
 
 
 <link rel="shortcut icon" href="http://yumo.qiniudn.com/baby.png" />
@@ -637,261 +635,102 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">13-Roman to Integer</h2>
-    2016年09月12日
+    <h2 id="#identifier">首页</h2>
   </div>
   <div class="col-md-12 aside3-content">
-    <!-- 目录 -->
-<div class="content">
-    <h3><a href="javascript:;" id="content_btn">[目录]</a></h3>
-    <div id="content_table" style="display:none;">
-        <div id="nav"></div>
+    <div id="page-content">
+      <br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">最新文章</div>
+      
+        <a  href='/2016/08/26/leetcode-9-PalindromeNumber.html' class="list-group-item pjaxlink clearfix">
+          9-Palindrome Number
+          <span class="badge">2016年08月26日</span>
+        </a>
+      
+        <a  href='/2016/08/25/leetcode-8-StringToInteger.html' class="list-group-item pjaxlink clearfix">
+          8-String to Integer
+          <span class="badge">2016年08月25日</span>
+        </a>
+      
+        <a  href='/2016/08/17/leetcode-7-ReserseInteger.html' class="list-group-item pjaxlink clearfix">
+          7-Reverse Integer
+          <span class="badge">2016年08月17日</span>
+        </a>
+      
+        <a  href='/2016/08/16/leetcode-6-ZigZag.html' class="list-group-item pjaxlink clearfix">
+          6-ZigZag Conversion
+          <span class="badge">2016年08月16日</span>
+        </a>
+      
+        <a  href='/2016/08/16/leetcode-5-LongestPalindrome.html' class="list-group-item pjaxlink clearfix">
+          5-Longest Palindromic Substring
+          <span class="badge">2016年08月16日</span>
+        </a>
+      
+        <a  href='/2016/08/07/leetcode-4-MedianSortedArrays.html' class="list-group-item pjaxlink clearfix">
+          4-Median of Two Sorted Arrays
+          <span class="badge">2016年08月07日</span>
+        </a>
+      
+        <a  href='/2016/08/07/leetcode-3-engthOfLongestSubstringByMap.html' class="list-group-item pjaxlink clearfix">
+          3-Longest Substring Without Repeating Characters
+          <span class="badge">2016年08月07日</span>
+        </a>
+      
+        <a  href='/2016/08/06/leetcode-2-AddTowNumbers.html' class="list-group-item pjaxlink clearfix">
+          2-Add Two Numbers
+          <span class="badge">2016年08月06日</span>
+        </a>
+      
+        <a  href='/2016/08/03/javaWeb-ubuntu-install-tomcat.html' class="list-group-item pjaxlink clearfix">
+          Ubuntu 安装 Tomcat
+          <span class="badge">2016年08月03日</span>
+        </a>
+      
+        <a  href='/2016/07/31/string-StringIsSameAfterSort.html' class="list-group-item pjaxlink clearfix">
+          比较两个字符串排序后是否相等
+          <span class="badge">2016年07月31日</span>
+        </a>
+      
     </div>
+  </div>
+  
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">andorid</div>
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+         
+          
+        
+      </div>
+    </div>
+  
 </div>
-
-    <hr>
-    <div id="content">
-      <p><a href="https://leetcode.com/problems/roman-to-integer/">13. Roman to Integer</a></p>
-
-<h3 id="section">原题目</h3>
-
-<p>Given a roman numeral, convert it to an integer.<br />
-Input is guaranteed to be within the range from 1 to 3999.</p>
-
-<h3 id="section-1">题目翻译</h3>
-
-<p>将给定的一个罗马数字字符串转换为整数<br />
-假定的输入范围是1到3999.</p>
-
-<h3 id="section-2">解决思路</h3>
-
-<p>这道里面本身很简单，其实难点在于必须要明白罗马数字的标识方法。<br />
-罗马数字一共有七个大写字符，分别是：<code>I、V、X、L、C、D、M</code>。<br />
-下面是罗马字符和整数的对应关系。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>罗马字符</th>
-      <th>整数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>I</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>V</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>X</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td>L</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>C</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>D</td>
-      <td>500</td>
-    </tr>
-    <tr>
-      <td>M</td>
-      <td>1000</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>罗马字符串的计算规则就是<br />
-1、从左向右一次计算。<br />
-2、如果一个罗马字符对应的整数比它后面的字符对应的整数小，那么就讲后面的字符对应的整数减去它对应的整数。<br />
-如果一个罗马字符对应的整数不小于它后面的字符对应的整数，那么就讲后面的字符对应的整数加上它对应的整数。<br />
-下面是一个罗马字符串和整数的对应计算实例</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>罗马字符串</th>
-      <th>整数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>III</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>IV</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>VI</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>IX</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <td>XI</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>IL</td>
-      <td>49</td>
-    </tr>
-    <tr>
-      <td>LX</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <td>IM</td>
-      <td>999</td>
-    </tr>
-    <tr>
-      <td>VM</td>
-      <td>995</td>
-    </tr>
-    <tr>
-      <td>XM</td>
-      <td>990</td>
-    </tr>
-    <tr>
-      <td>LM</td>
-      <td>950</td>
-    </tr>
-    <tr>
-      <td>CM</td>
-      <td>900</td>
-    </tr>
-    <tr>
-      <td>DM</td>
-      <td>500</td>
-    </tr>
-    <tr>
-      <td>MI</td>
-      <td>1001</td>
-    </tr>
-    <tr>
-      <td>MV</td>
-      <td>1005</td>
-    </tr>
-    <tr>
-      <td>MX</td>
-      <td>1010</td>
-    </tr>
-    <tr>
-      <td>ML</td>
-      <td>1050</td>
-    </tr>
-    <tr>
-      <td>MC</td>
-      <td>1100</td>
-    </tr>
-    <tr>
-      <td>MD</td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <td>MDCCCLXXXIV</td>
-      <td>1884</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="section-3">代码示例</h3>
-
-<pre><code>/**
- * Created by yumodev on 9/12/16.
- */
-public class RomanToInteger_13 {
-    public static int romanToInt(String s) {
-        if (s == null || s.length() == 0){
-            return 0;
-        }
-
-        int result = 0;
-        for (int i = 0; i &lt; s.length();i++){
-            char ch = s.charAt(i);
-            switch (ch){
-                case 'I':{
-                    if (i &lt; s.length() -1  &amp;&amp; s.charAt(i + 1) != 'I'){
-                        result -= 1;
-                    }else{
-                        result += 1;
-                    }
-                    break;
-                }
-                case 'V':{
-                    if (i &lt; s.length() -1  &amp;&amp; (s.charAt(i + 1) != 'I' &amp;&amp; s.charAt(i + 1) != 'V')){
-                        result -= 5;
-                    }else{
-                        result += 5;
-                    }
-                    break;
-                }
-                case 'X':{
-                    if (i &lt; s.length() -1  &amp;&amp; ( s.charAt(i + 1) == 'C' || s.charAt(i + 1) == 'L' || s.charAt(i + 1) == 'M' || s.charAt(i + 1) == 'D')){
-                        result -= 10;
-                    }else{
-                        result += 10;
-                    }
-                    break;
-                }
-                case 'L':{
-                    if (i &lt; s.length() -1  &amp;&amp; ( s.charAt(i + 1) == 'C' || s.charAt(i + 1) == 'M' || s.charAt(i + 1) == 'D')){
-                        result -= 50;
-                    }else{
-                        result += 50;
-                    }
-                    break;
-                }
-                case 'C':{
-                    if (i &lt; s.length() -1  &amp;&amp; (s.charAt(i + 1) == 'M' || s.charAt(i + 1) == 'D')){
-                        result -= 100;
-                    }else{
-                        result += 100;
-                    }
-                    break;
-                }
-                case 'D':{
-                    if (i &lt; s.length() -1  &amp;&amp; s.charAt(i + 1) == 'M'){
-                        result -= 500;
-                    }else{
-                        result += 500;
-                    }
-                    break;
-                }
-                case 'M':{
-                    result += 1000;
-                    break;
-                }
-
-            }
-
-        }
-
-        return result;
-    }
-
-    public static void main(String[] args) {
-        String str = "MDCCCLXXXIV";
-        long startTime = System.nanoTime();
-        int result = romanToInt(str);
-        long endTime = System.nanoTime();
-        long time = endTime - startTime;
-
-        System.out.println("romanToInt:" + result + " time:" + time);
-    }
-}
-</code></pre>
-
+ 
 
     </div>
     <hr>
@@ -901,7 +740,6 @@ public class RomanToInteger_13 {
 
   </div>
 </div>
-
 
           </div>
         </div>

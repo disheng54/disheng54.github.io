@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,6 +75,8 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
+                  <a href="/2017/09/14/android-adb.html" class="list-group-item pjaxlink">Adb常用命令</a>
+                
                   <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
                 
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
@@ -103,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -378,10 +380,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">2</span>
+                      <span class="badge pull-right">3</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/14/android-adb.html' class="list-group-item pjaxlink">
+                        Adb常用命令
+                      </a>
                     
                       <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
                         分屏模式
@@ -659,7 +665,7 @@
   <li>内部类的方式</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<pre><code>/**
  * new Thread类的实例创建，然后调用start()，启动一个线程。
  */
 new Thread(){
@@ -670,13 +676,12 @@ new Thread(){
 }.start();
 
 </code></pre>
-</div>
 
 <ul>
   <li>创建Thread的子类</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/**
+<pre><code>/**
  * 定义Thread的子类来创建一个线程
  */
 static class MyThread extends Thread {
@@ -694,13 +699,12 @@ static class MyThread extends Thread {
 (new MyThread()).start();
 
 </code></pre>
-</div>
 
 <h3 id="runnable">通过Runnable接口创建一个线程。</h3>
 
-<p>Thread类中有一个构造方法 <code class="highlighter-rouge">public Thread(Runnable var1)</code> ，我们可以通过这个构造方法，传入一个Runnable类的实例来创建一个线程。下面是Runnable类创建线程的一个内部类实现的方式。</p>
+<p>Thread类中有一个构造方法 <code>public Thread(Runnable var1)</code> ，我们可以通过这个构造方法，传入一个Runnable类的实例来创建一个线程。下面是Runnable类创建线程的一个内部类实现的方式。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> /**
+<pre><code> /**
  * 使用java.lang.Runnable来创建并启动一个线程
  */
 new Thread(new Runnable(){
@@ -710,30 +714,27 @@ new Thread(new Runnable(){
     }
 }).start();
 </code></pre>
-</div>
 
 <p>下面我们看下Runnable接口的定义：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package java.lang;
+<pre><code>package java.lang;
 public interface Runnable {
     void run();
 }
 </code></pre>
-</div>
 
 <p>Runnable接口只有个run()方法，线程的实现只能放到这个方法里面。我们知道调用Thread实例的start()开启线程后，会进入Thread实例的run()方法，那么线程又是如何和Runnable接口关联的呢，下面进入Thread类的源码查看究竟。</p>
 
 <p>首先我们进入线程的构造方法的实现：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> public Thread(Runnable var1) {
+<pre><code> public Thread(Runnable var1) {
     this.init((ThreadGroup)null, var1, "Thread-" + nextThreadNum(), 0L);
 }
 </code></pre>
-</div>
 
 <p>进入Thread类的init方法。Thread类的init方法有好几个重载方法，最终进入下面这个方法</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>private void init(ThreadGroup var1, Runnable var2, String var3, long var4, AccessControlContext var6) {
+<pre><code>private void init(ThreadGroup var1, Runnable var2, String var3, long var4, AccessControlContext var6) {
     if(var3 == null) {
         throw new NullPointerException("name cannot be null");
     } else {
@@ -750,17 +751,15 @@ public interface Runnable {
         }
     }
 </code></pre>
-</div>
 
 <p>通过上面的方法可以清楚的看到传入Thread的实例的Runnable实例被赋值target变量。那么target变量是什么时候调用的呢。现在进入Thread类的run方法一看究竟</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public void run() {
+<pre><code>public void run() {
     if(this.target != null) {
         this.target.run();
     }
 }
 </code></pre>
-</div>
 
 <p>至此我们看到一个清晰的线程运行流程。<br />
 1. Runnable实例保存到Thread实例的成员变量target中。<br />
@@ -772,21 +771,20 @@ public interface Runnable {
 
 <p>先看一下ThreadFactory接口的定义：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package java.util.concurrent;
+<pre><code>package java.util.concurrent;
 
 public interface ThreadFactory {
     Thread newThread(Runnable var1);
 }
 
 </code></pre>
-</div>
 
-<p>ThreadFactory接口只有一个方法 <code class="highlighter-rouge">Thread newThread(Runnable var1);</code>.<br />
-所以通过实现ThreadFactory接口创建线程，本质上是和<code class="highlighter-rouge">new Thread(Runnable var1)</code>一样的。<br />
-但是使用<code class="highlighter-rouge">new Thread(Runnable var1)</code>创建线程，可复用差，而通过不同的ThreadFactory实现<br />
+<p>ThreadFactory接口只有一个方法 <code>Thread newThread(Runnable var1);</code>.<br />
+所以通过实现ThreadFactory接口创建线程，本质上是和<code>new Thread(Runnable var1)</code>一样的。<br />
+但是使用<code>new Thread(Runnable var1)</code>创建线程，可复用差，而通过不同的ThreadFactory实现<br />
 可以创建不同的线程，是工厂方法模式的一个具体实现。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> /**
+<pre><code> /**
  * 通过ThreadFactory类创建一个实例。
  */
 ThreadFactory factory = new ThreadFactory() {
@@ -803,11 +801,10 @@ factory.newThread(new Runnable() {
     }
 }).start();
 </code></pre>
-</div>
 
-<p>可以通过<code class="highlighter-rouge">Executors.defaultThreadFactory()</code>获取一个默认的线程工厂。</p>
+<p>可以通过<code>Executors.defaultThreadFactory()</code>获取一个默认的线程工厂。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> /**
+<pre><code> /**
  * 通过Executors.defaultThreadFactory()获取一个ThreadFactory类，然后创建一个实例。
  */
 Executors.defaultThreadFactory().newThread(new Runnable() {
@@ -817,13 +814,12 @@ Executors.defaultThreadFactory().newThread(new Runnable() {
     }
 }).start();
 </code></pre>
-</div>
 
 <h3 id="executorservice">使用ExecutorService运行线程</h3>
 
 <p>还可以利用线程池创建一个线程，下面是一个实现例子。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ExecutorService executorService = Executors.newSingleThreadExecutor();
+<pre><code>ExecutorService executorService = Executors.newSingleThreadExecutor();
 executorService.execute(new Runnable() {
     @Override
     public void run() {
@@ -833,7 +829,6 @@ executorService.execute(new Runnable() {
 });
 executorService.shutdown();
 </code></pre>
-</div>
 
 <h2 id="section-1">参考</h2>
 

@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,6 +75,8 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
+                  <a href="/2017/09/14/android-adb.html" class="list-group-item pjaxlink">Adb常用命令</a>
+                
                   <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
                 
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
@@ -103,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -378,10 +380,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">2</span>
+                      <span class="badge pull-right">3</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/14/android-adb.html' class="list-group-item pjaxlink">
+                        Adb常用命令
+                      </a>
                     
                       <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
                         分屏模式
@@ -649,71 +655,65 @@
 
 <h3 id="section">原题目</h3>
 
-<p>The string <code class="highlighter-rouge">"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<p>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
+<pre><code>P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 </code></pre>
-</div>
 
-<p>And then read line by line: <code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code><br />
+<p>And then read line by line: <code>"PAHNAPLSIIGYIR"</code><br />
 Write the code that will take a string and make this conversion given a number of rows:</p>
 
-<p><code class="highlighter-rouge">string convert(string text, int nRows);</code><br />
-<code class="highlighter-rouge">convert("PAYPALISHIRING", 3)</code> should return <code class="highlighter-rouge">"PAHNAPLSIIGYIR".</code></p>
+<p><code>string convert(string text, int nRows);</code><br />
+<code>convert("PAYPALISHIRING", 3)</code> should return <code>"PAHNAPLSIIGYIR".</code></p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>将字符串<code class="highlighter-rouge">"PAYPALISHIRING"</code>按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成<code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code></p>
+<p>将字符串<code>"PAYPALISHIRING"</code>按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成<code>"PAHNAPLSIIGYIR"</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
+<pre><code>P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 </code></pre>
-</div>
 
 <p>编写代码将给定的字符串和行数，将字符串进行锯齿转换。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>string convert(string text, int nRows);
+<pre><code>string convert(string text, int nRows);
 </code></pre>
-</div>
 
-<p><code class="highlighter-rouge">convert("PAYPALISHIRING", 3)</code> 返回 <code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code>.</p>
+<p><code>convert("PAYPALISHIRING", 3)</code> 返回 <code>"PAHNAPLSIIGYIR"</code>.</p>
 
 <h3 id="section-2">解题思路</h3>
 
 <p>如果nRows = 1， 那么直接返回。<br />
-如果nRows = 2, 转换字符串为：<code class="highlighter-rouge">PYAIHRNAPLSIIG</code></p>
+如果nRows = 2, 转换字符串为：<code>PYAIHRNAPLSIIG</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>P	 Y	 A	 I	 H	 R	 N
+<pre><code>P	 Y	 A	 I	 H	 R	 N
 A	 P	 L	 S	 I	 I	 G
 </code></pre>
-</div>
 
-<p>如果 nRows = 3  转换字符串为：<code class="highlighter-rouge">PAHNAPLSIIGYIR</code></p>
+<p>如果 nRows = 3  转换字符串为：<code>PAHNAPLSIIGYIR</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
+<pre><code>P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 </code></pre>
-</div>
 
-<p>如果 nRows = 4 转换字符串为：<code class="highlighter-rouge">PINALSIGYAHRPI</code></p>
+<p>如果 nRows = 4 转换字符串为：<code>PINALSIGYAHRPI</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>P 			I			N
+<pre><code>P 			I			N
 A		L	S		I	G
 Y	A		H	R
 P			I
 </code></pre>
-</div>
 
-<p>通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: <code class="highlighter-rouge">2 * nRows -2 </code><br />
-中间第 i 行，第1列和它临近字符的间距为: <code class="highlighter-rouge">2*nRows -2 - 2 * i</code></p>
+<p>通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: <code>2 * nRows -2 </code><br />
+中间第 i 行，第1列和它临近字符的间距为: <code>2*nRows -2 - 2 * i</code></p>
 
 <h3 id="java">代码示例-Java</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
+<pre><code>package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/16/16.
@@ -755,7 +755,6 @@ public class ZigZag_6 {
     }
 }
 </code></pre>
-</div>
 
 
     </div>

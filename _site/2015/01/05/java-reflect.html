@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -75,6 +75,8 @@
               <div class="list-group">
                 <h2 class="center">android</h2>
                 
+                  <a href="/2017/09/14/android-adb.html" class="list-group-item pjaxlink">Adb常用命令</a>
+                
                   <a href="/2017/09/10/android-multiscreen.html" class="list-group-item pjaxlink">分屏模式</a>
                 
                   <a href="/2015/01/27/android-resource.html" class="list-group-item pjaxlink">Android开发中的资源</a>
@@ -103,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -378,10 +380,14 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#android">android</a>
-                      <span class="badge pull-right">2</span>
+                      <span class="badge pull-right">3</span>
                     </h4>
                   </div>
                   <div id="android" class="panel-collapse collapse">
+                    
+                      <a  href='/2017/09/14/android-adb.html' class="list-group-item pjaxlink">
+                        Adb常用命令
+                      </a>
                     
                       <a  href='/2017/09/10/android-multiscreen.html' class="list-group-item pjaxlink">
                         分屏模式
@@ -645,12 +651,11 @@
 
     <hr>
     <div id="content">
-      <div class="highlighter-rouge"><pre class="highlight"><code>反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
+      <pre><code>反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
 </code></pre>
-</div>
 
 <h3 id="class">什么是Class</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>我定义一个类的时候需要使用Class关机字。比如 Class A{};我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
+<pre><code>我定义一个类的时候需要使用Class关机字。比如 Class A{};我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
 Class类有两个重要的方法。
 getName(); 获取这个对象的名字。
 forName(); 这个是静态方法。通过一个类的名字，获取到这个类的类型说明，我也不知道该怎么描述，只要不要理解成一个类对象的实例就行。
@@ -770,10 +775,9 @@ newInstance(); 通过这个成员方法可以获得一个类的心的实例。
 	public final native void notifyAll()
 	}
 </code></pre>
-</div>
 
 <h3 id="section">通过反射操作一个类的字段。</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> 我们定义一个Book类。有两个属性，书名和价格。定义如下。
+<pre><code> 我们定义一个Book类。有两个属性，书名和价格。定义如下。
        /**
 	 * yumo
 	 * 定义一个用于测试的Book类
@@ -853,11 +857,10 @@ newInstance(); 通过这个成员方法可以获得一个类的心的实例。
 	通过反射获取的将书名修改为：android 开发入门详解
 	通过反射修改后书名为：android 开发入门详解
 </code></pre>
-</div>
 
 <h3 id="section-1">通过反射操作一个类的方法</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>我们可以通过反射机制在运行当中动态的获取一个实例方法，来操纵这个方法。需要用到相关类的方法如下
+<pre><code>我们可以通过反射机制在运行当中动态的获取一个实例方法，来操纵这个方法。需要用到相关类的方法如下
 Class类中的方法
 Method getMethod(String name, Class&lt;?&gt;... parameterTypes)   返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。
 Method 顾名思义表示的一个类型方法类型。它有两个常用的方法。
@@ -915,7 +918,6 @@ Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象�
 	getPrice 进入运行了
 	通过反射修改后，书的价格为:100.0
 </code></pre>
-</div>
 
 
     </div>
