@@ -15,13 +15,13 @@
 &lt;h2 id=&quot;section&quot;&gt;基础命令&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;查看版本信息:&lt;code&gt;adb version&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;查看帮助:&lt;code&gt; adb -h&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;进入shell: &lt;code&gt;adb shell&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;退出shell: &lt;code&gt;exit&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;重启设备:&lt;code&gt;adb reboot&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;终止adb服务:&lt;code&gt;adb kill-server&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;启动adb服务:&lt;code&gt;adb start-server&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;查看版本信息:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb version&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;查看帮助:&lt;code class=&quot;highlighter-rouge&quot;&gt; adb -h&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;进入shell: &lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;退出shell: &lt;code class=&quot;highlighter-rouge&quot;&gt;exit&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;重启设备:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb reboot&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;终止adb服务:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb kill-server&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;启动adb服务:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb start-server&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;section-1&quot;&gt;文件操作&lt;/h2&gt;
@@ -33,10 +33,11 @@
 
 &lt;h2 id=&quot;section-2&quot;&gt;截屏&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;adb shell screencap -p /sdcard/screen.png
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell screencap -p /sdcard/screen.png
 adb pull /sdcard/screen.png
 adb shell rm /sdcard/screen.png
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;section-3&quot;&gt;设备相关&lt;/h2&gt;
 
@@ -44,27 +45,27 @@ adb shell rm /sdcard/screen.png
   &lt;li&gt;
     &lt;p&gt;查看设备序列号&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb get-serialno&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb get-serialno&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;获取CPU信息&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell cat /proc/cpuinfo&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell cat /proc/cpuinfo&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;查看设备的内存信息&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell cat /proc/meminfo&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell cat /proc/meminfo&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;获取设备名称&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell cat /system/build.prop&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell cat /system/build.prop&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;获取设备分辨率&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell wm size&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell wm size&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -73,28 +74,28 @@ adb shell rm /sdcard/screen.png
 &lt;h3 id=&quot;apk-1&quot;&gt;安装APK&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;安装apk:&lt;code&gt;adb install &amp;lt;apkfile&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;强制安装apk: &lt;code&gt;adb install -r &amp;lt;apkfile&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;安装apk到Sd卡: &lt;code&gt;adb install -s &amp;lt;apkfile&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装apk:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb install &amp;lt;apkfile&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;强制安装apk: &lt;code class=&quot;highlighter-rouge&quot;&gt;adb install -r &amp;lt;apkfile&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装apk到Sd卡: &lt;code class=&quot;highlighter-rouge&quot;&gt;adb install -s &amp;lt;apkfile&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;app&quot;&gt;卸载APP&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;卸载APP:&lt;code&gt;adb uninstall &amp;lt;packagename&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;卸载APP但是保留文件: &lt;code&gt;adb uninstall -k &amp;lt;package&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;卸载APP:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb uninstall &amp;lt;packagename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;卸载APP但是保留文件: &lt;code class=&quot;highlighter-rouge&quot;&gt;adb uninstall -k &amp;lt;package&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;pm-&quot;&gt;pm 命令&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;查看pm命令帮助： &lt;code&gt;adb shell cmd package&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;查看pm命令帮助： &lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell cmd package&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;section-4&quot;&gt;打印应用列表&lt;/h3&gt;
 
 &lt;p&gt;查看应用列表的格式：&lt;br /&gt;
-&lt;code&gt;list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]&lt;/code&gt;&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]&lt;/code&gt;&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -136,19 +137,21 @@ adb shell rm /sdcard/screen.png
 &lt;/table&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;打印所有的包名:&lt;code&gt;adb shell pm list packages &lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;打印所有的包名:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell pm list packages &lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;查看包名某一个字符串的包名&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;adb shell pm list packages com.taobao.taobao
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell pm list packages com.taobao.taobao
 adb shell pm list packages | grep com.taobao.taobao
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-5&quot;&gt;清除应用数据和缓存&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;adb shell pm clear &amp;lt;包名&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell pm clear &amp;lt;包名&amp;gt;
 adb shell pm clear com.taobao.taobao
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;am-&quot;&gt;am 命令&lt;/h2&gt;
 
@@ -156,7 +159,7 @@ adb shell pm clear com.taobao.taobao
   &lt;li&gt;
     &lt;p&gt;启动Activity&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell am start -n &amp;lt;package_name&amp;gt;/.&amp;lt;activity_class_name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell am start -n &amp;lt;package_name&amp;gt;/.&amp;lt;activity_class_name&amp;gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -164,10 +167,10 @@ adb shell pm clear com.taobao.taobao
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;输出系统正在运行的所有服务:&lt;code&gt;adb shell dumpsys -l&lt;/code&gt; 。&lt;/p&gt;
+    &lt;p&gt;输出系统正在运行的所有服务:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys -l&lt;/code&gt; 。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;打印系统中的服务某个服务的信息:&lt;code&gt;adb shell dumpsys &amp;lt;服务名&amp;gt;&lt;/code&gt; 命令&lt;/p&gt;
+    &lt;p&gt;打印系统中的服务某个服务的信息:&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys &amp;lt;服务名&amp;gt;&lt;/code&gt; 命令&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -177,36 +180,37 @@ adb shell pm clear com.taobao.taobao
   &lt;li&gt;
     &lt;p&gt;查看前台Activty&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys activity activities | grep mFocusedActivity&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys activity activities | grep mFocusedActivity&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;查看顶部的Activity&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys activity top&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys activity top&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;查看所有正在运行的服务&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys activity services &lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys activity services &lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;通过字符串过滤正则运行的服务&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys activity services  &amp;lt;过滤字符串&amp;gt;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys activity services  &amp;lt;过滤字符串&amp;gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;显示待处理的Intent&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys activity intents&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys activity intents&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;查看provider信息&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt; adb shell dumpsys activity providers
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; adb shell dumpsys activity providers
  adb shell dumpsys activity prov
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;cpu&quot;&gt;进程、CPU、内存信息&lt;/h2&gt;
 
@@ -214,12 +218,12 @@ adb shell pm clear com.taobao.taobao
   &lt;li&gt;
     &lt;p&gt;cpu信息&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys cupinfo&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys cupinfo&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;打印内存信息&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell dumpsys meminfo&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell dumpsys meminfo&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -231,17 +235,17 @@ adb shell pm clear com.taobao.taobao
   &lt;li&gt;
     &lt;p&gt;查看内存和cpu信息&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell top&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell top&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;制定进程数量&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell top -m 1&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell top -m 1&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;刷新进程数据次数&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell top -n 5&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell top -n 5&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -251,22 +255,22 @@ adb shell pm clear com.taobao.taobao
   &lt;li&gt;
     &lt;p&gt;查看进程状态&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell ps&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell ps&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;查看制定id进程信息&lt;/p&gt;
+    &lt;p&gt;查看指定id进程信息&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell ps &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell ps &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;过滤进程信息，或者查看一个包下的进程。&lt;/p&gt;
+    &lt;p&gt;筛选进程信息，或者查看一个包下的进程。&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell ps | grep &amp;lt;字符串&amp;gt;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell ps | grep &amp;lt;字符串&amp;gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;杀死一个进程&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb shell kill &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb shell kill &amp;lt;pid&amp;gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -276,7 +280,7 @@ adb shell pm clear com.taobao.taobao
   &lt;li&gt;
     &lt;p&gt;生成bug报告&lt;/p&gt;
 
-    &lt;p&gt;&lt;code&gt;adb bugreport&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adb bugreport&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -308,13 +312,13 @@ adb shell pm clear com.taobao.taobao
 
 &lt;p&gt;LinkedHashMap提供两种数据排序的方式，一种是按照插入顺序进行排序，一种按照访问顺序进行排序。&lt;/p&gt;
 
-&lt;p&gt;在LinkedHashMap中定义了变量&lt;code&gt;final boolean accessOrder;&lt;/code&gt;来标记使用哪种访问方式。由于是final类型的变量，所以它只能在构造方法中赋值，然后就不能再改变数据的排序方式。&lt;/p&gt;
+&lt;p&gt;在LinkedHashMap中定义了变量&lt;code class=&quot;highlighter-rouge&quot;&gt;final boolean accessOrder;&lt;/code&gt;来标记使用哪种访问方式。由于是final类型的变量，所以它只能在构造方法中赋值，然后就不能再改变数据的排序方式。&lt;/p&gt;
 
-&lt;p&gt;下面是一个例子来演示这两种排序方式。输入输入&lt;code&gt;{0,0}...{9,9}&lt;/code&gt;,然后访问数据，查看数据的排序方式。&lt;/p&gt;
+&lt;p&gt;下面是一个例子来演示这两种排序方式。输入输入&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0,0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;9,9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;,然后访问数据，查看数据的排序方式。&lt;/p&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;按照插入顺序排序&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;  System.out.println(&quot;开始插入顺序的测试&quot;);
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  System.out.println(&quot;开始插入顺序的测试&quot;);
    //accessOrder 为true，按照访问顺序排序，false：按照插入顺序排序
    LinkedHashMap&amp;lt;Integer, Integer&amp;gt; map = new LinkedHashMap&amp;lt;&amp;gt;(0, 0.75f, false);
    for (int i = 0; i &amp;lt; 10; i ++){
@@ -328,17 +332,19 @@ adb shell pm clear com.taobao.taobao
    System.out.println(map.toString());
    System.out.println(&quot;结束插入顺序的测试&quot;);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;输出结果如下：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
-6
-{0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0=0,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;1=1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;2=2,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;3=3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;4=4,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;5=5,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;6=6,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;7=7,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;8=8,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;9=9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0=0,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;1=1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;2=2,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;3=3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;4=4,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;5=5,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;6=6,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;7=7,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;8=8,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;9=9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;按照访问顺序排序&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;  System.out.println(&quot;开始访问顺序的测试&quot;);
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  System.out.println(&quot;开始访问顺序的测试&quot;);
    //accessOrder 为true，按照访问顺序排序，false：按照插入顺序排序
    LinkedHashMap&amp;lt;Integer, Integer&amp;gt; map = new LinkedHashMap&amp;lt;&amp;gt;(0, 0.75f, true);
    for (int i = 0; i &amp;lt; 10; i ++){
@@ -352,15 +358,17 @@ adb shell pm clear com.taobao.taobao
    System.out.println(map.toString());
    System.out.println(&quot;结束访问顺序的测试&quot;);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;输出结果如下:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;开始访问顺序的测试
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;开始访问顺序的测试
 {0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
 6
 {0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 7=7, 8=8, 9=9, 6=6}
 结束访问顺序的测试
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;lru&quot;&gt;什么是LRU算法&lt;/h2&gt;
 
@@ -370,7 +378,7 @@ adb shell pm clear com.taobao.taobao
 
 &lt;p&gt;这个算法实现最多存放maxSize个数据，当存放数据的个数超出maxSize时，删除最近最少使用的数据。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;//map的最大容量是10
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//map的最大容量是10
 final int maxSize = 10;
 Map&amp;lt;Integer, Integer&amp;gt; map = new LinkedHashMap&amp;lt;Integer, Integer&amp;gt;(0, 0.75f, true) {
   @Override
@@ -389,21 +397,23 @@ System.out.println(&quot;访问key为6的数据后：&quot;+map.toString());
 map.put(11,11);
 System.out.println(&quot;插入第11个数据后：&quot;+map.toString());
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;输出结果如下：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;当前有10个数据：{0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;当前有10个数据：{0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
 6
 访问key为6的数据后：{0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 7=7, 8=8, 9=9, 6=6}
 插入第11个数据后：{1=1, 2=2, 3=3, 4=4, 5=5, 7=7, 8=8, 9=9, 6=6, 11=11}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;lru-2&quot;&gt;实现一个通用的LRU缓存算法。&lt;/h2&gt;
 
 &lt;p&gt;上面的实现的LRU算法中默认的每个数据的大小是为1，如果是文件存储系统，每个文件大小是不一样的，所以一个通用的LRU缓存算法还有提供一个计算数据方法的大小，下面一个最小化的&lt;br /&gt;
 通用LRU缓存算法实现，该算法参照了Android中LruCache类的实现。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;public class LruCache&amp;lt;K,V&amp;gt; {
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class LruCache&amp;lt;K,V&amp;gt; {
     private LinkedHashMap&amp;lt;K,V&amp;gt; map;
     //最大缓存容量
     private int maxSize;
@@ -519,6 +529,7 @@ System.out.println(&quot;插入第11个数据后：&quot;+map.toString());
 }
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;lrucache&quot;&gt;使用LruCache.&lt;/h3&gt;
 
@@ -526,7 +537,7 @@ System.out.println(&quot;插入第11个数据后：&quot;+map.toString());
   &lt;li&gt;定义最大容量为10，每个数据的大小为1&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt; final int maxSize = 10;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; final int maxSize = 10;
 LruCache&amp;lt;Integer,Integer&amp;gt; lruCache = new LruCache&amp;lt;Integer, Integer&amp;gt;(maxSize){
   @Override
   protected int sizeOf(Integer key, Integer value) {
@@ -543,20 +554,22 @@ System.out.println(&quot;访问key为6的数据后：&quot;+lruCache.toString())
 lruCache.put(11,11);
 System.out.println(&quot;插入value为11的数据后：&quot;+lruCache.toString());
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;输出结果为：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;当前数据：size:10;maxSize:10 {0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;当前数据：size:10;maxSize:10 {0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
 key为6的数据6
 访问key为6的数据后：size:10;maxSize:10 {0=0, 1=1, 2=2, 3=3, 4=4, 5=5, 7=7, 8=8, 9=9, 6=6}
 插入value为11的数据后：size:10;maxSize:10 {1=1, 2=2, 3=3, 4=4, 5=5, 7=7, 8=8, 9=9, 6=6, 11=11}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;定义最大容量为10，每个数据的大小为2&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt; final int maxSize = 10;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; final int maxSize = 10;
 LruCache&amp;lt;Integer,Integer&amp;gt; lruCache = new LruCache&amp;lt;Integer, Integer&amp;gt;(maxSize){
   @Override
   protected int sizeOf(Integer key, Integer value) {
@@ -573,20 +586,22 @@ System.out.println(&quot;访问key为6的数据后：&quot;+lruCache.toString())
 lruCache.put(11,11);
 System.out.println(&quot;插入value为11的数据后：&quot;+lruCache.toString());
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;输出结果为：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;当前数据：size:10;maxSize:10 {5=5, 6=6, 7=7, 8=8, 9=9}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;当前数据：size:10;maxSize:10 {5=5, 6=6, 7=7, 8=8, 9=9}
 key为6的数据6
 访问key为6的数据后：size:10;maxSize:10 {5=5, 7=7, 8=8, 9=9, 6=6}
 插入value为11的数据后：size:10;maxSize:10 {7=7, 8=8, 9=9, 6=6, 11=11}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;定义最大容量为10，每个数据的大小为value&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;final int maxSize = 10;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;final int maxSize = 10;
 LruCache&amp;lt;Integer,Integer&amp;gt; lruCache = new LruCache&amp;lt;Integer, Integer&amp;gt;(maxSize){
   @Override
   protected int sizeOf(Integer key, Integer value) {
@@ -603,14 +618,16 @@ System.out.println(&quot;访问key为6的数据后：&quot;+lruCache.toString())
 lruCache.put(11,11);
 System.out.println(&quot;插入value为11的数据后：&quot;+lruCache.toString());
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;输出结果为：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;当前数据：size:9;maxSize:10 {9=9}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;当前数据：size:9;maxSize:10 {9=9}
 key为6的数据null
 访问key为6的数据后：size:9;maxSize:10 {9=9}
 插入value为11的数据后：size:0;maxSize:10 {}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -634,21 +651,22 @@ key为6的数据null
 &lt;h2 id=&quot;section-2&quot;&gt;开启分屏模式&lt;/h2&gt;
 
 &lt;p&gt;App默认是支持分屏模式的。&lt;br /&gt;
-如果App是基于Android N版本编译的，那么通过可以在manifest文件中设置Application或者Activity的属性 &lt;code&gt;android:resizeableActivity=[&quot;true&quot; | &quot;false&quot;]&lt;/code&gt;。如果设置&lt;code&gt;resizeableActivity&lt;/code&gt;属性为&lt;code&gt;true&lt;/code&gt;则支持分屏模式，如果设置&lt;code&gt;resizeableActivity&lt;/code&gt;属性为&lt;code&gt;false&lt;/code&gt;则不支持分屏模式。&lt;/p&gt;
+如果App是基于Android N版本编译的，那么通过可以在manifest文件中设置Application或者Activity的属性 &lt;code class=&quot;highlighter-rouge&quot;&gt;android:resizeableActivity=[&quot;true&quot; | &quot;false&quot;]&lt;/code&gt;。如果设置&lt;code class=&quot;highlighter-rouge&quot;&gt;resizeableActivity&lt;/code&gt;属性为&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;则支持分屏模式，如果设置&lt;code class=&quot;highlighter-rouge&quot;&gt;resizeableActivity&lt;/code&gt;属性为&lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;则不支持分屏模式。&lt;/p&gt;
 
-&lt;p&gt;如果App的编译版本低于Android N, 那么当用户尝试进入分屏模式时候，系统会强制将App进入分屏模式。那么在这种情况下，在清单文件中的主Activity中设置&lt;code&gt;android:screenOrientation=&quot;portrait&quot;&lt;/code&gt;属性，就可以禁止进入分屏模式。&lt;/p&gt;
+&lt;p&gt;如果App的编译版本低于Android N, 那么当用户尝试进入分屏模式时候，系统会强制将App进入分屏模式。那么在这种情况下，在清单文件中的主Activity中设置&lt;code class=&quot;highlighter-rouge&quot;&gt;android:screenOrientation=&quot;portrait&quot;&lt;/code&gt;属性，就可以禁止进入分屏模式。&lt;/p&gt;
 
 &lt;h2 id=&quot;section-3&quot;&gt;监听是否进入分屏模式&lt;/h2&gt;
 
 &lt;p&gt;Activity 进入或退出分屏模式时系统将调用此方法。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@Override
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Override
 public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
    super.onMultiWindowModeChanged(isInMultiWindowMode);
    Log.i(LOG_TAG,&quot;onMultiWindowModeChanged isInMultiWindowsMode:&quot;+isInMultiWindowMode);
 }
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;activity&quot;&gt;进入分屏模式后的Activity的生命周期&lt;/h2&gt;
 
@@ -656,7 +674,7 @@ public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
   &lt;li&gt;进入分屏模式后Activity的生命周期的明白，可以看出当前Activity进行了销毁重建。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;MainActivity: onMultiWindowModeChanged isInMultiWindowsMode:true
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MainActivity: onMultiWindowModeChanged isInMultiWindowsMode:true
 MainActivity: onPause
 MainActivity: onStop
 MainActivity: onDestroy
@@ -665,12 +683,13 @@ MainActivity: onStart
 MainActivity: onResume
 MainActivity: onPause
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;退出分屏模式的生命周期&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;MainActivity: onPause
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MainActivity: onPause
 MainActivity: onStop
 MainActivity: onDestroy
 MainActivity: onCreate
@@ -679,16 +698,18 @@ MainActivity: onResume
 MainActivity: onPause
 MainActivity: onMultiWindowModeChanged isInMultiWindowsMode:true
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;activity-1&quot;&gt;在分屏模式中打开新的Activity&lt;/h2&gt;
 
 &lt;p&gt;在启动Activity的时候添加标志Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT,&lt;br /&gt;
 如果此时App处于分屏模式，那么新Activity将会在当前Activity的旁边。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Intent intent = new Intent(MainActivity.this, TestActivity.class);
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Intent intent = new Intent(MainActivity.this, TestActivity.class);
 intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT | Intent.FLAG_ACTIVITY_NEW_TASK);
 startActivity(intent);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;section-4&quot;&gt;参考&lt;/h2&gt;
 
@@ -716,16 +737,16 @@ startActivity(intent);
 &lt;p&gt;Do not allocate extra space for another array, you must do this in place with constant memory.&lt;/p&gt;
 
 &lt;p&gt;For example,&lt;br /&gt;
-Given input array nums =&lt;code&gt; [1,1,2]&lt;/code&gt;,&lt;/p&gt;
+Given input array nums =&lt;code class=&quot;highlighter-rouge&quot;&gt; [1,1,2]&lt;/code&gt;,&lt;/p&gt;
 
-&lt;p&gt;Your function should return length = &lt;code&gt;2&lt;/code&gt;, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.&lt;/p&gt;
+&lt;p&gt;Your function should return length = &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
 &lt;p&gt;给定一个排好序的数组，移除重复的元素，然后返回新的数组长度。&lt;br /&gt;
 要求不能额外一个数组大小的空间来实现，要求使用空间实现，&lt;br /&gt;
-比如：输入数组=&lt;code&gt; [1,1,2]&lt;/code&gt;,&lt;br /&gt;
-你的方法将返回长度为=&lt;code&gt;2&lt;/code&gt;，两个元素分别是1和2。这个方法并不关心新长度。&lt;/p&gt;
+比如：输入数组=&lt;code class=&quot;highlighter-rouge&quot;&gt; [1,1,2]&lt;/code&gt;,&lt;br /&gt;
+你的方法将返回长度为=&lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;，两个元素分别是1和2。这个方法并不关心新长度。&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
 
@@ -737,7 +758,7 @@ Given input array nums =&lt;code&gt; [1,1,2]&lt;/code&gt;,&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * Created by yumodev on 9/18/16.
  */
 public class RemoveDuplicates_26 {
@@ -775,6 +796,7 @@ public class RemoveDuplicates_26 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -791,14 +813,14 @@ public class RemoveDuplicates_26 {
 &lt;p&gt;Given a linked list, swap every two adjacent nodes and return its head.&lt;/p&gt;
 
 &lt;p&gt;For example,&lt;br /&gt;
-Given &lt;code&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; you should return the list as &lt;code&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;.&lt;/p&gt;
+Given &lt;code class=&quot;highlighter-rouge&quot;&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; you should return the list as &lt;code class=&quot;highlighter-rouge&quot;&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
 &lt;p&gt;给定一个链表，交互相邻的两个节点，并返回链表的头部。&lt;br /&gt;
-比如：给定链表&lt;code&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; 应该返回&lt;code&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;&lt;br /&gt;
+比如：给定链表&lt;code class=&quot;highlighter-rouge&quot;&gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4,&lt;/code&gt; 应该返回&lt;code class=&quot;highlighter-rouge&quot;&gt;2-&amp;gt;1-&amp;gt;4-&amp;gt;3&lt;/code&gt;&lt;br /&gt;
 应当使用常量空间时间，不能修改节点的值，但是可以修改节点本身。&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
@@ -810,17 +832,18 @@ ln.next表示第一个节点，ln.next.next 标识第二个节点。&lt;br /&gt;
 现在需要的工作就是讲ln.next, ln.next.next 交互位置。&lt;br /&gt;
 通过下面方法来实现ln.next 和 ln.next.next 位置的呼唤。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;      temp = ln.next;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      temp = ln.next;
       ln.next = ln.next.next;
       temp.next = ln.next.next;
       ln.next.next = temp;     
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;时间复杂度为O(n),&lt;br /&gt;
   空间夫再度为O(2);&lt;br /&gt;
 ### 代码示例-Java&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * Created by yumodev on 9/13/16.
  */
 public class SwapPairs_24 {
@@ -907,6 +930,7 @@ public class SwapPairs_24 {
 
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -935,7 +959,7 @@ public class SwapPairs_24 {
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null ){
             return l2;
         }
@@ -977,6 +1001,7 @@ public class SwapPairs_24 {
         return head;
     }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1008,7 +1033,7 @@ The brackets must close in the correct order, “()” and “()[]{}” are all 
 
 &lt;h3 id=&quot;section-3&quot;&gt;代码示例&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt; public static boolean isValid(String s) {
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; public static boolean isValid(String s) {
         if (s == null ||s.length() &amp;lt;= 1){
             return false;
         }
@@ -1043,6 +1068,7 @@ The brackets must close in the correct order, “()” and “()[]{}” are all 
         return stack.size() == 0;
     }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1059,7 +1085,7 @@ The brackets must close in the correct order, “()” and “()[]{}” are all 
 &lt;p&gt;Given a linked list, remove the nth node from the end of list and return its head.&lt;br /&gt;
 For example,&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
    After removing the second node from the end, the linked list becomes 1-&amp;gt;2-&amp;gt;3-&amp;gt;5.&lt;/code&gt;&lt;br /&gt;
 Note:&lt;br /&gt;
 Given n will always be valid.&lt;br /&gt;
@@ -1069,7 +1095,7 @@ Try to do this in one pass.&lt;/p&gt;
 
 &lt;p&gt;给定一个链表，删除倒数第n个节点，然后返回这链表的头部。&lt;br /&gt;
 比如：&lt;br /&gt;
- &lt;code&gt;给定链表： 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5,  n = 2.
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;给定链表： 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5,  n = 2.
   从尾部移除第2个节点, 然后链表变为： 1-&amp;gt;2-&amp;gt;3-&amp;gt;5.&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;注意：给定的n总是有效的，尝试一次通过。&lt;/p&gt;
@@ -1085,7 +1111,7 @@ Try to do this in one pass.&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;public ListNode removeNthFromEnd(ListNode head, int n) {
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public ListNode removeNthFromEnd(ListNode head, int n) {
         if (n == 0 || head == null){
             return head;
         }
@@ -1118,6 +1144,7 @@ Try to do this in one pass.&lt;/p&gt;
         return head;
     }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1145,7 +1172,7 @@ Try to do this in one pass.&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * Created by yumodev on 9/12/16.
  */
 public class LongestCommonPrefix_14 {
@@ -1177,6 +1204,7 @@ public class LongestCommonPrefix_14 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1201,7 +1229,7 @@ Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
 &lt;p&gt;这道里面本身很简单，其实难点在于必须要明白罗马数字的标识方法。&lt;br /&gt;
-罗马数字一共有七个大写字符，分别是：&lt;code&gt;I、V、X、L、C、D、M&lt;/code&gt;。&lt;br /&gt;
+罗马数字一共有七个大写字符，分别是：&lt;code class=&quot;highlighter-rouge&quot;&gt;I、V、X、L、C、D、M&lt;/code&gt;。&lt;br /&gt;
 下面是罗马字符和整数的对应关系。&lt;/p&gt;
 
 &lt;table&gt;
@@ -1342,7 +1370,7 @@ Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-3&quot;&gt;代码示例&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * Created by yumodev on 9/12/16.
  */
 public class RomanToInteger_13 {
@@ -1426,6 +1454,7 @@ public class RomanToInteger_13 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1454,7 +1483,7 @@ Could negative integers be palindromes? (ie, -1)&lt;/p&gt;
 
 &lt;p&gt;在不需要额外空间的情况下，判定一个整数是否是回文字符串。&lt;br /&gt;
 一些提示：&lt;br /&gt;
-一个负整数是回文字符串吗?(比如 &lt;code&gt;-1&lt;/code&gt;)&lt;br /&gt;
+一个负整数是回文字符串吗?(比如 &lt;code class=&quot;highlighter-rouge&quot;&gt;-1&lt;/code&gt;)&lt;br /&gt;
 如果你想把一个整数转换为字符串，需要注意不需要额外的空间的限制。&lt;br /&gt;
 也许你会反转整数，如果你已经解决了这道题目”Reverse Integer”, 你就会知道反转字符串也许会发生溢出，然后你该如何处理这种情况呢。&lt;br /&gt;
 有一个更加通用的方式来解决这个问题。&lt;/p&gt;
@@ -1467,7 +1496,7 @@ Could negative integers be palindromes? (ie, -1)&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/25/16.
@@ -1500,6 +1529,7 @@ public class PalindromeNumber_9 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1530,28 +1560,28 @@ The function first discards as many whitespace characters as necessary until the
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
-&lt;p&gt;实现方法 &lt;code&gt;atoi&lt;/code&gt; 将一个字符串转换为整数&lt;br /&gt;
+&lt;p&gt;实现方法 &lt;code class=&quot;highlighter-rouge&quot;&gt;atoi&lt;/code&gt; 将一个字符串转换为整数&lt;br /&gt;
 提示：请考虑到所有输入的情况。如果你想要挑战一下自己，就可以不用开下面的注意事项然后问题自己，都有哪些输入情况。&lt;br /&gt;
 注意：这道题目的定义是模糊的(没有给输入的限定条件)，你需要自己考虑所有的输入情况。&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;atoi &lt;/code&gt; 方法的要求：&lt;br /&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;atoi &lt;/code&gt; 方法的要求：&lt;br /&gt;
 该方法要求忽略字符串开始的空白字符，一直到第一个非空白字符为止。然后从这个字符开始，先判断初始的正负字符，然后选取尽可能多的数字字符，并将它们转换为一个数值。&lt;br /&gt;
 也许该字符串的有效数字后面还有一些额外的非数字字符，那么将忽略这些字符。&lt;br /&gt;
 如果第一个非空白字符不是数字字符，或者改字符串是个空串，或者只包含空白字符，则不执行转换。&lt;br /&gt;
-如果未执行有效的转换，就返回 &lt;code&gt;0&lt;/code&gt; .如果转换后的数字超出了 &lt;code&gt;int&lt;/code&gt; 类型标识数字的的范围，那么返回&lt;code&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
+如果未执行有效的转换，就返回 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; .如果转换后的数字超出了 &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; 类型标识数字的的范围，那么返回&lt;code class=&quot;highlighter-rouge&quot;&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
 &lt;p&gt;这道题目比较简单，正如题目的里面的讲的那样，难点是要考虑到各种的情况。&lt;br /&gt;
 1、空字符串、空白字符串、没有有效数字的字符串，返回0&lt;br /&gt;
 2、需要去除前面的无效空白字符。&lt;br /&gt;
-3、考虑第一个非空字符，如果是 &lt;code&gt;+&lt;/code&gt; 标识正值，如果是&lt;code&gt; -&lt;/code&gt; 标识负值。&lt;br /&gt;
-4、忽略有效数字字符后面的所有无效字符，比如：&lt;code&gt;&#39;   -123&amp;amp;456&#39; &lt;/code&gt;转换为 &lt;code&gt;-123&lt;/code&gt;&lt;br /&gt;
-5、如果转换后的整数值，超过了返回就返回返回&lt;code&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
+3、考虑第一个非空字符，如果是 &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; 标识正值，如果是&lt;code class=&quot;highlighter-rouge&quot;&gt; -&lt;/code&gt; 标识负值。&lt;br /&gt;
+4、忽略有效数字字符后面的所有无效字符，比如：&lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;   -123&amp;amp;456&#39; &lt;/code&gt;转换为 &lt;code class=&quot;highlighter-rouge&quot;&gt;-123&lt;/code&gt;&lt;br /&gt;
+5、如果转换后的整数值，超过了返回就返回返回&lt;code class=&quot;highlighter-rouge&quot;&gt;INT_MAX (2147483647) 或者 INT_MIN (-2147483648)&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/22/16.
@@ -1613,6 +1643,7 @@ public class Atoi_8 {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1628,9 +1659,10 @@ public class Atoi_8 {
 
 &lt;p&gt;Reverse digits of an integer.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Example1: x = 123, return 321
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example1: x = 123, return 321
 Example2: x = -123, return -321
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Have you thought about this?&lt;br /&gt;
 Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!&lt;/p&gt;
@@ -1645,13 +1677,14 @@ Here are some good questions to ask before coding. Bonus points for you if you h
 
 &lt;p&gt;反转一个整数数据&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Example1: x = 123, return 321
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example1: x = 123, return 321
 Example2: x = -123, return -321
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;注意：在编码之前有一些问题需要考虑，如果你已经考虑了这些问题，这将是你的加分点。&lt;br /&gt;
 如果该整数的最后一位是0，那么僵该输出什么呢？比如 10， 100&lt;br /&gt;
-反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转&lt;code&gt;1000000003&lt;/code&gt;将产生溢出，那这种情况该如何处理呢？&lt;br /&gt;
+反转后的整数也许会产生溢出，假定输入的是一个32位的整数，如果反转&lt;code class=&quot;highlighter-rouge&quot;&gt;1000000003&lt;/code&gt;将产生溢出，那这种情况该如何处理呢？&lt;br /&gt;
 如果发生了溢出，就直接返回为0.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
@@ -1667,7 +1700,7 @@ Example2: x = -123, return -321
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/17/16.
@@ -1700,6 +1733,7 @@ public class ReverseInteger_7 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1713,65 +1747,71 @@ public class ReverseInteger_7 {
 
 &lt;h3 id=&quot;section&quot;&gt;原题目&lt;/h3&gt;
 
-&lt;p&gt;The string &lt;code&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;/p&gt;
+&lt;p&gt;The string &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;P 		A		H		N
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;And then read line by line: &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;br /&gt;
+&lt;p&gt;And then read line by line: &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;br /&gt;
 Write the code that will take a string and make this conversion given a number of rows:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;string convert(string text, int nRows);&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; should return &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;string convert(string text, int nRows);&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; should return &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;.&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;翻译&lt;/h3&gt;
 
-&lt;p&gt;将字符串&lt;code&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt;按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成&lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将字符串&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAYPALISHIRING&quot;&lt;/code&gt;按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;P 		A		H		N
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;编写代码将给定的字符串和行数，将字符串进行锯齿转换。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;string convert(string text, int nRows);
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;string convert(string text, int nRows);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;code&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; 返回 &lt;code&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;convert(&quot;PAYPALISHIRING&quot;, 3)&lt;/code&gt; 返回 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;PAHNAPLSIIGYIR&quot;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解题思路&lt;/h3&gt;
 
 &lt;p&gt;如果nRows = 1， 那么直接返回。&lt;br /&gt;
-如果nRows = 2, 转换字符串为：&lt;code&gt;PYAIHRNAPLSIIG&lt;/code&gt;&lt;/p&gt;
+如果nRows = 2, 转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PYAIHRNAPLSIIG&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;P	 Y	 A	 I	 H	 R	 N
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P	 Y	 A	 I	 H	 R	 N
 A	 P	 L	 S	 I	 I	 G
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;如果 nRows = 3  转换字符串为：&lt;code&gt;PAHNAPLSIIGYIR&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果 nRows = 3  转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PAHNAPLSIIGYIR&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;P 		A		H		N
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;如果 nRows = 4 转换字符串为：&lt;code&gt;PINALSIGYAHRPI&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果 nRows = 4 转换字符串为：&lt;code class=&quot;highlighter-rouge&quot;&gt;PINALSIGYAHRPI&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;P 			I			N
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;P 			I			N
 A		L	S		I	G
 Y	A		H	R
 P			I
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: &lt;code&gt;2 * nRows -2 &lt;/code&gt;&lt;br /&gt;
-中间第 i 行，第1列和它临近字符的间距为: &lt;code&gt;2*nRows -2 - 2 * i&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: &lt;code class=&quot;highlighter-rouge&quot;&gt;2 * nRows -2 &lt;/code&gt;&lt;br /&gt;
+中间第 i 行，第1列和它临近字符的间距为: &lt;code class=&quot;highlighter-rouge&quot;&gt;2*nRows -2 - 2 * i&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/16/16.
@@ -1813,6 +1853,7 @@ public class ZigZag_6 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1843,7 +1884,7 @@ dp[i][j] 标识字符串S 中S[i~j]的子串是不是回文字符串。&lt;br /&
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * Created by wks on 8/8/16.
  */
 public class LongestPalindrome_5 {
@@ -1891,6 +1932,7 @@ public class LongestPalindrome_5 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -1908,16 +1950,18 @@ Find the median of the two sorted arrays. The overall run time complexity should
 
 &lt;p&gt;Example 1:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nums1 = [1, 3]
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 3]
 nums2 = [2]
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;The median is 2.0&lt;br /&gt;
 Example 2:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nums1 = [1, 2]
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 2]
 nums2 = [3, 4]
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;The median is (2 + 3)/2 = 2.5&lt;/p&gt;
 
@@ -1928,16 +1972,18 @@ nums2 = [3, 4]
 
 &lt;p&gt;示例1:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nums1 = [1, 3]
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 3]
 nums2 = [2]
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;中位值为： 2.0&lt;br /&gt;
 示例2：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nums1 = [1, 2]
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nums1 = [1, 2]
 nums2 = [3, 4]
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;中位值： (2 + 3)/2 = 2.5&lt;/p&gt;
 
@@ -1965,7 +2011,7 @@ nums2 = [3, 4]
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/7/16.
@@ -2078,6 +2124,7 @@ public class MedianTwoSortedArrays_4 {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -2095,21 +2142,21 @@ public class MedianTwoSortedArrays_4 {
 
 &lt;p&gt;Examples:&lt;/p&gt;
 
-&lt;p&gt;Given &lt;code&gt;&quot;abcabcbb&quot;&lt;/code&gt;, the answer is &lt;code&gt;&quot;abc&quot;&lt;/code&gt;, which the length is 3.&lt;/p&gt;
+&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abcabcbb&quot;&lt;/code&gt;, the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abc&quot;&lt;/code&gt;, which the length is 3.&lt;/p&gt;
 
-&lt;p&gt;Given &lt;code&gt;&quot;bbbbb&quot;,&lt;/code&gt; the answer is &lt;code&gt;&quot;b&quot;&lt;/code&gt;, with the length of 1.&lt;/p&gt;
+&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;bbbbb&quot;,&lt;/code&gt; the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;b&quot;&lt;/code&gt;, with the length of 1.&lt;/p&gt;
 
-&lt;p&gt;Given &lt;code&gt;&quot;pwwkew&quot;&lt;/code&gt;, the answer is &lt;code&gt;&quot;wke&quot;&lt;/code&gt;, with the length of 3. Note that the answer must be a substring, &lt;code&gt;&quot;pwke&quot;&lt;/code&gt; is a subsequence and not a substring.&lt;/p&gt;
+&lt;p&gt;Given &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwwkew&quot;&lt;/code&gt;, the answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wke&quot;&lt;/code&gt;, with the length of 3. Note that the answer must be a substring, &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwke&quot;&lt;/code&gt; is a subsequence and not a substring.&lt;/p&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;题目翻译&lt;/h3&gt;
 
 &lt;p&gt;获取一个字符串的各个字符都不相同的子串的最大长度。&lt;br /&gt;
 举例：&lt;/p&gt;
 
-&lt;p&gt;字符串 &lt;code&gt;&quot;abcabcbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code&gt;&quot;abc&quot;&lt;/code&gt;, 其长度为 &lt;code&gt;3&lt;/code&gt;.&lt;br /&gt;
-字符串 &lt;code&gt;&quot;bbbbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code&gt;&quot;b&quot;&lt;/code&gt;, 其长度为 &lt;code&gt;1&lt;/code&gt;.&lt;br /&gt;
-字符串 &lt;code&gt;&quot;pwwkew&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code&gt;&quot;wke&quot;&lt;/code&gt;, 其长度为 &lt;code&gt;3&lt;/code&gt;. &lt;br /&gt;
-注意结果必须为连续的子串， 其中&lt;code&gt;&quot;pwke&quot;&lt;/code&gt;是不同的字符组合，但不是连续的子串&lt;/p&gt;
+&lt;p&gt;字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abcabcbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;abc&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;.&lt;br /&gt;
+字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;bbbbb&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;b&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;.&lt;br /&gt;
+字符串 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwwkew&quot;&lt;/code&gt;, 符合结果的字串为 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;wke&quot;&lt;/code&gt;, 其长度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;. &lt;br /&gt;
+注意结果必须为连续的子串， 其中&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;pwke&quot;&lt;/code&gt;是不同的字符组合，但不是连续的子串&lt;/p&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;解决思路&lt;/h3&gt;
 
@@ -2118,7 +2165,7 @@ public class MedianTwoSortedArrays_4 {
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.airthmetic.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -2199,10 +2246,11 @@ public class LongSubNoRepeatCHar_3 {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;c&quot;&gt;代码示例-c++&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;//
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
 // Created by yumodev on 8/6/16.
 //
 #include &amp;lt;iostream&amp;gt;
@@ -2257,10 +2305,11 @@ int main() {
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;javascript&quot;&gt;代码示例-javascript&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * @param {string} s
  * @return {number}
  */
@@ -2295,6 +2344,7 @@ var str = &quot;dvdf&quot;
 var len = lengthOfLongestSubstring(str);
 console.log(num+&quot; &quot;+len);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -2326,7 +2376,7 @@ Output: 7 -&amp;gt; 0 -&amp;gt; 8&lt;/p&gt;
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例-Java&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/**
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
  * Created by wks on 8/5/16.
  * You are given two linked lists representing two non-negative numbers.
  * The digits are stored in reverse order and each of their nodes contain a single digit.
@@ -2418,10 +2468,11 @@ public class AddTwoNumbers_2 {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;c&quot;&gt;代码示例-c++&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;//
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//
 // Created by yumo on 8/5/16.
 //
 #include &amp;lt;iostream&amp;gt;
@@ -2528,10 +2579,11 @@ int main()
     return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;javascript&quot;&gt;代码示例-JavaScript&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;function ListNode(val) {
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function ListNode(val) {
      this.val = val;
      this.next = null;
 }
@@ -2613,6 +2665,7 @@ var ln = addTwoNumbers(l1, l2);
 console.log(&quot;result:&quot;+listNodeToString(ln));
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
       </item>
@@ -2629,39 +2682,42 @@ console.log(&quot;result:&quot;+listNodeToString(ln));
     &lt;p&gt;从官网下载JDK，下载路径 http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;将 &lt;code&gt;jdk-8u101-linux-x64.tar.gz&lt;/code&gt; 移动到 &lt;code&gt;/usr/lib&lt;/code&gt; 中， 解压到 &lt;code&gt;/usr/lib/jvm &lt;/code&gt;目录&lt;/p&gt;
+    &lt;p&gt;将 &lt;code class=&quot;highlighter-rouge&quot;&gt;jdk-8u101-linux-x64.tar.gz&lt;/code&gt; 移动到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib&lt;/code&gt; 中， 解压到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib/jvm &lt;/code&gt;目录&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;mkdir jvm
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir jvm
 sudo tar -zxvf jdk-8u101-linux-x64.tar.gz -C /usr/lib/jvm
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;jre&quot;&gt;配置JRE路径&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;打开环境变量文件 &lt;code&gt;sudo vi ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;打开环境变量文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo vi ~/.bashrc&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;在文件的末尾添加下面内容&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
 export JRE_HOME=${JAVA_HOME}/jre  
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
 export PATH=${JAVA_HOME}/bin:$PATH  
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;source ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;jre-1&quot;&gt;测试JRE&lt;/h3&gt;
 
-&lt;p&gt;通过 &lt;code&gt;java -version&lt;/code&gt;  查看当前的Java路径&lt;/p&gt;
+&lt;p&gt;通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;java -version&lt;/code&gt;  查看当前的Java路径&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;java version &quot;1.8.0_101&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java version &quot;1.8.0_101&quot;
 Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;tomcat&quot;&gt;安装tomcat&lt;/h3&gt;
 
@@ -2674,10 +2730,11 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;  cp apache-tomcat-9.0.0.M9.zip /usr/local
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cp apache-tomcat-9.0.0.M9.zip /usr/local
   uzip apache-tomcat-9.0.0.M9.zip
   mv apache-tomcat-9.0.0.M9 tomcat9
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;tomcat-1&quot;&gt;启动tomcat&lt;/h3&gt;
 
@@ -2685,14 +2742,15 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   &lt;li&gt;开启tomcat9 权限&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo chomd 755 /usr/local/tomcat9/bin/*.sh
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chomd 755 /usr/local/tomcat9/bin/*.sh
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;启动tomcat&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;cd /usr/local/tomcat9/bin
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/local/tomcat9/bin
 ./startup.sh
 
 Using CATALINA_BASE:   /usr/local/tomcat9
@@ -2702,10 +2760,11 @@ Using JRE_HOME:        /usr/lib/jvm/jdk1.8.0_101/jre
 Using CLASSPATH:       /usr/local/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/bin/tomcat-juli.jar
 Tomcat started.
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section&quot;&gt;测试访问&lt;/h3&gt;
 
-&lt;p&gt;在浏览器中输入 &lt;code&gt;http://localhost:8080&lt;/code&gt; 访问&lt;/p&gt;
+&lt;p&gt;在浏览器中输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8080&lt;/code&gt; 访问&lt;/p&gt;
 
 </description>
       </item>
@@ -2734,7 +2793,7 @@ Tomcat started.
 
 &lt;h3 id=&quot;java&quot;&gt;代码示例(Java)&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.string.test;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.yumo.java.string.test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -2890,15 +2949,17 @@ public class StringIsSameAfterSort {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;section-2&quot;&gt;效率比较&lt;/h3&gt;
 
 &lt;p&gt;假定这两个字符串的长度为10，那么这三种方法所花费的时间如下&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;isStringEqualByArraysSort: true time:167000
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;isStringEqualByArraysSort: true time:167000
 isStringEqualByCharNums: true time:518000
 isStringEqualByCharNumsAscii: true time:29000
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;如果能够确定字符串中的字符数量，不是太大的话，优先采用利用数组统计字符数量的方法才是效率最高的。&lt;br /&gt;
 不过在工作中直接使用数组排序的解决方式是优先考虑的选择&lt;/p&gt;

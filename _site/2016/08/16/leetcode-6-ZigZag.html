@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -98,16 +98,16 @@
                 
                   <a href="/2015/01/03/java-thread1.html" class="list-group-item pjaxlink">线程基础 -线程的创建与执行</a>
                 
-                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-手动停止线程</a>
+                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-如何优雅停止线程运行</a>
                 
                   <a href="/2015/01/02/java-string1.html" class="list-group-item pjaxlink">String源码阅读分析</a>
                 
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -350,7 +350,7 @@
                       </a>
                     
                       <a  href='/2015/01/02/java-thread2.html' class="list-group-item pjaxlink">
-                        线程基础-手动停止线程
+                        线程基础-如何优雅停止线程运行
                       </a>
                     
                       <a  href='/2015/01/02/java-string1.html' class="list-group-item pjaxlink">
@@ -655,65 +655,71 @@
 
 <h3 id="section">原题目</h3>
 
-<p>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<p>The string <code class="highlighter-rouge">"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
 
-<pre><code>P 		A		H		N
+<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 </code></pre>
+</div>
 
-<p>And then read line by line: <code>"PAHNAPLSIIGYIR"</code><br />
+<p>And then read line by line: <code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code><br />
 Write the code that will take a string and make this conversion given a number of rows:</p>
 
-<p><code>string convert(string text, int nRows);</code><br />
-<code>convert("PAYPALISHIRING", 3)</code> should return <code>"PAHNAPLSIIGYIR".</code></p>
+<p><code class="highlighter-rouge">string convert(string text, int nRows);</code><br />
+<code class="highlighter-rouge">convert("PAYPALISHIRING", 3)</code> should return <code class="highlighter-rouge">"PAHNAPLSIIGYIR".</code></p>
 
 <h3 id="section-1">翻译</h3>
 
-<p>将字符串<code>"PAYPALISHIRING"</code>按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成<code>"PAHNAPLSIIGYIR"</code></p>
+<p>将字符串<code class="highlighter-rouge">"PAYPALISHIRING"</code>按照给定的行数，转为成锯齿形的字符串。然后将该锯齿形字符串一次读成<code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code></p>
 
-<pre><code>P 		A		H		N
+<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 </code></pre>
+</div>
 
 <p>编写代码将给定的字符串和行数，将字符串进行锯齿转换。</p>
 
-<pre><code>string convert(string text, int nRows);
+<div class="highlighter-rouge"><pre class="highlight"><code>string convert(string text, int nRows);
 </code></pre>
+</div>
 
-<p><code>convert("PAYPALISHIRING", 3)</code> 返回 <code>"PAHNAPLSIIGYIR"</code>.</p>
+<p><code class="highlighter-rouge">convert("PAYPALISHIRING", 3)</code> 返回 <code class="highlighter-rouge">"PAHNAPLSIIGYIR"</code>.</p>
 
 <h3 id="section-2">解题思路</h3>
 
 <p>如果nRows = 1， 那么直接返回。<br />
-如果nRows = 2, 转换字符串为：<code>PYAIHRNAPLSIIG</code></p>
+如果nRows = 2, 转换字符串为：<code class="highlighter-rouge">PYAIHRNAPLSIIG</code></p>
 
-<pre><code>P	 Y	 A	 I	 H	 R	 N
+<div class="highlighter-rouge"><pre class="highlight"><code>P	 Y	 A	 I	 H	 R	 N
 A	 P	 L	 S	 I	 I	 G
 </code></pre>
+</div>
 
-<p>如果 nRows = 3  转换字符串为：<code>PAHNAPLSIIGYIR</code></p>
+<p>如果 nRows = 3  转换字符串为：<code class="highlighter-rouge">PAHNAPLSIIGYIR</code></p>
 
-<pre><code>P 		A		H		N
+<div class="highlighter-rouge"><pre class="highlight"><code>P 		A		H		N
 A 	P 	L	S	I	I	G
 Y		I		R	
 </code></pre>
+</div>
 
-<p>如果 nRows = 4 转换字符串为：<code>PINALSIGYAHRPI</code></p>
+<p>如果 nRows = 4 转换字符串为：<code class="highlighter-rouge">PINALSIGYAHRPI</code></p>
 
-<pre><code>P 			I			N
+<div class="highlighter-rouge"><pre class="highlight"><code>P 			I			N
 A		L	S		I	G
 Y	A		H	R
 P			I
 </code></pre>
+</div>
 
-<p>通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: <code>2 * nRows -2 </code><br />
-中间第 i 行，第1列和它临近字符的间距为: <code>2*nRows -2 - 2 * i</code></p>
+<p>通过上面可以总结出一个规律，第一行和最后一行两个数据的间距为: <code class="highlighter-rouge">2 * nRows -2 </code><br />
+中间第 i 行，第1列和它临近字符的间距为: <code class="highlighter-rouge">2*nRows -2 - 2 * i</code></p>
 
 <h3 id="java">代码示例-Java</h3>
 
-<pre><code>package com.yumo.java.airthmetic.leetcode;
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
 
 /**
  * Created by yumodev on 8/16/16.
@@ -755,6 +761,7 @@ public class ZigZag_6 {
     }
 }
 </code></pre>
+</div>
 
 
     </div>

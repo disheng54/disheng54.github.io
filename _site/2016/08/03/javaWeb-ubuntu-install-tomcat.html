@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -98,16 +98,16 @@
                 
                   <a href="/2015/01/03/java-thread1.html" class="list-group-item pjaxlink">线程基础 -线程的创建与执行</a>
                 
-                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-手动停止线程</a>
+                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-如何优雅停止线程运行</a>
                 
                   <a href="/2015/01/02/java-string1.html" class="list-group-item pjaxlink">String源码阅读分析</a>
                 
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -350,7 +350,7 @@
                       </a>
                     
                       <a  href='/2015/01/02/java-thread2.html' class="list-group-item pjaxlink">
-                        线程基础-手动停止线程
+                        线程基础-如何优雅停止线程运行
                       </a>
                     
                       <a  href='/2015/01/02/java-string1.html' class="list-group-item pjaxlink">
@@ -658,39 +658,42 @@
     <p>从官网下载JDK，下载路径 http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz</p>
   </li>
   <li>
-    <p>将 <code>jdk-8u101-linux-x64.tar.gz</code> 移动到 <code>/usr/lib</code> 中， 解压到 <code>/usr/lib/jvm </code>目录</p>
+    <p>将 <code class="highlighter-rouge">jdk-8u101-linux-x64.tar.gz</code> 移动到 <code class="highlighter-rouge">/usr/lib</code> 中， 解压到 <code class="highlighter-rouge">/usr/lib/jvm </code>目录</p>
   </li>
 </ul>
 
-<pre><code>mkdir jvm
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir jvm
 sudo tar -zxvf jdk-8u101-linux-x64.tar.gz -C /usr/lib/jvm
 </code></pre>
+</div>
 
 <h3 id="jre">配置JRE路径</h3>
 
 <ul>
-  <li>打开环境变量文件 <code>sudo vi ~/.bashrc</code></li>
+  <li>打开环境变量文件 <code class="highlighter-rouge">sudo vi ~/.bashrc</code></li>
   <li>在文件的末尾添加下面内容</li>
 </ul>
 
-<pre><code>export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
+<div class="highlighter-rouge"><pre class="highlight"><code>export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_101
 export JRE_HOME=${JAVA_HOME}/jre  
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
 export PATH=${JAVA_HOME}/bin:$PATH  
 </code></pre>
+</div>
 
 <ul>
-  <li><code>source ~/.bashrc</code></li>
+  <li><code class="highlighter-rouge">source ~/.bashrc</code></li>
 </ul>
 
 <h3 id="jre-1">测试JRE</h3>
 
-<p>通过 <code>java -version</code>  查看当前的Java路径</p>
+<p>通过 <code class="highlighter-rouge">java -version</code>  查看当前的Java路径</p>
 
-<pre><code>java version "1.8.0_101"
+<div class="highlighter-rouge"><pre class="highlight"><code>java version "1.8.0_101"
 Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 </code></pre>
+</div>
 
 <h3 id="tomcat">安装tomcat</h3>
 
@@ -703,10 +706,11 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   </li>
 </ul>
 
-<pre><code>  cp apache-tomcat-9.0.0.M9.zip /usr/local
+<div class="highlighter-rouge"><pre class="highlight"><code>  cp apache-tomcat-9.0.0.M9.zip /usr/local
   uzip apache-tomcat-9.0.0.M9.zip
   mv apache-tomcat-9.0.0.M9 tomcat9
 </code></pre>
+</div>
 
 <h3 id="tomcat-1">启动tomcat</h3>
 
@@ -714,14 +718,15 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
   <li>开启tomcat9 权限</li>
 </ul>
 
-<pre><code>sudo chomd 755 /usr/local/tomcat9/bin/*.sh
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo chomd 755 /usr/local/tomcat9/bin/*.sh
 </code></pre>
+</div>
 
 <ul>
   <li>启动tomcat</li>
 </ul>
 
-<pre><code>cd /usr/local/tomcat9/bin
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local/tomcat9/bin
 ./startup.sh
 
 Using CATALINA_BASE:   /usr/local/tomcat9
@@ -731,10 +736,11 @@ Using JRE_HOME:        /usr/lib/jvm/jdk1.8.0_101/jre
 Using CLASSPATH:       /usr/local/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/bin/tomcat-juli.jar
 Tomcat started.
 </code></pre>
+</div>
 
 <h3 id="section">测试访问</h3>
 
-<p>在浏览器中输入 <code>http://localhost:8080</code> 访问</p>
+<p>在浏览器中输入 <code class="highlighter-rouge">http://localhost:8080</code> 访问</p>
 
 
     </div>

@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -98,16 +98,16 @@
                 
                   <a href="/2015/01/03/java-thread1.html" class="list-group-item pjaxlink">线程基础 -线程的创建与执行</a>
                 
-                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-手动停止线程</a>
+                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-如何优雅停止线程运行</a>
                 
                   <a href="/2015/01/02/java-string1.html" class="list-group-item pjaxlink">String源码阅读分析</a>
                 
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -350,7 +350,7 @@
                       </a>
                     
                       <a  href='/2015/01/02/java-thread2.html' class="list-group-item pjaxlink">
-                        线程基础-手动停止线程
+                        线程基础-如何优雅停止线程运行
                       </a>
                     
                       <a  href='/2015/01/02/java-string1.html' class="list-group-item pjaxlink">
@@ -658,33 +658,33 @@
 <h3 id="section-1">基础配置</h3>
 
 <ul>
-  <li>查看配置:<code>git config --list</code></li>
-  <li>设置全局用户名:<code>git config --global user.name &lt;用户名&gt;</code></li>
-  <li>设置全局邮箱:<code>git config --global user.email &lt;邮箱&gt;</code></li>
-  <li>查看全局用户名:<code>git config user.name</code></li>
-  <li>查看全局邮箱:<code>git config user.email</code></li>
-  <li>设置当前仓库用户名:<code>git config  user.name &lt;用户名&gt;</code></li>
-  <li>设置当前仓库邮箱:<code>git config user.email &lt;邮箱&gt;</code></li>
-  <li>查看当前仓库用户名:<code>git config user.name</code></li>
-  <li>查看当前仓库邮箱:<code>git config user.email</code></li>
+  <li>查看配置:<code class="highlighter-rouge">git config --list</code></li>
+  <li>设置全局用户名:<code class="highlighter-rouge">git config --global user.name &lt;用户名&gt;</code></li>
+  <li>设置全局邮箱:<code class="highlighter-rouge">git config --global user.email &lt;邮箱&gt;</code></li>
+  <li>查看全局用户名:<code class="highlighter-rouge">git config user.name</code></li>
+  <li>查看全局邮箱:<code class="highlighter-rouge">git config user.email</code></li>
+  <li>设置当前仓库用户名:<code class="highlighter-rouge">git config  user.name &lt;用户名&gt;</code></li>
+  <li>设置当前仓库邮箱:<code class="highlighter-rouge">git config user.email &lt;邮箱&gt;</code></li>
+  <li>查看当前仓库用户名:<code class="highlighter-rouge">git config user.name</code></li>
+  <li>查看当前仓库邮箱:<code class="highlighter-rouge">git config user.email</code></li>
 </ul>
 
 <h3 id="section-2">远程库</h3>
 
 <ul>
-  <li>查看远程主机，默认为<code>origin</code>: <code>git remote</code></li>
-  <li>查看所有远程主机版本信息:<code>git remote -v </code></li>
-  <li>查看制定主机名的远程主机详细信息: <code>git remote show &lt;仓库&gt;  </code></li>
-  <li>添加远程仓库: <code>git remote add &lt;仓库名&gt;  &lt;主机&gt;</code></li>
-  <li>删除远程仓库: <code>git remote rm &lt;仓库名&gt;</code></li>
-  <li>重命名远程仓库: <code>git remote rename &lt;仓库名&gt; &lt;新仓库名字&gt;</code></li>
-  <li>修改远程仓库地址: <code>git remote set-url &lt;仓库名&gt; &lt;仓库主机&gt; </code></li>
+  <li>查看远程主机，默认为<code class="highlighter-rouge">origin</code>: <code class="highlighter-rouge">git remote</code></li>
+  <li>查看所有远程主机版本信息:<code class="highlighter-rouge">git remote -v </code></li>
+  <li>查看制定主机名的远程主机详细信息: <code class="highlighter-rouge">git remote show &lt;仓库&gt;  </code></li>
+  <li>添加远程仓库: <code class="highlighter-rouge">git remote add &lt;仓库名&gt;  &lt;主机&gt;</code></li>
+  <li>删除远程仓库: <code class="highlighter-rouge">git remote rm &lt;仓库名&gt;</code></li>
+  <li>重命名远程仓库: <code class="highlighter-rouge">git remote rename &lt;仓库名&gt; &lt;新仓库名字&gt;</code></li>
+  <li>修改远程仓库地址: <code class="highlighter-rouge">git remote set-url &lt;仓库名&gt; &lt;仓库主机&gt; </code></li>
 </ul>
 
 <h3 id="section-3">获取帮助</h3>
 
 <ul>
-  <li>查看帮助: <code>git help config</code></li>
+  <li>查看帮助: <code class="highlighter-rouge">git help config</code></li>
 </ul>
 
 <h2 id="section-4">基本操作</h2>
@@ -692,78 +692,78 @@
 <h3 id="git">创建Git仓库</h3>
 
 <ul>
-  <li>将目录初始化为一个Git仓库: <code>git init</code></li>
-  <li>拉取远程仓库到本地: <code>git clone git clone https://github.com/disheng54/disheng54.github.io.git</code></li>
+  <li>将目录初始化为一个Git仓库: <code class="highlighter-rouge">git init</code></li>
+  <li>拉取远程仓库到本地: <code class="highlighter-rouge">git clone git clone https://github.com/disheng54/disheng54.github.io.git</code></li>
 </ul>
 
 <h3 id="section-5">提交修改</h3>
 
 <ul>
-  <li>提交本地所有修改到暂存: <code>git add . </code></li>
-  <li>提交本地文件到暂存: <code>git add &lt;文件1&gt; &lt;文件2&gt; </code></li>
-  <li>提交本地某类文件到暂存: <code>git add *.java </code></li>
-  <li>提交暂存区文件到服务器上: <code>git  commit -m "提交说明"</code></li>
+  <li>提交本地所有修改到暂存: <code class="highlighter-rouge">git add . </code></li>
+  <li>提交本地文件到暂存: <code class="highlighter-rouge">git add &lt;文件1&gt; &lt;文件2&gt; </code></li>
+  <li>提交本地某类文件到暂存: <code class="highlighter-rouge">git add *.java </code></li>
+  <li>提交暂存区文件到服务器上: <code class="highlighter-rouge">git  commit -m "提交说明"</code></li>
 </ul>
 
 <h3 id="section-6">追加修改</h3>
 
 <ul>
-  <li>追加提交: <code>git commit --amend -m "提交说明"</code></li>
+  <li>追加提交: <code class="highlighter-rouge">git commit --amend -m "提交说明"</code></li>
 </ul>
 
 <h3 id="section-7">撤销修改</h3>
 
 <ul>
-  <li>撤销一个文件修改: <code>git checkout &lt;文件名&gt;</code></li>
-  <li>撤销所有文件的修改: <code>git checkout .</code></li>
-  <li>撤销所有文件的修改，同时删除新增文件：<code> git checkout . &amp;&amp; git clean -xdf</code></li>
-  <li>重置一个文件的修改:<code> git reset HEAD &lt;文件名&gt;</code></li>
-  <li>重置到当前版本,重置缓存区和工作区: <code>git reset --head</code></li>
-  <li>重置到某个提交,重置缓存区，工作区不变: <code>git reset &lt;commit_id&gt;</code></li>
-  <li>恢复到某个提交,重置缓存区和工作区: <code>git reset --head &lt;commit_id&gt;</code></li>
-  <li>恢复到某个提交,工作区和暂存区不变: <code>git reset --keep &lt;commit_id&gt;</code></li>
+  <li>撤销一个文件修改: <code class="highlighter-rouge">git checkout &lt;文件名&gt;</code></li>
+  <li>撤销所有文件的修改: <code class="highlighter-rouge">git checkout .</code></li>
+  <li>撤销所有文件的修改，同时删除新增文件：<code class="highlighter-rouge"> git checkout . &amp;&amp; git clean -xdf</code></li>
+  <li>重置一个文件的修改:<code class="highlighter-rouge"> git reset HEAD &lt;文件名&gt;</code></li>
+  <li>重置到当前版本,重置缓存区和工作区: <code class="highlighter-rouge">git reset --head</code></li>
+  <li>重置到某个提交,重置缓存区，工作区不变: <code class="highlighter-rouge">git reset &lt;commit_id&gt;</code></li>
+  <li>恢复到某个提交,重置缓存区和工作区: <code class="highlighter-rouge">git reset --head &lt;commit_id&gt;</code></li>
+  <li>恢复到某个提交,工作区和暂存区不变: <code class="highlighter-rouge">git reset --keep &lt;commit_id&gt;</code></li>
 </ul>
 
 <h3 id="section-8">查看本地状态</h3>
 
 <ul>
-  <li>查看本地状态: <code>git status</code></li>
+  <li>查看本地状态: <code class="highlighter-rouge">git status</code></li>
 </ul>
 
 <h3 id="section-9">查看提交日志</h3>
 
 <ul>
-  <li>显示所有提交: <code>git log</code></li>
-  <li>显示所有提交,仅显示hash和message:<code>git log --oneline</code></li>
-  <li>显示某个用户的提交: <code>git log --author="username"</code></li>
-  <li>显示提交日志和每次提交的文件: <code>git log --stat</code></li>
-  <li>显示显示文件的每次提交:<code> git log -p &lt;file&gt;</code></li>
-  <li>显示文件的修改人和时间:<code>git blame &lt;file&gt;</code></li>
-  <li>显示最近的两次更新: <code>git log -2 </code></li>
-  <li>显示最近几次的提交: <code>git reflog</code></li>
-  <li>搜索提交: <code>git log -s &lt;关键字&gt;</code></li>
-  <li>显示所有提交过用户和次数: <code>git shortlog -sn</code></li>
+  <li>显示所有提交: <code class="highlighter-rouge">git log</code></li>
+  <li>显示所有提交,仅显示hash和message:<code class="highlighter-rouge">git log --oneline</code></li>
+  <li>显示某个用户的提交: <code class="highlighter-rouge">git log --author="username"</code></li>
+  <li>显示提交日志和每次提交的文件: <code class="highlighter-rouge">git log --stat</code></li>
+  <li>显示显示文件的每次提交:<code class="highlighter-rouge"> git log -p &lt;file&gt;</code></li>
+  <li>显示文件的修改人和时间:<code class="highlighter-rouge">git blame &lt;file&gt;</code></li>
+  <li>显示最近的两次更新: <code class="highlighter-rouge">git log -2 </code></li>
+  <li>显示最近几次的提交: <code class="highlighter-rouge">git reflog</code></li>
+  <li>搜索提交: <code class="highlighter-rouge">git log -s &lt;关键字&gt;</code></li>
+  <li>显示所有提交过用户和次数: <code class="highlighter-rouge">git shortlog -sn</code></li>
 </ul>
 
 <h3 id="section-10">比较</h3>
 
 <ul>
-  <li>暂存区和工作区的差异: <code>git diff</code></li>
-  <li>暂存区和工作区某个文件的差异: <code>git diff filename</code></li>
-  <li>暂存区和上一个commit的差异: <code>git diff --cached</code></li>
-  <li>暂存区和上一个commit的某个文件的差异: <code>git diff --cached</code></li>
-  <li>工作区和当前分支最近的commit的差异: <code>git diff HEAD</code></li>
-  <li>查看某两个提交之间的差异: <code>git diff &lt;commit1&gt; &lt;commit2&gt;</code></li>
-  <li>查看某两个分支之间的差异: <code>git diff &lt;branch&gt; &lt;branch&gt;</code></li>
-  <li>查看当前分支和某个分支的差异: <code>git diff &lt;branch&gt;</code></li>
+  <li>暂存区和工作区的差异: <code class="highlighter-rouge">git diff</code></li>
+  <li>暂存区和工作区某个文件的差异: <code class="highlighter-rouge">git diff filename</code></li>
+  <li>暂存区和上一个commit的差异: <code class="highlighter-rouge">git diff --cached</code></li>
+  <li>暂存区和上一个commit的某个文件的差异: <code class="highlighter-rouge">git diff --cached</code></li>
+  <li>工作区和当前分支最近的commit的差异: <code class="highlighter-rouge">git diff HEAD</code></li>
+  <li>查看某两个提交之间的差异: <code class="highlighter-rouge">git diff &lt;commit1&gt; &lt;commit2&gt;</code></li>
+  <li>查看某两个分支之间的差异: <code class="highlighter-rouge">git diff &lt;branch&gt; &lt;branch&gt;</code></li>
+  <li>查看当前分支和某个分支的差异: <code class="highlighter-rouge">git diff &lt;branch&gt;</code></li>
 </ul>
 
 <h3 id="section-11">删除文件</h3>
 
 <ul>
-  <li>删除文件:<code>git rm &lt;文件&gt;</code></li>
-  <li>删除暂存或已提交的文件:<code>git rm --cached &lt;文件&gt;</code></li>
-  <li>删除暂存或者已提交的目录: <code>git rm -r --cached  &lt;文件&gt;</code></li>
+  <li>删除文件:<code class="highlighter-rouge">git rm &lt;文件&gt;</code></li>
+  <li>删除暂存或已提交的文件:<code class="highlighter-rouge">git rm --cached &lt;文件&gt;</code></li>
+  <li>删除暂存或者已提交的目录: <code class="highlighter-rouge">git rm -r --cached  &lt;文件&gt;</code></li>
 </ul>
 
 <h3 id="section-12">文件暂存和恢复</h3>
@@ -771,11 +771,11 @@
 <p>这个在切换分支的时候经常需要的一个操作。</p>
 
 <ul>
-  <li>暂存文件: <code>git stash</code></li>
-  <li>恢复暂存最近的一个暂存: <code>git stash apply stash@{0}</code></li>
-  <li>恢复最近的一个暂存: <code>git stash pop</code> 不推荐使用，还是建议使用apply方式恢复暂存</li>
-  <li>恢复暂存最近的第n个暂存: <code>git stash apply stash@{n-1}</code></li>
-  <li>删除最新的一个暂存: <code>git drop</code></li>
+  <li>暂存文件: <code class="highlighter-rouge">git stash</code></li>
+  <li>恢复暂存最近的一个暂存: <code class="highlighter-rouge">git stash apply stash@{0}</code></li>
+  <li>恢复最近的一个暂存: <code class="highlighter-rouge">git stash pop</code> 不推荐使用，还是建议使用apply方式恢复暂存</li>
+  <li>恢复暂存最近的第n个暂存: <code class="highlighter-rouge">git stash apply stash@{n-1}</code></li>
+  <li>删除最新的一个暂存: <code class="highlighter-rouge">git drop</code></li>
 </ul>
 
 <h2 id="section-13">分支操作</h2>
@@ -783,70 +783,70 @@
 <h3 id="section-14">基本分支管理</h3>
 
 <ul>
-  <li>查看当前分支: <code>git branch</code></li>
-  <li>查看所有分支: <code>git branch -a </code></li>
-  <li>查看所有的远程分支: <code>git branch -r</code></li>
+  <li>查看当前分支: <code class="highlighter-rouge">git branch</code></li>
+  <li>查看所有分支: <code class="highlighter-rouge">git branch -a </code></li>
+  <li>查看所有的远程分支: <code class="highlighter-rouge">git branch -r</code></li>
 </ul>
 
 <h3 id="section-15">创建分支</h3>
 
 <ul>
-  <li>创建分支: <code>git branch &lt;分支名字&gt;</code></li>
+  <li>创建分支: <code class="highlighter-rouge">git branch &lt;分支名字&gt;</code></li>
 </ul>
 
 <h3 id="section-16">切换分支</h3>
 
 <ul>
-  <li>切换到另外一个分支: <code>git checkout &lt;分支名字&gt;</code></li>
+  <li>切换到另外一个分支: <code class="highlighter-rouge">git checkout &lt;分支名字&gt;</code></li>
 </ul>
 
 <h3 id="section-17">删除分支</h3>
 
 <ul>
-  <li>删除一个本地分支: <code>git branch -d &lt;分支名字&gt;</code></li>
-  <li>强制删除一个本地分支: <code>git branch -D &lt;分支名字&gt;</code></li>
-  <li>修改服务器地址:<code>git branch origin :&lt;分支名字&gt;</code></li>
+  <li>删除一个本地分支: <code class="highlighter-rouge">git branch -d &lt;分支名字&gt;</code></li>
+  <li>强制删除一个本地分支: <code class="highlighter-rouge">git branch -D &lt;分支名字&gt;</code></li>
+  <li>修改服务器地址:<code class="highlighter-rouge">git branch origin :&lt;分支名字&gt;</code></li>
 </ul>
 
 <h3 id="fetch">fetch操作</h3>
 
 <ul>
-  <li>获取远程主机上所有的提交: <code>git fetch &lt;仓库名&gt;</code></li>
-  <li>获取远程主机上一个分支的提交: <code>git fetch &lt;远程主机名&gt; &lt;分支名&gt; </code></li>
-  <li>从远程分支更新到本地并在此基础上生成一个新的分支: <code>git checkout -b &lt;新分支名字&gt; &lt;远程主机名字&gt;/&lt;远程分支名字&gt;</code></li>
-  <li>在当前的本地分支上合并远程分支: <code>git merge &lt;远程主机名&gt;/&lt;分支名字&gt; </code></li>
-  <li>在当前的本地分支上合并远程分支: <code>git rebase &lt;远程主机名&gt;/&lt;分支名字&gt; </code></li>
+  <li>获取远程主机上所有的提交: <code class="highlighter-rouge">git fetch &lt;仓库名&gt;</code></li>
+  <li>获取远程主机上一个分支的提交: <code class="highlighter-rouge">git fetch &lt;远程主机名&gt; &lt;分支名&gt; </code></li>
+  <li>从远程分支更新到本地并在此基础上生成一个新的分支: <code class="highlighter-rouge">git checkout -b &lt;新分支名字&gt; &lt;远程主机名字&gt;/&lt;远程分支名字&gt;</code></li>
+  <li>在当前的本地分支上合并远程分支: <code class="highlighter-rouge">git merge &lt;远程主机名&gt;/&lt;分支名字&gt; </code></li>
+  <li>在当前的本地分支上合并远程分支: <code class="highlighter-rouge">git rebase &lt;远程主机名&gt;/&lt;分支名字&gt; </code></li>
 </ul>
 
 <h3 id="pull">pull操作</h3>
 
 <p>取回远程主机一个分支的更新，然后与本地的分支合并, 如果是与本地的当前分支合并可忽略:<br />
-<code>git pull &lt;远程主机名&gt;&lt;远程分支名字&gt;:&lt;本地分支&gt;</code></p>
+<code class="highlighter-rouge">git pull &lt;远程主机名&gt;&lt;远程分支名字&gt;:&lt;本地分支&gt;</code></p>
 
 <h3 id="push">push操作</h3>
 
 <p>将本地分支的内容提交到远程分支上, 如果要提交到的远程分支和本地分支有跟踪关系就可省略:<br />
-<code>git push &lt;远程主机名&gt; &lt;本地分支名字&gt;:&lt;远程分支名字&gt;</code></p>
+<code class="highlighter-rouge">git push &lt;远程主机名&gt; &lt;本地分支名字&gt;:&lt;远程分支名字&gt;</code></p>
 
 <h2 id="section-18">标签</h2>
 
 <ul>
-  <li>给当前标签创建标签: <code>git tag &lt;tagName&gt;</code></li>
-  <li>给指定提交创建标签: <code>git tag -a &lt;tagName&gt; -m &lt;tag message&gt; &lt;commit-id&gt;</code></li>
-  <li>查看标签: <code>git tag</code></li>
-  <li>显示标签: <code>git show &lt;tagname&gt;</code></li>
-  <li>推送标签到服务器: <code>git push origin &lt;tagname&gt;</code></li>
-  <li>推送所有标签到服务器: <code>git push origin --tags</code></li>
-  <li>删除本地标签: <code>git tag -d &lt;tagname&gt;</code></li>
-  <li>删除服务器上的标签: <code>git push origin :refs/tags/[tagName]</code></li>
-  <li>新建分支指向一个提交: <code>git checkout -b &lt;branchname&gt; &lt;tagname&gt;</code></li>
+  <li>给当前标签创建标签: <code class="highlighter-rouge">git tag &lt;tagName&gt;</code></li>
+  <li>给指定提交创建标签: <code class="highlighter-rouge">git tag -a &lt;tagName&gt; -m &lt;tag message&gt; &lt;commit-id&gt;</code></li>
+  <li>查看标签: <code class="highlighter-rouge">git tag</code></li>
+  <li>显示标签: <code class="highlighter-rouge">git show &lt;tagname&gt;</code></li>
+  <li>推送标签到服务器: <code class="highlighter-rouge">git push origin &lt;tagname&gt;</code></li>
+  <li>推送所有标签到服务器: <code class="highlighter-rouge">git push origin --tags</code></li>
+  <li>删除本地标签: <code class="highlighter-rouge">git tag -d &lt;tagname&gt;</code></li>
+  <li>删除服务器上的标签: <code class="highlighter-rouge">git push origin :refs/tags/[tagName]</code></li>
+  <li>新建分支指向一个提交: <code class="highlighter-rouge">git checkout -b &lt;branchname&gt; &lt;tagname&gt;</code></li>
 </ul>
 
 <h2 id="section-19">高级操作</h2>
 
 <h3 id="section-20">将一个提交重新提交到另外一个分支上</h3>
 
-<p><code>git cherry-pick &lt;commit id&gt;</code></p>
+<p><code class="highlighter-rouge">git cherry-pick &lt;commit id&gt;</code></p>
 
 
     </div>

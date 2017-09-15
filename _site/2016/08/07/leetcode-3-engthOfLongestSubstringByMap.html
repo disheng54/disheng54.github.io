@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
+          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -98,16 +98,16 @@
                 
                   <a href="/2015/01/03/java-thread1.html" class="list-group-item pjaxlink">线程基础 -线程的创建与执行</a>
                 
-                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-手动停止线程</a>
+                  <a href="/2015/01/02/java-thread2.html" class="list-group-item pjaxlink">线程基础-如何优雅停止线程运行</a>
                 
                   <a href="/2015/01/02/java-string1.html" class="list-group-item pjaxlink">String源码阅读分析</a>
                 
               </div>
             </div>
            
-            <div class="tab-pane" id="javaweb">
+            <div class="tab-pane" id="javaWeb">
               <div class="list-group">
-                <h2 class="center">javaweb</h2>
+                <h2 class="center">javaWeb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -350,7 +350,7 @@
                       </a>
                     
                       <a  href='/2015/01/02/java-thread2.html' class="list-group-item pjaxlink">
-                        线程基础-手动停止线程
+                        线程基础-如何优雅停止线程运行
                       </a>
                     
                       <a  href='/2015/01/02/java-string1.html' class="list-group-item pjaxlink">
@@ -659,21 +659,21 @@
 
 <p>Examples:</p>
 
-<p>Given <code>"abcabcbb"</code>, the answer is <code>"abc"</code>, which the length is 3.</p>
+<p>Given <code class="highlighter-rouge">"abcabcbb"</code>, the answer is <code class="highlighter-rouge">"abc"</code>, which the length is 3.</p>
 
-<p>Given <code>"bbbbb",</code> the answer is <code>"b"</code>, with the length of 1.</p>
+<p>Given <code class="highlighter-rouge">"bbbbb",</code> the answer is <code class="highlighter-rouge">"b"</code>, with the length of 1.</p>
 
-<p>Given <code>"pwwkew"</code>, the answer is <code>"wke"</code>, with the length of 3. Note that the answer must be a substring, <code>"pwke"</code> is a subsequence and not a substring.</p>
+<p>Given <code class="highlighter-rouge">"pwwkew"</code>, the answer is <code class="highlighter-rouge">"wke"</code>, with the length of 3. Note that the answer must be a substring, <code class="highlighter-rouge">"pwke"</code> is a subsequence and not a substring.</p>
 
 <h3 id="section-1">题目翻译</h3>
 
 <p>获取一个字符串的各个字符都不相同的子串的最大长度。<br />
 举例：</p>
 
-<p>字符串 <code>"abcabcbb"</code>, 符合结果的字串为 <code>"abc"</code>, 其长度为 <code>3</code>.<br />
-字符串 <code>"bbbbb"</code>, 符合结果的字串为 <code>"b"</code>, 其长度为 <code>1</code>.<br />
-字符串 <code>"pwwkew"</code>, 符合结果的字串为 <code>"wke"</code>, 其长度为 <code>3</code>. <br />
-注意结果必须为连续的子串， 其中<code>"pwke"</code>是不同的字符组合，但不是连续的子串</p>
+<p>字符串 <code class="highlighter-rouge">"abcabcbb"</code>, 符合结果的字串为 <code class="highlighter-rouge">"abc"</code>, 其长度为 <code class="highlighter-rouge">3</code>.<br />
+字符串 <code class="highlighter-rouge">"bbbbb"</code>, 符合结果的字串为 <code class="highlighter-rouge">"b"</code>, 其长度为 <code class="highlighter-rouge">1</code>.<br />
+字符串 <code class="highlighter-rouge">"pwwkew"</code>, 符合结果的字串为 <code class="highlighter-rouge">"wke"</code>, 其长度为 <code class="highlighter-rouge">3</code>. <br />
+注意结果必须为连续的子串， 其中<code class="highlighter-rouge">"pwke"</code>是不同的字符组合，但不是连续的子串</p>
 
 <h3 id="section-2">解决思路</h3>
 
@@ -682,7 +682,7 @@
 
 <h3 id="java">代码示例-java</h3>
 
-<pre><code>package com.yumo.java.airthmetic.leetcode;
+<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.airthmetic.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -763,10 +763,11 @@ public class LongSubNoRepeatCHar_3 {
 }
 
 </code></pre>
+</div>
 
 <h3 id="c">代码示例-c++</h3>
 
-<pre><code>//
+<div class="highlighter-rouge"><pre class="highlight"><code>//
 // Created by yumodev on 8/6/16.
 //
 #include &lt;iostream&gt;
@@ -821,10 +822,11 @@ int main() {
     return 0;
 }
 </code></pre>
+</div>
 
 <h3 id="javascript">代码示例-javascript</h3>
 
-<pre><code>/**
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
  * @param {string} s
  * @return {number}
  */
@@ -859,6 +861,7 @@ var str = "dvdf"
 var len = lengthOfLongestSubstring(str);
 console.log(num+" "+len);
 </code></pre>
+</div>
 
 
     </div>
