@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -92,7 +92,7 @@
                 
                   <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
-                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
+                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射入门详解</a>
                 
                   <a href="/2015/01/05/java-random.html" class="list-group-item pjaxlink">java 随机数－常用操作集合。</a>
                 
@@ -105,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -370,7 +370,7 @@
                   <div id="java高级" class="panel-collapse collapse">
                     
                       <a  href='/2015/01/05/java-reflect.html' class="list-group-item pjaxlink">
-                        反射-一个简单的实例应用
+                        反射入门详解
                       </a>
                     
                   </div>
@@ -651,127 +651,137 @@
 
     <hr>
     <div id="content">
-      <p>随机数用的场合非常多，但是使用起来并不复杂，非常的简单。下面就是他的一些列方法的使用</p>
+      <h1 align="center">java 随机数</h1>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    Random random = new Random(100);
-	
-	//随机生成10个int数字  next()
-	System.out.println("随机生成5个int数字  next()");
-	for(int n =0; n &lt; 5; n++)
-	{
-		System.out.println(random.nextInt());
-	}
-	
-	//生成5个 0到100之间的数字。
-	System.out.println("生成5个 0到100之间的数字。 nextInt(100)");
-	for(int n =0; n &lt; 5; n++)
-	{
-		System.out.println(random.nextInt(100));
-	}
-	
-	//随机生成5个boolean值
-	System.out.println("随机生成5个boolean值 netBoolean");
-	for(int n =0; n &lt; 5; n++)
-	{
-		System.out.println(random.nextBoolean());
-	}
-	
-	//随机生成5个long值
-	System.out.println("随机生成5个long值 random nextLong()");
-	for(int n =0; n &lt; 10; n++)
-	{
-		System.out.println(random.nextLong());
-	}
-	
-	//随机生成5个fload值
-	System.out.println("随机生成5个fload值 netFloat");
-	for(int n =0; n &lt;5; n++)
-	{
-		System.out.println(random.nextFloat()*100);
-	}
-	
-	//随机生成5个double值
-	System.out.println("随机生成5个double值 netDouble");
-	for(int n =0; n &lt; 5; n++)
-	{
-		System.out.println(random.nextDouble()*100);
-	}
-	
-	//随机生成10个Gaussian值
-	System.out.println("随机生成5个太随机数  nextGaussian()");
-	for(int n =0; n &lt; 5; n++)
-	{
-		System.out.println(random.nextGaussian()*100);
-	}
-		
-	
-	//
-	System.out.println("建立一个字节数组，来接收随机生成的字节。 nextBytes(byte[])");
-	
-	byte[] bytes= new byte[10];
-	random.nextBytes(bytes);
-	for(byte bt : bytes)
-	{
-		System.out.println(bt);
-	}
+<h2 id="java">Java中生成随机数的方式</h2>
+
+<p>很多时候我们需要一些随机数，尤其是做测试的时候。<br />
+在Java中生成随机数有几种方式</p>
+
+<h2 id="javautiluuid">Java.util.UUID</h2>
+
+<p>可以通过UUID类生成唯一的字符串，并且是全局唯一所有的电脑产生的字符串都是不同的。它的使用方式如下：</p>
+
+<pre><code class="language-java">String uuid  =  UUID.randomUUID().toString(); 
 </code></pre>
-</div>
 
-<p>执行上面的代码。我们可以等到如下的结果。</p>
+<h2 id="mathrandom">Math.random()</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	生成5个 0到100之间的数字。 nextInt(100)
-	66
-	36
-	88
-	23
-	13
-	随机生成5个boolean值 netBoolean
-	true
-	false
-	false
-	false
-	false
-	随机生成5个long值 random nextLong()
-	1994076515850003689
-	-3505880182545671094
-	5294845296780165755
-	7666949800837858506
-	-9143039415690246354
-	1622479998420556049
-	5700377594808985065
-	234374027031053629
-	-7316603517567067640
-	3586133391558490009
-	随机生成5个fload值 netFloat
-	86.28953
-	15.13797
-	91.9473
-	12.135201
-	23.321033
-	随机生成5个double值 netDouble
-	41.3242845037923
-	28.672630466619474
-	62.46190087763299
-	73.14622835577995
-	48.603697468545924
-	随机生成5个张太随机数  nextGaussian()
-	-218.73465232186376
-	-139.0458132709607
-	-170.60989533724836
-	-31.26162845667001
-	80.45245617401423
-	建立一个字节数组，来接收随机生成的字节。 nextBytes(byte[])
-	-48
-	-50
-	-114
-	12
-	-58
-	123
-	-118
-	-39
-	104
+<p>通过Math.random()方法可以生成[0,1)区间中double类型的数字，可以为0，但是小于1。其他通常的使用方式如下</p>
+
+<pre><code class="language-java">生成double随机数：Math.random()
+生成[0,100)之间的整数：(int)(Math.random()*100)
 </code></pre>
-</div>
+
+<p>进入Math.random()的源码中它的具体使用是调用的Random的nextDouble()方法。</p>
+
+<pre><code class="language-java">public static double random() {
+        return RandomNumberGeneratorHolder.randomNumberGenerator.nextDouble();
+}
+    
+private static final class RandomNumberGeneratorHolder {
+   static final Random randomNumberGenerator = new Random();
+}
+</code></pre>
+
+<h2 id="random">Random类</h2>
+
+<p>Random类生成随机的数，它的主要方法如下</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>public Random()</td>
+      <td>构造方法</td>
+    </tr>
+    <tr>
+      <td>public Random(long var1)</td>
+      <td>构造方法，设置随机数数的种子</td>
+    </tr>
+    <tr>
+      <td>public synchronized void setSeed(long var1)</td>
+      <td>设置随机数的种子</td>
+    </tr>
+    <tr>
+      <td>public void nextBytes(byte[] var1)</td>
+      <td>产生随机的字节数，有参数var1接收。</td>
+    </tr>
+    <tr>
+      <td>public int nextInt()</td>
+      <td>获取整数。</td>
+    </tr>
+    <tr>
+      <td>public int nextInt(int var1)</td>
+      <td>获取0-var1范围呢的随机数</td>
+    </tr>
+    <tr>
+      <td>public long nextLong()</td>
+      <td>获取Long型的随机数</td>
+    </tr>
+    <tr>
+      <td>public boolean nextBoolean()</td>
+      <td>获取boolean类型的随机数</td>
+    </tr>
+    <tr>
+      <td>public float nextFloat()</td>
+      <td>返回float类型的随机数</td>
+    </tr>
+    <tr>
+      <td>public double nextDouble()</td>
+      <td>获取Double类型的随机数，[0,1)</td>
+    </tr>
+    <tr>
+      <td>public synchronized double nextGaussian()</td>
+      <td>返回乘高斯正态分布的double值。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>下面的例子是利用Random生成5个[0,100)内的随机数</p>
+
+<pre><code class="language-java">Random random = new Random();
+
+//生成5个 0到100之间的数字。
+System.out.println("生成5个 0到100之间的数字。 nextInt(100)");
+for (int n = 0; n &lt; 5; n++) {
+    System.out.print(random.nextInt(100)+", ");
+}
+</code></pre>
+
+<h2 id="random-1">Random的使用注意事项</h2>
+
+<p>Random产生随机数有两种方式，一种不带种子，一种是带种子的<br />
+有下面这样一段代码，定义两个随机数，设定相同的种子，返回100以内的随机整数，两个Random产生的随机数顺序是一样的。</p>
+
+<pre><code class="language-JAVA">Random random = new Random(100);
+Random random1 = new Random(100);
+
+//随机生成5个int数字  next()
+System.out.println("随机生成5个int数字  next()");
+for (int n = 0; n &lt; 5; n++) {
+    System.out.println(random.nextInt(100)+" "+random1.nextInt(100));
+}
+
+输出的结果如下：
+15,15
+50,50
+74,74
+88,88
+91,91
+</code></pre>
+
+<p>Random的随机数其实伪随机数，只要种子确定，那么生成的随机数顺序是一致的，所以避免例子中两个Random实例产生了顺序一致的随机数。一般有两种方式</p>
+
+<ul>
+  <li>生成Random实例的时候不指定种子。</li>
+  <li>生成一个单例的Random类，然后生成随机数。</li>
+</ul>
 
 
     </div>

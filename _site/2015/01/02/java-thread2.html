@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -92,7 +92,7 @@
                 
                   <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
-                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
+                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射入门详解</a>
                 
                   <a href="/2015/01/05/java-random.html" class="list-group-item pjaxlink">java 随机数－常用操作集合。</a>
                 
@@ -105,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -370,7 +370,7 @@
                   <div id="java高级" class="panel-collapse collapse">
                     
                       <a  href='/2015/01/05/java-reflect.html' class="list-group-item pjaxlink">
-                        反射-一个简单的实例应用
+                        反射入门详解
                       </a>
                     
                   </div>
@@ -660,7 +660,7 @@
 <p>定义一个StopThread线程类，通过readFromServer()方法从服务器上不停的取数据，然后通过 saveContent()将数据保存到本地，为了演示方便并没有真正的实现两个方法<br />
 而是在readFromServer()方法中每隔一秒生成一个字符串，然后通过saveContent()方法打印出来。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public class ThreadStop {
+<pre><code>public class ThreadStop {
     static class StopThread extends Thread{
 
         @Override
@@ -704,7 +704,6 @@
     }
 }
 </code></pre>
-</div>
 
 <p>因为StopThread线程启动后就是一直运行，如果我们需要主动停止该线程的运行，该如何实现呢。</p>
 
@@ -712,7 +711,7 @@
 
 <p>如果在线程中保存一个布尔类型的标志位，当需要主动停止线程时，就主动设置标志位的值。当线程检测到标志位为true的时候，就自己结束线程的运行。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>private volatile  boolean mStop = false;
+<pre><code>private volatile  boolean mStop = false;
 
 /**
 * 终止线程
@@ -729,11 +728,10 @@ public boolean isStopThread(){
   return mStop;
 }
 </code></pre>
-</div>
 
 <p>然后在run()方法中添加检测标志位</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@Override
+<pre><code>@Override
    public void run() {
        Random random = new Random(100);
        while (true){
@@ -756,11 +754,10 @@ public boolean isStopThread(){
    }
 
 </code></pre>
-</div>
 
 <p>然后在testStopThread()方法中启动线程后，等待5秒钟后，调用StopThread实例的stopThread()设置终止标志位</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public static void testStopThread(){
+<pre><code>public static void testStopThread(){
    StopThread thread = new StopThread();
    thread.start();
 
@@ -773,11 +770,10 @@ public boolean isStopThread(){
    thread.isStopThread();
 }
 </code></pre>
-</div>
 
 <p>这样修改完成后，重新运行程序，输出如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>saveContent:content:915
+<pre><code>saveContent:content:915
 saveContent:content:250
 saveContent:content:874
 saveContent:content:988
@@ -785,7 +781,6 @@ saveContent:content:291
 
 Process finished with exit code 0
 </code></pre>
-</div>
 <p>从结果上看现实StopThread线程在5秒钟终止运行了。</p>
 
 <p>但是仅仅设置终止标示位就一定可以终止线程的运行吗？<br />
@@ -793,13 +788,12 @@ Process finished with exit code 0
 
 <p>有比如将线程等待除了sleep方法外，还有wait()放，所以假如线程进入了wait方法等待notify通知后才会重新运行检测标志位，如果一直没有接收到notify通知，那么便永远不会检测标志位，线程也无法终止运行。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>try {
+<pre><code>try {
       wait();
   } catch (InterruptedException e) {
       e.printStackTrace();
   }
 </code></pre>
-</div>
 
 <h2 id="section-3">利用线程中断机制终止线程。</h2>
 
@@ -831,7 +825,7 @@ Process finished with exit code 0
 
 <p>现在把上面的程序加入中断机制，在stopThread()方法中触发中断机制，然后Thread.sleep方法就会抛出InterruptedException，在异常处理中检测中断标志位，来决定线程是继续运行还是停止，最后的完整代码如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> /**
+<pre><code> /**
  * yumodev
  * 终止线程
  */
@@ -919,7 +913,6 @@ public static void main(String[] args) {
 	}
 }
 </code></pre>
-</div>
 
 <h2 id="section-4">参考</h2>
 

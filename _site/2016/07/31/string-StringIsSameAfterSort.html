@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -92,7 +92,7 @@
                 
                   <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
-                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
+                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射入门详解</a>
                 
                   <a href="/2015/01/05/java-random.html" class="list-group-item pjaxlink">java 随机数－常用操作集合。</a>
                 
@@ -105,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -370,7 +370,7 @@
                   <div id="java高级" class="panel-collapse collapse">
                     
                       <a  href='/2015/01/05/java-reflect.html' class="list-group-item pjaxlink">
-                        反射-一个简单的实例应用
+                        反射入门详解
                       </a>
                     
                   </div>
@@ -670,7 +670,7 @@
 
 <h3 id="java">代码示例(Java)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>package com.yumo.java.string.test;
+<pre><code>package com.yumo.java.string.test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -826,17 +826,15 @@ public class StringIsSameAfterSort {
     }
 }
 </code></pre>
-</div>
 
 <h3 id="section-2">效率比较</h3>
 
 <p>假定这两个字符串的长度为10，那么这三种方法所花费的时间如下</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>isStringEqualByArraysSort: true time:167000
+<pre><code>isStringEqualByArraysSort: true time:167000
 isStringEqualByCharNums: true time:518000
 isStringEqualByCharNumsAscii: true time:29000
 </code></pre>
-</div>
 
 <p>如果能够确定字符串中的字符数量，不是太大的话，优先采用利用数组统计字符数量的方法才是效率最高的。<br />
 不过在工作中直接使用数组排序的解决方式是优先考虑的选择</p>

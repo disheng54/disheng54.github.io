@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -92,7 +92,7 @@
                 
                   <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
-                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
+                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射入门详解</a>
                 
                   <a href="/2015/01/05/java-random.html" class="list-group-item pjaxlink">java 随机数－常用操作集合。</a>
                 
@@ -105,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -370,7 +370,7 @@
                   <div id="java高级" class="panel-collapse collapse">
                     
                       <a  href='/2015/01/05/java-reflect.html' class="list-group-item pjaxlink">
-                        反射-一个简单的实例应用
+                        反射入门详解
                       </a>
                     
                   </div>
@@ -656,13 +656,13 @@
 <h2 id="section">基础命令</h2>
 
 <ul>
-  <li>查看版本信息:<code class="highlighter-rouge">adb version</code></li>
-  <li>查看帮助:<code class="highlighter-rouge"> adb -h</code></li>
-  <li>进入shell: <code class="highlighter-rouge">adb shell</code></li>
-  <li>退出shell: <code class="highlighter-rouge">exit</code></li>
-  <li>重启设备:<code class="highlighter-rouge">adb reboot</code></li>
-  <li>终止adb服务:<code class="highlighter-rouge">adb kill-server</code></li>
-  <li>启动adb服务:<code class="highlighter-rouge">adb start-server</code></li>
+  <li>查看版本信息:<code>adb version</code></li>
+  <li>查看帮助:<code> adb -h</code></li>
+  <li>进入shell: <code>adb shell</code></li>
+  <li>退出shell: <code>exit</code></li>
+  <li>重启设备:<code>adb reboot</code></li>
+  <li>终止adb服务:<code>adb kill-server</code></li>
+  <li>启动adb服务:<code>adb start-server</code></li>
 </ul>
 
 <h2 id="section-1">文件操作</h2>
@@ -674,11 +674,10 @@
 
 <h2 id="section-2">截屏</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>adb shell screencap -p /sdcard/screen.png
+<pre><code>adb shell screencap -p /sdcard/screen.png
 adb pull /sdcard/screen.png
 adb shell rm /sdcard/screen.png
 </code></pre>
-</div>
 
 <h2 id="section-3">设备相关</h2>
 
@@ -686,27 +685,27 @@ adb shell rm /sdcard/screen.png
   <li>
     <p>查看设备序列号</p>
 
-    <p><code class="highlighter-rouge">adb get-serialno</code></p>
+    <p><code>adb get-serialno</code></p>
   </li>
   <li>
     <p>获取CPU信息</p>
 
-    <p><code class="highlighter-rouge">adb shell cat /proc/cpuinfo</code></p>
+    <p><code>adb shell cat /proc/cpuinfo</code></p>
   </li>
   <li>
     <p>查看设备的内存信息</p>
 
-    <p><code class="highlighter-rouge">adb shell cat /proc/meminfo</code></p>
+    <p><code>adb shell cat /proc/meminfo</code></p>
   </li>
   <li>
     <p>获取设备名称</p>
 
-    <p><code class="highlighter-rouge">adb shell cat /system/build.prop</code></p>
+    <p><code>adb shell cat /system/build.prop</code></p>
   </li>
   <li>
     <p>获取设备分辨率</p>
 
-    <p><code class="highlighter-rouge">adb shell wm size</code></p>
+    <p><code>adb shell wm size</code></p>
   </li>
 </ul>
 
@@ -715,28 +714,28 @@ adb shell rm /sdcard/screen.png
 <h3 id="apk-1">安装APK</h3>
 
 <ul>
-  <li>安装apk:<code class="highlighter-rouge">adb install &lt;apkfile&gt;</code></li>
-  <li>强制安装apk: <code class="highlighter-rouge">adb install -r &lt;apkfile&gt;</code></li>
-  <li>安装apk到Sd卡: <code class="highlighter-rouge">adb install -s &lt;apkfile&gt;</code></li>
+  <li>安装apk:<code>adb install &lt;apkfile&gt;</code></li>
+  <li>强制安装apk: <code>adb install -r &lt;apkfile&gt;</code></li>
+  <li>安装apk到Sd卡: <code>adb install -s &lt;apkfile&gt;</code></li>
 </ul>
 
 <h3 id="app">卸载APP</h3>
 
 <ul>
-  <li>卸载APP:<code class="highlighter-rouge">adb uninstall &lt;packagename&gt;</code></li>
-  <li>卸载APP但是保留文件: <code class="highlighter-rouge">adb uninstall -k &lt;package&gt;</code></li>
+  <li>卸载APP:<code>adb uninstall &lt;packagename&gt;</code></li>
+  <li>卸载APP但是保留文件: <code>adb uninstall -k &lt;package&gt;</code></li>
 </ul>
 
 <h2 id="pm-">pm 命令</h2>
 
 <ul>
-  <li>查看pm命令帮助： <code class="highlighter-rouge">adb shell cmd package</code></li>
+  <li>查看pm命令帮助： <code>adb shell cmd package</code></li>
 </ul>
 
 <h3 id="section-4">打印应用列表</h3>
 
 <p>查看应用列表的格式：<br />
-<code class="highlighter-rouge">list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]</code></p>
+<code>list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]</code></p>
 
 <table>
   <thead>
@@ -778,21 +777,19 @@ adb shell rm /sdcard/screen.png
 </table>
 
 <ul>
-  <li>打印所有的包名:<code class="highlighter-rouge">adb shell pm list packages </code></li>
+  <li>打印所有的包名:<code>adb shell pm list packages </code></li>
   <li>查看包名某一个字符串的包名</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>adb shell pm list packages com.taobao.taobao
+<pre><code>adb shell pm list packages com.taobao.taobao
 adb shell pm list packages | grep com.taobao.taobao
 </code></pre>
-</div>
 
 <h3 id="section-5">清除应用数据和缓存</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>adb shell pm clear &lt;包名&gt;
+<pre><code>adb shell pm clear &lt;包名&gt;
 adb shell pm clear com.taobao.taobao
 </code></pre>
-</div>
 
 <h2 id="am-">am 命令</h2>
 
@@ -800,7 +797,7 @@ adb shell pm clear com.taobao.taobao
   <li>
     <p>启动Activity</p>
 
-    <p><code class="highlighter-rouge">adb shell am start -n &lt;package_name&gt;/.&lt;activity_class_name&gt;</code></p>
+    <p><code>adb shell am start -n &lt;package_name&gt;/.&lt;activity_class_name&gt;</code></p>
   </li>
 </ul>
 
@@ -808,10 +805,10 @@ adb shell pm clear com.taobao.taobao
 
 <ul>
   <li>
-    <p>输出系统正在运行的所有服务:<code class="highlighter-rouge">adb shell dumpsys -l</code> 。</p>
+    <p>输出系统正在运行的所有服务:<code>adb shell dumpsys -l</code> 。</p>
   </li>
   <li>
-    <p>打印系统中的服务某个服务的信息:<code class="highlighter-rouge">adb shell dumpsys &lt;服务名&gt;</code> 命令</p>
+    <p>打印系统中的服务某个服务的信息:<code>adb shell dumpsys &lt;服务名&gt;</code> 命令</p>
   </li>
 </ul>
 
@@ -821,37 +818,36 @@ adb shell pm clear com.taobao.taobao
   <li>
     <p>查看前台Activty</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys activity activities | grep mFocusedActivity</code></p>
+    <p><code>adb shell dumpsys activity activities | grep mFocusedActivity</code></p>
   </li>
   <li>
     <p>查看顶部的Activity</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys activity top</code></p>
+    <p><code>adb shell dumpsys activity top</code></p>
   </li>
   <li>
     <p>查看所有正在运行的服务</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys activity services </code></p>
+    <p><code>adb shell dumpsys activity services </code></p>
   </li>
   <li>
     <p>通过字符串过滤正则运行的服务</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys activity services  &lt;过滤字符串&gt;</code></p>
+    <p><code>adb shell dumpsys activity services  &lt;过滤字符串&gt;</code></p>
   </li>
   <li>
     <p>显示待处理的Intent</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys activity intents</code></p>
+    <p><code>adb shell dumpsys activity intents</code></p>
   </li>
   <li>
     <p>查看provider信息</p>
   </li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> adb shell dumpsys activity providers
+<pre><code> adb shell dumpsys activity providers
  adb shell dumpsys activity prov
 </code></pre>
-</div>
 
 <h2 id="cpu">进程、CPU、内存信息</h2>
 
@@ -859,12 +855,12 @@ adb shell pm clear com.taobao.taobao
   <li>
     <p>cpu信息</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys cupinfo</code></p>
+    <p><code>adb shell dumpsys cupinfo</code></p>
   </li>
   <li>
     <p>打印内存信息</p>
 
-    <p><code class="highlighter-rouge">adb shell dumpsys meminfo</code></p>
+    <p><code>adb shell dumpsys meminfo</code></p>
   </li>
 </ul>
 
@@ -876,17 +872,17 @@ adb shell pm clear com.taobao.taobao
   <li>
     <p>查看内存和cpu信息</p>
 
-    <p><code class="highlighter-rouge">adb shell top</code></p>
+    <p><code>adb shell top</code></p>
   </li>
   <li>
     <p>制定进程数量</p>
 
-    <p><code class="highlighter-rouge">adb shell top -m 1</code></p>
+    <p><code>adb shell top -m 1</code></p>
   </li>
   <li>
     <p>刷新进程数据次数</p>
 
-    <p><code class="highlighter-rouge">adb shell top -n 5</code></p>
+    <p><code>adb shell top -n 5</code></p>
   </li>
 </ul>
 
@@ -896,22 +892,22 @@ adb shell pm clear com.taobao.taobao
   <li>
     <p>查看进程状态</p>
 
-    <p><code class="highlighter-rouge">adb shell ps</code></p>
+    <p><code>adb shell ps</code></p>
   </li>
   <li>
     <p>查看指定id进程信息</p>
 
-    <p><code class="highlighter-rouge">adb shell ps &lt;pid&gt;</code></p>
+    <p><code>adb shell ps &lt;pid&gt;</code></p>
   </li>
   <li>
     <p>筛选进程信息，或者查看一个包下的进程。</p>
 
-    <p><code class="highlighter-rouge">adb shell ps | grep &lt;字符串&gt;</code></p>
+    <p><code>adb shell ps | grep &lt;字符串&gt;</code></p>
   </li>
   <li>
     <p>杀死一个进程</p>
 
-    <p><code class="highlighter-rouge">adb shell kill &lt;pid&gt;</code></p>
+    <p><code>adb shell kill &lt;pid&gt;</code></p>
   </li>
 </ul>
 
@@ -921,7 +917,7 @@ adb shell pm clear com.taobao.taobao
   <li>
     <p>生成bug报告</p>
 
-    <p><code class="highlighter-rouge">adb bugreport</code></p>
+    <p><code>adb bugreport</code></p>
   </li>
 </ul>
 

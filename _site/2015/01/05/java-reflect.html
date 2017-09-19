@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>反射-一个简单的实例应用 | 禹墨的博客</title>
+<title>反射入门详解 | 禹墨的博客</title>
 <meta name="author" content="禹墨">
 
   <meta name="keywords" content="java 反射">
@@ -33,7 +33,7 @@
         
           <li><a href="#java" data-toggle="tab">java</a></li>
         
-          <li><a href="#javaWeb" data-toggle="tab">javaWeb</a></li>
+          <li><a href="#javaweb" data-toggle="tab">javaweb</a></li>
         
           <li><a href="#leetcode" data-toggle="tab">leetcode</a></li>
         
@@ -92,7 +92,7 @@
                 
                   <a href="/2017/09/10/java-linkedhashmap-lru.html" class="list-group-item pjaxlink">LinkedHashMap的使用以及LRU算法的实现</a>
                 
-                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射-一个简单的实例应用</a>
+                  <a href="/2015/01/05/java-reflect.html" class="list-group-item pjaxlink">反射入门详解</a>
                 
                   <a href="/2015/01/05/java-random.html" class="list-group-item pjaxlink">java 随机数－常用操作集合。</a>
                 
@@ -105,9 +105,9 @@
               </div>
             </div>
            
-            <div class="tab-pane" id="javaWeb">
+            <div class="tab-pane" id="javaweb">
               <div class="list-group">
-                <h2 class="center">javaWeb</h2>
+                <h2 class="center">javaweb</h2>
                 
                   <a href="/2016/08/03/javaWeb-ubuntu-install-tomcat.html" class="list-group-item pjaxlink">Ubuntu 安装 Tomcat</a>
                 
@@ -370,7 +370,7 @@
                   <div id="java高级" class="panel-collapse collapse">
                     
                       <a  href='/2015/01/05/java-reflect.html' class="list-group-item pjaxlink">
-                        反射-一个简单的实例应用
+                        反射入门详解
                       </a>
                     
                   </div>
@@ -637,7 +637,7 @@
             <div class="row">
   <div class="col-md-12 aside3-title">
     <br>
-    <h2 id="#identifier">反射-一个简单的实例应用</h2>
+    <h2 id="#identifier">反射入门详解</h2>
     2015年01月05日
   </div>
   <div class="col-md-12 aside3-content">
@@ -651,277 +651,454 @@
 
     <hr>
     <div id="content">
-      <div class="highlighter-rouge"><pre class="highlight"><code>反射就是通过一个类的名字或者实例，才操作它的属性和方法的机制。该机制在android开发中非常有用。因为android开发中很多API里的一些方法没有公开，就需要用反射机制才能使用它。
-</code></pre>
-</div>
+      <h2 id="java">Java反射机制概述</h2>
 
-<h3 id="class">什么是Class</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>我定义一个类的时候需要使用Class关机字。比如 Class A{};我们定义了一个名字为A的类对象，那么我们就可以理解为Class 就是类对象A的类型。这个想法有点抽象。
-Class类有两个重要的方法。
-getName(); 获取这个对象的名字。
-forName(); 这个是静态方法。通过一个类的名字，获取到这个类的类型说明，我也不知道该怎么描述，只要不要理解成一个类对象的实例就行。
-newInstance(); 通过这个成员方法可以获得一个类的心的实例。
-    
-下面我我们看一个列子。给一个类的名字，来打印这个类的所有字段和方法。       
- 
-	/**
-	 * TODO 给定一个类名，打印它的属性，方法等等。
-	 * yumo
-	 * @param className
-	 * void
-	 * 2015-1-4
-	 */
-	public void printClass(String className)
-	{
-		if(className == null || className.length() &lt;=0) return ;
-		
-		try {
-			//返回与带有给定字符串名的类或接口相关联的 Class 对象。
-			Class cls = Class.forName(className);
-			//一个字符串的权限。
-			String modifiers = Modifier.toString(cls.getModifiers());
-			System.out.print(modifiers);
-			// 打印类的名字
-			System.out.print(cls.getName());
-			// 获取它的父类。
-			Class superCls = cls.getSuperclass();
-			if(superCls != null) System.out.print(" extends " + superCls.getName());
-			System.out.println("{");
-			
-			//打印field 成员变量
-			Field[] fields = cls.getFields();
-			for(Field field:fields)
-			{
-				//一个字符串的权限。
-				modifiers = Modifier.toString(field.getModifiers());
-				System.out.print(modifiers + " ");
-				//打印类型
-				System.out.print(field.getType() + " ");
-				//打印方法的名字
-				System.out.print(field.getName());
-				
-				System.out.println();
-			}
-			
-			//打印methods 
-			Method[] methods = cls.getMethods();
-			for(Method method : methods)
-			{
-				//一个字符串的权限。
-				modifiers = Modifier.toString(method.getModifiers() );
-				
-				System.out.print(modifiers + " ");
-				//打印返回类型
-				System.out.print(method.getReturnType().getName() + " ");
-				//打印方法的名字
-				System.out.print(method.getName()+"(");
-				//打印参数
-				Class[] parameters = method.getParameterTypes();
-				for(int i = 0; i &lt; parameters.length; i++)
-				{
-					if(i &gt; 0) System.out.print(",");
-					Class para = parameters[i];
-					System.out.print(para.getName());
-				}
-				
-				System.out.println(")");
-			}
-			
-			System.out.println("}");
-			
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-	
-当我们用这个语句打印Date类的方法，printClass("java.util.Date");
-打印的结果如下，它完整的输出一个类的结构。
+<p>Java中的反射机制允许程序在JVM的运行期动态加载类，创建类对象，调用类的成员变量，执行类的成员方法。</p>
 
-	publicjava.util.Date extends java.lang.Object{
-	public boolean equals(java.lang.Object)
-	public java.lang.String toString()
-	public int hashCode()
-	public java.lang.Object clone()
-	public int compareTo(java.util.Date)
-	public volatile int compareTo(java.lang.Object)
-	public boolean after(java.util.Date)
-	public boolean before(java.util.Date)
-	public static long parse(java.lang.String)
-	public void setTime(long)
-	public long getTime()
-	public int getYear()
-	public int getMonth()
-	public int getDate()
-	public int getHours()
-	public int getMinutes()
-	public int getSeconds()
-	public static long UTC(int,int,int,int,int,int)
-	public void setDate(int)
-	public void setMonth(int)
-	public void setHours(int)
-	public void setMinutes(int)
-	public void setSeconds(int)
-	public void setYear(int)
-	public int getDay()
-	public java.lang.String toLocaleString()
-	public java.lang.String toGMTString()
-	public int getTimezoneOffset()
-	public final void wait()
-	public final native void wait(long)
-	public final void wait(long,int)
-	public final native java.lang.Class getClass()
-	public final native void notify()
-	public final native void notifyAll()
-	}
-</code></pre>
-</div>
+<p>通过Java的反射机制可以下面的功能</p>
 
-<h3 id="section">通过反射操作一个类的字段。</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code> 我们定义一个Book类。有两个属性，书名和价格。定义如下。
-       /**
-	 * yumo
-	 * 定义一个用于测试的Book类
-	 */
-	class Book
-	{
-		public String name = "";
-		
-		public double price = 0.0;
-		
-		public Book(String name, double price)
-		{
-			this.name = name;
-			this.price = price;
-		}
-		
-		public double getPrice(){
-			System.out.println("getPrice 进入运行了");
-			return price;
-		}
-		
-		public void setPrice(Double price)
-		{
-			System.out.println("setPrice 进入运行了");
-			this.price = price;
-		}
-	}
-	
-	这里我们先看一个Class的一个方法。
-	Field getDeclaredField（String; //给定一个字段名称，获取到该字段的实例。
-	Field类是表示一个Class中的一个字段。它主要有三个方法。
-	getName(); 获取字段的名称。
-	get(Object): 获取制定对象上该字段的值。
-	set(Object obj, Object value); 将指定对象变量上此 Field 对象表示的字段设置为指定的新值。
-	
-	下面就用一个列子来展现它的用法。
-	我们首先定义一个Book类的实例，然后通过实例获取到它的类对象clsBook.
-	然后通过clsBook的getField("name")方法获取到name字段的Field的说明。
-	然后调用Field对象的get和set方法对该字段惊醒操作。
-	
-	Book book = new Book("Android高级编程",74);
-	//获取book对象
-	Class clsBook = book.getClass();
-	try {
-		//获取book对象的，name字段
-		Field name = clsBook.getDeclaredField("name");
-		//获取并打印name的值
-		System.out.println("通过反射获取的书名为："+name.get(book));
-		//修改name的值
-		System.out.println("通过反射获取的将书名修改为：android 开发入门详解");
-		name.set(book, "android 开发入门详解");
-		//输出修改后的name的值
-		System.out.println("通过反射修改后书名为："+book.name);
-	} catch (SecurityException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (NoSuchFieldException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (IllegalArgumentException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IllegalAccessException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (NoSuchMethodException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (InvocationTargetException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-打印结果如下：
+<ol>
+  <li>在运行时判断任意一个对象所属的类；</li>
+  <li>在运行时构造任意一个类的对象；</li>
+  <li>在运行时判断任意一个类所具有的成员变量和方法；</li>
+  <li>在运行时修改任意一个对象的成员变量；</li>
+  <li>在运行时调用任意一个对象的方法；</li>
+  <li>Java的反射机制可以临时修改类、类的成员变量、类的方法的访问属性。</li>
+</ol>
 
-	通过反射获取的书名为：Android高级编程
-	通过反射获取的将书名修改为：android 开发入门详解
-	通过反射修改后书名为：android 开发入门详解
-</code></pre>
-</div>
+<p>Java的反射机制主要用于框架开发方面，是一个高级工程师的必备技能。</p>
 
-<h3 id="section-1">通过反射操作一个类的方法</h3>
+<h2 id="java-1">Java中的反射框架</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>我们可以通过反射机制在运行当中动态的获取一个实例方法，来操纵这个方法。需要用到相关类的方法如下
-Class类中的方法
-Method getMethod(String name, Class&lt;?&gt;... parameterTypes)   返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。
-Method 顾名思义表示的一个类型方法类型。它有两个常用的方法。
-getName(); 获取这个方法的名称。
-Object	invoke(Object obj, Object... args)  对带有指定参数的指定对象调用由此 Method 对象表示的底层方法。
-下面我们通过一个列子，领略一下反射魅力。
+<table>
+  <thead>
+    <tr>
+      <th>类</th>
+      <th>功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>java.lang.Class</td>
+      <td>实例表示正在运行的 Java 应用程序中的类和接口</td>
+    </tr>
+    <tr>
+      <td>java.lang.reflect.Constructor</td>
+      <td>提供关于类的单个构造方法的信息以及对它的访问权限</td>
+    </tr>
+    <tr>
+      <td>java.lang.reflect.Field</td>
+      <td>提供有关类或接口的单个字段的信息，以及对它的动态访问权限</td>
+    </tr>
+    <tr>
+      <td>java.lang.reflect.Method</td>
+      <td>提供关于类或接口上单独某个方法（以及如何访问该方法）的信息</td>
+    </tr>
+  </tbody>
+</table>
 
-       Book book = new Book("Android高级编程",74);
-	//获取book对象
-	Class clsBook = book.getClass();
-	try {			
-		//通过反射调用方法
-		Method getPrice = clsBook.getMethod("getPrice",null);
-		getPrice.invoke(book);
-		System.out.println("现在书的价格为:"+book.getPrice());
-		
-		Double price = 100.0;
-		Class[] argsCls = new Class[1];
-		argsCls[0] = price.getClass();
-		
-		Method setPrice = clsBook.getMethod("setPrice", argsCls);
-		setPrice.invoke(book, price);
-		System.out.println("通过反射通过反射将书的价格修改:"+price);
-		
-		getPrice = clsBook.getMethod("getPrice",null);
-		getPrice.invoke(book);
-		System.out.println("通过反射修改后，书的价格为:"+book.getPrice());
-	} catch (SecurityException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (NoSuchFieldException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (IllegalArgumentException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IllegalAccessException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (NoSuchMethodException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}catch (InvocationTargetException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+<h2 id="section">创建一个测试类</h2>
+
+<p>为了演示反射的使用，我创建一个名字为Book的类，表示一本图书，有两个成员变量保存书的名字和价格，可以通过构造方法、静态工厂方法创建类的实例，同时又一个静态变量表示创建类实例的数量。</p>
+
+<pre><code class="language-java">package com.yumodev.java.entry;
+
+/**
+ * Created by yumodev
+ * Book类,目前用于反射测试
+ */
+public class Book {
+    /**
+     * 书的名字
+     */
+    public String name = "";
+    /**
+     * 书的价格
+     */
+    private double price = 0.0;
+    /**
+     * 创建书的数量，静态变量
+     */
+    private static int count;
+
+    /**
+     * 默认构造方法
+     */
+    public Book(){
+        count++;
+    }
+
+    /**
+     * 构造方法
+     * @param name
+     * @param price
+     */
+    public Book(String name, double price) {
+        this.name = name;
+        this.price = price;
+        count++;
+    }
+
+    /**
+     * 通过静态工厂的创建Book实例
+     * @param name
+     * @param price
+     * @return
+     */
+    public static Book newBook(String name, double price){
+        Book book = new Book();
+        book.name = name;
+        book.price = price;
+        count++;
+        return book;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+" "+name+" 价格："+price;
+    }
+
+    /**
+     * 获取价格
+     * @return
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * 设置新的价格
+     * @param price
+     */
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    /**
+     * 获取图书的数量。
+     * @return
+     */
+    public static int getCount(){
+        return count;
+    }
 }
 
-打印结果如下：
-
-	现在书的价格为:74.0
-	setPrice 进入运行了
-	通过反射通过反射将书的价格修改:100.0
-	getPrice 进入运行了
-	getPrice 进入运行了
-	通过反射修改后，书的价格为:100.0
 </code></pre>
-</div>
+
+<h2 id="class">Class类的使用</h2>
+
+<h3 id="section-1">获取类对象</h3>
+
+<ul>
+  <li>通过类的名字直接调用</li>
+</ul>
+
+<pre><code class="language-java">Class cls = Book.class
+</code></pre>
+
+<ul>
+  <li>通过类的实例创建类的对象</li>
+</ul>
+
+<pre><code class="language-Java">Book book = new Book();
+Class cls = book.getClass();
+</code></pre>
+
+<ul>
+  <li>通过类的静态方法forName()创建类对象</li>
+</ul>
+
+<pre><code class="language-Java">Class.forName("com.yumodev.java.entry.Book")
+</code></pre>
+
+<h3 id="section-2">获取类对象基础属性</h3>
+
+<p>通过<code>Class cls = Book.class</code>获取一个Class对象，通过这个Class对象来熟悉其一些属性的获取</p>
+
+<ul>
+  <li>获取类的名称包括包名：</li>
+</ul>
+
+<pre><code>cls.getName();//输出：com.yumodev.java.entry.Book
+</code></pre>
+
+<ul>
+  <li>获取类的包名：</li>
+</ul>
+
+<pre><code>cls.getPackage();//输出：com.yumodev.java.entry
+</code></pre>
+
+<ul>
+  <li>获取类的名字，不包含包名</li>
+</ul>
+
+<pre><code>cls.getSimpleName();//输出：Book
+</code></pre>
+
+<ul>
+  <li>获取类的父类</li>
+</ul>
+
+<pre><code>cls.getSuperclass();//输出：java.lang.Object
+</code></pre>
+
+<h3 id="section-3">类的签名</h3>
+
+<p>类的签名的获取有两种方式，一种利用Class类的方法，这种方法比较简单，只能用于获取类对象的签名，还有一种是使用反射框架下<code>java.lang.reflect.Modifier</code>类进行获取签名，它不仅可以获取类的签名，还可以获取成员变量、方法、构造方法的签名。Modifier类的主要方法如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>方法名</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>static boolean isAbstract(int mod)</td>
+      <td>是否为抽象类或者方法</td>
+    </tr>
+    <tr>
+      <td>static boolean isFinal(int mod)</td>
+      <td>是否为Final类型的类、方法、成员变量</td>
+    </tr>
+    <tr>
+      <td>static boolean isInterface(int mod)</td>
+      <td>判断类是否为接口</td>
+    </tr>
+    <tr>
+      <td>static boolean isNative(int mod)</td>
+      <td>判断方法是否为本地方法</td>
+    </tr>
+    <tr>
+      <td>static boolean isPrivate(int mod)</td>
+      <td>判断类、方法、成员变量是否为私有访问权限</td>
+    </tr>
+    <tr>
+      <td>static boolean isProtected(int mod)</td>
+      <td>判断类、方法、成员变量是否为保护访问权限</td>
+    </tr>
+    <tr>
+      <td>static boolean isPublic(int mod)</td>
+      <td>判断类、方法、成员变量是否为公开方法</td>
+    </tr>
+    <tr>
+      <td>static boolean isStatic(int mod)</td>
+      <td>判断类、方法、成员变量是否为静态的。</td>
+    </tr>
+    <tr>
+      <td>static boolean isSynchronized(int mod)</td>
+      <td>判断方法是否为同步方法。</td>
+    </tr>
+    <tr>
+      <td>static boolean isTransient(int mod)</td>
+      <td>判断成员变量是否有transient声明</td>
+    </tr>
+    <tr>
+      <td>static boolean isVolatile(int mod)</td>
+      <td>判断成员变量是否有volatile声明</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这是一个获取类对象签名的演示：</p>
+
+<pre><code class="language-java">int modifiers = cls.getModifiers();
+Modifier.isAbstract(modifiers);//是否为抽象对象
+
+</code></pre>
+
+<h2 id="section-4">类构造方法</h2>
+
+<h3 id="section-5">遍历类的构造方法</h3>
+
+<p>通过Class类的<code>getConstructors()</code>方法可以获取其所有的构造方法</p>
+
+<pre><code>Class cls = Book.class;
+Constructor[] constructors = cls.getConstructors();
+for (Constructor constructor : constructors){
+   System.out.println(constructor.toString());        
+}
+</code></pre>
+
+<h3 id="section-6">获取类对象的构造方法</h3>
+
+<p>通过Class类的 <code>Constructor&lt;T&gt; getConstructor(Class... var1)</code>来获取指定参数的构造方法。其参数为可变参数, 当要获取构造方法不存在的时候，会抛出<code>NoSuchMethodException </code>异常</p>
+
+<p>下面的例子是获取Book类的<code>public Book(String name, double price) </code>构造方法.</p>
+
+<pre><code class="language-Java">Class cls = Book.class;
+try {
+    Constructor constructor = cls.getConstructor(String.class, double.class);
+} catch (NoSuchMethodException e) {
+    e.printStackTrace();
+} 
+</code></pre>
+
+<h3 id="section-7">通过构造方法生成类的实例</h3>
+
+<p>通过<code>java.lang.reflect.Constructor</code>类的<code>public T newInstance(Object... var1)</code>方法可以创建一个类的实例。</p>
+
+<pre><code class="language-Java">Class cls = Book.class;
+try {
+    Constructor constructor = cls.getConstructor(String.class, double.class);
+    Book book = (Book) constructor.newInstance("《Java入门详解》", 990f);
+    System.out.println("通过构造方法创建实例成功了:"+book.toString());
+} catch (NoSuchMethodException e) {
+    e.printStackTrace();
+} catch (IllegalAccessException e) {
+    e.printStackTrace();
+} catch (InstantiationException e) {
+    e.printStackTrace();
+} catch (InvocationTargetException e) {
+    e.printStackTrace();
+}
+</code></pre>
+
+<h2 id="section-8">类的方法</h2>
+
+<h3 id="section-9">遍历类的方法</h3>
+
+<p>通过Class类的<code>getMethods()</code>方法可以获取其所有的方法</p>
+
+<pre><code class="language-java">Class cls = Book.class;
+Methond[] methods = cls.getMethods();
+for (Method method : methods){
+   System.out.println(method.toString());        
+}
+</code></pre>
+
+<h3 id="section-10">查询类的方法</h3>
+
+<p>java.lang.reflect.Method类表示类的一个方法。<br />
+通过Class中的<code>public Method getMethod(String var1, Class... var2)</code>获取类中的一个方法。其中参数<code>var1</code>表示方法的名字, var2表示方法的参数列表，如果没有参数可以设置为null。用法如下：</p>
+
+<pre><code>Class cls = Book.class;
+cls.getMethod("setPrice", double.class);//获取void setPrice(double)方法
+cls.getMethod("getPrice", null);//获取double getPrice()方法。参数传入为null编译有警告，可以采用下面的方式实现
+cls.getMethod("getPrice", new Class[0]);
+</code></pre>
+
+<h3 id="section-11">执行类的方法</h3>
+
+<p>通过Method类的<code>public Object invoke(Object var1, Object... var2) </code>方法，可以执行一个类的方法。invoke()的方法依次传入类的实例、方法的参数列表的值。下面通过反射调用Book类的setPrice()修改图书的价格为例演示，如何反射获取方法并执行。</p>
+
+<pre><code>Book book = Book.newBook("《Book》", 10f);
+Class cls = book.getClass();
+try {
+    Method method = cls.getMethod("setPrice", double.class);
+    method.invoke(book, 20f);
+    System.out.println(book.getPrice());
+} catch (NoSuchMethodException e) {
+    e.printStackTrace();
+} catch (InvocationTargetException e) {
+    e.printStackTrace();
+} catch (IllegalAccessException e) {
+    e.printStackTrace();
+}
+</code></pre>
+
+<h3 id="section-12">执行静态方法</h3>
+
+<p>上面的例子演示如何反射执行类的一个普通的方法，如果是静态方法该如何执行呢。在回头看下Method类的invoke()方法的声明<code>public Object invoke(Object var1, Object... var2)</code>,invoke()方法的第一次参数是传入类的实例的，如果传入null，就表示调用的该类对象的一个静态方法。下面的例子演示了反射调用Book类的newBook()方法生成一个实例。</p>
+
+<pre><code>Class cls = Book.class;
+try {
+    Method method = cls.getMethod("newBook", String.class, double.class);
+    Book book = (Book) method.invoke(null, "《Book》", 20f);
+    System.out.println(book.toString());
+} catch (NoSuchMethodException e) {
+    e.printStackTrace();
+} catch (InvocationTargetException e) {
+    e.printStackTrace();
+} catch (IllegalAccessException e) {
+    e.printStackTrace();
+}
+</code></pre>
+
+<h2 id="section-13">类的成员变量</h2>
+
+<h3 id="section-14">遍历类的成员变量</h3>
+
+<p>通过Class类的<code>getDeclaredFields()</code>方法可以获取其所有的字段，不包括其父类的成员变量。</p>
+
+<pre><code class="language-java">Class cls = Book.class;
+Field[] field = cls.getDeclaredFields();
+for (Field method : fields){
+   System.out.println(field.toString());        
+}
+</code></pre>
+
+<h3 id="section-15">获取一个类的成员变量</h3>
+
+<p>Class类提供了两个方法用于获取类的成员变量。<br />
+1. getField(): 获取类的public类型的成员变量<br />
+2. getDeclaredField():可以获取类的所有成员变量</p>
+
+<pre><code class="language-java">Class cls = Book.class;
+Field name = cls.getField("name");
+Field price = cls.getDeclaredField("price");
+Field count = cls.getDeclaredField("count");
+</code></pre>
+
+<h3 id="section-16">获取和设置类的成员变量的值</h3>
+
+<p>Field类表示一个成员变量，其封装很多方法，用于获取和设置成员变量的值。其主要方法如下：<br />
+1. <code>public void set(Object var1, Object var2)</code> <br />
+2. <code>public Object get(Object var1)</code></p>
+
+<pre><code class="language-java">Book book = Book.newBook("《Book》", 10f);
+Class cls = book.getClass();
+try {
+    Field name = cls.getField("name");
+    name.set(book, "new book");
+    System.out.println(book.getPrice());
+} catch (NoSuchFieldException e) {
+    e.printStackTrace();
+} catch (IllegalAccessException e) {
+    e.printStackTrace();
+}
+</code></pre>
+
+<h3 id="section-17">修改字段的访问权限</h3>
+
+<p>在本文中的Book类中有一个静态私有的<code>count</code>成员变量，如何通过反射修改其值呢。<br />
+首先因为是私有变量，所有只能通过Class类的getDeclaredField()方法获取该成员变量。<br />
+其次访问和修改私有变量前，需要设置该字段的访问权限。</p>
+
+<p>Field、Method、Constructor类都继承自AccessibleObject。在AccessibleObject类中<br />
+有一个成员变量来设置类的成员变量、构造方法、方法的访问属性。</p>
+
+<p>下面的例子演示的如果操作Book的静态私有<code>count</code>成员变量</p>
+
+<pre><code class="language-java">Book book = Book.newBook("《Book》", 10f);
+Class cls = book.getClass();
+try {
+    Field count = cls.getDeclaredField("count");
+    //修改器访问属性
+    count.setAccessible(true);
+    count.set(null, 2);
+} catch (NoSuchFieldException e) {
+    e.printStackTrace();
+} catch (IllegalAccessException e) {
+    e.printStackTrace();
+}
+</code></pre>
+
+<h2 id="section-18">参考</h2>
+
+<ul>
+  <li><a href="https://www.zhihu.com/question/24304289">知乎-学习java应该如何理解反射</a></li>
+  <li><a href="http://wiki.jikexueyuan.com/project/java-reflection/">Java反射机制</a></li>
+  <li><a href="http://www.cnblogs.com/whoislcj/p/6038511.html">Java学习之反射机制及应用场景</a></li>
+  <li><a href="http://blog.csdn.net/android_ku_ku/article/details/52336734">玩转Java反射</a></li>
+  <li><a href="http://tengj.top/2016/04/28/javareflect/">Java 基础与提高干货系列—Java 反射机制 </a></li>
+  <li><a href="http://www.jianshu.com/p/2efb2d1cbbc8">十分钟理解Java反射</a></li>
+  <li><a href="https://mp.weixin.qq.com/s?__biz=MzA4NTQwNDcyMA==&amp;mid=402508341&amp;idx=1&amp;sn=960682c2cafea9702d55a879c6246c5b#rd">在Android中使用反射到底有多慢？</a></li>
+  <li><a href="http://www.sczyh30.com/posts/Java/java-reflection-1/">深入解析Java反射（1） - 基础</a></li>
+  <li><a href="http://www.sczyh30.com/posts/Java/java-reflection-2/">深入解析Java反射（2） - invoke方法</a></li>
+</ul>
 
 
     </div>
