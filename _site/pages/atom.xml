@@ -6,6 +6,486 @@
     <description>禹墨的博客</description>
     
       <item>
+        <title>Python常用内置函数</title>
+        <link>http://disheng54.github.io/2017/10/19/python-buildin.html</link>
+        <guid isPermaLink="true">http://disheng54.github.io/2017/10/19/python-buildin.html</guid>
+        <pubDate>Thu, 19 Oct 2017 00:00:00 +0800</pubDate>
+        <description>&lt;h1 align=&quot;center&quot;&gt;Python 常用内置函数&lt;/h1&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;数学相关&lt;/h2&gt;
+
+&lt;h3 id=&quot;absx&quot;&gt;abs(x)&lt;/h3&gt;
+
+&lt;p&gt;返回一个数的绝对值。参数可以是普通的整数，长整数或者浮点数。如果参数是个复数，返回它的模。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; abs(1)
+1
+&amp;gt;&amp;gt;&amp;gt; abs(-1)
+1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;divmodxy&quot;&gt;divmod(x,y)&lt;/h3&gt;
+
+&lt;p&gt;结合除法和余数运算，返回包含商和余数的元组&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; divmod(5,2)
+(2, 1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;powx-y-z&quot;&gt;pow(x, y[, z])&lt;/h3&gt;
+
+&lt;p&gt;pow(x,y)返回x的y次方，如果z存在即pow(x,y,z)，其结果等于pow(x,y)%z&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; pow(2,3)
+8
+&amp;gt;&amp;gt;&amp;gt; pow(2,3,3)
+2
+&amp;gt;&amp;gt;&amp;gt; pow(2,-3)
+0.125
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;roundx-n&quot;&gt;round(x[, n])&lt;/h3&gt;
+
+&lt;p&gt;返回浮点数x的四舍五入的值，其中n值，表示小数点后的位数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; round(2)
+2.0
+&amp;gt;&amp;gt;&amp;gt; round(2.567)
+3.0
+&amp;gt;&amp;gt;&amp;gt; round(2.567, 2)
+2.57
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;minxyz-maxxyz&quot;&gt;min(x[,y,z..]), max(x[,y,z…])&lt;/h3&gt;
+
+&lt;p&gt;返回给定参数和最小值或者最大值，参数可以为序列。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; min(2,1)
+1
+&amp;gt;&amp;gt;&amp;gt; max(2,1)
+2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;sumiterablestart&quot;&gt;sum(iterable[,start])&lt;/h3&gt;
+
+&lt;p&gt;sum()函数对序列进行求和运算&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; sum([1,2,3,4])
+10
+&amp;gt;&amp;gt;&amp;gt; sum(range(101))
+5050
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;octx&quot;&gt;oct(x)&lt;/h3&gt;
+
+&lt;p&gt;oct()函数用于将一个整数转换为八进制&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; oct(0)
+&#39;0&#39;
+&amp;gt;&amp;gt;&amp;gt; oct(4)
+&#39;04&#39;
+&amp;gt;&amp;gt;&amp;gt; oct(8)
+&#39;010&#39;
+&amp;gt;&amp;gt;&amp;gt; oct(10)
+&#39;012&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;hexx&quot;&gt;hex(x)&lt;/h3&gt;
+
+&lt;p&gt;hex()函数用于将10进制数转换为16进制数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; hex(255)
+&#39;0xff&#39;
+&amp;gt;&amp;gt;&amp;gt; hex(256)
+&#39;0x100&#39;
+&amp;gt;&amp;gt;&amp;gt; hex(16)
+&#39;0x10&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;chri&quot;&gt;chr(i)&lt;/h3&gt;
+
+&lt;p&gt;char()函数根据输入的数字返回一个字符，数字的范围为range(0,256)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; chr(65)
+&#39;A&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;binx&quot;&gt;bin(x)&lt;/h3&gt;
+
+&lt;p&gt;bin()函数返回一个整数的二进制表示。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; bin(1)
+&#39;0b1&#39;
+&amp;gt;&amp;gt;&amp;gt; bin(10)
+&#39;0b1010&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;类型转换&lt;/h2&gt;
+
+&lt;h3 id=&quot;boolx&quot;&gt;bool([x])&lt;/h3&gt;
+
+&lt;p&gt;bool()函数将参数转换为bool类型，如果没有给参数则返回False&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; bool()
+False
+&amp;gt;&amp;gt;&amp;gt; bool(0)
+False
+&amp;gt;&amp;gt;&amp;gt; bool(1)
+True
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;intxbase10&quot;&gt;int(x,base=10)&lt;/h3&gt;
+&lt;p&gt;int()函数用于将一个字符串或者数字转换为整型。&lt;br /&gt;
+参数base表示进制数，默认为十进制&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; int()
+0
+&amp;gt;&amp;gt;&amp;gt; int(1.1)
+1
+&amp;gt;&amp;gt;&amp;gt; int(&#39;10&#39;,16)
+16
+&amp;gt;&amp;gt;&amp;gt; int(&#39;10&#39;,8)
+8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;floatx&quot;&gt;float([x])&lt;/h3&gt;
+&lt;p&gt;float()函数用于将整数和字符串转换成浮点数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; float()
+0.0
+&amp;gt;&amp;gt;&amp;gt; float(1)
+1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;strobject&quot;&gt;str(object)&lt;/h3&gt;
+
+&lt;p&gt;str()函数将对象对象转换为可阅读的样式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; str()
+&#39;&#39;
+&amp;gt;&amp;gt;&amp;gt; str(str)
+&quot;&amp;lt;type &#39;str&#39;&amp;gt;&quot;
+&amp;gt;&amp;gt;&amp;gt; str(&#39;1234&#39;)
+&#39;1234&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;listiterable&quot;&gt;list([iterable])&lt;/h3&gt;
+
+&lt;p&gt;list()函数根据输入的可迭代的参数，创建一个新的列表。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; list()
+[]
+&amp;gt;&amp;gt;&amp;gt; list(&#39;1234&#39;)
+[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;tupleiterable&quot;&gt;tuple([iterable])&lt;/h3&gt;
+
+&lt;p&gt;tuple()函数根据输入的可迭代的参数，创建一个新的元组。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; tuple()
+[]
+&amp;gt;&amp;gt;&amp;gt; tuple(&#39;1234&#39;)
+[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;dictiterable&quot;&gt;dict([iterable])&lt;/h3&gt;
+
+&lt;p&gt;dict()函数根据传入的参数，创建一个新的字典。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; dict()
+{}
+&amp;gt;&amp;gt;&amp;gt; dict(a=1,b=2,c=3)
+{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
+&amp;gt;&amp;gt;&amp;gt; dict(zip([&#39;a&#39;,&#39;b&#39;,&#39;c&#39;],[&#39;1&#39;,&#39;2&#39;,&#39;c&#39;]))
+{&#39;a&#39;: &#39;1&#39;, &#39;c&#39;: &#39;c&#39;, &#39;b&#39;: &#39;2&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;setiterable&quot;&gt;set([iterable])&lt;/h3&gt;
+
+&lt;p&gt;set()函数根据参数创建一个新的集合&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; set()
+set([])
+&amp;gt;&amp;gt;&amp;gt; set(&#39;1234&#39;)
+set([&#39;1&#39;, &#39;3&#39;, &#39;2&#39;, &#39;4&#39;])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;frozensetiterable&quot;&gt;frozenset([iterable])&lt;/h3&gt;
+
+&lt;p&gt;frozenset()函数返回一个冻结的set集合，其不能添加和删除元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; frozenset()
+frozenset([])
+&amp;gt;&amp;gt;&amp;gt; frozenset(range(10))
+frozenset([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;序列相关&lt;/h2&gt;
+
+&lt;h3 id=&quot;lenobject&quot;&gt;len(object)&lt;/h3&gt;
+
+&lt;p&gt;返回字符串或者序列的长度&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; len(&quot;hello world!&quot;)
+12
+&amp;gt;&amp;gt;&amp;gt; len([1,2,3,4,5])
+5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;rangestartstopstep&quot;&gt;range([start,]stop[,step])&lt;/h3&gt;
+
+&lt;p&gt;创建一个整数列表，一般用在for循环中。&lt;br /&gt;
+其中的参数说明为：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;start : 生成的整数从start开始，可省略，默认为0.&lt;/li&gt;
+  &lt;li&gt;end : 生成的整数以end结束，但不包含end。&lt;/li&gt;
+  &lt;li&gt;step : 步长，默认为1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; range(5)#等于range(0,5)
+[0, 1, 2, 3, 4]
+&amp;gt;&amp;gt;&amp;gt; range(1, 5)#不包含5
+[1, 2, 3, 4]
+&amp;gt;&amp;gt;&amp;gt; range(1,5,2)# 步长为2
+[1, 3]
+&amp;gt;&amp;gt;&amp;gt; range(0)# range(0,0)为空
+[]
+&amp;gt;&amp;gt;&amp;gt; range[5,1] # start不能小于end
+Traceback (most recent call last):
+  File &quot;&amp;lt;stdin&amp;gt;&quot;, line 1, in &amp;lt;module&amp;gt;
+TypeError: &#39;builtin_function_or_method&#39; object has no attribute &#39;__getitem__&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;xrangestartstopstep&quot;&gt;xrange([start,]stop[,step])&lt;/h3&gt;
+
+&lt;p&gt;xrange和range完全相同，使用方法相同，但是xrange生成的不是一个数组，而是一个生成器&lt;br /&gt;
+，其只有在需要时才回生成列表值，当列表很大的时候，可以节省内存。&lt;/p&gt;
+
+&lt;h3 id=&quot;zipiterable&quot;&gt;zip([iterable,…])&lt;/h3&gt;
+
+&lt;p&gt;zip()函数聚合传入的一个到多个迭代器相同位置的元素生成一个新的元组类型的迭代器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; x = [1,2,3]
+&amp;gt;&amp;gt;&amp;gt; y = [a,b,c]
+&amp;gt;&amp;gt;&amp;gt; z = [4,5,6]
+&amp;gt;&amp;gt;&amp;gt; zip(x,y)
+[(1, &#39;a&#39;), (2, &#39;b&#39;), (3, &#39;c&#39;)]
+&amp;gt;&amp;gt;&amp;gt; zip(x,y,z)
+[(1, &#39;a&#39;, 4), (2, &#39;b&#39;, 5), (3, &#39;c&#39;, 6)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;sorted&quot;&gt;sorted()&lt;/h3&gt;
+
+&lt;p&gt;sorted()函数对所有可迭代的对象进行排序操作。&lt;br /&gt;
+其原型为：&lt;code&gt;sorted(iterable, cmp=None, key=None, reverse=False)&lt;/code&gt;&lt;br /&gt;
+其主要参数含义为&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cmp: 比较函数。&lt;/li&gt;
+  &lt;li&gt;key: 主要用来比较的元素&lt;/li&gt;
+  &lt;li&gt;reverse: 排序方式：True:降序排列；False:升序排列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;
+&amp;gt;&amp;gt;&amp;gt; sorted([4,3,2,1]) # 默认为升序排列
+[1, 2, 3, 4]
+&amp;gt;&amp;gt;&amp;gt; sorted([1,2,3,4], reverse=False) #升序排列
+[1, 2, 3, 4]
+&amp;gt;&amp;gt;&amp;gt; sorted([1,2,3,4], reverse=True) #降序排列
+[4, 3, 2, 1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;reversedseq&quot;&gt;reversed(seq)&lt;/h3&gt;
+
+&lt;p&gt;reversed()反转序列，生成一个新的序列&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; list(reversed([1,2,3,4]))
+[4, 3, 2, 1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;enumerateiterable-start&quot;&gt;enumerate(iterable[, start])&lt;/h3&gt;
+
+&lt;p&gt;enumerate()函数用于将一个可遍历的数据对象，组合为一个索引序列，同时包含索引和数据。&lt;br /&gt;
+其中参数start表示参数下标的起始位置。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; a = [1,2,3,4]
+&amp;gt;&amp;gt;&amp;gt; list(enumerate(a))
+[(0, 1), (1, 2), (2, 3), (3, 4)]
+&amp;gt;&amp;gt;&amp;gt; list(enumerate(a,2))
+[(2, 1), (3, 2), (4, 3), (5, 4)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;iter&quot;&gt;iter&lt;/h3&gt;
+
+&lt;p&gt;iter()函数用于创建一个迭代器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; a = iter(range(10))
+&amp;gt;&amp;gt;&amp;gt; next(a)
+0
+&amp;gt;&amp;gt;&amp;gt; next(a)
+1
+&amp;gt;&amp;gt;&amp;gt; next(a)
+2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;next&quot;&gt;next()&lt;/h3&gt;
+
+&lt;p&gt;next()函数返回迭代器的下一个元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; a = iter(range(10))
+&amp;gt;&amp;gt;&amp;gt; next(a)
+0
+&amp;gt;&amp;gt;&amp;gt; next(a)
+1
+&amp;gt;&amp;gt;&amp;gt; next(a)
+2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;slice&quot;&gt;slice&lt;/h3&gt;
+
+&lt;p&gt;slice()函数返回一个切片对象，主要用在切片操作函数里的参数传递。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;slice0_5 = slice(5)#返回0-5切片的数据
+slice4_10 = slice(4,10)#返回4-10切片的数据
+print range(10)[slice0_5]#[0, 1, 2, 3, 4]
+print range(10)[slice4_10]#[4, 5, 6, 7, 8, 9]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;alliterable&quot;&gt;all(iterable)&lt;/h3&gt;
+
+&lt;p&gt;all()函数用于判断给定的可迭代参数中是否含有元素为0、’‘、False，如果含有这样的元素&lt;br /&gt;
+返回False否则返回True，如果是空的迭代器则返回True。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; all([])#空迭代器
+True
+&amp;gt;&amp;gt;&amp;gt; all([1,2,3,4])#所有元素都不为0、&#39;&#39;、False
+True
+&amp;gt;&amp;gt;&amp;gt; all([0,1,2,3,4])#含有元素 0
+False
+&amp;gt;&amp;gt;&amp;gt; all([&#39;&#39;,1,2,3,4])# 含有元素 &#39;&#39;
+False
+&amp;gt;&amp;gt;&amp;gt; all([False,1,2,3,4])# 含有元素 False
+False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;anyiterable&quot;&gt;any(iterable)&lt;/h3&gt;
+
+&lt;p&gt;any()函数用于判断给定的迭代器是否全部为空的元素0、’‘、False,&lt;br /&gt;
+如果全部为空则返回False，否则返回True。&lt;br /&gt;
+空的元组或者列表返回False.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; any([]) #空列表返回False
+False
+&amp;gt;&amp;gt;&amp;gt; any([1]) #没有空元素
+True
+&amp;gt;&amp;gt;&amp;gt; any([0,1]) #存在非空元素
+True
+&amp;gt;&amp;gt;&amp;gt; any([0]) #不存在非空元素
+False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;all()和any()的函数的区别如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;all()函数只要含有空元素，那么就返回False。&lt;/li&gt;
+  &lt;li&gt;any()函数只要含有非空元素，那么就返回True。&lt;/li&gt;
+  &lt;li&gt;空列表或者元祖，all()函数返回true，any()函数返回False&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cmpxy&quot;&gt;cmp(x,y)&lt;/h3&gt;
+
+&lt;p&gt;cmp()函数用于比较两个对象的大小，如果x&amp;lt;y返回-1，如果相等则返回0，如果x&amp;gt;y则返回1.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; cmp(1,2)
+-1
+&amp;gt;&amp;gt;&amp;gt; cmp(1,1)
+0
+&amp;gt;&amp;gt;&amp;gt; cmp(2,1)
+1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;filterfunction-or-none-sequence&quot;&gt;filter(function or None, sequence)&lt;/h3&gt;
+
+&lt;p&gt;filter()函数用于过滤序列，过滤不符合的数据，返回有符合元素组成的序列。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;#-*-coding:utf-8 -*-
+#过滤大于5的数
+def max5(s) :
+    return s &amp;gt; 5
+
+print filter(max5, range(10))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;map&quot;&gt;map&lt;/h3&gt;
+&lt;p&gt;map()函数将传入的函数应用到序列中的所有的项。可以应用多个序列，&lt;br /&gt;
+当传入的为None而不是函数的时候，map()函数将序列中的元素合并起来，返回一个新的元祖&lt;br /&gt;
+map(function, sequence[, sequence, …])&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;def add(a,b):
+    return a+b
+print map(add, [1,2],[3,4])
+print map(None, [1,2],[3,4])
+
+输出的值为：
+[4, 6]
+[(1, 3), (2, 4)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;对象操作&lt;/h2&gt;
+
+&lt;h3 id=&quot;helpobject&quot;&gt;help([object])&lt;/h3&gt;
+
+&lt;p&gt;help()函数用于查看函数或模块用途的详细说明&lt;/p&gt;
+
+&lt;h3 id=&quot;dirobject&quot;&gt;dir([object])&lt;/h3&gt;
+&lt;p&gt;dir()函数主要是收集对象的信息。如果其不带参数，就返回当前范围的变量、方法和定义的类型列表；&lt;br /&gt;
+带参数的时候，返回参数的属性，方法列表。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; dir()#返回当前的属性列表
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]
+&amp;gt;&amp;gt;&amp;gt; dir(int)#返回int的属性列表
+[&#39;__abs__&#39;, &#39;__add__&#39;, &#39;__and__&#39;, &#39;__class__&#39;, &#39;__cmp__&#39;, &#39;__coerce__&#39;, &#39;__delattr__&#39;, &#39;__div__&#39;, &#39;__divmod__&#39;, &#39;__doc__&#39;, &#39;__float__&#39;, &#39;__floordiv__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__getnewargs__&#39;, &#39;__hash__&#39;, &#39;__hex__&#39;, &#39;__index__&#39;, &#39;__init__&#39;, &#39;__int__&#39;, &#39;__invert__&#39;, &#39;__long__&#39;, &#39;__lshift__&#39;, &#39;__mod__&#39;, &#39;__mul__&#39;, &#39;__neg__&#39;, &#39;__new__&#39;, &#39;__nonzero__&#39;, &#39;__oct__&#39;, &#39;__or__&#39;, &#39;__pos__&#39;, &#39;__pow__&#39;, &#39;__radd__&#39;, &#39;__rand__&#39;, &#39;__rdiv__&#39;, &#39;__rdivmod__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__rfloordiv__&#39;, &#39;__rlshift__&#39;, &#39;__rmod__&#39;, &#39;__rmul__&#39;, &#39;__ror__&#39;, &#39;__rpow__&#39;, &#39;__rrshift__&#39;, &#39;__rshift__&#39;, &#39;__rsub__&#39;, &#39;__rtruediv__&#39;, &#39;__rxor__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__sub__&#39;, &#39;__subclasshook__&#39;, &#39;__truediv__&#39;, &#39;__trunc__&#39;, &#39;__xor__&#39;, &#39;bit_length&#39;, &#39;conjugate&#39;, &#39;denominator&#39;, &#39;imag&#39;, &#39;numerator&#39;, &#39;real&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;idobject&quot;&gt;id([object])&lt;/h3&gt;
+
+&lt;p&gt;id()函数用于获取对象的内存地址。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; id(int)
+4553319656
+&amp;gt;&amp;gt;&amp;gt; id(&#39;1234&#39;)
+4555435104
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;hashobject&quot;&gt;hash([object])&lt;/h3&gt;
+
+&lt;p&gt;hash()用于获取一个对象的哈希值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; hash(str)
+284584308
+&amp;gt;&amp;gt;&amp;gt; hash(&quot;1234&quot;)
+659471584116336832
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;typenamebasesdict&quot;&gt;type(name,bases,dict)&lt;/h3&gt;
+
+&lt;p&gt;type()函数，如果只有一个参数则返回对象的类型，如果有三个参数则返回新的类对象&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; type(1)
+&amp;lt;type &#39;int&#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; type({1:&#39;value&#39;})
+&amp;lt;type &#39;dict&#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; x = type(&#39;X&#39;,(object,), dict(a=1))
+&amp;gt;&amp;gt;&amp;gt; x
+&amp;lt;class &#39;__main__.X&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      </item>
+    
+      <item>
         <title>Adb常用命令</title>
         <link>http://disheng54.github.io/2017/09/14/android-adb.html</link>
         <guid isPermaLink="true">http://disheng54.github.io/2017/09/14/android-adb.html</guid>
@@ -2706,202 +3186,6 @@ Tomcat started.
 &lt;h3 id=&quot;section&quot;&gt;测试访问&lt;/h3&gt;
 
 &lt;p&gt;在浏览器中输入 &lt;code&gt;http://localhost:8080&lt;/code&gt; 访问&lt;/p&gt;
-
-</description>
-      </item>
-    
-      <item>
-        <title>比较两个字符串排序后是否相等</title>
-        <link>http://disheng54.github.io/2016/07/31/string-StringIsSameAfterSort.html</link>
-        <guid isPermaLink="true">http://disheng54.github.io/2016/07/31/string-StringIsSameAfterSort.html</guid>
-        <pubDate>Sun, 31 Jul 2016 00:00:00 +0800</pubDate>
-        <description>&lt;h3 id=&quot;section&quot;&gt;题目&lt;/h3&gt;
-&lt;p&gt;比较两个字符串排序后是否相等&lt;/p&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;解决思路&lt;/h3&gt;
-&lt;p&gt;首先比较字符串的长度，长度不相等的字符串，即使排序后也是不相等。&lt;br /&gt;
-如果两个字符串长度相符，那么有下面两种方法进行比较&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;让两个字符串分别排序后进行比较&lt;/li&gt;
-  &lt;li&gt;比较两个字符串中的每个字符的数量是否相等
-    &lt;ol&gt;
-      &lt;li&gt;将字符和字符的数量当做Map的key和value，然后分别比较。&lt;/li&gt;
-      &lt;li&gt;如果字符串是Ascii编码，那么可以将字符的数量直接放到数组进行优化。&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;java&quot;&gt;代码示例(Java)&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;package com.yumo.java.string.test;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * Created by yumo on 7/31/16.
- * 比较两个字符排序后是否相等
- */
-public class StringIsSameAfterSort {
-
-
-    private static String sort(String str){
-        char[] chArr = str.toCharArray();
-        Arrays.sort(chArr);
-        return new String(chArr);
-    }
-
-    /**
-     * 通过Arrays.sort进行比较
-     * @param str1
-     * @param str2
-     * @return
-     */
-    public static boolean isStringEqualByArraysSort(String str1, String str2){
-        if (str1 == null || str2 == null){
-            return false;
-        }
-
-        if (str1.length() != str2.length()){
-            return false;
-        }
-
-        return sort(str1).equals(sort(str2));
-    }
-
-    private static Map convertMapNums(String str){
-        Map&amp;lt;Character, Integer&amp;gt; map= new HashMap&amp;lt;&amp;gt;();
-        for (int i = 0; i &amp;lt;  str.length(); i++){
-            char c = str.charAt(i);
-            if (map.get(c) == null){
-                map.put(c,  1);
-            }else{
-                map.put(c,  map.get(c)+1);
-            }
-        }
-
-        return map;
-    }
-
-    /**
-     * 将两个字符串的字符和数量放入Map中.然后比较Map中每个字符数量是否相等
-     * @param str1
-     * @param str2
-     * @return
-     */
-    public static boolean isStringEqualByCharNums(String str1, String str2){
-        if (str1 == null || str2 == null){
-            return false;
-        }
-
-        if (str1.length() != str2.length()){
-            return false;
-        }
-
-        if (str1.length() == str2.length() &amp;amp;&amp;amp; str1.length() == 0){
-            return true;
-        }
-
-        Map&amp;lt;Character, Integer&amp;gt; map1 = convertMapNums(str1);
-        Map&amp;lt;Character, Integer&amp;gt; map2 = convertMapNums(str2);
-
-        if (map1.size() != map2.size()){
-            return false;
-        }
-
-        boolean isSame = true;
-        Set&amp;lt;Character&amp;gt; set1 = map1.keySet();
-        for (Character ch: set1) {
-            if (map1.get(ch) != map2.get(ch)){
-                isSame = false;
-                break;
-            }
-        }
-
-        return isSame;
-    }
-
-
-    /**
-     * 如果是Ascii编码,那么不同字符的数量最大为256个,所以可以声明一个长度256的数组,将字符的数量放到这个数组中,然后在一一比较
-     * @param str1
-     * @param str2
-     * @return
-     */
-    public static boolean isStringEqualByCharNumsAscii(String str1, String str2){
-        if (str1 == null || str2 == null){
-            return false;
-        }
-
-        if (str1.length() != str2.length()){
-            return false;
-        }
-
-        if (str1.length() == str2.length() &amp;amp;&amp;amp; str1.length() == 0){
-            return true;
-        }
-
-        int[] chArr1 = new int[256];
-        for (int i = 0; i &amp;lt; str1.length(); i++){
-            char ch = str1.charAt(i);
-            chArr1[ch] = chArr1[ch]+1;
-        }
-
-        int[] chArr2 = new int[256];
-        for (int i = 0; i &amp;lt;str2.length(); i++){
-            char ch = str2.charAt(i);
-            chArr2[ch] = chArr2[ch]+1;
-        }
-
-        boolean isSame = true;
-        for (int i = 0; i &amp;lt; 256; i++){
-            if (chArr1[i] != chArr2[i]){
-                isSame = false;
-                break;
-            }
-        }
-
-        return isSame;
-    }
-
-    public static void main(String[] args){
-        System.out.println(&quot;testList&quot;);
-        String str1=&quot;1234567333&quot;;
-        String str2=&quot;7654321333&quot;;
-
-        long startTime = System.nanoTime();
-        boolean isSame = isStringEqualByArraysSort(str1, str2);
-        long endTime = System.nanoTime();
-        System.out.println(&quot;isStringEqualByArraysSort: &quot;+isSame+&quot; time:&quot;+(endTime - startTime));
-
-        startTime = System.nanoTime();
-        isSame = isStringEqualByCharNums(str1, str2);
-        endTime = System.nanoTime();
-        System.out.println(&quot;isStringEqualByCharNums: &quot;+isSame+&quot; time:&quot;+(endTime - startTime));
-
-        startTime = System.nanoTime();
-        isSame = isStringEqualByCharNumsAscii(str1, str2);
-        endTime = System.nanoTime();
-        System.out.println(&quot;isStringEqualByCharNumsAscii: &quot;+isSame+&quot; time:&quot;+(endTime - startTime));
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;section-2&quot;&gt;效率比较&lt;/h3&gt;
-
-&lt;p&gt;假定这两个字符串的长度为10，那么这三种方法所花费的时间如下&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;isStringEqualByArraysSort: true time:167000
-isStringEqualByCharNums: true time:518000
-isStringEqualByCharNumsAscii: true time:29000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果能够确定字符串中的字符数量，不是太大的话，优先采用利用数组统计字符数量的方法才是效率最高的。&lt;br /&gt;
-不过在工作中直接使用数组排序的解决方式是优先考虑的选择&lt;/p&gt;
 
 </description>
       </item>
