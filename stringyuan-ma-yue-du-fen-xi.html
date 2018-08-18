@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>String源码阅读分析 &mdash; yumodev</title>
+  <meta name="author" content="yumodev">
+
+  <link rel="canonical" href="/stringyuan-ma-yue-du-fen-xi.html"/>
+  
+  <meta property="og:site_name" content="yumodev" />
+  <meta property="og:type" content="article" />
+    
+  <meta property="og:title" content="String源码阅读分析" />
+  <meta property="og:url" content="/stringyuan-ma-yue-du-fen-xi.html" />
+  <meta property="og:description" content="java String类是一个使用频率非常高的类。借助分析String类的源码，有助于更好的了解java中字符串的操作，写出更加有效率的代码。 String 定义 public final class String implements Serializable, Comparable<String>, CharSequence｛｝ String首先是一个final类，它将不能被继承生成一个子类。String为什么要设置为final类型主要有2个方面的考虑。 1、处于安全性的考虑.String类是java中一个非常底层的类，和操作系统进行的频繁的交互。如果可以String类可以被继承，用户就可能会重写String类的相关方法，这就提供破坏操作系统提供了机会，降低了java的宣称的安全性。 2、效率的问题：String被定义为final类，那么它的所有方法都是final的，jvm编译器会内联所有的方法，此举可以让String类的效率使用50%，单凭这点就让人心动不已了。 String类继承了Serializable ,所以String类是可序列化的。 String类继承了Comparable, 所以String可以在集合里面，直接用sort()排序。 String类继承实现了CharSequence ,所以String类本质上是一个字符序列。 String 成员变量 //定义一个字符数组来存放 String的字符序列。 private final char[] value …" />
+  <meta property="article:published_time" content="2015-01-02 00:00:00+01:00" />
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/favicon.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+</head>
+
+<body >
+  <header role="banner"
+  >
+<hgroup>
+  <h1><a href="/">yumodev</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+      <li >
+        <a href="/category/android.html">Android</a>
+      </li>
+      <li class="active">
+        <a href="/category/java.html">Java</a>
+      </li>
+      <li >
+        <a href="/category/kai-fa-ji-zhu.html">开发技术</a>
+      </li>
+      <li >
+        <a href="/category/leetcode.html">Leetcode</a>
+      </li>
+      <li >
+        <a href="/category/python.html">Python</a>
+      </li>
+      <li >
+        <a href="/category/suan-fa.html">算法</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">String源码阅读分析</h1>
+    <p class="meta">
+<time datetime="2015-01-02T00:00:00+01:00" pubdate>五 02 一月 2015</time>      
+    </p>
+</header>
+
+    <div class="entry-content"><div class="highlight"><pre><span></span>java String类是一个使用频率非常高的类。借助分析String类的源码，有助于更好的了解java中字符串的操作，写出更加有效率的代码。
+</pre></div>
+
+
+<h3>String 定义</h3>
+<div class="highlight"><pre><span></span>   public final class String implements Serializable, Comparable&lt;String&gt;, CharSequence｛｝
+   String首先是一个final类，它将不能被继承生成一个子类。String为什么要设置为final类型主要有2个方面的考虑。
+   1、处于安全性的考虑.String类是java中一个非常底层的类，和操作系统进行的频繁的交互。如果可以String类可以被继承，用户就可能会重写String类的相关方法，这就提供破坏操作系统提供了机会，降低了java的宣称的安全性。
+   2、效率的问题：String被定义为final类，那么它的所有方法都是final的，jvm编译器会内联所有的方法，此举可以让String类的效率使用50%，单凭这点就让人心动不已了。
+
+   String类继承了Serializable ,所以String类是可序列化的。
+   String类继承了Comparable, 所以String可以在集合里面，直接用sort()排序。
+   String类继承实现了CharSequence ,所以String类本质上是一个字符序列。
+</pre></div>
+
+
+<h3>String 成员变量</h3>
+<div class="highlight"><pre><span></span>  //定义一个字符数组来存放 String的字符序列。
+  private final char[] value;
+  // 字符偏移的位置。
+  private final int offset;
+  //String的字符的个数。可以通过length() 方法返回。
+  private final int count;
+  //该字符串对应生产的一个哈希值。
+  private int hashCode;
+</pre></div>
+
+
+<h3>String 初始化</h3>
+<div class="highlight"><pre><span></span>    String的类的初始化方法非常多，非常的丰富，所以初始化String对象还是很方便的。
+
+    //声明一个空字符串
+     public String() {
+          value = EmptyArray.CHAR;
+          offset = 0;
+         count = 0;
+    }
+
+    利用byte[] 生成为字符串。
+    //下面几个是利用字节数组转换一个新的String对象。将字节数组解码为字符串的字符集可以制定，也可使使用系统默认
+    public String(byte[] data) ;//将一个字节数组生成一个新的字符串。使用默认字符集
+    public String(byte[] data, int offset, int byteCount) ；将数组从offset位置后读取byteCount个字节转换为数组。使用默认字符集。
+
+    将字节数据转换为从offset位置读取byteCount个字节转换为数组，使用用户指定的字符集，如果不支持该字符集，就抛出UnsupportedEncodingException.
+    public String(byte[] data, int offset, int byteCount, String charsetName) throws UnsupportedEncodingException 
+    将字节数据转换为从offset位置读取byteCount个字节转换为数组，使用用户指定的字符集，如果不支持该字符集，就抛出UnsupportedEncodingException.
+    public String(byte[] data, int offset, int byteCount, Charset charset) ;
+    利用用户制定的字符集.将byte数组生成一个新的字符串。
+    public String(byte[] data, Charset charset) ;
+
+    利用char[] 声明一个字符串。
+     public String(char[] data)//将一个char数组声明一个新的String对象。内部调用public String(char[] data, int offset, int charCount)实现
+
+      /**
+    * 用char数组生命一个新的字符串变量。然后然后修改这个char数组将不再影响新生成的字符串。        *
+    * 当 data为null的时候，报空指针异常。
+    * @throws IndexOutOfBoundsException
+    *             if {@code charCount &lt; 0 || offset &lt; 0 || offset + charCount &gt; data.length}
+    */
+   public String(char[] data, int offset, int charCount) {
+      //检查是否越界
+       if ((offset | charCount) &lt; 0 || charCount &gt; data.length - offset) {
+           throw failedBoundsCheck(data.length, offset, charCount);
+       }
+       this.offset = 0;
+       //新生成一个string对象 ，所有新生的char数组和旧的数组没有关联。
+       this.value = new char[charCount];
+       this.count = charCount;
+       System.arraycopy(data, offset, value, 0, count);
+   }
+
+   /*
+     * 直接用char数组生产一个字符串对象。其中char[]没有在new 一个新的数组，所以二者是一个char数组。       * Does not range check, null check, or copy the character array.
+     */
+    String(int offset, int charCount, char[] chars) {
+        this.value = chars;
+        this.offset = offset;
+        this.count = charCount;
+    }
+
+     /**
+     * 用一个字符串的副本构造一个新的字符串。
+     */
+    public String(String toCopy) {
+        value = (toCopy.value.length == toCopy.count)
+                ? toCopy.value
+                : Arrays.copyOfRange(toCopy.value, toCopy.offset, toCopy.offset + toCopy.length());
+        offset = 0;
+        count = value.length;
+    }
+
+     /**
+     * 用字符缓冲区的字符序列构建一个字符串。是线程安全的。
+     * {@code StringBuffer}.
+     */
+    public String(StringBuffer stringBuffer) {
+        offset = 0;
+        synchronized (stringBuffer) {
+            value = stringBuffer.shareValue();
+            count = stringBuffer.length();
+        }
+    }
+
+    /**
+     * 用int数组构建一个字符串，字符串的序列为unicode字符。       *
+     * @throws NullPointerException
+     *             if {@code codePoints == null}.
+     * @throws IllegalArgumentException
+     *             if any of the elements of {@code codePoints} are not valid
+     *             Unicode code points.
+     * @throws IndexOutOfBoundsException
+     *             if {@code offset} or {@code count} are not within the bounds
+     *             of {@code codePoints}.
+     * @since 1.5
+     */
+    public String(int[] codePoints, int offset, int count) {
+        if (codePoints == null) {
+            throw new NullPointerException(&quot;codePoints == null&quot;);
+        }
+        if ((offset | count) &lt; 0 || count &gt; codePoints.length - offset) {
+            throw failedBoundsCheck(codePoints.length, offset, count);
+        }
+        this.offset = 0;
+        //unicode 字符占用两个字节，int型数据为4个字节。所以要乘以二。
+        this.value = new char[count * 2];
+        int end = offset + count;
+        int c = 0;
+        for (int i = offset; i &lt; end; i++) {
+            c += Character.toChars(codePoints[i], this.value, c);
+        }
+        this.count = c;
+    }
+
+    /**
+     * 构建一个新的string对象，包含字符串生成器的字符序列。
+     *
+     * @throws NullPointerException
+     *             if {@code stringBuilder == null}.
+     * @since 1.5
+     */
+    public String(StringBuilder stringBuilder) {
+        if (stringBuilder == null) {
+            throw new NullPointerException(&quot;stringBuilder == null&quot;);
+        }
+        this.offset = 0;
+        this.count = stringBuilder.length();
+        this.value = new char[this.count];
+        stringBuilder.getChars(0, this.count, this.value, 0);
+    }
+</pre></div></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        yumodev
+    </span>
+  </span>
+<time datetime="2015-01-02T00:00:00+01:00" pubdate>五 02 一月 2015</time>  <span class="categories">
+    <a class='category' href='/category/java.html'>java</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/java.html">java</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+</div>
+
+<aside class="sidebar">
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    <li class="post">
+        <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
+    </li>
+    <li class="post">
+        <a href="/adbchang-yong-ming-ling.html">Adb常用命令</a>
+    </li>
+    <li class="post">
+        <a href="/fen-ping-mo-shi.html">分屏模式</a>
+    </li>
+    <li class="post">
+        <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
+    </li>
+    <li class="post">
+        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
+    </li>
+  </ul>
+</section><section>
+  <h1>Categories</h1>
+    <ul id="recent_posts">
+      <li><a href="/category/android.html">android (4)</a></li>
+      <li><a href="/category/java.html">java (8)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/leetcode.html">leetcode (16)</a></li>
+      <li><a href="/category/python.html">python (1)</a></li>
+      <li><a href="/category/suan-fa.html">算法 (3)</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+    <a href="/tag/javagao-ji.html">java高级</a>,    <a href="/tag/git.html">git</a>,    <a href="/tag/java.html">java</a>,    <a href="/tag/string.html">String</a>,    <a href="/tag/tomcat.html">tomcat</a>,    <a href="/tag/python.html">python</a>,    <a href="/tag/eclipse.html">eclipse</a>,    <a href="/tag/airthmetic.html">airthmetic</a>,    <a href="/tag/mou.html">mou</a>,    <a href="/tag/kuai-jie-jian.html">快捷键</a>,    <a href="/tag/http.html">Http</a>,    <a href="/tag/android.html">android</a>,    <a href="/tag/leetcode.html">leetcode</a></section>
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="https://github.com/yumodev" target="_blank">Github</a></li>
+            <li><a href="#" target="_blank">Another social link</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li><a href="https://droidyue.com/" target="_blank">技术小黑屋</a></li>
+        </ul>
+    </section>
+
+</aside>
+    </div>
+  </div>
+  <footer role="contentinfo">
+<p>
+    Copyright &copy;  2014&ndash;2017  yumodev &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p>  </footer>
+</body>
+</html>

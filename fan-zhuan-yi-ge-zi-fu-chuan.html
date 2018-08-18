@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>反转一个字符串 &mdash; yumodev</title>
+  <meta name="author" content="yumodev">
+
+  <link rel="canonical" href="/fan-zhuan-yi-ge-zi-fu-chuan.html"/>
+  
+  <meta property="og:site_name" content="yumodev" />
+  <meta property="og:type" content="article" />
+    
+  <meta property="og:title" content="反转一个字符串" />
+  <meta property="og:url" content="/fan-zhuan-yi-ge-zi-fu-chuan.html" />
+  <meta property="og:description" content="题目 将一个字符串反转 解决思路 这是一个常见的问题，在实际的开发中也经常用到，解决的方法有很多种。我使用下面四种方法进行，并且最后比较其中的效率。 利用系统自带的StringBuilder.reverse() 进行反转。 使用将字符串转换为字符数据，然后进行二分反转。 使用字符的异或进行转换。 使用Stack数据结构进行反转。 实例代码 /** * 利用系统自带的StringBuilder.reverse() 进行反转 * @param str * @return */ public static String reverseByStringBuilder(String str){ if (str == null){ return ""; } return new StringBuilder(str).reverse().toString(); } /** * 使用字符串进行二分反转 * @return */ public static String reverseByCharArray(String str){ if (str == null){ return …" />
+  <meta property="article:published_time" content="2016-07-31 00:00:00+02:00" />
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/favicon.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+</head>
+
+<body >
+  <header role="banner"
+  >
+<hgroup>
+  <h1><a href="/">yumodev</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+      <li >
+        <a href="/category/android.html">Android</a>
+      </li>
+      <li >
+        <a href="/category/java.html">Java</a>
+      </li>
+      <li >
+        <a href="/category/kai-fa-ji-zhu.html">开发技术</a>
+      </li>
+      <li >
+        <a href="/category/leetcode.html">Leetcode</a>
+      </li>
+      <li >
+        <a href="/category/python.html">Python</a>
+      </li>
+      <li class="active">
+        <a href="/category/suan-fa.html">算法</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">反转一个字符串</h1>
+    <p class="meta">
+<time datetime="2016-07-31T00:00:00+02:00" pubdate>日 31 七月 2016</time>      
+    </p>
+</header>
+
+    <div class="entry-content"><h3>题目</h3>
+<p>将一个字符串反转</p>
+<h3>解决思路</h3>
+<p>这是一个常见的问题，在实际的开发中也经常用到，解决的方法有很多种。我使用下面四种方法进行，并且最后比较其中的效率。</p>
+<ul>
+<li>利用系统自带的StringBuilder.reverse()  进行反转。</li>
+<li>使用将字符串转换为字符数据，然后进行二分反转。</li>
+<li>使用字符的异或进行转换。</li>
+<li>使用Stack数据结构进行反转。</li>
+</ul>
+<h3>实例代码</h3>
+<div class="highlight"><pre><span></span><span class="c">/**</span>
+<span class="c">     * 利用系统自带的StringBuilder.reverse() 进行反转</span>
+<span class="c">     * @param str</span>
+<span class="c">     * @return</span>
+<span class="c">     */</span>
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">String</span> <span class="nt">reverseByStringBuilder</span><span class="o">(</span><span class="nt">String</span> <span class="nt">str</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">if</span> <span class="err">(str</span> <span class="err">==</span> <span class="err">null){</span>
+            <span class="err">return</span> <span class="err">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">return</span> <span class="nt">new</span> <span class="nt">StringBuilder</span><span class="o">(</span><span class="nt">str</span><span class="o">)</span><span class="p">.</span><span class="nc">reverse</span><span class="o">()</span><span class="p">.</span><span class="nc">toString</span><span class="o">();</span>
+    <span class="err">}</span>
+
+    <span class="c">/**</span>
+<span class="c">     * 使用字符串进行二分反转</span>
+<span class="c">     * @return</span>
+<span class="c">     */</span>
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">String</span> <span class="nt">reverseByCharArray</span><span class="o">(</span><span class="nt">String</span> <span class="nt">str</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">if</span> <span class="err">(str</span> <span class="err">==</span> <span class="err">null){</span>
+            <span class="err">return</span> <span class="err">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">char</span><span class="cp">[]</span> <span class="nt">chArr</span> <span class="o">=</span> <span class="nt">str</span><span class="p">.</span><span class="nc">toCharArray</span><span class="o">();</span>
+        <span class="nt">int</span> <span class="nt">len</span> <span class="o">=</span> <span class="nt">chArr</span><span class="p">.</span><span class="nc">length</span><span class="o">;</span>
+        <span class="nt">for</span> <span class="o">(</span><span class="nt">int</span> <span class="nt">i</span> <span class="o">=</span> <span class="o">(</span><span class="nt">len-1</span><span class="o">)</span> <span class="o">/</span> <span class="nt">2</span><span class="o">;</span> <span class="nt">i</span> <span class="o">&gt;=</span> <span class="nt">0</span><span class="o">;</span> <span class="nt">i--</span><span class="o">)</span><span class="p">{</span>
+            <span class="err">char</span> <span class="err">c</span> <span class="err">=</span> <span class="err">chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="p">;</span>
+            <span class="err">chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="err">=</span> <span class="err">chArr</span><span class="cp">[</span><span class="nx">len</span> <span class="o">-</span> <span class="nx">i</span> <span class="o">-</span><span class="mi">1</span><span class="cp">]</span><span class="p">;</span>
+            <span class="err">chArr</span><span class="cp">[</span><span class="nx">len</span> <span class="o">-</span> <span class="nx">i</span> <span class="o">-</span><span class="mi">1</span><span class="cp">]</span> <span class="err">=</span> <span class="err">c</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">return</span> <span class="nt">new</span> <span class="nt">String</span><span class="o">(</span><span class="nt">chArr</span><span class="o">);</span>
+    <span class="err">}</span>
+
+    <span class="c">/**</span>
+<span class="c">     * 使用异或进行翻转</span>
+<span class="c">     * 将二进制 a = 1101, b = 1000 进行反转.</span>
+<span class="c">     * 1  a = 1101 ^ 1000 此时 a = 1010, b = 1000</span>
+<span class="c">     * 2  b = 1000 ^ 1010 此时 a = 1010, b = 1101</span>
+<span class="c">     * 3  a = 1101 ^ 1010 此时 a = 1000, b = 1101</span>
+<span class="c">     * @return</span>
+<span class="c">     */</span>
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">String</span> <span class="nt">reverseByXor</span><span class="o">(</span><span class="nt">String</span> <span class="nt">str</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">if</span> <span class="err">(str</span> <span class="err">==</span> <span class="err">null){</span>
+            <span class="err">return</span> <span class="err">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">char</span><span class="cp">[]</span> <span class="nt">chArr</span> <span class="o">=</span> <span class="nt">str</span><span class="p">.</span><span class="nc">toCharArray</span><span class="o">();</span>
+        <span class="nt">int</span> <span class="nt">len</span> <span class="o">=</span> <span class="nt">chArr</span><span class="p">.</span><span class="nc">length</span> <span class="o">;</span>
+        <span class="nt">for</span> <span class="o">(</span><span class="nt">int</span> <span class="nt">i</span> <span class="o">=</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">j</span> <span class="o">=</span> <span class="nt">len</span> <span class="nt">-1</span><span class="o">;</span> <span class="nt">i</span> <span class="o">&lt;</span> <span class="nt">len</span><span class="o">/</span><span class="nt">2</span><span class="o">;</span> <span class="nt">i</span><span class="o">++,</span> <span class="nt">j--</span><span class="o">)</span><span class="p">{</span>
+            <span class="err">chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="err">=</span> <span class="err">(char)(chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="err">^chArr</span><span class="cp">[</span><span class="nx">j</span><span class="cp">]</span><span class="err">)</span><span class="p">;</span>
+            <span class="err">chArr</span><span class="cp">[</span><span class="nx">j</span><span class="cp">]</span> <span class="err">=</span> <span class="err">(char)(chArr</span><span class="cp">[</span><span class="nx">j</span><span class="cp">]</span><span class="err">^chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="err">)</span><span class="p">;</span>
+            <span class="err">chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="err">=</span> <span class="err">(char)(chArr</span><span class="cp">[</span><span class="nx">j</span><span class="cp">]</span><span class="err">^chArr</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="err">)</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">return</span> <span class="nt">new</span> <span class="nt">String</span><span class="o">(</span><span class="nt">chArr</span><span class="o">);</span>
+    <span class="err">}</span>
+
+    <span class="c">/**</span>
+<span class="c">     * 使用栈进行翻转</span>
+<span class="c">     * @param str</span>
+<span class="c">     * @return</span>
+<span class="c">     */</span>
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">String</span> <span class="nt">reverseByStack</span><span class="o">(</span><span class="nt">String</span> <span class="nt">str</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">if</span> <span class="err">(str</span> <span class="err">==</span> <span class="err">null){</span>
+            <span class="err">return</span> <span class="err">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">Stack</span><span class="o">&lt;</span><span class="nt">Character</span><span class="o">&gt;</span> <span class="nt">stack</span> <span class="o">=</span> <span class="nt">new</span> <span class="nt">Stack</span><span class="o">&lt;&gt;();</span>
+        <span class="nt">int</span> <span class="nt">len</span> <span class="o">=</span> <span class="nt">str</span><span class="p">.</span><span class="nc">length</span><span class="o">();</span>
+        <span class="nt">for</span> <span class="o">(</span><span class="nt">int</span> <span class="nt">i</span> <span class="o">=</span> <span class="nt">0</span><span class="o">;</span> <span class="nt">i</span> <span class="o">&lt;</span> <span class="nt">len</span><span class="o">;</span> <span class="nt">i</span><span class="o">++)</span><span class="p">{</span>
+            <span class="err">stack.push(str.charAt(i))</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">StringBuilder</span> <span class="nt">sb</span> <span class="o">=</span> <span class="nt">new</span> <span class="nt">StringBuilder</span><span class="o">();</span>
+        <span class="nt">for</span> <span class="o">(</span><span class="nt">int</span> <span class="nt">i</span> <span class="o">=</span> <span class="nt">0</span><span class="o">;</span> <span class="nt">i</span> <span class="o">&lt;</span> <span class="nt">len</span><span class="o">;</span> <span class="nt">i</span><span class="o">++)</span><span class="p">{</span>
+            <span class="err">sb.append(stack.pop())</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">return</span> <span class="nt">sb</span><span class="p">.</span><span class="nc">toString</span><span class="o">();</span>
+    <span class="err">}</span>
+
+
+
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">void</span> <span class="nt">main</span><span class="o">(</span><span class="nt">String</span><span class="cp">[]</span> <span class="nt">args</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">System.out.println(&quot;testList&quot;)</span><span class="p">;</span>
+        <span class="err">String</span> <span class="err">str=&quot;&quot;</span><span class="p">;</span>
+        <span class="err">StringBuilder</span> <span class="err">sb</span> <span class="err">=</span> <span class="err">new</span> <span class="err">StringBuilder()</span><span class="p">;</span>
+        <span class="err">for</span> <span class="err">(int</span> <span class="err">i</span> <span class="err">=</span> <span class="err">0</span><span class="p">;</span> <span class="err">i&lt;=</span> <span class="err">10000</span><span class="p">;</span> <span class="err">i++){</span>
+            <span class="err">sb.append(i+&quot;&quot;)</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">str</span> <span class="o">=</span> <span class="nt">sb</span><span class="p">.</span><span class="nc">toString</span><span class="o">();</span>
+
+
+        <span class="nt">long</span> <span class="nt">startTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">String</span> <span class="nt">str1</span> <span class="o">=</span> <span class="nt">reverseByStringBuilder</span><span class="o">(</span><span class="nt">str</span><span class="o">);</span>
+        <span class="nt">long</span> <span class="nt">endTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">System</span><span class="p">.</span><span class="nc">out</span><span class="p">.</span><span class="nc">println</span><span class="o">(</span><span class="s2">&quot; time:&quot;</span><span class="o">+(</span><span class="nt">endTime</span> <span class="nt">-</span> <span class="nt">startTime</span><span class="o">)+</span><span class="s2">&quot;    StringBuilder.reverse(): &quot;</span><span class="o">+</span><span class="nt">str1</span><span class="o">);</span>
+
+
+        <span class="nt">startTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">str1</span> <span class="o">=</span> <span class="nt">reverseByCharArray</span><span class="o">(</span><span class="nt">str</span><span class="o">);</span>
+        <span class="nt">endTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">System</span><span class="p">.</span><span class="nc">out</span><span class="p">.</span><span class="nc">println</span><span class="o">(</span><span class="s2">&quot; time:&quot;</span><span class="o">+(</span><span class="nt">endTime</span> <span class="nt">-</span> <span class="nt">startTime</span><span class="o">)+</span><span class="s2">&quot;    reverseByCharArray: &quot;</span><span class="o">+</span><span class="nt">str1</span><span class="o">);</span>
+
+        <span class="nt">startTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">str1</span> <span class="o">=</span> <span class="nt">reverseByXor</span><span class="o">(</span><span class="nt">str</span><span class="o">);</span>
+        <span class="nt">endTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">System</span><span class="p">.</span><span class="nc">out</span><span class="p">.</span><span class="nc">println</span><span class="o">(</span><span class="s2">&quot; time:&quot;</span><span class="o">+(</span><span class="nt">endTime</span> <span class="nt">-</span> <span class="nt">startTime</span><span class="o">)+</span><span class="s2">&quot;    reverseByXor: &quot;</span><span class="o">+</span><span class="nt">str1</span><span class="o">);</span>
+
+        <span class="nt">startTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">str1</span> <span class="o">=</span> <span class="nt">reverseByStack</span><span class="o">(</span><span class="nt">str</span><span class="o">);</span>
+        <span class="nt">endTime</span> <span class="o">=</span> <span class="nt">System</span><span class="p">.</span><span class="nc">nanoTime</span><span class="o">();</span>
+        <span class="nt">System</span><span class="p">.</span><span class="nc">out</span><span class="p">.</span><span class="nc">println</span><span class="o">(</span><span class="s2">&quot; time:&quot;</span><span class="o">+(</span><span class="nt">endTime</span> <span class="nt">-</span> <span class="nt">startTime</span><span class="o">)+</span><span class="s2">&quot;    reverseByStack: &quot;</span><span class="o">+</span><span class="nt">str1</span><span class="o">);</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h3>效率比较 单位是纳秒</h3>
+<ul>
+<li>
+<p>对长度为10的字符串进行反转</p>
+<div class="highlight"><pre><span></span>StringBuilder.reverse() time:14000  
+reverseByCharArray time:7000 
+reverseByXor time:4000 
+reverseBystack time:315000
+</pre></div>
+
+
+</li>
+<li>
+<p>对长度为100的字符串进行反转</p>
+<div class="highlight"><pre><span></span>StringBuilder.reverse() time:29000  
+reverseByCharArray time:11000 
+reverseByXor time:9000 
+reverseBystack time:589000
+</pre></div>
+
+
+</li>
+<li>
+<p>对长度为1000的字符串进行反转</p>
+<div class="highlight"><pre><span></span>StringBuilder.reverse() time:295000 
+reverseByCharArray time:72000 
+reverseByXor time:76000
+reverseBystack time:3949000
+</pre></div>
+
+
+</li>
+<li>
+<p>对长度为10000的字符串进行反转</p>
+<div class="highlight"><pre><span></span>StringBuilder.reverse() time:3321000
+reverseByCharArray time:966000 
+reverseByXor time:1421000
+reverseBystack time:18414000
+</pre></div>
+
+
+</li>
+<li>
+<p>结果比较</p>
+</li>
+</ul>
+<p>在字符串较短的情况下通过异或反转所用的时间是最短的，二分数组仅次之。
+   在字符串较长的情况下使用二分数组的是花费时间最短的。
+   使用栈进行反转花费的时间时间最长是二分数组反转的两个数量级。</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        yumodev
+    </span>
+  </span>
+<time datetime="2016-07-31T00:00:00+02:00" pubdate>日 31 七月 2016</time>  <span class="categories">
+    <a class='category' href='/category/suan-fa.html'>算法</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/java.html">java</a>,    <a class="category" href="/tag/string.html">String</a>,    <a class="category" href="/tag/airthmetic.html">airthmetic</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+</div>
+
+<aside class="sidebar">
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    <li class="post">
+        <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
+    </li>
+    <li class="post">
+        <a href="/adbchang-yong-ming-ling.html">Adb常用命令</a>
+    </li>
+    <li class="post">
+        <a href="/fen-ping-mo-shi.html">分屏模式</a>
+    </li>
+    <li class="post">
+        <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
+    </li>
+    <li class="post">
+        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
+    </li>
+  </ul>
+</section><section>
+  <h1>Categories</h1>
+    <ul id="recent_posts">
+      <li><a href="/category/android.html">android (4)</a></li>
+      <li><a href="/category/java.html">java (8)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/leetcode.html">leetcode (16)</a></li>
+      <li><a href="/category/python.html">python (1)</a></li>
+      <li><a href="/category/suan-fa.html">算法 (3)</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+    <a href="/tag/javagao-ji.html">java高级</a>,    <a href="/tag/git.html">git</a>,    <a href="/tag/java.html">java</a>,    <a href="/tag/string.html">String</a>,    <a href="/tag/tomcat.html">tomcat</a>,    <a href="/tag/python.html">python</a>,    <a href="/tag/eclipse.html">eclipse</a>,    <a href="/tag/airthmetic.html">airthmetic</a>,    <a href="/tag/mou.html">mou</a>,    <a href="/tag/kuai-jie-jian.html">快捷键</a>,    <a href="/tag/http.html">Http</a>,    <a href="/tag/android.html">android</a>,    <a href="/tag/leetcode.html">leetcode</a></section>
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="https://github.com/yumodev" target="_blank">Github</a></li>
+            <li><a href="#" target="_blank">Another social link</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li><a href="https://droidyue.com/" target="_blank">技术小黑屋</a></li>
+        </ul>
+    </section>
+
+</aside>
+    </div>
+  </div>
+  <footer role="contentinfo">
+<p>
+    Copyright &copy;  2014&ndash;2017  yumodev &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p>  </footer>
+</body>
+</html>

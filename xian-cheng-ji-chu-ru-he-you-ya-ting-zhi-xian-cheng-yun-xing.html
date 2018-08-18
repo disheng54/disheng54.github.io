@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>线程基础-如何优雅停止线程运行 &mdash; yumodev</title>
+  <meta name="author" content="yumodev">
+
+  <link rel="canonical" href="/xian-cheng-ji-chu-ru-he-you-ya-ting-zhi-xian-cheng-yun-xing.html"/>
+  
+  <meta property="og:site_name" content="yumodev" />
+  <meta property="og:type" content="article" />
+    
+  <meta property="og:title" content="线程基础-如何优雅停止线程运行" />
+  <meta property="og:url" content="/xian-cheng-ji-chu-ru-he-you-ya-ting-zhi-xian-cheng-yun-xing.html" />
+  <meta property="og:description" content="为何要终止线程的运行 线程的实现是在Thread.run()方法里面运行的，当线程Thread.run()运行结束的时候，线程就终止了。但是如果线程正在运行当中，程序的上下文发生了改变，比如切换了用户等等，这个时候我们就有了需要主动去终止一个线程的运行的需求。 一个不停运行的线程 定义一个StopThread线程类，通过readFromServer()方法从服务器上不停的取数据，然后通过 saveContent()将数据保存到本地，为了演示方便并没有真正的实现两个方法 而是在readFromServer()方法中每隔一秒生成一个字符串，然后通过saveContent()方法打印出来。 public class ThreadStop { static class StopThread extends Thread{ @Override public void run() { Random random = new Random(100); while (true){ String content = readFromServer(random); try { Thread.sleep …" />
+  <meta property="article:published_time" content="2015-01-02 00:00:00+01:00" />
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/favicon.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+</head>
+
+<body >
+  <header role="banner"
+  >
+<hgroup>
+  <h1><a href="/">yumodev</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+      <li >
+        <a href="/category/android.html">Android</a>
+      </li>
+      <li class="active">
+        <a href="/category/java.html">Java</a>
+      </li>
+      <li >
+        <a href="/category/kai-fa-ji-zhu.html">开发技术</a>
+      </li>
+      <li >
+        <a href="/category/leetcode.html">Leetcode</a>
+      </li>
+      <li >
+        <a href="/category/python.html">Python</a>
+      </li>
+      <li >
+        <a href="/category/suan-fa.html">算法</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">线程基础-如何优雅停止线程运行</h1>
+    <p class="meta">
+<time datetime="2015-01-02T00:00:00+01:00" pubdate>五 02 一月 2015</time>      
+    </p>
+</header>
+
+    <div class="entry-content"><h2>为何要终止线程的运行</h2>
+<p>线程的实现是在Thread.run()方法里面运行的，当线程Thread.run()运行结束的时候，线程就终止了。但是如果线程正在运行当中，程序的上下文发生了改变，比如切换了用户等等，这个时候我们就有了需要主动去终止一个线程的运行的需求。</p>
+<h2>一个不停运行的线程</h2>
+<p>定义一个StopThread线程类，通过readFromServer()方法从服务器上不停的取数据，然后通过 saveContent()将数据保存到本地，为了演示方便并没有真正的实现两个方法
+而是在readFromServer()方法中每隔一秒生成一个字符串，然后通过saveContent()方法打印出来。</p>
+<div class="highlight"><pre><span></span><span class="nt">public</span> <span class="nt">class</span> <span class="nt">ThreadStop</span> <span class="p">{</span>
+    <span class="err">static</span> <span class="err">class</span> <span class="err">StopThread</span> <span class="err">extends</span> <span class="err">Thread{</span>
+
+        <span class="err">@Override</span>
+        <span class="err">public</span> <span class="err">void</span> <span class="err">run()</span> <span class="err">{</span>
+            <span class="err">Random</span> <span class="err">random</span> <span class="err">=</span> <span class="err">new</span> <span class="err">Random(100)</span><span class="p">;</span>
+            <span class="err">while</span> <span class="err">(true){</span>
+                <span class="err">String</span> <span class="err">content</span> <span class="err">=</span> <span class="err">readFromServer(random)</span><span class="p">;</span>
+                <span class="err">try</span> <span class="err">{</span>
+                    <span class="err">Thread.sleep(1000)</span><span class="p">;</span>
+                <span class="p">}</span> <span class="nt">catch</span> <span class="o">(</span><span class="nt">InterruptedException</span> <span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+                    <span class="err">e.printStackTrace()</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="nt">saveContent</span><span class="o">(</span><span class="nt">content</span><span class="o">);</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
+
+        <span class="c">/**</span>
+<span class="c">         * 从服务器读取数据</span>
+<span class="c">         * @return</span>
+<span class="c">         */</span>
+        <span class="nt">private</span> <span class="nt">String</span> <span class="nt">readFromServer</span><span class="o">(</span><span class="nt">Random</span> <span class="nt">random</span><span class="o">)</span><span class="p">{</span>
+            <span class="err">return</span> <span class="err">&quot;</span><span class="k">content</span><span class="p">:</span><span class="s2">&quot; + random.nextInt(1000);</span>
+<span class="s2">        }</span>
+
+<span class="s2">        /**</span>
+<span class="s2">         * 将文件写入本地</span>
+<span class="s2">         * @param content</span>
+<span class="s2">         */</span>
+<span class="s2">        private void saveContent(String content) {</span>
+<span class="s2">            System.out.println(&quot;</span><span class="n">saveContent</span><span class="o">:</span><span class="err">&quot;</span><span class="o">+</span><span class="k">content</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">void</span> <span class="nt">testStopThread</span><span class="o">()</span><span class="p">{</span>
+        <span class="err">StopThread</span> <span class="err">thread</span> <span class="err">=</span> <span class="err">new</span> <span class="err">StopThread()</span><span class="p">;</span>
+        <span class="err">thread.start()</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">void</span> <span class="nt">main</span><span class="o">(</span><span class="nt">String</span><span class="cp">[]</span> <span class="nt">args</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">testStopThread()</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>因为StopThread线程启动后就是一直运行，如果我们需要主动停止该线程的运行，该如何实现呢。</p>
+<h2>通过标志位来停止一个线程。</h2>
+<p>如果在线程中保存一个布尔类型的标志位，当需要主动停止线程时，就主动设置标志位的值。当线程检测到标志位为true的时候，就自己结束线程的运行。</p>
+<div class="highlight"><pre><span></span>private volatile  boolean mStop = false;
+
+/**
+* 终止线程
+*/
+public void stopThread(){
+  mStop = true;
+}
+
+/**
+* 检测是否设置的终止标志
+* @return
+*/
+public boolean isStopThread(){
+  return mStop;
+}
+</pre></div>
+
+
+<p>然后在run()方法中添加检测标志位</p>
+<div class="highlight"><pre><span></span>@Override
+   public void run() {
+       Random random = new Random(100);
+       while (true){
+           /**
+            * 如果检测到用户主动设置了停止标志，
+            * 那就停止运行。
+            */
+           if (isStopThread()){
+               break;
+           }
+           String content = readFromServer(random);
+           try {
+               Thread.sleep(1000);
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+
+           saveContent(content);
+       }
+   }
+</pre></div>
+
+
+<p>然后在testStopThread()方法中启动线程后，等待5秒钟后，调用StopThread实例的stopThread()设置终止标志位</p>
+<div class="highlight"><pre><span></span>public static void testStopThread(){
+   StopThread thread = new StopThread();
+   thread.start();
+
+   try {
+       Thread.sleep(5000);
+   } catch (InterruptedException e) {
+       e.printStackTrace();
+   }
+
+   thread.isStopThread();
+}
+</pre></div>
+
+
+<p>这样修改完成后，重新运行程序，输出如下：</p>
+<div class="highlight"><pre><span></span><span class="n">saveContent</span><span class="o">:</span><span class="n">content</span><span class="o">:</span><span class="mi">915</span>
+<span class="n">saveContent</span><span class="o">:</span><span class="n">content</span><span class="o">:</span><span class="mi">250</span>
+<span class="n">saveContent</span><span class="o">:</span><span class="n">content</span><span class="o">:</span><span class="mi">874</span>
+<span class="n">saveContent</span><span class="o">:</span><span class="n">content</span><span class="o">:</span><span class="mi">988</span>
+<span class="n">saveContent</span><span class="o">:</span><span class="n">content</span><span class="o">:</span><span class="mi">291</span>
+
+<span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>从结果上看现实StopThread线程在5秒钟终止运行了。</p>
+<p>但是仅仅设置终止标示位就一定可以终止线程的运行吗？
+比如把StopThread类run方法的线程等待时间修改为24个小时，那么StopThread进程每隔24个小时才会去检测一次标志位，才能够停止线程的运行。</p>
+<p>有比如将线程等待除了sleep方法外，还有wait()放，所以假如线程进入了wait方法等待notify通知后才会重新运行检测标志位，如果一直没有接收到notify通知，那么便永远不会检测标志位，线程也无法终止运行。</p>
+<div class="highlight"><pre><span></span>try {
+      wait();
+  } catch (InterruptedException e) {
+      e.printStackTrace();
+  }
+</pre></div>
+
+
+<h2>利用线程中断机制终止线程。</h2>
+<p>可以利用标志位告诉线程需要终止，当线程检测到标志位的时候，就主动去停止运行，但是在很多时候线程进行了调用了sleep进入长时间的睡眠,或者调用了wait()、joint()进入长时间等待，这个时候线程就不能及时检测标志位，也不能及时停止线程的运行。这个时候就需要使用线程的中断机制来
+解决问题。Thread类中提供了下面有关线程中断机制的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public void interrupt()</td>
+<td>中断当前线程。</td>
+</tr>
+<tr>
+<td>public boolean isInterrupted()</td>
+<td>检测是否已经发生了中断。</td>
+</tr>
+<tr>
+<td>public static boolean interrupted()</td>
+<td>检测是否已经发生了中断，并清除中断状态。如果发生了中断返回true，接着访问就是false了。</td>
+</tr>
+</tbody>
+</table>
+<p>现在把上面的程序加入中断机制，在stopThread()方法中触发中断机制，然后Thread.sleep方法就会抛出InterruptedException，在异常处理中检测中断标志位，来决定线程是继续运行还是停止，最后的完整代码如下：</p>
+<div class="highlight"><pre><span></span> <span class="c">/**</span>
+<span class="c"> * yumodev</span>
+<span class="c"> * 终止线程</span>
+<span class="c"> */</span>
+<span class="nt">public</span> <span class="nt">class</span> <span class="nt">ThreadStop</span> <span class="p">{</span>
+   <span class="err">static</span> <span class="err">class</span> <span class="err">StopThread</span> <span class="err">extends</span> <span class="err">Thread{</span>
+
+   <span class="err">private</span> <span class="err">volatile</span>  <span class="err">boolean</span> <span class="err">mStop</span> <span class="err">=</span> <span class="err">false</span><span class="p">;</span>
+
+   <span class="c">/**</span>
+<span class="c">    * 设置中断标志位，并触发中断机制</span>
+<span class="c">    */</span>
+   <span class="err">public</span> <span class="err">void</span> <span class="err">stopThread(){</span>
+       <span class="err">mStop</span> <span class="err">=</span> <span class="err">true</span><span class="p">;</span>
+       <span class="err">//设置标志位后，立即中断线程。</span>
+       <span class="err">interrupt()</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="c">/**</span>
+<span class="c">    * 检测是否设置的终止标志</span>
+<span class="c">    * @return</span>
+<span class="c">    */</span>
+   <span class="nt">public</span> <span class="nt">boolean</span> <span class="nt">isStopThread</span><span class="o">()</span><span class="p">{</span>
+       <span class="err">return</span> <span class="err">mStop</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="p">@</span><span class="k">Override</span>
+   <span class="nt">public</span> <span class="nt">void</span> <span class="nt">run</span><span class="o">()</span> <span class="p">{</span>
+       <span class="nt">Random</span> <span class="nt">random</span> <span class="o">=</span> <span class="nt">new</span> <span class="nt">Random</span><span class="o">(</span><span class="nt">100</span><span class="o">);</span>
+       <span class="nt">while</span> <span class="o">(</span><span class="nt">true</span><span class="o">)</span><span class="p">{</span>
+           <span class="c">/**</span>
+<span class="c">            * 如果检测到用户主动设置了停止标志，</span>
+<span class="c">            * 那就停止运行。</span>
+<span class="c">            */</span>
+           <span class="err">if</span> <span class="err">(isStopThread()){</span>
+               <span class="err">break</span><span class="p">;</span>
+           <span class="p">}</span>
+
+           <span class="nt">String</span> <span class="nt">content</span> <span class="o">=</span> <span class="nt">readFromServer</span><span class="o">(</span><span class="nt">random</span><span class="o">);</span>
+           <span class="nt">try</span> <span class="p">{</span>
+               <span class="err">Thread.sleep(5000)</span><span class="p">;</span>
+           <span class="p">}</span> <span class="nt">catch</span> <span class="o">(</span><span class="nt">InterruptedException</span> <span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+               <span class="err">e.printStackTrace()</span><span class="p">;</span>
+               <span class="err">//触发了线程中断</span>
+               <span class="err">if</span> <span class="err">(isStopThread()){</span>
+                   <span class="err">break</span><span class="p">;</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+
+           <span class="nt">saveContent</span><span class="o">(</span><span class="nt">content</span><span class="o">);</span>
+       <span class="err">}</span>
+   <span class="err">}</span>
+
+   <span class="c">/**</span>
+<span class="c">    * 从服务器读取数据</span>
+<span class="c">    * @return</span>
+<span class="c">    */</span>
+   <span class="nt">private</span> <span class="nt">String</span> <span class="nt">readFromServer</span><span class="o">(</span><span class="nt">Random</span> <span class="nt">random</span><span class="o">)</span><span class="p">{</span>
+       <span class="err">return</span> <span class="err">&quot;</span><span class="k">content</span><span class="p">:</span><span class="s2">&quot; + random.nextInt(1000);</span>
+<span class="s2">   }</span>
+
+<span class="s2">   /**</span>
+<span class="s2">    * 将文件写入本地</span>
+<span class="s2">    * @param content</span>
+<span class="s2">    */</span>
+<span class="s2">   private void saveContent(String content) {</span>
+<span class="s2">       System.out.println(&quot;</span><span class="n">saveContent</span><span class="o">:</span><span class="err">&quot;</span><span class="o">+</span><span class="k">content</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="err">}</span>
+
+<span class="nt">public</span> <span class="nt">static</span> <span class="nt">void</span> <span class="nt">testStopThread</span><span class="o">()</span><span class="p">{</span>
+   <span class="err">StopThread</span> <span class="err">thread</span> <span class="err">=</span> <span class="err">new</span> <span class="err">StopThread()</span><span class="p">;</span>
+   <span class="err">thread.start()</span><span class="p">;</span>
+
+   <span class="err">try</span> <span class="err">{</span>
+       <span class="err">Thread.sleep(20000)</span><span class="p">;</span>
+   <span class="p">}</span> <span class="nt">catch</span> <span class="o">(</span><span class="nt">InterruptedException</span> <span class="nt">e</span><span class="o">)</span> <span class="p">{</span>
+       <span class="err">e.printStackTrace()</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="nt">thread</span><span class="p">.</span><span class="nc">stopThread</span><span class="o">();</span>
+<span class="err">}</span>
+
+<span class="nt">public</span> <span class="nt">static</span> <span class="nt">void</span> <span class="nt">main</span><span class="o">(</span><span class="nt">String</span><span class="cp">[]</span> <span class="nt">args</span><span class="o">)</span> <span class="p">{</span>
+   <span class="err">testStopThread()</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h2>参考</h2>
+<ul>
+<li>《图解Java多线程设计模式》</li>
+<li><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism">详细分析Java中断机制</a></li>
+</ul></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        yumodev
+    </span>
+  </span>
+<time datetime="2015-01-02T00:00:00+01:00" pubdate>五 02 一月 2015</time>  <span class="categories">
+    <a class='category' href='/category/java.html'>java</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/java.html">java</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+</div>
+
+<aside class="sidebar">
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    <li class="post">
+        <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
+    </li>
+    <li class="post">
+        <a href="/adbchang-yong-ming-ling.html">Adb常用命令</a>
+    </li>
+    <li class="post">
+        <a href="/fen-ping-mo-shi.html">分屏模式</a>
+    </li>
+    <li class="post">
+        <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
+    </li>
+    <li class="post">
+        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
+    </li>
+  </ul>
+</section><section>
+  <h1>Categories</h1>
+    <ul id="recent_posts">
+      <li><a href="/category/android.html">android (4)</a></li>
+      <li><a href="/category/java.html">java (8)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/leetcode.html">leetcode (16)</a></li>
+      <li><a href="/category/python.html">python (1)</a></li>
+      <li><a href="/category/suan-fa.html">算法 (3)</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+    <a href="/tag/javagao-ji.html">java高级</a>,    <a href="/tag/git.html">git</a>,    <a href="/tag/java.html">java</a>,    <a href="/tag/string.html">String</a>,    <a href="/tag/tomcat.html">tomcat</a>,    <a href="/tag/python.html">python</a>,    <a href="/tag/eclipse.html">eclipse</a>,    <a href="/tag/airthmetic.html">airthmetic</a>,    <a href="/tag/mou.html">mou</a>,    <a href="/tag/kuai-jie-jian.html">快捷键</a>,    <a href="/tag/http.html">Http</a>,    <a href="/tag/android.html">android</a>,    <a href="/tag/leetcode.html">leetcode</a></section>
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="https://github.com/yumodev" target="_blank">Github</a></li>
+            <li><a href="#" target="_blank">Another social link</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li><a href="https://droidyue.com/" target="_blank">技术小黑屋</a></li>
+        </ul>
+    </section>
+
+</aside>
+    </div>
+  </div>
+  <footer role="contentinfo">
+<p>
+    Copyright &copy;  2014&ndash;2017  yumodev &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p>  </footer>
+</body>
+</html>
