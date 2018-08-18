@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adb常用命令 &mdash; yumodev</title>
+  <meta name="author" content="yumodev">
+
+  <link rel="canonical" href="/adbchang-yong-ming-ling.html"/>
+  
+  <meta property="og:site_name" content="yumodev" />
+  <meta property="og:type" content="article" />
+    
+  <meta property="og:title" content="Adb常用命令" />
+  <meta property="og:url" content="/adbchang-yong-ming-ling.html" />
+  <meta property="og:description" content="Adb 常用命令 基础命令 查看版本信息:adb version 查看帮助:adb -h 进入shell: adb shell 退出shell: exit 重启设备:adb reboot 终止adb服务:adb kill-server 启动adb服务:adb start-server 文件操作 adb pull 命令从真机拷贝文件到pc上。 adb push 命令从pc上复制一份文件到真机上。 截屏 adb shell screencap -p /sdcard/screen.png adb pull /sdcard/screen.png adb shell rm /sdcard/screen.png 设备相关 …" />
+  <meta property="article:published_time" content="2017-09-14 00:00:00+02:00" />
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/favicon.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+</head>
+
+<body >
+  <header role="banner"
+  >
+<hgroup>
+  <h1><a href="/">yumodev</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+      <li class="active">
+        <a href="/category/android.html">Android</a>
+      </li>
+      <li >
+        <a href="/category/java.html">Java</a>
+      </li>
+      <li >
+        <a href="/category/kai-fa-ji-zhu.html">开发技术</a>
+      </li>
+      <li >
+        <a href="/category/leetcode.html">Leetcode</a>
+      </li>
+      <li >
+        <a href="/category/python.html">Python</a>
+      </li>
+      <li >
+        <a href="/category/suan-fa.html">算法</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Adb常用命令</h1>
+    <p class="meta">
+<time datetime="2017-09-14T00:00:00+02:00" pubdate>四 14 九月 2017</time>      
+    </p>
+</header>
+
+    <div class="entry-content"><h1 align='center'>Adb 常用命令 </h1>
+
+<h2>基础命令</h2>
+<ul>
+<li>查看版本信息:<code>adb version</code></li>
+<li>查看帮助:<code>adb -h</code></li>
+<li>进入shell: <code>adb shell</code></li>
+<li>退出shell: <code>exit</code></li>
+<li>重启设备:<code>adb reboot</code></li>
+<li>终止adb服务:<code>adb kill-server</code></li>
+<li>启动adb服务:<code>adb start-server</code></li>
+</ul>
+<h2>文件操作</h2>
+<ul>
+<li>adb pull <remote> <local> 命令从真机拷贝文件到pc上。</li>
+<li>adb push <local> <remote> 命令从pc上复制一份文件到真机上。</li>
+</ul>
+<h2>截屏</h2>
+<div class="highlight"><pre><span></span>adb shell screencap -p /sdcard/screen.png
+adb pull /sdcard/screen.png
+adb shell rm /sdcard/screen.png
+</pre></div>
+
+
+<h2>设备相关</h2>
+<ul>
+<li>查看设备序列号</li>
+</ul>
+<p><code>adb get-serialno</code></p>
+<ul>
+<li>
+<p>获取CPU信息</p>
+<p><code>adb shell cat /proc/cpuinfo</code></p>
+</li>
+<li>
+<p>查看设备的内存信息</p>
+<p><code>adb shell cat /proc/meminfo</code></p>
+</li>
+<li>
+<p>获取设备名称</p>
+<p><code>adb shell cat /system/build.prop</code></p>
+</li>
+<li>
+<p>获取设备分辨率</p>
+<p><code>adb shell wm size</code></p>
+</li>
+</ul>
+<h2>安装APK</h2>
+<h3>安装APK</h3>
+<ul>
+<li>安装apk:<code>adb install &lt;apkfile&gt;</code></li>
+<li>强制安装apk: <code>adb install -r &lt;apkfile&gt;</code></li>
+<li>安装apk到Sd卡: <code>adb install -s &lt;apkfile&gt;</code></li>
+</ul>
+<h3>卸载APP</h3>
+<ul>
+<li>卸载APP:<code>adb uninstall &lt;packagename&gt;</code></li>
+<li>卸载APP但是保留文件: <code>adb uninstall -k &lt;package&gt;</code></li>
+</ul>
+<h2>pm 命令</h2>
+<ul>
+<li>查看pm命令帮助： <code>adb shell cmd package</code></li>
+</ul>
+<h3>打印应用列表</h3>
+<p>查看应用列表的格式：
+<code>list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]</code>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>see their associated file<br>显示关联的APK文件</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>filter to only show disabled packages<br>只显示禁用的包</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>filter to only show enabled packages<br>只显示启用的包</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>filter to only show system packages<br>只显示系统的包名</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>filter to only show third party packages<br>只显示第三方安装的包</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>see the installer for the packages</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>also include uninstalled packages<br>显示已卸载的应用</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>打印所有的包名:<code>adb shell pm list packages</code></li>
+<li>查看包名某一个字符串的包名</li>
+</ul>
+<div class="highlight"><pre><span></span>adb shell pm list packages com.taobao.taobao
+adb shell pm list packages | grep com.taobao.taobao
+</pre></div>
+
+
+<h3>清除应用数据和缓存</h3>
+<div class="highlight"><pre><span></span>adb shell pm clear &lt;包名&gt;
+adb shell pm clear com.taobao.taobao
+</pre></div>
+
+
+<h2>am 命令</h2>
+<ul>
+<li>
+<p>启动Activity</p>
+<p><code>adb shell am start -n &lt;package_name&gt;/.&lt;activity_class_name&gt;</code></p>
+</li>
+</ul>
+<h2>dumpsys 打印服务信息</h2>
+<ul>
+<li>
+<p>输出系统正在运行的所有服务:<code>adb shell dumpsys -l</code> 。</p>
+</li>
+<li>
+<p>打印系统中的服务某个服务的信息:<code>adb shell dumpsys &lt;服务名&gt;</code> 命令</p>
+</li>
+</ul>
+<h3>activity相关的信息</h3>
+<ul>
+<li>
+<p>查看前台Activty</p>
+<p><code>adb shell dumpsys activity activities | grep mFocusedActivity</code></p>
+</li>
+<li>
+<p>查看顶部的Activity</p>
+<p><code>adb shell dumpsys activity top</code></p>
+</li>
+<li>
+<p>查看所有正在运行的服务</p>
+<p><code>adb shell dumpsys activity services</code></p>
+</li>
+<li>
+<p>通过字符串过滤正则运行的服务</p>
+<p><code>adb shell dumpsys activity services  &lt;过滤字符串&gt;</code></p>
+</li>
+<li>
+<p>显示待处理的Intent </p>
+<p><code>adb shell dumpsys activity intents</code></p>
+</li>
+<li>
+<p>查看provider信息</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span> adb shell dumpsys activity providers
+ adb shell dumpsys activity prov
+</pre></div>
+
+
+<h2>进程、CPU、内存信息</h2>
+<ul>
+<li>
+<p>cpu信息</p>
+<p><code>adb shell dumpsys cupinfo</code></p>
+</li>
+<li>
+<p>打印内存信息</p>
+<p><code>adb shell dumpsys meminfo</code></p>
+</li>
+</ul>
+<h3>打印进程、CPU、内存信息-top命令</h3>
+<p>-t 显示进程名称，-s 按指定行排序，-n 在退出前刷新几次，-d 刷新间隔，-m 显示最大数量</p>
+<ul>
+<li>
+<p>查看内存和cpu信息</p>
+<p><code>adb shell top</code></p>
+</li>
+<li>
+<p>制定进程数量</p>
+<p><code>adb shell top -m 1</code></p>
+</li>
+<li>
+<p>刷新进程数据次数</p>
+<p><code>adb shell top -n 5</code></p>
+</li>
+</ul>
+<h3>ps命令</h3>
+<ul>
+<li>查看进程状态</li>
+</ul>
+<p><code>adb shell ps</code></p>
+<ul>
+<li>
+<p>查看指定id进程信息</p>
+<p><code>adb shell ps &lt;pid&gt;</code></p>
+</li>
+<li>
+<p>筛选进程信息，或者查看一个包下的进程。</p>
+<p><code>adb shell ps | grep &lt;字符串&gt;</code></p>
+</li>
+<li>
+<p>杀死一个进程</p>
+<p><code>adb shell kill &lt;pid&gt;</code></p>
+</li>
+</ul>
+<h2>其他</h2>
+<ul>
+<li>
+<p>生成bug报告</p>
+<p><code>adb bugreport</code></p>
+</li>
+</ul>
+<h2>参考</h2>
+<ul>
+<li><a href="https://developer.android.com/studio/command-line/adb.html">Android 调试桥</a></li>
+<li><a href="http://www.jianshu.com/p/0693b841c83b">开发必备---你应该知道的一些 ADB 命令</a></li>
+<li><a href="http://blog.csdn.net/zhangjg_blog/article/details/39852309">android中dumpsys命令用法详解</a></li>
+<li><a href="http://gityuan.com/2016/05/14/dumpsys-command/">dumpsys命令用法</a></li>
+<li><a href="http://gityuan.com/2017/07/04/ams_dumpsys/">AMS之dumpsys篇</a></li>
+</ul></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        yumodev
+    </span>
+  </span>
+<time datetime="2017-09-14T00:00:00+02:00" pubdate>四 14 九月 2017</time>  <span class="categories">
+    <a class='category' href='/category/android.html'>android</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/android.html">android</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+</div>
+
+<aside class="sidebar">
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    <li class="post">
+        <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
+    </li>
+    <li class="post">
+        <a href="/adbchang-yong-ming-ling.html">Adb常用命令</a>
+    </li>
+    <li class="post">
+        <a href="/fen-ping-mo-shi.html">分屏模式</a>
+    </li>
+    <li class="post">
+        <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
+    </li>
+    <li class="post">
+        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
+    </li>
+  </ul>
+</section><section>
+  <h1>Categories</h1>
+    <ul id="recent_posts">
+      <li><a href="/category/android.html">android (4)</a></li>
+      <li><a href="/category/java.html">java (8)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/leetcode.html">leetcode (16)</a></li>
+      <li><a href="/category/python.html">python (1)</a></li>
+      <li><a href="/category/suan-fa.html">算法 (3)</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+    <a href="/tag/javagao-ji.html">java高级</a>,    <a href="/tag/git.html">git</a>,    <a href="/tag/java.html">java</a>,    <a href="/tag/string.html">String</a>,    <a href="/tag/tomcat.html">tomcat</a>,    <a href="/tag/python.html">python</a>,    <a href="/tag/eclipse.html">eclipse</a>,    <a href="/tag/airthmetic.html">airthmetic</a>,    <a href="/tag/mou.html">mou</a>,    <a href="/tag/kuai-jie-jian.html">快捷键</a>,    <a href="/tag/http.html">Http</a>,    <a href="/tag/android.html">android</a>,    <a href="/tag/leetcode.html">leetcode</a></section>
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="https://github.com/yumodev" target="_blank">Github</a></li>
+            <li><a href="#" target="_blank">Another social link</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li><a href="https://droidyue.com/" target="_blank">技术小黑屋</a></li>
+        </ul>
+    </section>
+
+</aside>
+    </div>
+  </div>
+  <footer role="contentinfo">
+<p>
+    Copyright &copy;  2014&ndash;2017  yumodev &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p>  </footer>
+</body>
+</html>

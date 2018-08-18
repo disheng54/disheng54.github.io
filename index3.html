@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>yumodev</title>
+  <meta name="author" content="yumodev">
+
+  
+  <meta property="og:site_name" content="yumodev" />
+  <meta property="og:type" content="article" />
+  <meta name="og:description" content=""/>
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/favicon.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+</head>
+
+<body >
+  <header role="banner"
+  >
+<hgroup>
+  <h1><a href="/">yumodev</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+      <li >
+        <a href="/category/android.html">Android</a>
+      </li>
+      <li >
+        <a href="/category/java.html">Java</a>
+      </li>
+      <li >
+        <a href="/category/kai-fa-ji-zhu.html">开发技术</a>
+      </li>
+      <li >
+        <a href="/category/leetcode.html">Leetcode</a>
+      </li>
+      <li >
+        <a href="/category/python.html">Python</a>
+      </li>
+      <li >
+        <a href="/category/suan-fa.html">算法</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/1-two-sum.html">1-Two Sum</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-07-31T00:00:00+02:00" pubdate>日 31 七月 2016</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><p>原链接:<a href="https://leetcode.com/problems/two-sum/">Two Sum</a></p>
+<h3>原题目</h3>
+<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+You may assume that each input would have exactly one solution.
+Example:</p>
+<div class="highlight"><pre><span></span>Given nums = [2, 7, 11, 15], target = 9,
+Because nums[0] + nums[1] = 2 …</pre></div></div>
+            <footer>
+                <a rel="full-article" href="/1-two-sum.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/bi-jiao-liang-ge-zi-fu-chuan-pai-xu-hou-shi-fou-xiang-deng.html">比较两个字符串排序后是否相等</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-07-31T00:00:00+02:00" pubdate>日 31 七月 2016</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h3>题目</h3>
+<p>比较两个字符串排序后是否相等</p>
+<h3>解决思路</h3>
+<p>首先比较字符串的长度，长度不相等的字符串，即使排序后也是不相等。
+如果两个字符串长度相符，那么有下面两种方法进行比较</p>
+<ul>
+<li>让两个字符串分别排序后进行比较</li>
+<li>比较两个字符串中的每个字符的数量是否相等</li>
+<li>将字符和字符的数量当做Map的key和value，然后分别比较。</li>
+<li>如果字符串是Ascii编码，那么可以将字符的数量直接放到数组进行优化。</li>
+</ul>
+<h3>代码示例(Java)</h3>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">yumo</span><span class="o">.</span><span class="n">java</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="p">;</span>
+
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">yumo</span> <span class="n">on</span> <span class="mi">7</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mf">16.</span>
+ <span class="o">*</span> <span class="err">比较两个字符排序后是否相等</span>
+ <span class="o">*/</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">StringIsSameAfterSort</span> <span class="p">{</span>
+
+
+    <span class="n">private …</span></pre></div></div>
+            <footer>
+                <a rel="full-article" href="/bi-jiao-liang-ge-zi-fu-chuan-pai-xu-hou-shi-fou-xiang-deng.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/fan-zhuan-yi-ge-zi-fu-chuan.html">反转一个字符串</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-07-31T00:00:00+02:00" pubdate>日 31 七月 2016</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h3>题目</h3>
+<p>将一个字符串反转</p>
+<h3>解决思路</h3>
+<p>这是一个常见的问题，在实际的开发中也经常用到，解决的方法有很多种。我使用下面四种方法进行，并且最后比较其中的效率。</p>
+<ul>
+<li>利用系统自带的StringBuilder.reverse()  进行反转。</li>
+<li>使用将字符串转换为字符数据，然后进行二分反转。</li>
+<li>使用字符的异或进行转换。</li>
+<li>使用Stack数据结构进行反转。</li>
+</ul>
+<h3>实例代码</h3>
+<div class="highlight"><pre><span></span><span class="c">/**</span>
+<span class="c">     * 利用系统自带的StringBuilder.reverse() 进行反转</span>
+<span class="c">     * @param str</span>
+<span class="c">     * @return</span>
+<span class="c">     */</span>
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">String</span> <span class="nt">reverseByStringBuilder</span><span class="o">(</span><span class="nt">String</span> <span class="nt">str</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">if</span> <span class="err">(str</span> <span class="err">==</span> <span class="err">null){</span>
+            <span class="err">return</span> <span class="err">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">return</span> <span class="nt">new</span> <span class="nt">StringBuilder</span><span class="o">(</span><span class="nt">str</span><span class="o">)</span><span class="p">.</span><span class="nc">reverse</span><span class="o">()</span><span class="p">.</span><span class="nc">toString</span><span class="o">();</span>
+    <span class="err">}</span>
+
+    <span class="c">/**</span>
+<span class="c">     * 使用字符串进行二分反转</span>
+<span class="c">     * @return</span>
+<span class="c">     */</span>
+    <span class="nt">public</span> <span class="nt">static</span> <span class="nt">String</span> <span class="nt">reverseByCharArray</span><span class="o">(</span><span class="nt">String</span> <span class="nt">str</span><span class="o">)</span><span class="p">{</span>
+        <span class="err">if</span> <span class="err">(str</span> <span class="err">==</span> <span class="err">null){</span>
+            <span class="err">return …</span></pre></div></div>
+            <footer>
+                <a rel="full-article" href="/fan-zhuan-yi-ge-zi-fu-chuan.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/pan-duan-yi-ge-zi-fu-chuan-li-mian-de-zi-fu-du-shi-bu-xiang-tong-de.html">判断一个字符串里面的字符都是不相同的</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-07-31T00:00:00+02:00" pubdate>日 31 七月 2016</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h3>题目</h3>
+<p>判断一个字符串里面的字符都是不相同的。</p>
+<h3>解决思路</h3>
+<p>这个问题有很多种解决方案，并且可以根据字符串字符集的不同，可以做不同的优化。有下面几种解决问题的思路</p>
+<ul>
+<li>遍历字符串中的字符与字符串中的其他的字符比较。</li>
+<li>可以将字符串进行排序，然后比较相邻的字符是否相等。</li>
+<li>可以利用String方法的lastIndexOf() 方法进行比较。这个方法原理同上。</li>
+<li>可以借助第三方的数据结构进行，比如Set，List， Map等等。</li>
+<li>如果是ASCII字符集，那么通过构建一个长度为256默认为false的布尔数组，存在的字符设置为true，将该索引位置第二次设置为true时，就标志着有相同的字符。</li>
+</ul>
+<h3>实例代码</h3>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">yumo</span><span class="o">.</span><span class="n">java</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="p">;</span>
+
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">yumo</span> <span class="n">on</span> <span class="mi">7</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mf">16.</span>
+ <span class="o">*</span> <span class="err">实现一个算法</span><span class="p">,</span><span class="err">判断一个字符串中的所有字符是否全都不同 …</span></pre></div></div>
+            <footer>
+                <a rel="full-article" href="/pan-duan-yi-ge-zi-fu-chuan-li-mian-de-zi-fu-du-shi-bu-xiang-tong-de.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/macxia-an-zhuang-tomcat.html">Mac下安装Tomcat</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-06-05T00:00:00+02:00" pubdate>日 05 六月 2016</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h3>一、下载tomcat</h3>
+<p>打开 tomcat官网 <a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a> 选择合适的版本下载
+mac下下载zip和targz都行.这次我选择的是最新的9.0版本下载的。</p>
+<h3>二、安装</h3>
+<ol>
+<li>解压刚才下载的文件，命名为tomcat9</li>
+<li>
+<p>将tomcat9 移动到 <code>/Library</code>目录下</p>
+<p><code>sudo mv tomcat9 /Library</code>
+3. 为tomcat9 添加权限 <code>sudo chmod 755 /Library/tomcat9/bin/*.sh</code></p>
+</li>
+</ol>
+<h3>三、开启和关闭tomcat</h3>
+<ol>
+<li>启动tomcat <code>/Library/tomcat9/bin/startup.sh</code></li>
+<li><a href="http://localhost:8080/">http://localhost:8080</a> 打开tomcat 首页</li>
+<li>关闭 tomcat <code>/Library …</code></li></ol></div>
+            <footer>
+                <a rel="full-article" href="/macxia-an-zhuang-tomcat.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/macxia-eclipsede-chang-yong-kuai-jie-jian.html">MAC下eclipse的常用快捷键</a>
+      </h1>
+    <p class="meta">
+<time datetime="2015-04-08T00:00:00+02:00" pubdate>三 08 四月 2015</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h2>Mac下Eclipse快捷键大全 <br></h2>
+<h3>查找帮助</h3>
+<div class="highlight"><pre><span></span>     Shift + Command + L: 打开快捷键列表
+     Command + F: 打开查找
+     Command + K: 在当前页面内搜索选中的关键字。
+</pre></div>
+
+
+<h3>页面操作类</h3>
+<div class="highlight"><pre><span></span>    Command + W: 关闭当前编辑页面
+    Command + Shift＋W: 关闭当前所有的编辑页面
+    Command + Option + 右箭头: 后一个编辑页面
+    Command + Option + 左箭头: 前一个编辑页面
+
+    Command + t: 快速显示当前类的结构图
+    Option + 回车: 显示当前选中资源的属性。
+    Command + Option + c: 显示函数结构。
+    Command + E: 显示当前可选择页面的列表，仅在右上角显示，可以切换页面。
+    Command + Shift + E: 显示当前编辑页面的列表窗口，进行管理。
+
+    Command + Shift …</pre></div></div>
+            <footer>
+                <a rel="full-article" href="/macxia-eclipsede-chang-yong-kuai-jie-jian.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/androidkai-fa-zhong-de-zi-yuan.html">Android开发中的资源</a>
+      </h1>
+    <p class="meta">
+<time datetime="2015-01-27T00:00:00+01:00" pubdate>二 27 一月 2015</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h1 align="center">Android 开发资源</h1>
+
+<h2>常用网站</h2>
+<ul>
+<li><a href="https://developer.android.com/develop/index.html?hl=zh-cn">Android Developers</a></li>
+<li><a href="http://p.codekk.com/">Android 开源项目集合</a></li>
+<li><a href="http://androidweekly.net/">ANDROID WEEKLY</a></li>
+<li><a href="http://www.androidweekly.cn/">ANDROID WEEKLY 中文版</a></li>
+<li><a href="http://chinagdg.org/">谷歌开发者社区(GDG)</a></li>
+<li><a href="http://androidcat.com/">AndoridCat</a></li>
+<li><a href="http://wiki.jikexueyuan.com/list/android/">极客学院-Wiki-Andorid</a></li>
+<li><a href="http://www.kancloud.cn/tag/Android?name=Android&amp;page=1">看云-Android</a></li>
+<li><a href="http://www.androiddevtools.cn/">AndroidDevTools</a></li>
+<li><a href="http://gank.io/">干货集中营</a></li>
+<li><a href="http://www.jianshu.com/p/9ad855577d1c">Andorid开发网站推荐</a></li>
+</ul>
+<h2>Google</h2>
+<ul>
+<li><a href="http://chinagdg.org/">谷歌开发者社区(GDG)</a></li>
+</ul>
+<h2>大厂的技术博客</h2>
+<ul>
+<li><a href="http://tech.meituan.com/">美团点评技术团队</a></li>
+<li><a href="http://www.alloyteam.com/mobiledevelop/android/">AlloyTeam腾讯全端团队</a></li>
+</ul>
+<h2>常用资源聚合和导航</h2>
+<ul>
+<li><a href="https://github.com/jobbole/awesome-java-cn">Java资源大全-github</a></li>
+<li><a href="https://github.com/jobbole/awesome-android-cn">Android资源大全</a></li>
+<li><a href="https://github.com/jobbole/awesome-design-cn">设计资源大全</a></li>
+<li><a href="https://github.com/XXApple/AndroidLibs">AndroidLibs</a></li>
+<li><a href="http://www.open-open.com/lib/list/177">深度OPEN开源库</a></li>
+<li><a href="https://github.com/Trinea/android-open-project">Android 开源项目分类汇总</a></li>
+<li><a href="http://blog.csdn.net/wufeng55/article/details/74165021">2017 上半年我整理的好文章（上）（98 篇）</a></li>
+<li><a href="http://blog.csdn.net/xiaole0313/article/details/54376967">Andorid学习资料</a></li>
+<li><a href="https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md">Android 开发人员不得不收集的代码 (持续更新中)</a></li>
+<li><a href="https://juejin.im/post/5940e0f6128fe1006a0d6cd9">花了 4 个月整理了 50 篇 Android 干货文章 …</a></li></ul></div>
+            <footer>
+                <a rel="full-article" href="/androidkai-fa-zhong-de-zi-yuan.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/fan-she-ru-men-xiang-jie.html">反射入门详解</a>
+      </h1>
+    <p class="meta">
+<time datetime="2015-01-05T00:00:00+01:00" pubdate>一 05 一月 2015</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h2>Java反射机制概述</h2>
+<p>Java中的反射机制允许程序在JVM的运行期动态加载类，创建类对象，调用类的成员变量，执行类的成员方法。</p>
+<p>通过Java的反射机制可以下面的功能</p>
+<ol>
+<li>在运行时判断任意一个对象所属的类；</li>
+<li>在运行时构造任意一个类的对象；</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法；</li>
+<li>在运行时修改任意一个对象的成员变量；</li>
+<li>在运行时调用任意一个对象的方法；</li>
+<li>Java的反射机制可以临时修改类、类的成员变量、类的方法的访问属性。</li>
+</ol>
+<p>Java的反射机制主要用于框架开发方面，是一个高级工程师的必备技能。</p>
+<h2>Java中的反射框架</h2>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>java.lang.Class</td>
+<td>实例表示正在运行的 Java 应用程序中的类和接口</td>
+</tr>
+<tr>
+<td>java.lang.reflect.Constructor</td>
+<td>提供关于类的单个构造方法的信息以及对它的访问权限</td>
+</tr>
+<tr>
+<td>java.lang.reflect.Field</td>
+<td>提供有关类或接口的单个字段的信息，以及对它的动态访问权限</td>
+</tr>
+<tr>
+<td>java.lang.reflect.Method</td>
+<td>提供关于类或接口上单独某个方法（以及如何访问该方法）的信息</td>
+</tr>
+</tbody>
+</table>
+<h2>创建一个测试类</h2>
+<p>为了演示反射的使用，我创建一个名字为Book的类，表示一本图书，有两个成员变量保存书的名字和价格，可以通过构造方法、静态工厂方法创建类的实例 …</p></div>
+            <footer>
+                <a rel="full-article" href="/fan-she-ru-men-xiang-jie.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/java-sui-ji-shu-chang-yong-cao-zuo-ji-he.html">java 随机数－常用操作集合。</a>
+      </h1>
+    <p class="meta">
+<time datetime="2015-01-05T00:00:00+01:00" pubdate>一 05 一月 2015</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><p><h1 align="center" >java 随机数</h1></p>
+<h2>Java中生成随机数的方式</h2>
+<p>很多时候我们需要一些随机数，尤其是做测试的时候。
+在Java中生成随机数有几种方式</p>
+<h2>Java.util.UUID</h2>
+<p>可以通过UUID类生成唯一的字符串，并且是全局唯一所有的电脑产生的字符串都是不同的。它的使用方式如下：</p>
+<div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">uuid</span>  <span class="o">=</span>  <span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span> 
+</pre></div>
+
+
+<h2>Math.random()</h2>
+<p>通过Math.random()方法可以生成[0,1)区间中double类型的数字，可以为0，但是小于1。其他通常的使用方式如下</p>
+<div class="highlight"><pre><span></span><span class="n">生成double随机数</span><span class="err">：</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span>
+<span class="n">生成</span><span class="o">[</span><span class="mi">0</span><span class="o">,</span><span class="mi">100</span><span class="o">)</span><span class="n">之间的整数</span><span class="err">：</span><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()*</span><span class="mi">100</span><span class="o">)</span>
+</pre></div>
+
+
+<p>进入Math.random()的源码中它的具体使用是调用的Random的nextDouble()方法。</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">random</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">RandomNumberGeneratorHolder</span><span class="o">.</span><span class="na">randomNumberGenerator …</span></pre></div></div>
+            <footer>
+                <a rel="full-article" href="/java-sui-ji-shu-chang-yong-cao-zuo-ji-he.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="/xian-cheng-ji-chu-xian-cheng-de-chuang-jian-yu-zhi-xing.html">线程基础 -线程的创建与执行</a>
+      </h1>
+    <p class="meta">
+<time datetime="2015-01-03T00:00:00+01:00" pubdate>六 03 一月 2015</time>      
+    </p>
+</header>
+
+        <div class="entry-content"><h2>如何创建并执行一个线程</h2>
+<p>Java中通过java.lang.Thread类来启动创建一个线程。
+创建一个线程可以通过两种方法，但是最后执行都是调用Thread类的start()方法来启动一个线程。 start()会自动调用run() 执行线程的操作。</p>
+<h3>声明Thread实例创建线程</h3>
+<p>这是最基本的创建一个线程的方法，new一个Thread实例，然后调用start()方法来运行这个线程,
+线程的具体执行的内容放到run()方法里面,一般使用内部类的方式来创建一个线程，也可以通过创建一个Thread类的子类来创建线程。</p>
+<ul>
+<li>内部类的方式</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * new Thread类的实例创建，然后调用start()，启动一个线程。</span>
+<span class="cm"> */</span><span class="w"></span>
+new<span class="w"> </span>Thread<span class="o">()</span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">@</span>Override<span class="w"></span>
+<span class="w">    </span>public<span class="w"> </span>void<span class="w"> </span>run<span class="o">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span>System<span class="o">.</span>out<span class="o">.</span>println<span class="o">(</span><span class="s">&quot;当前线程名字为：&quot;</span><span class="o">+</span>Thread<span class="o">.</span>currentThread<span class="o">().</span>getName<span class="o">())</span><span class="err">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="o">.</span>start<span class="o">()</span><span class="err">;</span><span class="w"></span>
+</pre></div>
+
+
+<ul>
+<li>创建Thread的子类</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * 定义Thread的子类来创建一个线程</span>
+<span class="cm"> */</span><span class="w"></span>
+static<span class="w"> </span>class<span class="w"> </span>MyThread<span class="w"> </span>extends<span class="w"> </span>Thread<span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span>public<span class="w"> </span>MyThread<span class="o">()</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span>setName<span class="o">(</span><span class="s">&quot;MyThread&quot;</span><span class="o">)</span><span class="err">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">@</span>Override …</pre></div></div>
+            <footer>
+                <a rel="full-article" href="/xian-cheng-ji-chu-xian-cheng-de-chuang-jian-yu-zhi-xing.html">Read On &crarr;</a>
+            </footer>
+  		</article>
+<div class="pagination">
+    <a class="prev" href="/index4.html">&larr; Older</a>
+
+    <a class="next" href="/index2.html">Newer &rarr;</a>
+  <br />
+</div></div>
+
+<aside class="sidebar">
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    <li class="post">
+        <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
+    </li>
+    <li class="post">
+        <a href="/adbchang-yong-ming-ling.html">Adb常用命令</a>
+    </li>
+    <li class="post">
+        <a href="/fen-ping-mo-shi.html">分屏模式</a>
+    </li>
+    <li class="post">
+        <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
+    </li>
+    <li class="post">
+        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
+    </li>
+  </ul>
+</section><section>
+  <h1>Categories</h1>
+    <ul id="recent_posts">
+      <li><a href="/category/android.html">android (4)</a></li>
+      <li><a href="/category/java.html">java (8)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/leetcode.html">leetcode (16)</a></li>
+      <li><a href="/category/python.html">python (1)</a></li>
+      <li><a href="/category/suan-fa.html">算法 (3)</a></li>
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+    <a href="/tag/javagao-ji.html">java高级</a>,    <a href="/tag/git.html">git</a>,    <a href="/tag/java.html">java</a>,    <a href="/tag/string.html">String</a>,    <a href="/tag/tomcat.html">tomcat</a>,    <a href="/tag/python.html">python</a>,    <a href="/tag/eclipse.html">eclipse</a>,    <a href="/tag/airthmetic.html">airthmetic</a>,    <a href="/tag/mou.html">mou</a>,    <a href="/tag/kuai-jie-jian.html">快捷键</a>,    <a href="/tag/http.html">Http</a>,    <a href="/tag/android.html">android</a>,    <a href="/tag/leetcode.html">leetcode</a></section>
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="https://github.com/yumodev" target="_blank">Github</a></li>
+            <li><a href="#" target="_blank">Another social link</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li><a href="https://droidyue.com/" target="_blank">技术小黑屋</a></li>
+        </ul>
+    </section>
+
+</aside>
+    </div>
+  </div>
+  <footer role="contentinfo">
+<p>
+    Copyright &copy;  2014&ndash;2017  yumodev &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p>  </footer>
+</body>
+</html>
