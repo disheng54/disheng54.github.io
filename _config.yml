@@ -9,15 +9,15 @@ kramdown:
 # 作者信息
 author:
   name: 禹墨
-  email: disheng54@163.com
-  link: http://disheng54.github.io
+  email: duzi_tingyu@163.com
+  link: http://yumodev.github.io
   weibo: http://weibo.com
-  github: https://github.com/disheng54
+  github: https://github.com/yumodev
 
 # 站点信息
 title: 禹墨的博客
 description: 禹墨的博客
-url: http://disheng54.github.io
+url: http://yumodev.github.io
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
@@ -27,7 +27,7 @@ favicon: http://yumo.qiniudn.com/baby.png
 # google analytics 设置
 ga:
   id:
-  url: http://disheng54.github.io
+  url: http://yumodev.github.io
 
 # disqus 设置
 disqus:
