@@ -15,7 +15,7 @@
   <meta property="og:title" content="线程基础-如何优雅停止线程运行" />
   <meta property="og:url" content="/xian-cheng-ji-chu-ru-he-you-ya-ting-zhi-xian-cheng-yun-xing.html" />
   <meta property="og:description" content="为何要终止线程的运行 线程的实现是在Thread.run()方法里面运行的，当线程Thread.run()运行结束的时候，线程就终止了。但是如果线程正在运行当中，程序的上下文发生了改变，比如切换了用户等等，这个时候我们就有了需要主动去终止一个线程的运行的需求。 一个不停运行的线程 定义一个StopThread线程类，通过readFromServer()方法从服务器上不停的取数据，然后通过 saveContent()将数据保存到本地，为了演示方便并没有真正的实现两个方法 而是在readFromServer()方法中每隔一秒生成一个字符串，然后通过saveContent()方法打印出来。 public class ThreadStop { static class StopThread extends Thread{ @Override public void run() { Random random = new Random(100); while (true){ String content = readFromServer(random); try { Thread.sleep …" />
-  <meta property="article:published_time" content="2015-01-02 00:00:00+01:00" />
+  <meta property="article:published_time" content="2015-01-02 00:00:00+00:00" />
 
 
 
@@ -80,7 +80,7 @@
 <header>
       <h1 class="entry-title">线程基础-如何优雅停止线程运行</h1>
     <p class="meta">
-<time datetime="2015-01-02T00:00:00+01:00" pubdate>五 02 一月 2015</time>      
+<time datetime="2015-01-02T00:00:00+00:00" pubdate>2015-01-02(五)</time>      
     </p>
 </header>
 
@@ -349,7 +349,7 @@ public boolean isStopThread(){
         yumo
     </span>
   </span>
-<time datetime="2015-01-02T00:00:00+01:00" pubdate>五 02 一月 2015</time>  <span class="categories">
+<time datetime="2015-01-02T00:00:00+00:00" pubdate>2015-01-02(五)</time>  <span class="categories">
     <a class='category' href='/category/java.html'>java</a>
   </span>
   <span class="categories">
@@ -365,6 +365,9 @@ public boolean isStopThread(){
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     <li class="post">
+        <a href="/pelicanchuang-jian-jing-tai-bo-ke.html">Pelican创建静态博客</a>
+    </li>
+    <li class="post">
         <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
     </li>
     <li class="post">
@@ -376,16 +379,13 @@ public boolean isStopThread(){
     <li class="post">
         <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
     </li>
-    <li class="post">
-        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
-    </li>
   </ul>
 </section><section>
   <h1>Categories</h1>
     <ul id="recent_posts">
       <li><a href="/category/android.html">android (4)</a></li>
       <li><a href="/category/java.html">java (8)</a></li>
-      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (5)</a></li>
       <li><a href="/category/leetcode.html">leetcode (16)</a></li>
       <li><a href="/category/python.html">python (1)</a></li>
       <li><a href="/category/suan-fa.html">算法 (3)</a></li>
@@ -416,8 +416,24 @@ public boolean isStopThread(){
   </div>
   <footer role="contentinfo">
 <p>
-    Copyright &copy;  2014&ndash;2017  yumo &mdash;
+    Copyright &copy;  2014&ndash;2019  yumo &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p>  </footer>
+  <script type="text/javascript">
+    var disqus_shortname = 'yumo-zh';
+          var disqus_identifier = '/xian-cheng-ji-chu-ru-he-you-ya-ting-zhi-xian-cheng-yun-xing.html';
+    var disqus_url = '/xian-cheng-ji-chu-ru-he-you-ya-ting-zhi-xian-cheng-yun-xing.html';
+    var disqus_title = '线程基础-如何优雅停止线程运行';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
 </body>
 </html>

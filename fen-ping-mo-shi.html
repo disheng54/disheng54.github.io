@@ -15,7 +15,7 @@
   <meta property="og:title" content="分屏模式" />
   <meta property="og:url" content="/fen-ping-mo-shi.html" />
   <meta property="og:description" content="分屏模式 Android N 添加了对同时显示多个应用窗口的支持。 手机上两个应用可以在“分屏”模式中左右并排或上下并排显示。 如何进入分屏模式 打开App，长按底部Overview按键(底部的正方形按键) 在多窗口任务页面，长按App，则可以拖动该 App至屏幕突出显示的区域，使 App 进入分屏模式。 开启分屏模式 App默认是支持分屏模式的。 如果App是基于Android N版本编译的，那么通过可以在manifest文件中设置Application或者Activity的属性 android:resizeableActivity=["true" | "false"]。如果设置resizeableActivity属性为true则支持分屏模式，如果设置resizeableActivity属性为false则不支持分屏模式。 如果App的编译版本低于Android N, 那么当用户尝试进入分屏模式时候，系统会强制将App进入分屏模式。那么在这种情况下，在清单文件中的主Activity中设置android:screenOrientation="portrait"属性，就可以禁止进入分屏模式。 监听是否进入分屏模式 Activity …" />
-  <meta property="article:published_time" content="2017-09-10 00:00:00+02:00" />
+  <meta property="article:published_time" content="2017-09-10 00:00:00+00:00" />
 
 
 
@@ -80,7 +80,7 @@
 <header>
       <h1 class="entry-title">分屏模式</h1>
     <p class="meta">
-<time datetime="2017-09-10T00:00:00+02:00" pubdate>日 10 九月 2017</time>      
+<time datetime="2017-09-10T00:00:00+00:00" pubdate>2017-09-10(日)</time>      
     </p>
 </header>
 
@@ -158,7 +158,7 @@ startActivity(intent);
         yumo
     </span>
   </span>
-<time datetime="2017-09-10T00:00:00+02:00" pubdate>日 10 九月 2017</time>  <span class="categories">
+<time datetime="2017-09-10T00:00:00+00:00" pubdate>2017-09-10(日)</time>  <span class="categories">
     <a class='category' href='/category/android.html'>android</a>
   </span>
   <span class="categories">
@@ -174,6 +174,9 @@ startActivity(intent);
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     <li class="post">
+        <a href="/pelicanchuang-jian-jing-tai-bo-ke.html">Pelican创建静态博客</a>
+    </li>
+    <li class="post">
         <a href="/pythonchang-yong-nei-zhi-han-shu.html">Python常用内置函数</a>
     </li>
     <li class="post">
@@ -185,16 +188,13 @@ startActivity(intent);
     <li class="post">
         <a href="/linkedhashmapde-shi-yong-yi-ji-lrusuan-fa-de-shi-xian.html">LinkedHashMap的使用以及LRU算法的实现</a>
     </li>
-    <li class="post">
-        <a href="/19-remove-nth-node-from-end-of-list.html">19-Remove Nth Node From End of List</a>
-    </li>
   </ul>
 </section><section>
   <h1>Categories</h1>
     <ul id="recent_posts">
       <li><a href="/category/android.html">android (4)</a></li>
       <li><a href="/category/java.html">java (8)</a></li>
-      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (4)</a></li>
+      <li><a href="/category/kai-fa-ji-zhu.html">开发技术 (5)</a></li>
       <li><a href="/category/leetcode.html">leetcode (16)</a></li>
       <li><a href="/category/python.html">python (1)</a></li>
       <li><a href="/category/suan-fa.html">算法 (3)</a></li>
@@ -225,8 +225,24 @@ startActivity(intent);
   </div>
   <footer role="contentinfo">
 <p>
-    Copyright &copy;  2014&ndash;2017  yumo &mdash;
+    Copyright &copy;  2014&ndash;2019  yumo &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p>  </footer>
+  <script type="text/javascript">
+    var disqus_shortname = 'yumo-zh';
+          var disqus_identifier = '/fen-ping-mo-shi.html';
+    var disqus_url = '/fen-ping-mo-shi.html';
+    var disqus_title = '分屏模式';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
 </body>
 </html>
